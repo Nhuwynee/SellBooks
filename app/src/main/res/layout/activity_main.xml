@@ -19,35 +19,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_marginTop="10dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/background_vien"
-                    android:layout_marginRight="15dp">
+                    android:backgroundTint="#F2407B">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:text="MYBOOKS"
                         android:layout_marginLeft="20dp"
+                        android:layout_weight="3"
+                        android:paddingTop="12dp"
+                        android:text="MYBOOKS"
+                        android:textColor="@color/white"
                         android:textSize="30sp"
-                        android:textStyle="bold"
-                        android:paddingTop="12dp"/>
+                        android:textStyle="bold" />
+
                     <ImageButton
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        android:src="@drawable/login"
-                        android:background="@color/white"/>
+                        android:background="#F2417C"
+                        android:src="@drawable/login" />
+
                     <ImageButton
                         android:layout_width="0dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="20dp"
                         android:layout_weight="1"
-                        android:src="@drawable/menu"
-                        android:background="@color/white"/>
+                        android:background="#F2417C"
+                        android:backgroundTint="#E91E63"
+                        android:src="@drawable/menu" />
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
             <ViewFlipper
