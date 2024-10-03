@@ -55,6 +55,8 @@
                         android:background="#F2417C"
                         android:backgroundTint="#E91E63"
                         android:src="@drawable/menu" />
+
+
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
             <ViewFlipper
@@ -89,6 +91,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:scrollbars="horizontal"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </Button>
         </LinearLayout>
 
 </LinearLayout>
