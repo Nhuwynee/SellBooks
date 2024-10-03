@@ -1,0 +1,17 @@
+# Bỏ qua các tệp build
+/build/
+/app/build/
+
+# Bỏ qua tệp local.properties
+/local.properties
+
+# Bỏ qua các tệp hệ điều hành
+.DS_Store
+Thumbs.db
+
+# Bỏ qua các tệp IDE
+.idea/
+*.iml
+
+# Bỏ qua tệp log
+*.log
