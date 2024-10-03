@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             // Mảng chứa các ảnh trong thư mục drawable
-            int[] images = {R.drawable.boconcagai, R.drawable.bongdembatxichmon, R.drawable.chinhphuchanhphuc2, R.drawable.mbabanghinh};
+            int[] images = { R.drawable.bongdembatxichmon, R.drawable.chinhphuchanhphuc2, R.drawable.mbabanghinh};
 
             // Thêm từng ảnh vào ViewFlipper
             for (int image : images) {
