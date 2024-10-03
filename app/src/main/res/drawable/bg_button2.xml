@@ -1,0 +1,14 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:bottom="10dp" android:right="10dp"> <!-- Đẩy hình chữ nhật lên trên -->
+        <shape android:shape="rectangle">
+            <size
+                android:width="300dp"
+                android:height="50dp"/>
+            <stroke android:width="2dp" android:color="@color/black"/>
+            <solid android:color="#FFFFFF"/> <!-- Màu tím (thay đổi nếu muốn) -->
+            <corners android:radius="20dp"/>
+        </shape>
+    </item>
+
+</layer-list>
