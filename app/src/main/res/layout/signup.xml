@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#E0FFB5CB">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   >
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_weight="1"
+        android:layout_gravity="start"
+        android:src="@drawable/hello" />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:text="SIGN UP"
+        android:layout_marginTop="60dp"
+        android:textSize="50sp"
+        android:textColor="#E73984"
+        android:fontFamily="@font/arima_semibold"
+        android:layout_marginLeft="20dp"/>
+</LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:textColorHint="#3F51B5"
+        app:hintEnabled="true"
+        app:hintTextAppearance="@style/HintTextAppearance">
+        <EditText
+            android:id="@+id/edittext_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_margin="16dp"
+            android:padding="15dp"
+            android:textColor="#3F51B5"
+            android:textSize="20sp"
+            android:fontFamily="@font/arima_regular"
+            android:background="@drawable/bg_textfield"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textColorHint="#3F51B5"
+        app:hintEnabled="true"
+        app:hintTextAppearance="@style/HintTextAppearance">
+        <EditText
+            android:id="@+id/edittext_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_margin="16dp"
+            android:padding="15dp"
+            android:textColor="#3F51B5"
+            android:textSize="20sp"
+            android:fontFamily="@font/arima_regular"
+            android:background="@drawable/bg_textfield"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_re_enter_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Re-enter password"
+        android:textColorHint="#3F51B5"
+        app:hintEnabled="true"
+        app:hintTextAppearance="@style/HintTextAppearance">
+        <EditText
+            android:id="@+id/edittext_re_enter_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_margin="16dp"
+            android:padding="15dp"
+            android:textColor="#3F51B5"
+            android:textSize="20sp"
+            android:fontFamily="@font/arima_regular"
+            android:background="@drawable/bg_textfield"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:textSize="30sp"
+        android:fontFamily="@font/arima_semibold"
+        android:textColor="#3F51B5"
+        android:background="@drawable/bg_button"
+    />
+
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:fontFamily="@font/arima_regular"
+    />
+
+    <Button
+        android:id="@+id/btn_signup_gmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/gmail"
+        android:text="Sign up with Gmail"
+        android:background="@drawable/bg_button2"
+        android:paddingLeft="20dp"
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/arima_semibold"
+        android:textColor="#3F51B5"
+         />
+
+</LinearLayout>

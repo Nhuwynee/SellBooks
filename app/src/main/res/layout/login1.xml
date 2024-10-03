@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#E0FFB5CB"
+    android:padding="20dp">
+
+    <!-- Book Haven Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="BOOK HAVEN"
+        android:layout_marginTop="60dp"
+        android:textSize="50sp"
+        android:textColor="#E73984"
+        android:fontFamily="@font/arima_semibold"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Login Button -->
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="180dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:background="@drawable/background_vien"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/arima_bold"
+        android:padding="5dp"
+        android:text="LOG IN"
+        android:textColor="#3F51B5"
+        android:textSize="30sp" />
+
+    <!-- Sign Up Button -->
+    <Button
+        android:id="@+id/signup_button"
+        android:layout_width="180dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/background_vien"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/arima_bold"
+        android:padding="5dp"
+        android:layout_marginTop="15dp"
+        android:text="SIGN UP"
+        android:textColor="#3F51B5"
+        android:textSize="30sp"/>
+
+    <!-- Cute Cat Image -->
+    <ImageView
+        android:id="@+id/cat_image"
+        android:layout_width="500dp"
+        android:layout_height="164dp"
+        android:layout_gravity="center"
+        android:layout_weight="4"
+        android:src="@drawable/bg" />
+
+</LinearLayout>

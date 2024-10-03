@@ -1,0 +1,7 @@
+<resources>
+    <style name="HintTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">23sp</item> <!-- Kích thước của hint -->
+        <item name="android:textColor">#FFFFFF</item> <!-- Màu của hint -->
+        <item name="android:fontFamily">@font/arima_regular</item>
+    </style>
+</resources>
