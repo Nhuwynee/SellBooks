@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="book_categories">
+        <item>Tiểu thuyết</item>
+        <item>Trinh Thám</item>
+        <item>Ngôn tình</item>
+        <item>Văn học Việt Nam</item>
+    </string-array>
+</resources>
