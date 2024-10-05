@@ -15,7 +15,8 @@
         android:layout_height="150dp"
         android:layout_weight="1"
         android:layout_gravity="start"
-        android:src="@drawable/hello" />
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/hello1" />
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -108,10 +109,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp"
         android:fontFamily="@font/arima_regular"
-    />
+        android:textColor="#958FAB"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btn_signup_gmail"

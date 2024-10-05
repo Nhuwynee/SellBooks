@@ -19,7 +19,7 @@ public class forgot_pass extends AppCompatActivity {
         setContentView(R.layout.forgot_pass);
 
         TextView returnbt = findViewById(R.id.returnbt);
-        SpannableString spannableString = new SpannableString("Return");
+        SpannableString spannableString = new SpannableString("Back");
 
         ClickableSpan clickableSpan= new ClickableSpan() {
             @Override
