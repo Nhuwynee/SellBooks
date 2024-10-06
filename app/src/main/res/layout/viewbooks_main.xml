@@ -12,24 +12,24 @@
 
     <ImageView
         android:id="@+id/bookImage"
-        android:layout_width="wrap_content"
-        android:layout_height="236dp"
+        android:layout_width="361dp"
+        android:layout_height="216dp"
         android:layout_gravity="center"
         android:contentDescription="Book Image"
         android:src="@drawable/hong_luc" />
 
 
-    <!-- Buttons for About, Review, Author -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="-15dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
         <!-- Author Image -->
         <ImageView
             android:id="@+id/author_Image"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:contentDescription="Author Image"
@@ -37,7 +37,7 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="84dp"
+            android:layout_height="70dp"
             android:layout_weight="3"
             android:orientation="vertical">
 
@@ -47,18 +47,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Hồng lục"
+                android:fontFamily="@font/arima_semibold"
                 android:textColor="#E81970"
-                android:textSize="28sp" />
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="157dp"
                 android:layout_height="37dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="-7dp"
                 android:text="By Kim Diệp Tử"
+                android:fontFamily="@font/arima_bold"
                 android:textColor="#78103C"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <TextView
@@ -67,10 +69,11 @@
             android:layout_height="84dp"
             android:layout_gravity="end"
             android:layout_weight="2"
-            android:paddingTop="10dp"
+            android:paddingTop="15dp"
             android:text="225.000đ"
+            android:fontFamily="@font/arima_semibold"
             android:textColor="#2A15AB"
-            android:textSize="22sp" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
@@ -90,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:text="About"
                 android:textSize="16dp"
-                android:fontFamily="@font/arima_semibold"
+                android:fontFamily="@font/arima_bold"
                 android:textColor="#78103C"
                 android:gravity="center"
                 />
@@ -117,7 +120,7 @@
                 android:text="Review"
                 android:gravity="center"
                 android:textSize="16dp"
-                android:fontFamily="@font/arima_semibold"
+                android:fontFamily="@font/arima_bold"
                 android:textColor="#78103C"
                 />
 
@@ -141,7 +144,7 @@
                 android:text="Author"
                 android:gravity="center"
                 android:textSize="16dp"
-                android:fontFamily="@font/arima_semibold"
+                android:fontFamily="@font/arima_bold"
                 android:textColor="#78103C"
                 />
             <Button
@@ -153,50 +156,74 @@
         </LinearLayout>
     </LinearLayout>
 
-    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        >
+        <TextView
+            android:id="@+id/book_rating"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:gravity="left"
+            android:text="★★★★★"
+            android:textColor="#F4D31C"
+            android:textSize="30sp" />
 
-    <!--    <fragment-->
-    <!--        android:id="@+id/fragment_2"-->
-    <!--        android:name="com.example.test.Fragment2"-->
-    <!--        android:layout_width="373dp"-->
-    <!--        android:layout_height="220dp"-->
-    <!--        android:layout_marginStart="16dp"-->
-    <!--        android:layout_marginTop="19dp"-->
-    <!--        android:layout_marginEnd="22dp"-->
-    <!--        android:layout_marginBottom="51dp"-->
-    <!--        android:layout_weight="2" />-->
-
-    <!--    <fragment-->
-    <!--        android:id="@+id/fragment_3"-->
-    <!--        android:name="com.example.test.Fragment3"-->
-    <!--        android:layout_width="373dp"-->
-    <!--        android:layout_height="220dp"-->
-    <!--        android:layout_marginStart="16dp"-->
-    <!--        android:layout_marginTop="19dp"-->
-    <!--        android:layout_marginEnd="22dp"-->
-    <!--        android:layout_marginBottom="51dp"-->
-    <!--        android:layout_weight="3" />-->
-    <!--    />-->
-
-    <!--    <fragment-->
-    <!--        android:id="@+id/fragment_1"-->
-    <!--        android:name="com.example.test.Fragment1"-->
-    <!--        android:layout_width="373dp"-->
-    <!--        android:layout_height="220dp"-->
-    <!--        android:layout_marginStart="16dp"-->
-    <!--        android:layout_marginTop="20dp"-->
-    <!--        android:layout_marginEnd="22dp"-->
-    <!--        android:layout_marginBottom="50dp"-->
-    <!--        android:layout_weight="1" />-->
+        <TextView
+            android:id="@+id/book_sl"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:gravity="left"
+            android:text="| 2,500 books"
+            android:textColor="#AC97A0"
+            android:fontFamily="@font/arima_bold"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/container_body"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="191dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/darker_gray">
-
+        android:layout_marginTop="5dp"
+        android:background="#FFF3FB"> <!-- Nhớ đổi màu -->
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/docthem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Đọc thêm"
+        android:textColor="#E81970"
+        android:fontFamily="@font/arima_bold"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="55dp"
+            android:src="@drawable/ic_bag"
+            android:layout_gravity="left"
+            android:background="@drawable/circle_nhuw"
+            />
+        <TextView
+            android:id="@+id/addcart"
+            android:paddingRight="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="Add to Cart"
+            android:textColor="#78103C"
+            android:fontFamily="@font/arima_bold"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 </LinearLayout>
