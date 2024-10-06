@@ -41,25 +41,25 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_main);
 //        addImagesToFlipper();
 //        book();
-        setContentView(R.layout.login1);
-        Button signupButton = findViewById(R.id.signup_button);
-        Button loginButton = findViewById(R.id.login_button);
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Sử dụng Intent để chuyển sang SignupActivity
-                Intent intent = new Intent(MainActivity.this, signup.class);
-                startActivity(intent);  // Bắt đầu SignupActivity
-            }
-        });
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Sử dụng Intent để chuyển sang SignupActivity
-                Intent intent = new Intent(MainActivity.this, login_main.class);
-                startActivity(intent);  // Bắt đầu SignupActivity
-            }
-        });
+        setContentView(R.layout.viewbooks_main);
+//        Button signupButton = findViewById(R.id.signup_button);
+//        Button loginButton = findViewById(R.id.login_button);
+//        signupButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Sử dụng Intent để chuyển sang SignupActivity
+//                Intent intent = new Intent(MainActivity.this, signup.class);
+//                startActivity(intent);  // Bắt đầu SignupActivity
+//            }
+//        });
+//        loginButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Sử dụng Intent để chuyển sang SignupActivity
+//                Intent intent = new Intent(MainActivity.this, login_main.class);
+//                startActivity(intent);  // Bắt đầu SignupActivity
+//            }
+//        });
 
 
 

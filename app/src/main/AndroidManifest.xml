@@ -15,6 +15,7 @@
         <activity android:name=".signup" />
         <activity android:name=".login_main" />
         <activity android:name=".forgot_pass"/>
+        <activity android:name=".ViewBooks"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

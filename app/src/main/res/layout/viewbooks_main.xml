@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#ffffff"
+    android:gravity="center_horizontal"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/bookImage"
+        android:layout_width="wrap_content"
+        android:layout_height="236dp"
+        android:layout_gravity="center"
+        android:contentDescription="Book Image"
+        android:src="@drawable/hong_luc" />
+
+
+    <!-- Buttons for About, Review, Author -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <!-- Author Image -->
+        <ImageView
+            android:id="@+id/author_Image"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:contentDescription="Author Image"
+            android:src="@drawable/author_hongluc" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="84dp"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Hồng lục"
+                android:textColor="#E81970"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="157dp"
+                android:layout_height="37dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="4dp"
+                android:text="By Kim Diệp Tử"
+                android:textColor="#78103C"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="84dp"
+            android:layout_gravity="end"
+            android:layout_weight="2"
+            android:paddingTop="10dp"
+            android:text="225.000đ"
+            android:textColor="#2A15AB"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="About"
+                android:textSize="16dp"
+                android:fontFamily="@font/arima_semibold"
+                android:textColor="#78103C"
+                android:gravity="center"
+                />
+
+            <Button
+                android:id="@+id/btn_about"
+                android:layout_width="150dp"
+                android:layout_height="18dp"
+                android:backgroundTint="#FFC107"
+                android:textColor="@android:color/black" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Review"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:fontFamily="@font/arima_semibold"
+                android:textColor="#78103C"
+                />
+
+            <Button
+                android:id="@+id/btn_review"
+                android:layout_width="150dp"
+                android:layout_height="18dp"
+                android:backgroundTint="#D7D3C8"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Author"
+                android:gravity="center"
+                android:textSize="16dp"
+                android:fontFamily="@font/arima_semibold"
+                android:textColor="#78103C"
+                />
+            <Button
+                android:id="@+id/btn_author"
+                android:layout_width="150dp"
+                android:layout_height="18dp"
+                android:backgroundTint="#D7D3C8"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </LinearLayout>
+
+    
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/fragment_2"-->
+    <!--        android:name="com.example.test.Fragment2"-->
+    <!--        android:layout_width="373dp"-->
+    <!--        android:layout_height="220dp"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginTop="19dp"-->
+    <!--        android:layout_marginEnd="22dp"-->
+    <!--        android:layout_marginBottom="51dp"-->
+    <!--        android:layout_weight="2" />-->
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/fragment_3"-->
+    <!--        android:name="com.example.test.Fragment3"-->
+    <!--        android:layout_width="373dp"-->
+    <!--        android:layout_height="220dp"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginTop="19dp"-->
+    <!--        android:layout_marginEnd="22dp"-->
+    <!--        android:layout_marginBottom="51dp"-->
+    <!--        android:layout_weight="3" />-->
+    <!--    />-->
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/fragment_1"-->
+    <!--        android:name="com.example.test.Fragment1"-->
+    <!--        android:layout_width="373dp"-->
+    <!--        android:layout_height="220dp"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        android:layout_marginEnd="22dp"-->
+    <!--        android:layout_marginBottom="50dp"-->
+    <!--        android:layout_weight="1" />-->
+
+    <FrameLayout
+        android:id="@+id/container_body"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/darker_gray">
+
+    </FrameLayout>
+
+</LinearLayout>
