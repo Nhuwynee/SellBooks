@@ -3,10 +3,6 @@
     <solid android:color="@android:color/transparent" />
     <stroke
         android:width="2dp"
-<<<<<<< HEAD
         android:color="#E91E63" /> <!-- Màu viền -->
-=======
-        android:color="#E91E63"
-        /> <!-- Màu viền -->
->>>>>>> lay2
+
 </shape>
