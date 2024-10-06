@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#03A9F4">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="Bạn đang theo dõi sách Hồng Lục của tác giả Kim Diệp Tử rất hấp dẫn và lôi cuốn. Là một truyện được giới thiệu với bạn đọc trên trang của chúng tôi. Sách bạn đọc sẽ được dẫn dắt vào một thế giới mới lạ, những tình tiết đặc sắc, đọc truyện Ngôn Tình này để trải nghiệm và cảm nhận bạn nhé. Sách Hồng Lục nói về ..."
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

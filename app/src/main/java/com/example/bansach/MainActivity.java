@@ -38,7 +38,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.trang_chu);
+
+//        setContentView(R.layout.activity_main);
+//        addImagesToFlipper();
+//        book();
+        setContentView(R.layout.viewbooks_main);
+//        Button signupButton = findViewById(R.id.signup_button);
+//        Button loginButton = findViewById(R.id.login_button);
+//        signupButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Sử dụng Intent để chuyển sang SignupActivity
+//                Intent intent = new Intent(MainActivity.this, signup.class);
+//                startActivity(intent);  // Bắt đầu SignupActivity
+//            }
+//        });
+//        loginButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Sử dụng Intent để chuyển sang SignupActivity
+//                Intent intent = new Intent(MainActivity.this, login_main.class);
+//                startActivity(intent);  // Bắt đầu SignupActivity
+//            }
+//        });
+
 
         addImagesToFlipper();
         book();
