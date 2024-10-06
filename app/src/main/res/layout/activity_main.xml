@@ -92,11 +92,7 @@
                 android:orientation="horizontal"
                 android:scrollbars="horizontal"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
 
-            </Button>
         </LinearLayout>
 
 </LinearLayout>

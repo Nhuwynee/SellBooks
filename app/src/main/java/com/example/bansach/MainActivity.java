@@ -38,72 +38,66 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//        addImagesToFlipper();
-//        book();
-        setContentView(R.layout.login1);
-        Button signupButton = findViewById(R.id.signup_button);
-        Button loginButton = findViewById(R.id.login_button);
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Sử dụng Intent để chuyển sang SignupActivity
-                Intent intent = new Intent(MainActivity.this, signup.class);
-                startActivity(intent);  // Bắt đầu SignupActivity
-            }
-        });
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Sử dụng Intent để chuyển sang SignupActivity
-                Intent intent = new Intent(MainActivity.this, login_main.class);
-                startActivity(intent);  // Bắt đầu SignupActivity
-            }
-        });
+        setContentView(R.layout.trang_chu);
 
-
-
+        addImagesToFlipper();
+        book();
     }
-
     private void addImagesToFlipper() {
         viewFlipper = findViewById(R.id.viewflipper);
-
         try {
-            // Mảng chứa các ảnh trong thư mục drawable
-            int[] images = { R.drawable.bongdembatxichmon, R.drawable.chinhphuchanhphuc2, R.drawable.mbabanghinh};
+            int[] images = {R.drawable.hong_luc, R.drawable.tinh_yeu_cua_thoi_ha, R.drawable.nay_dung_co_an_co, R.drawable.toc_cua_toi};
 
-            // Thêm từng ảnh vào ViewFlipper
             for (int image : images) {
-                ImageView imageView = new ImageView(viewFlipper.getContext());
-                imageView.setImageResource(image); // Đặt ảnh cho ImageView
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP); // Thiết lập kiểu hiển thị
-                viewFlipper.addView(imageView); // Thêm ImageView vào ViewFlipper
+                ImageView imageView = new ImageView(this);
+                imageView.setImageResource(image);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                viewFlipper.addView(imageView);
             }
-
-            // Bắt đầu lật ảnh
-            viewFlipper.setFlipInterval(2000); // Lật mỗi 2 giây
-            viewFlipper.setAutoStart(true); // Tự động bắt đầu
+            viewFlipper.setFlipInterval(2000);
+            viewFlipper.setAutoStart(true); // Bắt đầu tự động
             viewFlipper.startFlipping(); // Bắt đầu lật ảnh
 
         } catch (Exception e) {
             e.printStackTrace();
-            // Xử lý lỗi hoặc thông báo lỗi nếu cần
         }
     }
+
+
+//        book();
+//        setContentView(R.layout.login1);
+//        Button signupButton = findViewById(R.id.signup_button);
+//        Button loginButton = findViewById(R.id.login_button);
+//        signupButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Sử dụng Intent để chuyển sang SignupActivity
+//                Intent intent = new Intent(MainActivity.this, signup.class);
+//                startActivity(intent);  // Bắt đầu SignupActivity
+//            }
+//        });
+//        loginButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Sử dụng Intent để chuyển sang SignupActivity
+//                Intent intent = new Intent(MainActivity.this, login_main.class);
+//                startActivity(intent);  // Bắt đầu SignupActivity
+//            }
+//        });
 
     private void book() {
         recyclerView = findViewById(R.id.recyclerView);
 
         // Khởi tạo dữ liệu sách
         bookList = new ArrayList<>();
-        bookList.add(new Book("Book 1", R.drawable.vhvn1,129000));
-        bookList.add(new Book("Book 2", R.drawable.vhvn2,150000));
-        bookList.add(new Book("Book 3", R.drawable.vhvn3,185000));
-        bookList.add(new Book("Book 4", R.drawable.vhvn4,74000));
-        bookList.add(new Book("Book 5", R.drawable.vhvn5,55000));
-        bookList.add(new Book("Book 6", R.drawable.vhvn6,186000));
-        bookList.add(new Book("Book 7", R.drawable.vhvn7,117000));
-        bookList.add(new Book("Book 8", R.drawable.vhvn8,99000));
+        bookList.add(new Book("Book 1", R.drawable.toc_cua_toi,129000));
+        bookList.add(new Book("Book 2", R.drawable.hong_luc,150000));
+        bookList.add(new Book("Book 3", R.drawable.bong_bong_anh_dao,185000));
+        bookList.add(new Book("Book 4", R.drawable.nay_dung_co_an_co,74000));
+        bookList.add(new Book("Book 5", R.drawable.nay_cho_lam_loan,55000));
+        bookList.add(new Book("Book 6", R.drawable.nhat_kinh_tinh_yeu,186000));
+        bookList.add(new Book("Book 7", R.drawable.mot_qua_tao,117000));
+        bookList.add(new Book("Book 8", R.drawable.tinh_yeu_cua_thoi_ha,99000));
         // Khởi tạo adapter
         bookAdapter = new BookAdapter(bookList);
 
@@ -111,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(bookAdapter);
-    }
+
+}
 
 }
