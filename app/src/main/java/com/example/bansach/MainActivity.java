@@ -2,6 +2,7 @@ package com.example.bansach;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,9 @@ import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private BookAdapter bookAdapter;
     private List<Book> bookList;
+
+    private Button btnFrag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,56 +67,91 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+        btnFrag = (Button) findViewById(R.id.btn_review);
+        btnFrag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceFragmentContent(new Fragment2());
+                Log.e("Replaced fragment", "2");
+            }
+        });
 
+        // initFragment();
+        replaceFragmentContent(new Fragment1());
 
     }
+//
+//    private void addImagesToFlipper() {
+//        viewFlipper = findViewById(R.id.viewflipper);
+//
+//        try {
+//            // Mảng chứa các ảnh trong thư mục drawable
+//            int[] images = { R.drawable.bongdembatxichmon, R.drawable.chinhphuchanhphuc2, R.drawable.mbabanghinh};
+//
+//            // Thêm từng ảnh vào ViewFlipper
+//            for (int image : images) {
+//                ImageView imageView = new ImageView(viewFlipper.getContext());
+//                imageView.setImageResource(image); // Đặt ảnh cho ImageView
+//                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP); // Thiết lập kiểu hiển thị
+//                viewFlipper.addView(imageView); // Thêm ImageView vào ViewFlipper
+//            }
+//
+//            // Bắt đầu lật ảnh
+//            viewFlipper.setFlipInterval(2000); // Lật mỗi 2 giây
+//            viewFlipper.setAutoStart(true); // Tự động bắt đầu
+//            viewFlipper.startFlipping(); // Bắt đầu lật ảnh
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            // Xử lý lỗi hoặc thông báo lỗi nếu cần
+//        }
+//    }
+//
+//    private void book() {
+//        recyclerView = findViewById(R.id.recyclerView);
+//
+//        // Khởi tạo dữ liệu sách
+//        bookList = new ArrayList<>();
+//        bookList.add(new Book("Book 1", R.drawable.vhvn1,129000));
+//        bookList.add(new Book("Book 2", R.drawable.vhvn2,150000));
+//        bookList.add(new Book("Book 3", R.drawable.vhvn3,185000));
+//        bookList.add(new Book("Book 4", R.drawable.vhvn4,74000));
+//        bookList.add(new Book("Book 5", R.drawable.vhvn5,55000));
+//        bookList.add(new Book("Book 6", R.drawable.vhvn6,186000));
+//        bookList.add(new Book("Book 7", R.drawable.vhvn7,117000));
+//        bookList.add(new Book("Book 8", R.drawable.vhvn8,99000));
+//        // Khởi tạo adapter
+//        bookAdapter = new BookAdapter(bookList);
+//
+//        // Thiết lập LinearLayoutManager với hướng ngang
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false);
+//        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView.setAdapter(bookAdapter);
+//    }
 
-    private void addImagesToFlipper() {
-        viewFlipper = findViewById(R.id.viewflipper);
+    // Như
+    private void addFragment(Fragment fragment) {
+        FragmentManager fmgr = getSupportFragmentManager();
+        FragmentTransaction ft = fmgr.beginTransaction();
+        ft.add(R.id.container_body, fragment);
+        ft.addToBackStack(fragment.getClass().getSimpleName());
+        ft.commit();
+    }
+    private void initFragment() {
+        Fragment1 firstFragment = new Fragment1();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.container_body, firstFragment);
+        ft.commit();
+    }
 
-        try {
-            // Mảng chứa các ảnh trong thư mục drawable
-            int[] images = { R.drawable.bongdembatxichmon, R.drawable.chinhphuchanhphuc2, R.drawable.mbabanghinh};
+    private void replaceFragmentContent(Fragment fragment) {
+        if (fragment != null) {
+            FragmentManager fmgr = getSupportFragmentManager();
+            FragmentTransaction ft = fmgr.beginTransaction();
+            ft.replace(R.id.container_body, fragment);
+            ft.commit();
 
-            // Thêm từng ảnh vào ViewFlipper
-            for (int image : images) {
-                ImageView imageView = new ImageView(viewFlipper.getContext());
-                imageView.setImageResource(image); // Đặt ảnh cho ImageView
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP); // Thiết lập kiểu hiển thị
-                viewFlipper.addView(imageView); // Thêm ImageView vào ViewFlipper
-            }
-
-            // Bắt đầu lật ảnh
-            viewFlipper.setFlipInterval(2000); // Lật mỗi 2 giây
-            viewFlipper.setAutoStart(true); // Tự động bắt đầu
-            viewFlipper.startFlipping(); // Bắt đầu lật ảnh
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            // Xử lý lỗi hoặc thông báo lỗi nếu cần
         }
     }
-
-    private void book() {
-        recyclerView = findViewById(R.id.recyclerView);
-
-        // Khởi tạo dữ liệu sách
-        bookList = new ArrayList<>();
-        bookList.add(new Book("Book 1", R.drawable.vhvn1,129000));
-        bookList.add(new Book("Book 2", R.drawable.vhvn2,150000));
-        bookList.add(new Book("Book 3", R.drawable.vhvn3,185000));
-        bookList.add(new Book("Book 4", R.drawable.vhvn4,74000));
-        bookList.add(new Book("Book 5", R.drawable.vhvn5,55000));
-        bookList.add(new Book("Book 6", R.drawable.vhvn6,186000));
-        bookList.add(new Book("Book 7", R.drawable.vhvn7,117000));
-        bookList.add(new Book("Book 8", R.drawable.vhvn8,99000));
-        // Khởi tạo adapter
-        bookAdapter = new BookAdapter(bookList);
-
-        // Thiết lập LinearLayoutManager với hướng ngang
-        LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(bookAdapter);
-    }
-
 }

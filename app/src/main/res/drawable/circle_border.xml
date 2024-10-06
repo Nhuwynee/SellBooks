@@ -3,5 +3,6 @@
     <solid android:color="@android:color/transparent" />
     <stroke
         android:width="2dp"
-        android:color="#E91E63" /> <!-- Màu viền -->
+        android:color="#E91E63"
+        /> <!-- Màu viền -->
 </shape>
