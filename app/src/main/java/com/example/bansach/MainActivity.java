@@ -29,6 +29,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.model.Book;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
@@ -55,8 +56,11 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_main);
 //        addImagesToFlipper();
 //        book();
+// HEAD
         setContentView(R.layout.viewbooks_main);
         addImagesToFlipper();
+//
+// ae997279018cdba21c67a962e1d1c7265c2e0cfb
 //        Button signupButton = findViewById(R.id.signup_button);
 //        Button loginButton = findViewById(R.id.login_button);
 //        signupButton.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +124,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+// HEAD
+
+//     addImagesToFlipper();
+//        book();
+// ae997279018cdba21c67a962e1d1c7265c2e0cfb
     }
     private void addImagesToFlipper() {
         viewFlipper = findViewById(R.id.viewflipper);

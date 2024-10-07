@@ -7,6 +7,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.bansach.model.Book;
+
 import java.util.List;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
@@ -28,8 +31,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
         Book book = bookList.get(position);
         holder.bookTitle.setText(book.getTitle());
-        holder.bookImage.setImageResource(book.getImageResourceId());
-        holder.bookPrice.setText("$" + String.format("%.2f", book.getPrice()));
+        holder.bookImage.setImageResource(book.getImgResource());
+        holder.bookPrice.setText(String.valueOf(book.getPrice()));
     }
 
     @Override
