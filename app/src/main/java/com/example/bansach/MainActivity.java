@@ -24,7 +24,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.Adapter.BookAdapter;
+import com.example.bansach.Adapter.ParentAdapter;
+import com.example.bansach.Adapter.TextAdapter;
 import com.example.bansach.model.Book;
+import com.example.bansach.model.Section;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -36,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private BookAdapter bookAdapter;
     private List<Book> bookList;
+    private RecyclerView recyclerViewParent;
+    private ParentAdapter parentAdapter;
+    private List<Section> sectionList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
 
      addImagesToFlipper();
+     category();
         book();
     }
     private void addImagesToFlipper() {
@@ -110,27 +118,48 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+    private void category() {
+
+        RecyclerView recyclerView1 = findViewById(R.id.recyclerView1);
+
+        // Tạo danh sách sách cho mỗi RecyclerView
+        List<String> bookList1 = new ArrayList<>();
+
+        // Thêm dữ liệu vào các danh sách sách
+        bookList1.add("Tiểu thuyết");
+        bookList1.add("Văn học Việt Nam");
+        bookList1.add("Trinh thám");
+        bookList1.add("Ngôn tình");
+
+        TextAdapter textAdapter = new TextAdapter(bookList1);
+
+        // Thiết lập LinearLayoutManager cho từng RecyclerView
+        LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+
+
+        recyclerView1.setLayoutManager(layoutManager1);
+        recyclerView1.setAdapter(textAdapter);
+
+
+    }
     private void book() {
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerViewParent = findViewById(R.id.recyclerView2);
 
-        // Khởi tạo dữ liệu sách
-        bookList = new ArrayList<>();
-        bookList.add(new Book("Book 1", R.drawable.toc_cua_toi,129000));
-        bookList.add(new Book("Book 2", R.drawable.hong_luc,150000));
-        bookList.add(new Book("Book 3", R.drawable.bong_bong_anh_dao,185000));
-        bookList.add(new Book("Book 4", R.drawable.nay_dung_co_an_co,74000));
-        bookList.add(new Book("Book 5", R.drawable.nay_cho_lam_loan,55000));
-        bookList.add(new Book("Book 6", R.drawable.nhat_kinh_tinh_yeu,186000));
-        bookList.add(new Book("Book 7", R.drawable.mot_qua_tao,117000));
-        bookList.add(new Book("Book 8", R.drawable.tinh_yeu_cua_thoi_ha,99000));
-        // Khởi tạo adapter
-        bookAdapter = new BookAdapter(bookList);
+        // Tạo danh sách section
+        sectionList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            List<Book> bookList = new ArrayList<>();
+            // Thêm sách vào bookList
+            for (int j = 0; j < 8; j++) {
+                bookList.add(new Book("Book " + (j + 1), R.drawable.nhat_kinh_tinh_yeu, 129000 + (j * 1000)));
+            }
+            sectionList.add(new Section("Section " + (i + 1), bookList));
+        }
 
-        // Thiết lập LinearLayoutManager với hướng ngang
-        LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(bookAdapter);
-
-}
+        // Thiết lập adapter cho RecyclerView cha
+        parentAdapter = new ParentAdapter(sectionList);
+        recyclerViewParent.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewParent.setAdapter(parentAdapter);
+    }
 
 }

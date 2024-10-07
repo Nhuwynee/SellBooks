@@ -1,13 +1,15 @@
-package com.example.bansach;
+package com.example.bansach.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.R;
 import com.example.bansach.model.Book;
 
 import java.util.List;
