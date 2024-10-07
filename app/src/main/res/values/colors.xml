@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorButtonPressed">#FFD700</color> <!-- Vàng -->
+    <color name="colorButtonDefault">#FF6200EE</color> <!-- Màu mặc định -->
+
 </resources>

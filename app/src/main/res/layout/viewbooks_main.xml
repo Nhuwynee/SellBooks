@@ -1,229 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#ffffff"
-    android:gravity="center_horizontal"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/bookImage"
-        android:layout_width="361dp"
-        android:layout_height="216dp"
-        android:layout_gravity="center"
-        android:contentDescription="Book Image"
-        android:src="@drawable/hong_luc" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="-15dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-        <!-- Author Image -->
-        <ImageView
-            android:id="@+id/author_Image"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:contentDescription="Author Image"
-            android:src="@drawable/author_hongluc" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#ffffff"
+        android:gravity="center_horizontal"
+        tools:context=".MainActivity">
+
+        <!--    <ImageView-->
+        <!--        android:id="@+id/bookImage"-->
+        <!--        android:layout_width="361dp"-->
+        <!--        android:layout_height="216dp"-->
+        <!--        android:layout_gravity="center"-->
+        <!--        android:contentDescription="Book Image"-->
+        <!--        android:src="@drawable/hong_luc" />-->
+        <ViewFlipper
+            android:id="@+id/viewflipper"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center" >
+        </ViewFlipper>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_weight="3"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="-15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <!-- Author Image -->
+            <ImageView
+                android:id="@+id/author_Image"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:contentDescription="Author Image"
+                android:src="@drawable/author_hongluc" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Hồng lục"
+                    android:fontFamily="@font/arima_semibold"
+                    android:textColor="#E81970"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="157dp"
+                    android:layout_height="37dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="-7dp"
+                    android:text="By Kim Diệp Tử"
+                    android:fontFamily="@font/arima_bold"
+                    android:textColor="#78103C"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Hồng lục"
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="84dp"
+                android:layout_gravity="end"
+                android:layout_weight="2"
+                android:paddingTop="15dp"
+                android:text="225.000đ"
                 android:fontFamily="@font/arima_semibold"
-                android:textColor="#E81970"
-                android:textSize="25sp" />
+                android:textColor="#2A15AB"
+                android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="157dp"
-                android:layout_height="37dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="-7dp"
-                android:text="By Kim Diệp Tử"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/arima_bold"
                 android:textColor="#78103C"
+                app:tabIndicatorColor="#FFC107"
+                app:tabSelectedTextColor="#78103C"
+                >
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/arima_bold"
+                    android:textColor="#78103C"
+                    android:text="About"
+                    />
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Review"
+                    android:fontFamily="@font/arima_bold"
+                    android:textColor="#78103C"
+                    />
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/tab3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Author"
+                    android:fontFamily="@font/arima_bold"
+                    android:textColor="#78103C"
+                    />
+
+            </com.google.android.material.tabs.TabLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            >
+            <TextView
+                android:id="@+id/book_rating"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:gravity="left"
+                android:text="★★★★★"
+                android:textColor="#F4D31C"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/book_sl"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arima_bold"
+                android:gravity="left"
+                android:layout_marginTop="-10dp"
+                android:text="| 2,500 books"
+                android:textColor="#AC97A0"
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="0dp"
-            android:layout_height="84dp"
-            android:layout_gravity="end"
-            android:layout_weight="2"
-            android:paddingTop="15dp"
-            android:text="225.000đ"
-            android:fontFamily="@font/arima_semibold"
-            android:textColor="#2A15AB"
-            android:textSize="24sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="About"
-                android:textSize="16dp"
-                android:fontFamily="@font/arima_bold"
-                android:textColor="#78103C"
-                android:gravity="center"
-                />
-
-            <Button
-                android:id="@+id/btn_about"
-                android:layout_width="150dp"
-                android:layout_height="18dp"
-                android:backgroundTint="#FFC107"
-                android:textColor="@android:color/black" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Review"
-                android:gravity="center"
-                android:textSize="16dp"
-                android:fontFamily="@font/arima_bold"
-                android:textColor="#78103C"
-                />
-
-            <Button
-                android:id="@+id/btn_review"
-                android:layout_width="150dp"
-                android:layout_height="18dp"
-                android:backgroundTint="#D7D3C8"
-                android:textColor="@android:color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Author"
-                android:gravity="center"
-                android:textSize="16dp"
-                android:fontFamily="@font/arima_bold"
-                android:textColor="#78103C"
-                />
-            <Button
-                android:id="@+id/btn_author"
-                android:layout_width="150dp"
-                android:layout_height="18dp"
-                android:backgroundTint="#D7D3C8"
-                android:textColor="@android:color/black" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        >
-        <TextView
-            android:id="@+id/book_rating"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-10dp"
-            android:gravity="left"
-            android:text="★★★★★"
-            android:textColor="#F4D31C"
-            android:textSize="30sp" />
+        <FrameLayout
+            android:id="@+id/framelayout"
+            android:layout_width="match_parent"
+            android:layout_height="191dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"> <!-- Nhớ đổi màu -->
+        </FrameLayout>
 
         <TextView
-            android:id="@+id/book_sl"
-            android:layout_width="200dp"
+            android:id="@+id/docthem"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-10dp"
-            android:gravity="left"
-            android:text="| 2,500 books"
-            android:textColor="#AC97A0"
+            android:layout_gravity="left"
+            android:text="Đọc thêm"
+            android:textColor="#E81970"
             android:fontFamily="@font/arima_bold"
             android:textSize="18sp" />
-    </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/container_body"
-        android:layout_width="match_parent"
-        android:layout_height="191dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:background="#FFF3FB"> <!-- Nhớ đổi màu -->
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/docthem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:text="Đọc thêm"
-        android:textColor="#E81970"
-        android:fontFamily="@font/arima_bold"
-        android:textSize="18sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="55dp"
-            android:src="@drawable/ic_bag"
-            android:layout_gravity="left"
-            android:background="@drawable/circle_nhuw"
-            />
-        <TextView
-            android:id="@+id/addcart"
-            android:paddingRight="50dp"
-            android:layout_width="0dp"
-            android:layout_weight="5"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Add to Cart"
-            android:textColor="#78103C"
-            android:fontFamily="@font/arima_bold"
-            android:textSize="20sp" />
+            >
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="55dp"
+                android:src="@drawable/ic_bag"
+                android:layout_gravity="left"
+                android:background="@drawable/circle_nhuw"
+                />
+            <TextView
+                android:id="@+id/addcart"
+                android:paddingRight="50dp"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Add to Cart"
+                android:textColor="#78103C"
+                android:fontFamily="@font/arima_bold"
+                android:textSize="20sp" />
+        </LinearLayout>
+
     </LinearLayout>
+
 
 </LinearLayout>

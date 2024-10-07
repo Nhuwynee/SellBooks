@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -29,6 +30,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private BookAdapter bookAdapter;
     private List<Book> bookList;
+
+    FrameLayout frameLayout;
+    TabLayout tabLayout;
 
     private Button btnFrag;
     @Override
@@ -51,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 //        addImagesToFlipper();
 //        book();
         setContentView(R.layout.viewbooks_main);
+        addImagesToFlipper();
 //        Button signupButton = findViewById(R.id.signup_button);
 //        Button loginButton = findViewById(R.id.login_button);
 //        signupButton.setOnClickListener(new View.OnClickListener() {
@@ -70,18 +76,89 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        // ----------------- Như
-        btnFrag = (Button) findViewById(R.id.btn_review);
-        btnFrag.setOnClickListener(new View.OnClickListener() {
+        frameLayout = (FrameLayout) findViewById(R.id.framelayout);
+        tabLayout = (TabLayout) findViewById(R.id.tablayout);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new AboutFragment())
+                .addToBackStack(null)
+                .commit();
+
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onClick(View view) {
-                replaceFragmentContent(new Fragment2());
-                Log.e("Replaced fragment", "2");
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                Fragment fragment = null;
+                switch (tab.getPosition()) {
+                    case 0:
+                        fragment = new AboutFragment();
+                        break;
+                    case 1:
+                        fragment = new ReviewFragment();
+                        break;
+                    case 2:
+                        fragment = new AuthorFragment();
+                        break;
+
+                }
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, fragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
 
-        // initFragment();
-        replaceFragmentContent(new Fragment1());
+
+
+    }
+    private void addImagesToFlipper() {
+        viewFlipper = findViewById(R.id.viewflipper);
+
+        try {
+            // Mảng chứa các ảnh trong thư mục drawable
+            int[] images = { R.drawable.hong_luc, R.drawable.hong_luc_2};
+
+            // Thêm từng ảnh vào ViewFlipper
+            for (int image : images) {
+                ImageView imageView = new ImageView(viewFlipper.getContext());
+                imageView.setImageResource(image); // Đặt ảnh cho ImageView
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP); // Thiết lập kiểu hiển thị
+                viewFlipper.addView(imageView); // Thêm ImageView vào ViewFlipper
+            }
+
+            // Bắt đầu lật ảnh
+            viewFlipper.setFlipInterval(2000); // Lật mỗi 2 giây
+            viewFlipper.setAutoStart(true); // Tự động bắt đầu
+            viewFlipper.startFlipping(); // Bắt đầu lật ảnh
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Xử lý lỗi hoặc thông báo lỗi nếu cần
+        }
+    }
+
+        // ----------------- Như
+//        btnFrag = (Button) findViewById(R.id.btn_review);
+//        btnFrag.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                replaceFragmentContent(new Fragment2());
+//                Log.e("Replaced fragment", "2");
+//            }
+//        });
+//
+//        // initFragment();
+//        replaceFragmentContent(new Fragment1());
 
 //        addImagesToFlipper();
 //        book();
@@ -202,28 +279,31 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     // ---------------------- Như
-    private void addFragment(Fragment fragment) {
-        FragmentManager fmgr = getSupportFragmentManager();
-        FragmentTransaction ft = fmgr.beginTransaction();
-        ft.add(R.id.container_body, fragment);
-        ft.addToBackStack(fragment.getClass().getSimpleName());
-        ft.commit();
-    }
-    private void initFragment() {
-        Fragment1 firstFragment = new Fragment1();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.replace(R.id.container_body, firstFragment);
-        ft.commit();
-    }
+//    private void addFragment(Fragment fragment) {
+//        FragmentManager fmgr = getSupportFragmentManager();
+//        FragmentTransaction ft = fmgr.beginTransaction();
+//        ft.add(R.id.container_body, fragment);
+//        ft.addToBackStack(fragment.getClass().getSimpleName());
+//        ft.commit();
+//    }
+//    private void initFragment() {
+//        Fragment1 firstFragment = new Fragment1();
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction ft = fragmentManager.beginTransaction();
+//        ft.replace(R.id.container_body, firstFragment);
+//        ft.commit();
+//    }
+//
+//    private void replaceFragmentContent(Fragment fragment) {
+//        if (fragment != null) {
+//            FragmentManager fmgr = getSupportFragmentManager();
+//            FragmentTransaction ft = fmgr.beginTransaction();
+//            ft.replace(R.id.container_body, fragment);
+//            ft.commit();
+//
+//        }
+//    }
 
-    private void replaceFragmentContent(Fragment fragment) {
-        if (fragment != null) {
-            FragmentManager fmgr = getSupportFragmentManager();
-            FragmentTransaction ft = fmgr.beginTransaction();
-            ft.replace(R.id.container_body, fragment);
-            ft.commit();
 
-        }
-    }
-}
+    // =====================================
+
