@@ -41,12 +41,14 @@ public class MainActivity extends AppCompatActivity {
     ViewFlipper viewFlipper;
     private RecyclerView recyclerView;
     private BookAdapter bookAdapter;
+    private CartAdapter cartAdapter;
     private List<Book> bookList;
 
     FrameLayout frameLayout;
     TabLayout tabLayout;
 
     private Button btnFrag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
 //        addImagesToFlipper();
 //        book();
 // HEAD
-        setContentView(R.layout.viewbooks_main);
-        addImagesToFlipper();
+        setContentView(R.layout.cart_main);
+        book1();
+        //addImagesToFlipper();
 //
 // ae997279018cdba21c67a962e1d1c7265c2e0cfb
 //        Button signupButton = findViewById(R.id.signup_button);
@@ -80,81 +83,81 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        frameLayout = (FrameLayout) findViewById(R.id.framelayout);
-        tabLayout = (TabLayout) findViewById(R.id.tablayout);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new AboutFragment())
-                .addToBackStack(null)
-                .commit();
-
-
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-
-                Fragment fragment = null;
-                switch (tab.getPosition()) {
-                    case 0:
-                        fragment = new AboutFragment();
-                        break;
-                    case 1:
-                        fragment = new ReviewFragment();
-                        break;
-                    case 2:
-                        fragment = new AuthorFragment();
-                        break;
-
-                }
-
-                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, fragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .commit();
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-
+//        frameLayout = (FrameLayout) findViewById(R.id.framelayout);
+//        tabLayout = (TabLayout) findViewById(R.id.tablayout);
+//
+//        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new AboutFragment())
+//                .addToBackStack(null)
+//                .commit();
+//
+//
+//        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//
+//                Fragment fragment = null;
+//                switch (tab.getPosition()) {
+//                    case 0:
+//                        fragment = new AboutFragment();
+//                        break;
+//                    case 1:
+//                        fragment = new ReviewFragment();
+//                        break;
+//                    case 2:
+//                        fragment = new AuthorFragment();
+//                        break;
+//
+//                }
+//
+//                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, fragment)
+//                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                        .commit();
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
+//
+//
 
 // HEAD
 
 //     addImagesToFlipper();
 //        book();
 // ae997279018cdba21c67a962e1d1c7265c2e0cfb
-    }
-    private void addImagesToFlipper() {
-        viewFlipper = findViewById(R.id.viewflipper);
-
-        try {
-            // Mảng chứa các ảnh trong thư mục drawable
-            int[] images = { R.drawable.hong_luc, R.drawable.hong_luc_2};
-
-            // Thêm từng ảnh vào ViewFlipper
-            for (int image : images) {
-                ImageView imageView = new ImageView(viewFlipper.getContext());
-                imageView.setImageResource(image); // Đặt ảnh cho ImageView
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP); // Thiết lập kiểu hiển thị
-                viewFlipper.addView(imageView); // Thêm ImageView vào ViewFlipper
-            }
-
-            // Bắt đầu lật ảnh
-            viewFlipper.setFlipInterval(2000); // Lật mỗi 2 giây
-            viewFlipper.setAutoStart(true); // Tự động bắt đầu
-            viewFlipper.startFlipping(); // Bắt đầu lật ảnh
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            // Xử lý lỗi hoặc thông báo lỗi nếu cần
-        }
-    }
+//    }
+//    private void addImagesToFlipper() {
+//        viewFlipper = findViewById(R.id.viewflipper);
+//
+//        try {
+//            // Mảng chứa các ảnh trong thư mục drawable
+//            int[] images = { R.drawable.hong_luc, R.drawable.hong_luc_3};
+//
+//            // Thêm từng ảnh vào ViewFlipper
+//            for (int image : images) {
+//                ImageView imageView = new ImageView(viewFlipper.getContext());
+//                imageView.setImageResource(image); // Đặt ảnh cho ImageView
+//                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP); // Thiết lập kiểu hiển thị
+//                viewFlipper.addView(imageView); // Thêm ImageView vào ViewFlipper
+//            }
+//
+//            // Bắt đầu lật ảnh
+//            viewFlipper.setFlipInterval(2000); // Lật mỗi 2 giây
+//            viewFlipper.setAutoStart(true); // Tự động bắt đầu
+//            viewFlipper.startFlipping(); // Bắt đầu lật ảnh
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            // Xử lý lỗi hoặc thông báo lỗi nếu cần
+//        }
+//    }
 
         // ----------------- Như
 //        btnFrag = (Button) findViewById(R.id.btn_review);
@@ -171,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        addImagesToFlipper();
 //        book();
-    }
+        //  }
 //
 //    private void addImagesToFlipper() {
 //        viewFlipper = findViewById(R.id.viewflipper);
@@ -287,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView.setAdapter(bookAdapter);
 //    }
 
-    // ---------------------- Như
+        // ---------------------- Như
 //    private void addFragment(Fragment fragment) {
 //        FragmentManager fmgr = getSupportFragmentManager();
 //        FragmentTransaction ft = fmgr.beginTransaction();
@@ -314,5 +317,31 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
-    // =====================================
+        // =====================================
 
+
+    }
+
+    private void book1() {
+        recyclerView = findViewById(R.id.recyclerView);
+
+        // Khởi tạo dữ liệu sách
+        bookList = new ArrayList<>();
+        bookList.add(new Book("Book 1", R.drawable.hong_luc,129000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 2", R.drawable.vhvn2,150000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 3", R.drawable.vhvn3,185000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 4", R.drawable.vhvn4,74000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 5", R.drawable.vhvn5,55000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 6", R.drawable.vhvn6,186000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 7", R.drawable.vhvn7,117000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 8", R.drawable.vhvn8,99000, "Nguyễn Nhật Ánh"));
+
+        // Khởi tạo adapter
+        cartAdapter = new CartAdapter(bookList);
+
+        // Thiết lập LinearLayoutManager với hướng ngang
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(cartAdapter);
+    }
+}
