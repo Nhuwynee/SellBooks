@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F890CE">
+    tools:context=".AuthorFragment">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="375dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/arima_bold"
         android:text="Tác giả của cuốn sách Hồng lục là một người có lối viết tinh tế, đầy cảm xúc, thường tập trung khai thác những khía cạnh đời thường trong tình yêu và cuộc sống. Với phong cách viết nhẹ nhàng, tác giả khéo léo đưa người đọc vào những câu chuyện gần gũi nhưng chứa đựng nhiều tầng ý nghĩa."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:paddingLeft="20dp"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
