@@ -53,17 +53,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+// Hiếu HEAD
+        setContentView(R.layout.add_book);
 //        setContentView(R.layout.trang_chu);
+// d677e22dbbe1284639ba4f618d46ac9a273a5627
 
 //        setContentView(R.layout.activity_main);
 //        addImagesToFlipper();
 //        book();
+// Như HEAD
+//        setContentView(R.layout.viewbooks_main);
+
 // HEAD
+
         setContentView(R.layout.cart_main);
         book1();
         //addImagesToFlipper();
+
+//        setContentView(R.layout.viewbooks_main);
+//        addImagesToFlipper();
+//ba7ecc200d9943a06fa363036581c6b37029ef29
 //
 // ae997279018cdba21c67a962e1d1c7265c2e0cfb
+// d677e22dbbe1284639ba4f618d46ac9a273a5627
 //        Button signupButton = findViewById(R.id.signup_button);
 //        Button loginButton = findViewById(R.id.login_button);
 //        signupButton.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 //        frameLayout = (FrameLayout) findViewById(R.id.framelayout);
 //        tabLayout = (TabLayout) findViewById(R.id.tablayout);
 //
+
 //        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new AboutFragment())
 //                .addToBackStack(null)
 //                .commit();
@@ -125,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 //
-//
 
 // HEAD
 
@@ -138,7 +150,11 @@ public class MainActivity extends AppCompatActivity {
 //
 //        try {
 //            // Mảng chứa các ảnh trong thư mục drawable
+// HEAD
 //            int[] images = { R.drawable.hong_luc, R.drawable.hong_luc_3};
+
+//            int[] images = { R.drawable.hong_luc, R.drawable.hong_luc_2};
+// ba7ecc200d9943a06fa363036581c6b37029ef29
 //
 //            // Thêm từng ảnh vào ViewFlipper
 //            for (int image : images) {
@@ -196,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //    }
 
+// d677e22dbbe1284639ba4f618d46ac9a273a5627
 
 //        book();
 //        setContentView(R.layout.login1);
@@ -217,6 +234,9 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(intent);  // Bắt đầu SignupActivity
 //            }
 //        });
+
+// HEAD
+    }       // ?
 
 //    private void book() {
 //        recyclerView = findViewById(R.id.recyclerView);
@@ -290,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView.setAdapter(bookAdapter);
 //    }
 
-        // ---------------------- Như
+    // ---------------------- Như
 //    private void addFragment(Fragment fragment) {
 //        FragmentManager fmgr = getSupportFragmentManager();
 //        FragmentTransaction ft = fmgr.beginTransaction();
@@ -317,24 +337,22 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
-        // =====================================
+    // =====================================
 
-
-    }
 
     private void book1() {
         recyclerView = findViewById(R.id.recyclerView);
 
         // Khởi tạo dữ liệu sách
         bookList = new ArrayList<>();
-        bookList.add(new Book("Book 1", R.drawable.hong_luc,129000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 2", R.drawable.vhvn2,150000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 3", R.drawable.vhvn3,185000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 4", R.drawable.vhvn4,74000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 5", R.drawable.vhvn5,55000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 6", R.drawable.vhvn6,186000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 7", R.drawable.vhvn7,117000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 8", R.drawable.vhvn8,99000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 1", R.drawable.hong_luc, 129000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 2", R.drawable.vhvn2, 150000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 3", R.drawable.vhvn3, 185000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 4", R.drawable.vhvn4, 74000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 5", R.drawable.vhvn5, 55000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 6", R.drawable.vhvn6, 186000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 7", R.drawable.vhvn7, 117000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Book 8", R.drawable.vhvn8, 99000, "Nguyễn Nhật Ánh"));
 
         // Khởi tạo adapter
         cartAdapter = new CartAdapter(bookList);
@@ -345,3 +363,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(cartAdapter);
     }
 }
+
+// d677e22dbbe1284639ba4f618d46ac9a273a5627
+// ba7ecc200d9943a06fa363036581c6b37029ef29
