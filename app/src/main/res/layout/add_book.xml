@@ -8,12 +8,10 @@
     android:background="#FFF2F7"
     tools:context=".MainActivity">
 
-
     <RelativeLayout
         android:id="@+id/iconContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:padding="8dp"
         android:background="#E81970"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,43 +41,59 @@
     </RelativeLayout>
 
     <!-- Trường nhập liệu Tên sách -->
-    <EditText
-        android:id="@+id/editTextBookName"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextBookNameLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/edittext_background"
         android:hint="Tên sách"
-        android:padding="10dp"
-        android:textColor="#000000"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iconContainer"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="5dp">
+
+        <EditText
+            android:id="@+id/editTextBookName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:background="@drawable/edittext_background"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Trường nhập liệu Tác giả -->
-    <EditText
-        android:id="@+id/editTextAuthorName"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextAuthorNameLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_background"
         android:hint="Tác giả"
-        android:padding="10dp"
-        android:textColor="#000000"
-        app:layout_constraintTop_toBottomOf="@+id/editTextBookName"
+        android:textColorHint="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/editTextBookNameLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_marginEnd="16dp">
 
+        <EditText
+            android:id="@+id/editTextAuthorName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:background="@drawable/edittext_background"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Spinner Chọn thể loại và TextView -->
     <TextView
         android:id="@+id/categoryLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="Chọn thể loại"
         android:textColor="#281A7D"
         android:textSize="18sp"
@@ -87,117 +101,161 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAuthorName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextAuthorNameLayout" />
 
-    <Spinner
-        android:id="@+id/spinnerCategory"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextCategoryLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_background"
+        android:hint="Thể loại"
+        android:textColorHint="#000000"
         app:layout_constraintTop_toBottomOf="@+id/categoryLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginEnd="16dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:dropDownWidth="match_parent"
+            android:dropDownHeight="wrap_content"
+            android:dropDownHorizontalOffset="8dp"
+            android:dropDownVerticalOffset="8dp"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="#000000" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Trường nhập liệu Năm sản xuất -->
-    <EditText
-        android:id="@+id/editTextYear"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextYearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_background"
         android:hint="Năm sản xuất"
-        android:padding="10dp"
-        android:textColor="#000000"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCategory"
+        android:textColorHint="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCategoryLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_marginEnd="16dp">
+
+        <EditText
+            android:id="@+id/editTextYear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:background="@drawable/edittext_background"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Trường nhập liệu Số lượng -->
-    <EditText
-        android:id="@+id/editTextQuantity"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextQuantityLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_background"
         android:hint="Số lượng"
-        android:padding="10dp"
-        android:textColor="#000000"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/editTextYear"
+        android:textColorHint="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/editTextYearLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_marginEnd="16dp">
+
+        <EditText
+            android:id="@+id/editTextQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:background="@drawable/edittext_background"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Trường nhập liệu Mô tả -->
-    <EditText
-        android:id="@+id/editTextDescription"
-        android:layout_width="0dp"
-        android:background="@drawable/edittext_background"
-        android:hint="Mô tả"
-        android:padding="10dp"
-        android:textColor="#000000"
-        android:inputType="textMultiLine"
-        android:gravity="top"
-        app:layout_constraintTop_toBottomOf="@+id/editTextQuantity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_height="100dp" />
-
-    <!-- Trường nhập liệu Giá -->
-    <EditText
-        android:id="@+id/editTextPrice"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextDescriptionLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_background"
-        android:hint="Giá"
-        android:padding="10dp"
-        android:textColor="#000000"
-        android:inputType="numberDecimal"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
+        android:hint="Mô tả"
+        android:textColorHint="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/editTextQuantityLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_marginEnd="16dp">
+
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:background="@drawable/edittext_background"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Trường nhập liệu Giá -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextPriceLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Giá"
+        android:textColorHint="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescriptionLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <EditText
+            android:id="@+id/editTextPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:background="@drawable/edittext_background"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Hiển thị sách -->
     <TextView
         android:id="@+id/switchLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hiển thị sách"
+        android:text="HIỂN THỊ SÁCH"
+        android:textStyle="bold"
         android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPrice"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp" />
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPriceLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp" />
 
     <Switch
         android:id="@+id/switchVisibility"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPrice"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp" />
+        app:layout_constraintTop_toBottomOf="@id/switchLabel"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="15dp"
+    android:layout_marginEnd="40dp" />
 
     <!-- Nút thao tác dưới cùng -->
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
         android:text="ADD"
         android:textColor="#FFFFFF"
         android:background="@drawable/rounded_button_add"
@@ -211,13 +269,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        app:itemIconTint="@color/bottom_nav_item_color"
-        app:itemTextColor="@color/bottom_nav_item_color"
+        android:background="#E81970"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:itemTextAppearanceActive="@style/TextAppearance.BottomNavigationView.BoldText"
+        app:itemTextAppearanceInactive="@style/TextAppearance.BottomNavigationView.BoldText"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:itemBackground="@drawable/nav_item_background"
         app:menu="@menu/menu" />
+
+    <!-- Thêm hai hình ảnh dưới trường Giá -->
+    <ImageView
+        android:id="@+id/priceImage1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/image_add_book"
+        app:layout_constraintTop_toBottomOf="@id/editTextPriceLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp" />
+
+    <ImageView
+        android:id="@+id/priceImage2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/image_add_book_small"
+        app:layout_constraintTop_toBottomOf="@id/editTextPriceLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="285dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
