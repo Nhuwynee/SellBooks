@@ -12,9 +12,10 @@ public class Book implements Parcelable {
     private int price;
     private int inStock;
     private String description;
+    private String review;
     private int isActive;
 
-    public Book(String id, String title, String author, String category, int imgURL, int year, int price, int inStock, String description, int isActive) {
+    public Book(String id, String title, String author, String category, int imgURL, int year, int price, int inStock, String description, String review,int isActive) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -23,6 +24,7 @@ public class Book implements Parcelable {
         this.price = price;
         this.inStock = inStock;
         this.description = description;
+        this.review = review;
         this.isActive = isActive;
     }
     public Book(String title, int imgURL, int price) {
@@ -44,6 +46,7 @@ public class Book implements Parcelable {
         price = in.readInt();
         inStock = in.readInt();
         description = in.readString();
+        review=in.readString();
         isActive = in.readInt();
     }
 
@@ -70,6 +73,7 @@ public class Book implements Parcelable {
                 ", price=" + price +
                 ", inStock=" + inStock +
                 ", description='" + description + '\'' +
+                ", review='" + review + '\'' +
                 ", isActive=" + isActive +
                 '}';
     }
@@ -136,6 +140,14 @@ public class Book implements Parcelable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getReview() {
+        return review;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
     }
 
     public int getIsActive() {
