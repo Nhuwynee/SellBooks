@@ -24,6 +24,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.model.Book;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -44,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_main);
 //        addImagesToFlipper();
 //        book();
-        setContentView(R.layout.viewbooks_main);
 //        Button signupButton = findViewById(R.id.signup_button);
 //        Button loginButton = findViewById(R.id.login_button);
 //        signupButton.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 
-        addImagesToFlipper();
+     addImagesToFlipper();
         book();
     }
     private void addImagesToFlipper() {
