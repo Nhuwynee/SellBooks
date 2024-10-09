@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:text="BOOK HAVEN"
+        android:text="READIFY"
         android:layout_marginTop="60dp"
         android:textSize="50sp"
         android:textColor="#E73984"

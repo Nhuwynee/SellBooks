@@ -1,6 +1,5 @@
 package com.example.bansach;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,23 +7,22 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class login_main extends AppCompatActivity {
 
-    @SuppressLint("ClickableViewAccessibility")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_main); // Đảm bảo layout được đặt đúng
-
+        setContentView(R.layout.login_main);
         TextView forgot = findViewById(R.id.forgot);
         TextView signup = findViewById(R.id.signup);
-
+        Button btn_login = findViewById(R.id.btn_login);
         // Spannable cho Forgot Password
         SpannableString spannableString_forgot = new SpannableString("Forgot password");
         ClickableSpan clickableSpan_forgot = new ClickableSpan() {
@@ -74,5 +72,12 @@ public class login_main extends AppCompatActivity {
         signup.setMovementMethod(LinkMovementMethod.getInstance());
 
 
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(login_main.this, Home.class);
+                startActivity(intent);
+            }
+        });
     }
 }
