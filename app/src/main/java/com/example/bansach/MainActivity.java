@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.cart_main);
+    book1();
 // Hiếu HEAD
 
 //        setContentView(R.layout.add_book);
@@ -108,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
 //
 
 //     addImagesToFlipper();
-        category();
-        book();
+//        category();
+//        book();
     }
 //    private void addImagesToFlipper() {
 //        viewFlipper = findViewById(R.id.viewflipper);
@@ -251,50 +252,50 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-    private void category() {
-
-        RecyclerView recyclerView1 = findViewById(R.id.recyclerView1);
-
-        // Tạo danh sách sách cho mỗi RecyclerView
-        List<String> bookList1 = new ArrayList<>();
-
-        // Thêm dữ liệu vào các danh sách sách
-        bookList1.add("Tiểu thuyết");
-        bookList1.add("Văn học Việt Nam");
-        bookList1.add("Trinh thám");
-        bookList1.add("Ngôn tình");
-
-        TextAdapter textAdapter = new TextAdapter(bookList1);
-
-        // Thiết lập LinearLayoutManager cho từng RecyclerView
-        LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-
-
-        recyclerView1.setLayoutManager(layoutManager1);
-        recyclerView1.setAdapter(textAdapter);
-
-
-    }
-
-    private void book() {
-        recyclerViewParent = findViewById(R.id.recyclerView2);
-
-        // Tạo danh sách section
-        sectionList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            List<Book> bookList = new ArrayList<>();
-            // Thêm sách vào bookList
-            for (int j = 0; j < 8; j++) {
-                bookList.add(new Book("Book " + (j + 1), R.drawable.nhat_kinh_tinh_yeu, 129000 + (j * 1000)));
-            }
-            sectionList.add(new Section("Section " + (i + 1), bookList));
-        }
-
-        // Thiết lập adapter cho RecyclerView cha
-        parentAdapter = new ParentAdapter(sectionList);
-        recyclerViewParent.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewParent.setAdapter(parentAdapter);
-    }
+//    private void category() {
+//
+//        RecyclerView recyclerView1 = findViewById(R.id.recyclerView1);
+//
+//        // Tạo danh sách sách cho mỗi RecyclerView
+//        List<String> bookList1 = new ArrayList<>();
+//
+//        // Thêm dữ liệu vào các danh sách sách
+//        bookList1.add("Tiểu thuyết");
+//        bookList1.add("Văn học Việt Nam");
+//        bookList1.add("Trinh thám");
+//        bookList1.add("Ngôn tình");
+//
+//        TextAdapter textAdapter = new TextAdapter(bookList1);
+//
+//        // Thiết lập LinearLayoutManager cho từng RecyclerView
+//        LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+//
+//
+//        recyclerView1.setLayoutManager(layoutManager1);
+//        recyclerView1.setAdapter(textAdapter);
+//
+//
+//    }
+//
+//    private void book() {
+//        recyclerViewParent = findViewById(R.id.recyclerView2);
+//
+//        // Tạo danh sách section
+//        sectionList = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            List<Book> bookList = new ArrayList<>();
+//            // Thêm sách vào bookList
+//            for (int j = 0; j < 8; j++) {
+//                bookList.add(new Book("Book " + (j + 1), R.drawable.nhat_kinh_tinh_yeu, 129000 + (j * 1000)));
+//            }
+//            sectionList.add(new Section("Section " + (i + 1), bookList));
+//        }
+//
+//        // Thiết lập adapter cho RecyclerView cha
+//        parentAdapter = new ParentAdapter(sectionList);
+//        recyclerViewParent.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerViewParent.setAdapter(parentAdapter);
+//    }
 
 // HEAD
     // ?
@@ -406,7 +407,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Khởi tạo dữ liệu sách
         bookList = new ArrayList<>();
-        bookList.add(new Book("Book 1", R.drawable.hong_luc, 129000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Nhật ký tình yêu tuổi học trò của yến như", R.drawable.hong_luc, 129000, "Nguyễn Nhật Ánh"));
         bookList.add(new Book("Book 2", R.drawable.vhvn2, 150000, "Nguyễn Nhật Ánh"));
         bookList.add(new Book("Book 3", R.drawable.vhvn3, 185000, "Nguyễn Nhật Ánh"));
         bookList.add(new Book("Book 4", R.drawable.vhvn4, 74000, "Nguyễn Nhật Ánh"));
