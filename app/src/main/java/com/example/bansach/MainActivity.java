@@ -59,8 +59,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cart_main);
-    book1();
+        setContentView(R.layout.login1);
+        Button signupButton = findViewById(R.id.signup_button);
+        Button loginButton = findViewById(R.id.login_button);
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sử dụng Intent để chuyển sang SignupActivity
+                Intent intent = new Intent(MainActivity.this, signup.class);
+                startActivity(intent);  // Bắt đầu SignupActivity
+            }
+        });
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sử dụng Intent để chuyển sang SignupActivity
+                Intent intent = new Intent(MainActivity.this, login_main.class);
+                startActivity(intent);  // Bắt đầu SignupActivity
+            }
+        });
+    }
+//    book1();
 // Hiếu HEAD
 
 //        setContentView(R.layout.add_book);
@@ -85,24 +104,7 @@ public class MainActivity extends AppCompatActivity {
 //
 // ae997279018cdba21c67a962e1d1c7265c2e0cfb
 // d677e22dbbe1284639ba4f618d46ac9a273a5627
-//        Button signupButton = findViewById(R.id.signup_button);
-//        Button loginButton = findViewById(R.id.login_button);
-//        signupButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Sử dụng Intent để chuyển sang SignupActivity
-//                Intent intent = new Intent(MainActivity.this, signup.class);
-//                startActivity(intent);  // Bắt đầu SignupActivity
-//            }
-//        });
-//        loginButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Sử dụng Intent để chuyển sang SignupActivity
-//                Intent intent = new Intent(MainActivity.this, login_main.class);
-//                startActivity(intent);  // Bắt đầu SignupActivity
-//            }
-//        });
+
 
 //        frameLayout = (FrameLayout) findViewById(R.id.framelayout);
 //        tabLayout = (TabLayout) findViewById(R.id.tablayout);
@@ -111,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
 //     addImagesToFlipper();
 //        category();
 //        book();
-    }
+
+
 //    private void addImagesToFlipper() {
 //        viewFlipper = findViewById(R.id.viewflipper);
 //        try {

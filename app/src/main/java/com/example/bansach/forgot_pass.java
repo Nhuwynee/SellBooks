@@ -18,27 +18,5 @@ public class forgot_pass extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forgot_pass);
 
-        TextView returnbt = findViewById(R.id.returnbt);
-        SpannableString spannableString = new SpannableString("Back");
-
-        ClickableSpan clickableSpan= new ClickableSpan() {
-            @Override
-            public void onClick(View widget) {
-                // Chuyển đến forgot_pass Activity
-                Intent intent = new Intent(forgot_pass.this, login_main.class);
-                startActivity(intent);
-            }
-
-            @Override
-            public void updateDrawState(android.text.TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setUnderlineText(true); // Gạch chân chữ
-                ds.setColor(returnbt.getCurrentTextColor()); // Giữ nguyên màu chữ hiện tại
-            }
-        };
-
-        spannableString.setSpan(clickableSpan, 0, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        returnbt.setText(spannableString);
-        returnbt.setMovementMethod(LinkMovementMethod.getInstance()); // Cho phép TextView có thể nhấn
     }
 }

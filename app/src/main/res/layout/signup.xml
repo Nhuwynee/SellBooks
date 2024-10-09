@@ -110,7 +110,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/arima_regular"
-        android:textColor="#958FAB"
+        android:textColor="#FFFFFF"
         android:textSize="20sp" />
 
     <Button
