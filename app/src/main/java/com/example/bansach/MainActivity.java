@@ -30,35 +30,50 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.Adapter.BookAdapter;
+import com.example.bansach.Adapter.Listview_bookAdapter;
 import com.example.bansach.Adapter.ParentAdapter;
 import com.example.bansach.Adapter.TextAdapter;
 import com.example.bansach.model.Book;
+import com.example.bansach.model.Contact_listbook;
 import com.example.bansach.model.Section;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Toolbar toolbarmhchinh;
-    ViewFlipper viewFlipper;
-    private RecyclerView recyclerView;
-    private BookAdapter bookAdapter;
-    private CartAdapter cartAdapter;
-    private List<Book> bookList;
-    private RecyclerView recyclerViewParent;
-    private ParentAdapter parentAdapter;
-    private List<Section> sectionList;
-
-    FrameLayout frameLayout;
-    TabLayout tabLayout;
-
-    private Button btnFrag;
+//    Toolbar toolbarmhchinh;
+//    ViewFlipper viewFlipper;
+//    private RecyclerView recyclerView;
+//    private BookAdapter bookAdapter;
+//    private CartAdapter cartAdapter;
+//    private List<Book> bookList;
+//    private RecyclerView recyclerViewParent;
+//    private ParentAdapter parentAdapter;
+//    private List<Section> sectionList;
+//
+//
+//    FrameLayout frameLayout;
+//    TabLayout tabLayout;
+//
+//    private Button btnFrag;
+    private ListView listViewBooks;
+    private Listview_bookAdapter adapter;
+    private List<Contact_listbook> bookList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.listview_book);
+        listViewBooks = findViewById(R.id.lvContact);
+        bookList = new ArrayList<>();
+        loadBookData();
+        adapter = new Listview_bookAdapter(this, bookList);
+        listViewBooks.setAdapter(adapter);
+
+
 
 // Hiếu HEAD
 //        setContentView(R.layout.add_book);
@@ -107,9 +122,25 @@ public class MainActivity extends AppCompatActivity {
 //
 
 //     addImagesToFlipper();
-        category();
-        book();
+//        category();
+//        book();
+//
     }
+    private void loadBookData() {
+
+        bookList.add(new Contact_listbook("Bong bóng anh đào", "Tê Kiến", "200.000 VND", "Hoạt động", R.drawable.bong_bong_anh_dao));
+        bookList.add(new Contact_listbook("Hóng lục", "Kiểm Diệp Tử", "170.000 VND", "Hoạt động", R.drawable.hong_luc));
+        bookList.add(new Contact_listbook("Này đừng có ăn cỏ!", "Lục Lục", "150.000 VND", "Hoạt động", R.drawable.nay_dung_co_an_co));
+        bookList.add(new Contact_listbook("Nhật kinh tình yêu", "Tống Cầu Cẩn", "250.000 VND", "Hoạt động", R.drawable.nhat_kinh_tinh_yeu));
+        bookList.add(new Contact_listbook("Nhà chờ làm loạn", "Minh Nguyệt", "150.000 VND", "Hoạt động", R.drawable.nay_cho_lam_loan));
+        bookList.add(new Contact_listbook("Án mộng mười một chữ", "Tác giả", "200.000 VND", "Hoạt động", R.drawable.chinhphuchanhphuc));
+
+    }
+}
+
+
+
+//
 //    private void addImagesToFlipper() {
 //        viewFlipper = findViewById(R.id.viewflipper);
 //        try {
@@ -250,50 +281,50 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-    private void category() {
+//    private void category() {
+//
+//        RecyclerView recyclerView1 = findViewById(R.id.recyclerView1);
+//
+//        // Tạo danh sách sách cho mỗi RecyclerView
+//        List<String> bookList1 = new ArrayList<>();
+//
+//        // Thêm dữ liệu vào các danh sách sách
+//        bookList1.add("Tiểu thuyết");
+//        bookList1.add("Văn học Việt Nam");
+//        bookList1.add("Trinh thám");
+//        bookList1.add("Ngôn tình");
+//
+//        TextAdapter textAdapter = new TextAdapter(bookList1);
+//
+//        // Thiết lập LinearLayoutManager cho từng RecyclerView
+//        LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+//
+//
+//        recyclerView1.setLayoutManager(layoutManager1);
+//        recyclerView1.setAdapter(textAdapter);
+//
+//
+//    }
 
-        RecyclerView recyclerView1 = findViewById(R.id.recyclerView1);
-
-        // Tạo danh sách sách cho mỗi RecyclerView
-        List<String> bookList1 = new ArrayList<>();
-
-        // Thêm dữ liệu vào các danh sách sách
-        bookList1.add("Tiểu thuyết");
-        bookList1.add("Văn học Việt Nam");
-        bookList1.add("Trinh thám");
-        bookList1.add("Ngôn tình");
-
-        TextAdapter textAdapter = new TextAdapter(bookList1);
-
-        // Thiết lập LinearLayoutManager cho từng RecyclerView
-        LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-
-
-        recyclerView1.setLayoutManager(layoutManager1);
-        recyclerView1.setAdapter(textAdapter);
-
-
-    }
-
-    private void book() {
-        recyclerViewParent = findViewById(R.id.recyclerView2);
-
-        // Tạo danh sách section
-        sectionList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            List<Book> bookList = new ArrayList<>();
-            // Thêm sách vào bookList
-            for (int j = 0; j < 8; j++) {
-                bookList.add(new Book("Book " + (j + 1), R.drawable.nhat_kinh_tinh_yeu, 129000 + (j * 1000)));
-            }
-            sectionList.add(new Section("Section " + (i + 1), bookList));
-        }
-
-        // Thiết lập adapter cho RecyclerView cha
-        parentAdapter = new ParentAdapter(sectionList);
-        recyclerViewParent.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewParent.setAdapter(parentAdapter);
-    }
+//    private void book() {
+//        recyclerViewParent = findViewById(R.id.recyclerView2);
+//
+//        // Tạo danh sách section
+//        sectionList = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            List<Book> bookList = new ArrayList<>();
+//            // Thêm sách vào bookList
+//            for (int j = 0; j < 8; j++) {
+//                bookList.add(new Book("Book " + (j + 1), R.drawable.nhat_kinh_tinh_yeu, 129000 + (j * 1000)));
+//            }
+//            sectionList.add(new Section("Section " + (i + 1), bookList));
+//        }
+//
+//        // Thiết lập adapter cho RecyclerView cha
+//        parentAdapter = new ParentAdapter(sectionList);
+//        recyclerViewParent.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerViewParent.setAdapter(parentAdapter);
+//    }
 
 // HEAD
     // ?
@@ -370,6 +401,8 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView.setAdapter(bookAdapter);
 //    }
 
+
+
     // ---------------------- Như
 //    private void addFragment(Fragment fragment) {
 //        FragmentManager fmgr = getSupportFragmentManager();
@@ -400,29 +433,29 @@ public class MainActivity extends AppCompatActivity {
     // =====================================
 
 
-    private void book1() {
-        recyclerView = findViewById(R.id.recyclerView);
-
-        // Khởi tạo dữ liệu sách
-        bookList = new ArrayList<>();
-        bookList.add(new Book("Book 1", R.drawable.hong_luc, 129000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 2", R.drawable.vhvn2, 150000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 3", R.drawable.vhvn3, 185000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 4", R.drawable.vhvn4, 74000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 5", R.drawable.vhvn5, 55000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 6", R.drawable.vhvn6, 186000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 7", R.drawable.vhvn7, 117000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 8", R.drawable.vhvn8, 99000, "Nguyễn Nhật Ánh"));
-
-        // Khởi tạo adapter
-        cartAdapter = new CartAdapter(bookList);
-
-        // Thiết lập LinearLayoutManager với hướng ngang
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(cartAdapter);
-    }
-}
+//    private void book1() {
+//        recyclerView = findViewById(R.id.recyclerView);
+//
+//        // Khởi tạo dữ liệu sách
+//        bookList = new ArrayList<>();
+//        bookList.add(new Book("Book 1", R.drawable.hong_luc, 129000, "Nguyễn Nhật Ánh"));
+//        bookList.add(new Book("Book 2", R.drawable.vhvn2, 150000, "Nguyễn Nhật Ánh"));
+//        bookList.add(new Book("Book 3", R.drawable.vhvn3, 185000, "Nguyễn Nhật Ánh"));
+//        bookList.add(new Book("Book 4", R.drawable.vhvn4, 74000, "Nguyễn Nhật Ánh"));
+//        bookList.add(new Book("Book 5", R.drawable.vhvn5, 55000, "Nguyễn Nhật Ánh"));
+//        bookList.add(new Book("Book 6", R.drawable.vhvn6, 186000, "Nguyễn Nhật Ánh"));
+//        bookList.add(new Book("Book 7", R.drawable.vhvn7, 117000, "Nguyễn Nhật Ánh"));
+//        bookList.add(new Book("Book 8", R.drawable.vhvn8, 99000, "Nguyễn Nhật Ánh"));
+//
+//        // Khởi tạo adapter
+//        cartAdapter = new CartAdapter(bookList);
+//
+//        // Thiết lập LinearLayoutManager với hướng ngang
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+//        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView.setAdapter(cartAdapter);
+//    }
+//}
 
 
 
