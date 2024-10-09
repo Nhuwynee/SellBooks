@@ -15,6 +15,7 @@ public class Contact_listbook {
         this.coverImageResource = coverImageResource;
     }
 
+    // Getters
     public String getTitle() {
         return title;
     }

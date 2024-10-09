@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.bansach.R;
 import com.example.bansach.model.Contact_listbook;
-import com.example.bansach.model.Contact_listbook;
 
 import java.util.List;
 
@@ -40,27 +39,37 @@ public class Listview_bookAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(R.layout.item_book, parent, false);
+            convertView = inflater.inflate(R.layout.book_list_item, parent, false);
+            holder = new ViewHolder();
+            holder.tvTitle = convertView.findViewById(R.id.book_title);
+            holder.tvAuthor = convertView.findViewById(R.id.book_author);
+            holder.tvPrice = convertView.findViewById(R.id.book_price);
+            holder.tvStatus = convertView.findViewById(R.id.book_status);
+            holder.imgCover = convertView.findViewById(R.id.image_book);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
 
-        // Get the current Contact object
         Contact_listbook book = bookList.get(position);
-
-        // Bind the data to the views
-        TextView tvTitle = convertView.findViewById(R.id.book_title);
-        TextView tvAuthor = convertView.findViewById(R.id.book_author);
-        TextView tvPrice = convertView.findViewById(R.id.book_price);
-        TextView tvStatus = convertView.findViewById(R.id.book_status);
-        ImageView imgCover = convertView.findViewById(R.id.book_image);
-
-        tvTitle.setText(book.getTitle());
-        tvAuthor.setText(book.getAuthor());
-        tvPrice.setText(book.getPrice());
-        tvStatus.setText(book.getStatus());
-        imgCover.setImageResource(book.getCoverImageResource());
+        holder.tvTitle.setText(book.getTitle());
+        holder.tvAuthor.setText(book.getAuthor());
+        holder.tvPrice.setText(book.getPrice());
+        holder.tvStatus.setText(book.getStatus());
+        holder.imgCover.setImageResource(book.getCoverImageResource());
 
         return convertView;
+    }
+
+    static class ViewHolder {
+        TextView tvTitle;
+        TextView tvAuthor;
+        TextView tvPrice;
+        TextView tvStatus;
+        ImageView imgCover;
     }
 }
