@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cart_main);
-        book1();
+        setContentView(R.layout.activity_order);
+        // book1();
     }
 //        addImagesToFlipper();
 //

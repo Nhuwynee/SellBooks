@@ -22,7 +22,7 @@
             android:layout_marginLeft="110dp"
             android:fontFamily="@font/arima_semibold"
             android:text="GIỎ HÀNG"
-            android:textColor="#78103C"
+            android:textColor="#E81970"
             android:layout_marginTop="5dp"
             android:textSize="36dp"
             tools:layout_editor_absoluteX="162dp"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/baseline_shopping_cart_24">
+            android:src="@drawable/cart_pink">
         </ImageView>
     </LinearLayout>
 

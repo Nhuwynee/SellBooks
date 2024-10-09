@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="-2dp"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginRight="-5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_shape"
+        >
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="110dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="ĐẶT HÀNG"
+            android:textColor="#E81970"
+            android:layout_marginTop="5dp"
+            android:textSize="36dp"
+            tools:layout_editor_absoluteX="162dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_bag_pink">
+        </ImageView>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="372dp"
+        android:layout_height="537dp"
+        android:background="@drawable/rounded_corner"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:padding="16dp">
+
+        <!-- Customer Information -->
+        <ImageView
+            android:id="@+id/customer_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ava_account" />
+
+        <TextView
+            android:id="@+id/customer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/customer_image"
+            android:fontFamily="@font/arima_semibold"
+            android:text="Lưu Ngọc Yến Như"
+            android:textColor="#E81970"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/customer_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customer_name"
+            android:layout_toEndOf="@id/customer_image"
+            android:fontFamily="@font/arima_semibold"
+            android:text="0123456789"
+            android:textColor="#000000"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/customer_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customer_phone"
+            android:layout_toEndOf="@id/customer_image"
+            android:fontFamily="@font/arima_semibold"
+            android:text="32 Cao Thắng, Q.Hải Châu, Đà Nẵng"
+            android:textColor="#000000"
+            android:textSize="15sp" />
+
+        <!-- Invoice Details -->
+
+        <TextView
+            android:id="@+id/invoice_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/customer_address"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="105dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="Invoice details"
+            android:textColor="#2A15AB"
+            android:textSize="22sp" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/invoice_title"
+            android:layout_marginTop="10dp"
+            android:background="#D9D9D9" />
+
+        <!-- Product Details -->
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/invoice_title"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="Products"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <!-- Price, Quantity, Total labels -->
+
+        <!-- First Product Row -->
+
+
+        <TextView
+            android:id="@+id/price_label"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/invoice_title"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="180dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="Price"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/quantity_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/view"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="-156dp"
+            android:layout_toStartOf="@id/price_label"
+            android:fontFamily="@font/arima_semibold"
+            android:text="Quantity"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/quantity_total"
+            android:layout_width="54dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/view"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="22dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="Total"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/product_1"
+            android:layout_width="73dp"
+            android:layout_height="47dp"
+            android:layout_below="@+id/product_name"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="Nhật ký tình yêu"
+            android:textColor="#E81970"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/price_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/price_label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="188dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="175.000đ"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/quantity_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quantity_label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="138dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="1"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <!-- Button Buy -->
+
+        <TextView
+            android:id="@+id/total_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quantity_total"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="17dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="175.000đ"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/buy_button"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="161dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="172dp"
+            android:background="@drawable/background_vien"
+            android:gravity="center"
+            android:text="BUY"
+            android:textColor="#FFFFFF" />
+
+    </RelativeLayout>
+
+</LinearLayout>
