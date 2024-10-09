@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="3dp">
+    <Button
+        android:id="@+id/text_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_category"
+        android:text="Văn học việt nam"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:fontFamily="@font/arima_bold"
+        android:textSize="20sp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        />
+</LinearLayout>
