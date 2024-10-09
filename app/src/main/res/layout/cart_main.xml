@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,10 +18,11 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="140dp"
+            android:layout_marginLeft="110dp"
             android:fontFamily="@font/arima_semibold"
-            android:text="CART"
+            android:text="GIỎ HÀNG"
             android:textColor="#E81970"
+
             android:textSize="36dp"
             tools:layout_editor_absoluteX="162dp"
             tools:layout_editor_absoluteY="0dp" />
@@ -28,9 +30,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="20dp"
             android:src="@drawable/cart_pink">
 
         </ImageView>
@@ -40,6 +41,22 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="700dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#E81970"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:itemTextAppearanceActive="@style/TextAppearance.BottomNavigationView.BoldText"
+        app:itemTextAppearanceInactive="@style/TextAppearance.BottomNavigationView.BoldText"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:itemBackground="@drawable/nav_item_background"
+        app:menu="@menu/menu_trangchu" />
 </LinearLayout>

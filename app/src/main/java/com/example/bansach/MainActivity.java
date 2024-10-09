@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 // Hiếu HEAD
-        setContentView(R.layout.add_book);
+      //  setContentView(R.layout.add_book);
 //        setContentView(R.layout.trang_chu);
 // d677e22dbbe1284639ba4f618d46ac9a273a5627
 
