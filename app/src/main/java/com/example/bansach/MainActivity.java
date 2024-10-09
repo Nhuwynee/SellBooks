@@ -59,26 +59,94 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login1);
-        Button signupButton = findViewById(R.id.signup_button);
-        Button loginButton = findViewById(R.id.login_button);
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Sử dụng Intent để chuyển sang SignupActivity
-                Intent intent = new Intent(MainActivity.this, signup.class);
-                startActivity(intent);  // Bắt đầu SignupActivity
-            }
-        });
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Sử dụng Intent để chuyển sang SignupActivity
-                Intent intent = new Intent(MainActivity.this, login_main.class);
-                startActivity(intent);  // Bắt đầu SignupActivity
-            }
-        });
+        setContentView(R.layout.cart_main);
+        book1();
     }
+//        addImagesToFlipper();
+//
+//        frameLayout = (FrameLayout) findViewById(R.id.framelayout);
+//        tabLayout = (TabLayout) findViewById(R.id.tablayout);
+//
+//        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new AboutFragment())
+//                .addToBackStack(null)
+//                .commit();
+//
+//
+//        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//
+//                Fragment fragment = null;
+//                switch (tab.getPosition()) {
+//                    case 0:
+//                        fragment = new AboutFragment();
+//                        break;
+//                    case 1:
+//                        fragment = new ReviewFragment();
+//                        break;
+//                    case 2:
+//                        fragment = new AuthorFragment();
+//                        break;
+//
+//                }
+//
+//                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, fragment)
+//                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                        .commit();
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
+//    }
+//
+//    private void addImagesToFlipper() {
+//        viewFlipper = findViewById(R.id.viewflipper);
+//        try {
+//            int[] images = {R.drawable.hong_luc, R.drawable.hong_luc_2};
+//
+//            for (int image : images) {
+//                ImageView imageView = new ImageView(this);
+//                imageView.setImageResource(image);
+//                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//                viewFlipper.addView(imageView);
+//            }
+//            viewFlipper.setFlipInterval(2000);
+//            viewFlipper.setAutoStart(true); // Bắt đầu tự động
+//            viewFlipper.startFlipping(); // Bắt đầu lật ảnh
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+//        Button signupButton = findViewById(R.id.signup_button);
+//        Button loginButton = findViewById(R.id.login_button);
+//        signupButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Sử dụng Intent để chuyển sang SignupActivity
+//                Intent intent = new Intent(MainActivity.this, signup.class);
+//                startActivity(intent);  // Bắt đầu SignupActivity
+//            }
+//        });
+//        loginButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Sử dụng Intent để chuyển sang SignupActivity
+//                Intent intent = new Intent(MainActivity.this, login_main.class);
+//                startActivity(intent);  // Bắt đầu SignupActivity
+//            }
+//        });
+//    }
+
+
 //    book1();
 // Hiếu HEAD
 
@@ -410,14 +478,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Khởi tạo dữ liệu sách
         bookList = new ArrayList<>();
-        bookList.add(new Book("Nhật ký tình yêu tuổi học trò của yến như", R.drawable.hong_luc, 129000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 2", R.drawable.vhvn2, 150000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 3", R.drawable.vhvn3, 185000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 4", R.drawable.vhvn4, 74000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 5", R.drawable.vhvn5, 55000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 6", R.drawable.vhvn6, 186000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 7", R.drawable.vhvn7, 117000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Book 8", R.drawable.vhvn8, 99000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Hồng Lục", R.drawable.hong_luc, 225000, "Kim Diệp Tử"));
+        bookList.add(new Book("Nhật ký tình yêu", R.drawable.nhat_kinh_tinh_yeu, 175000, "Mark Twain"));
+        bookList.add(new Book("Bong bóng anh đào", R.drawable.bong_bong_anh_dao, 250000, "Tê Kiến"));
+        bookList.add(new Book("Này đừng có ăn cỏ", R.drawable.nay_dung_co_an_co, 174000, "Nguyễn Nhật Ánh"));
+        bookList.add(new Book("Này chớ làm loạn", R.drawable.nay_cho_lam_loan, 100000, "Phạm Nhật An"));
+        bookList.add(new Book("Tình yêu của thời hạ", R.drawable.tinh_yeu_cua_thoi_ha, 186000, "Lê Minh Đạt"));
+        bookList.add(new Book("Tóc của tôi", R.drawable.toc_cua_toi, 117000, "Lưu Thị Lan"));
+        bookList.add(new Book("Vợ nhặt", R.drawable.vhvn1, 99000, "Nguyễn Nhật Ánh"));
 
         // Khởi tạo adapter
         cartAdapter = new CartAdapter(bookList);

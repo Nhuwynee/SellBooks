@@ -20,7 +20,6 @@ public class ViewBooks extends AppCompatActivity {
 
     FrameLayout frameLayout;
     TabLayout tabLayout;
-    // private Button btnAbout, btnReview, btnAuthor;
     ViewFlipper viewFlipper;
 
     @Override
@@ -71,8 +70,6 @@ public class ViewBooks extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     private void addImagesToFlipper() {
@@ -87,59 +84,13 @@ public class ViewBooks extends AppCompatActivity {
                 viewFlipper.addView(imageView);
             }
             viewFlipper.setFlipInterval(2000);
-            viewFlipper.setAutoStart(true); // Bắt đầu tự động
-            viewFlipper.startFlipping(); // Bắt đầu lật ảnh
+            viewFlipper.setAutoStart(true);
+            viewFlipper.startFlipping();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
-
-
-
-//        btnAbout = findViewById(R.id.btn_about);
-//        btnReview = findViewById(R.id.btn_review);
-//        btnAuthor = findViewById(R.id.btn_author);
-//
-//        btnAbout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.e("ViewBooks", "Button About clicked, loading Fragment1");
-//                replaceFragmentContent(new Fragment1());
-//            }
-//        });
-//
-//        btnReview.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.e("ViewBooks", "Button Review clicked, loading Fragment2");
-//                replaceFragmentContent(new Fragment2());
-//            }
-//        });
-//
-//        btnAuthor.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.e("ViewBooks", "Button Author clicked, loading Fragment3");
-//                replaceFragmentContent(new Fragment3());
-//            }
-//        });
-//
-//        if (savedInstanceState == null) {
-//            replaceFragmentContent(new Fragment1());
-//        }
-//    }
-//
-//    private void replaceFragmentContent(Fragment fragment) {
-//        if (fragment != null) {
-//
-//            FragmentManager fmgr = getSupportFragmentManager();
-//            FragmentTransaction ft = fmgr.beginTransaction();
-//            ft.replace(R.id.container_body, fragment);
-//            ft.addToBackStack(null);
-//            ft.commit();
-//        }
-//    }
 
 
 
