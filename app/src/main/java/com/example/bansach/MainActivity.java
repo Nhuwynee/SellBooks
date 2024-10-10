@@ -5,15 +5,21 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.Adapter.InvoiceAdapter;
 import com.example.bansach.Adapter.Listview_bookAdapter;
 import com.example.bansach.model.Book;
+import com.example.bansach.model.Invoice;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -110,35 +116,6 @@ public class MainActivity extends AppCompatActivity {
 //            e.printStackTrace();
 //        }
 //    }
-
-//        Button signupButton = findViewById(R.id.signup_button);
-//        Button loginButton = findViewById(R.id.login_button);
-//        signupButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Sử dụng Intent để chuyển sang SignupActivity
-//                Intent intent = new Intent(MainActivity.this, signup.class);
-//                startActivity(intent);  // Bắt đầu SignupActivity
-//            }
-//        });
-//        loginButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Sử dụng Intent để chuyển sang SignupActivity
-//                Intent intent = new Intent(MainActivity.this, login_main.class);
-//                startActivity(intent);  // Bắt đầu SignupActivity
-//            }
-//        });
-//    }
-
-
-//    book1();
-// Hiếu HEAD
-
-
-//        frameLayout = (FrameLayout) findViewById(R.id.framelayout);
-//        tabLayout = (TabLayout) findViewById(R.id.tablayout);
-//
 
 //     addImagesToFlipper();
 //        category();

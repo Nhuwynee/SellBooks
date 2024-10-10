@@ -1,169 +1,170 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFF">
 
-    <!-- Tiêu đề ACCOUNT -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#FFF">
+
+<!-- Tiêu đề ACCOUNT -->
+<LinearLayout
+    android:id="@+id/account_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
+    android:layout_marginTop="13dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ACCOUNT"
+        android:textSize="27sp"
+        android:fontFamily="@font/arima_semibold"
+        android:textColor="#FF4081"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="47dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="9dp"
+        android:src="@drawable/img_cart_admin" />
+</LinearLayout>
+
+<!-- Đường thẳng nằm ngang -->
+<View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:background="#FF4081"
+    android:layout_marginTop="80dp" />
+
+<!-- Pink Rounded Container for User Info and Buttons -->
+<LinearLayout
+    android:id="@+id/container"
+    android:layout_width="wrap_content"
+    android:layout_height="530dp"
+    android:layout_marginTop="50dp"
+    android:layout_below="@id/account_title"
+    android:orientation="vertical"
+    android:padding="25dp"
+    android:elevation="4dp"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/rounded_background_admin">
+
+
     <LinearLayout
-        android:id="@+id/account_title"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="13dp">
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:layout_gravity="center_horizontal">
 
-        <TextView
+        <!-- Hình ảnh bên trái -->
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/catgirl"
+            android:layout_marginEnd="16dp" />
+
+        <!-- TextView bên phải -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ACCOUNT"
-            android:textSize="27sp"
-            android:fontFamily="@font/arima_semibold"
-            android:textColor="#FF4081"
-            android:layout_marginTop="5dp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="47dp"
-            android:layout_height="57dp"
-            android:layout_marginStart="9dp"
-            android:src="@drawable/img_cart_admin" />
-    </LinearLayout>
-
-    <!-- Đường thẳng nằm ngang -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#FF4081"
-        android:layout_marginTop="80dp" />
-
-    <!-- Pink Rounded Container for User Info and Buttons -->
-    <LinearLayout
-        android:id="@+id/container"
-        android:layout_width="wrap_content"
-        android:layout_height="530dp"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/account_title"
-        android:orientation="vertical"
-        android:padding="25dp"
-        android:elevation="4dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/rounded_background_admin">
-
-
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:padding="16dp"
-            android:layout_gravity="center_horizontal">
-
-            <!-- Hình ảnh bên trái -->
-            <ImageView
-                android:id="@+id/user_image"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/catgirl"
-                android:layout_marginEnd="16dp" />
-
-            <!-- TextView bên phải -->
-            <LinearLayout
+            <TextView
+                android:id="@+id/user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nguyễn Thị Hiếu"
-                    android:textSize="23sp"
-                    android:fontFamily="@font/arima_semibold"
-                    android:textColor="#78103C"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/user_role"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Admin"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/arima_semibold"
-                    android:textStyle="bold"
-                    android:textColor="#FF1678"
-                    android:paddingTop="10dp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Đường kẻ nét đứt dưới chữ Admin -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginTop="18dp"
-            android:background="@drawable/dashed_line" />
-
-        <!-- Buttons with pink background area -->
-        <LinearLayout
-            android:id="@+id/buttons_section"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_horizontal"
-            android:paddingTop="20dp">
-
-            <Button
-                android:id="@+id/button_add_book"
-                android:layout_width="match_parent"
+                android:text="Nguyễn Thị Hiếu"
+                android:textSize="23sp"
+                android:fontFamily="@font/arima_semibold"
+                android:textColor="#78103C"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/user_role"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thêm sách mới"
-                android:textColor="#2A15AB"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/btn_account"
-                android:layout_marginBottom="26dp" />
-
-            <Button
-                android:id="@+id/button_book_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Danh sách sách"
-                android:textColor="#ffffff"
-                android:background="@drawable/btn_account_purple"
-                android:layout_marginBottom="26dp" />
-
-            <Button
-                android:id="@+id/button_order_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Danh sách đơn hàng"
-                android:textColor="#2A15AB"
-                android:background="@drawable/btn_account"
-                android:layout_marginBottom="26dp" />
-
-            <Button
-                android:id="@+id/button_logout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Đăng xuất"
-                android:textColor="#ffffff"
-                android:background="@drawable/btn_account_purple" />
+                android:text="Admin"
+                android:textSize="20sp"
+                android:fontFamily="@font/arima_semibold"
+                android:textStyle="bold"
+                android:textColor="#FF1678"
+                android:paddingTop="10dp" />
         </LinearLayout>
     </LinearLayout>
 
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+    <!-- Đường kẻ nét đứt dưới chữ Admin -->
+    <View
         android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/dashed_line" />
+
+    <!-- Buttons with pink background area -->
+    <LinearLayout
+        android:id="@+id/buttons_section"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#E81970"
-        app:itemIconTint="@color/nav_item_color"
-        app:itemTextColor="@color/nav_item_color"
-        app:itemTextAppearanceActive="@style/TextAppearance.BottomNavigationView.BoldText"
-        app:itemTextAppearanceInactive="@style/TextAppearance.BottomNavigationView.BoldText"
-        app:labelVisibilityMode="labeled"
-        app:itemBackground="@drawable/nav_item_background"
-        app:menu="@menu/menu" />
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="20dp">
+
+        <Button
+            android:id="@+id/button_add_book"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm sách mới"
+            android:textColor="#2A15AB"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/btn_account"
+            android:layout_marginBottom="26dp" />
+
+        <Button
+            android:id="@+id/button_book_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Danh sách sách"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_account_purple"
+            android:layout_marginBottom="26dp" />
+
+        <Button
+            android:id="@+id/button_order_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Danh sách đơn hàng"
+            android:textColor="#2A15AB"
+            android:background="@drawable/btn_account"
+            android:layout_marginBottom="26dp" />
+
+        <Button
+            android:id="@+id/button_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đăng xuất"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_account_purple" />
+    </LinearLayout>
+</LinearLayout>
+
+
+<com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/bottomNavigationView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="#E81970"
+    app:itemIconTint="@color/nav_item_color"
+    app:itemTextColor="@color/nav_item_color"
+    app:itemTextAppearanceActive="@style/TextAppearance.BottomNavigationView.BoldText"
+    app:itemTextAppearanceInactive="@style/TextAppearance.BottomNavigationView.BoldText"
+    app:labelVisibilityMode="labeled"
+    app:itemBackground="@drawable/nav_item_background"
+    app:menu="@menu/menu" />
 
 </RelativeLayout>
