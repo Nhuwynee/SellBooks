@@ -38,11 +38,15 @@ public class listview_book extends AppCompatActivity {
 
     private void addBooksToList() {
         contactListBooks.add(new Contact_listbook("Bong bóng anh đào", "Tê Kiến", "200.000 VND", "Hoạt động", R.drawable.bong_bong_anh_dao));
-        contactListBooks.add(new Contact_listbook("Hóng lục", "Kiểm Diệp Tử", "170.000 VND", "Hoạt động", R.drawable.hong_luc));
+        contactListBooks.add(new Contact_listbook("Hồng lục", "Kiểm Diệp Tử", "170.000 VND", "Hoạt động", R.drawable.hong_luc));
         contactListBooks.add(new Contact_listbook("Này đừng có ăn cỏ!", "Lục Lục", "150.000 VND", "Hoạt động", R.drawable.nay_dung_co_an_co));
-        contactListBooks.add(new Contact_listbook("Nhật kinh tình yêu", "Tống Cầu Cẩn", "250.000 VND", "Hoạt động", R.drawable.nhat_kinh_tinh_yeu));
-        contactListBooks.add(new Contact_listbook("Nhà chờ làm loạn", "Minh Nguyệt", "150.000 VND", "Hoạt động", R.drawable.nay_cho_lam_loan));
-        contactListBooks.add(new Contact_listbook("Án mộng mười một chữ", "Tác giả", "200.000 VND", "Hoạt động", R.drawable.chinhphuchanhphuc));
+        contactListBooks.add(new Contact_listbook("Nhật kính tình yêu", "Tống Cầu Cẩn", "250.000 VND", "Hoạt động", R.drawable.nhat_kinh_tinh_yeu));
+        contactListBooks.add(new Contact_listbook("Này chờ làm loạn", "Minh Nguyệt", "150.000 VND", "Hoạt động", R.drawable.nay_cho_lam_loan));
+        contactListBooks.add(new Contact_listbook("Án mộng mười một chữ", "Hagashino Keigo", "200.000 VND", "Hoạt động", R.drawable.chinhphuchanhphuc));
+        contactListBooks.add(new Contact_listbook("Chí Phèo", "Nam Cao", "120.000 VND", "Hoạt động", R.drawable.chipheo));
+        contactListBooks.add(new Contact_listbook("Tắt đèn", "Ngô Tất Tố", "130.000 VND", "Hoạt động", R.drawable.tatden));
+        contactListBooks.add(new Contact_listbook("Thao túng tâm lý", "Shannon Thomas", "250.000 VND", "Hoạt động", R.drawable.thaotungtamly));
+        contactListBooks.add(new Contact_listbook("Vợ Nhặt", "Kim Lân", "90.000 VND", "Hoạt động", R.drawable.vonhat));
     }
 
     private void setupAdapter() {
