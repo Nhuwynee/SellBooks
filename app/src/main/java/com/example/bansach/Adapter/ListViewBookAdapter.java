@@ -14,12 +14,12 @@ import com.example.bansach.model.Book;
 
 import java.util.List;
 
-public class Listview_bookAdapter extends RecyclerView.Adapter<Listview_bookAdapter.BookViewHolder> {
+public class ListViewBookAdapter extends RecyclerView.Adapter<ListViewBookAdapter.BookViewHolder> {
 
     private List<Book> bookList;
 
     // Constructor
-    public Listview_bookAdapter(List<Book> bookList) {
+    public ListViewBookAdapter(List<Book> bookList) {
         this.bookList = bookList;
     }
 

@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.Adapter.CartAdapter;
-import com.example.bansach.Adapter.Listview_bookAdapter;
+import com.example.bansach.Adapter.ListViewBookAdapter;
 import com.example.bansach.R;
 import com.example.bansach.model.Book;
 
@@ -21,7 +21,7 @@ import java.util.List;
 public class ListViewBookFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private Listview_bookAdapter adapter;
+    private ListViewBookAdapter adapter;
     private List<Book> bookList;
     private CartAdapter cartAdapter;
 

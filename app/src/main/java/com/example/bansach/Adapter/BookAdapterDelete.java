@@ -13,11 +13,11 @@ import com.example.bansach.model.Book;
 
 import java.util.List;
 
-public class BookAdapter_delete extends RecyclerView.Adapter<BookAdapter_delete.BookViewHolder> {
+public class BookAdapterDelete extends RecyclerView.Adapter<BookAdapterDelete.BookViewHolder> {
 
     private List<Book> bookList;
 
-    public BookAdapter_delete(List<Book> bookList) {
+    public BookAdapterDelete(List<Book> bookList) {
         this.bookList = bookList;
     }
 

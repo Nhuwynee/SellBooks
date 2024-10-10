@@ -5,14 +5,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bansach.Adapter.InvoiceAdapter;
-import com.example.bansach.Adapter.Listview_bookAdapter;
+import com.example.bansach.Adapter.ListViewBookAdapter;
 import com.example.bansach.model.Book;
-import com.example.bansach.model.Invoice;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
@@ -25,7 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private Listview_bookAdapter adapter;
+    private ListViewBookAdapter adapter;
     private List<Book> bookList;
 
     FrameLayout frameLayout;

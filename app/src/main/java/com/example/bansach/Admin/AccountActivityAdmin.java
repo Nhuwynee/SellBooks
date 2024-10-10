@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bansach.R;
 
 
-public class AccountActivity_Admin extends AppCompatActivity {
+public class AccountActivityAdmin extends AppCompatActivity {
     private ImageView userImage;
     private TextView userName, userRole;
     private Button addBookButton, bookListButton, orderListButton, logoutButton;
