@@ -7,14 +7,16 @@ public class History {
     private Date orderDate;
     private int orderPrice;
     private String orderStatus;
+    private String avatarImage;
     private String statusIcon;
 
     // Constructor, getters và setters
-    public History(String orderNumber, Date orderDate, int orderPrice, String orderStatus, String statusIcon) {
+    public History(String orderNumber, Date orderDate, int orderPrice, String orderStatus, String avatarImage, String statusIcon) {
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
         this.orderPrice = orderPrice;
         this.orderStatus = orderStatus;
+        this.avatarImage = avatarImage;
         this.statusIcon = statusIcon;
     }
 
@@ -32,6 +34,10 @@ public class History {
 
     public String getOrderStatus() {
         return orderStatus;
+    }
+
+    public String getAvatarImage() {
+        return avatarImage; // Getter cho avatar
     }
 
     public String getStatusIcon() {
@@ -52,6 +58,10 @@ public class History {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public void setAvatarImage(String avatarImage) {
+        this.avatarImage = avatarImage;
     }
 
     public void setStatusIcon(String statusIcon) {

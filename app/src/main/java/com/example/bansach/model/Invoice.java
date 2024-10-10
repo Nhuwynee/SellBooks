@@ -2,7 +2,7 @@ package com.example.bansach.model;
 
 import java.util.Date;
 
-public class History {
+public class Invoice {
     private String orderNumber;
     private Date orderDate;
     private int orderPrice;

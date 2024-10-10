@@ -3,11 +3,16 @@ package com.example.bansach;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.Adapter.HistoryAdapter;
 import com.example.bansach.Adapter.ListViewBookAdapter;
 import com.example.bansach.model.Book;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
@@ -16,6 +21,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 
+import com.example.bansach.model.History;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,9 +29,14 @@ public class MainActivity extends AppCompatActivity {
     private ListViewBookAdapter adapter;
     private List<Book> bookList;
 
+    private RecyclerView recyclerViewHistory;
+    private HistoryAdapter historyAdapter;
+    private List<History> historyList;
+
     FrameLayout frameLayout;
     TabLayout tabLayout;
     private Button btnFrag;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +58,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, LoginMainPage.class);
                 startActivity(intent);  // Bắt đầu SignupActivity
             }
-        });}}
+        });
+    }
+}
+
 //        addImagesToFlipper();
 //
 //        frameLayout = (FrameLayout) findViewById(R.id.framelayout);

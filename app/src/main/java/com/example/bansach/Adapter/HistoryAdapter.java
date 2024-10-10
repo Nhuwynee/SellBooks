@@ -27,7 +27,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     @NonNull
     @Override
     public HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_orders_admin, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.history_item, parent, false);
         return new HistoryViewHolder(view);
     }
 
@@ -44,6 +44,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         holder.orderPrice.setText(String.format(Locale.getDefault(), "%,dđ", history.getOrderPrice()));
 
         holder.orderStatus.setText(history.getOrderStatus());
+
+        int avatarResId = holder.itemView.getContext().getResources().getIdentifier(history.getAvatarImage(), "drawable", holder.itemView.getContext().getPackageName());
+        holder.avatarImage.setImageResource(avatarResId);
 
         // Cập nhật icon trạng thái
         int statusIconResId = holder.itemView.getContext().getResources().getIdentifier(history.getStatusIcon(), "drawable", holder.itemView.getContext().getPackageName());
@@ -65,6 +68,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             orderDate = itemView.findViewById(R.id.orderDate);
             orderPrice = itemView.findViewById(R.id.orderPrice);
             orderStatus = itemView.findViewById(R.id.orderStatus);
+            avatarImage = itemView.findViewById(R.id.avatarImage);
             statusIcon = itemView.findViewById(R.id.statusIcon);
         }
     }
