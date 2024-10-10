@@ -6,9 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bansach.R;
-
-public class activity_account extends AppCompatActivity {
+public class Account_admin extends AppCompatActivity {
 
     private ImageView userImage;
     private TextView userName, userRole;
@@ -18,7 +16,7 @@ public class activity_account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Set the content view to the layout you created in XML
-        setContentView(R.layout.activity_account);
+        setContentView(R.layout.activity_account_admin);
 
         // Initialize the views from the layout
         userImage = findViewById(R.id.user_image);
