@@ -4,10 +4,17 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
+<<<<<<< HEAD
         <DropdownSelection timestamp="2024-10-09T13:10:35.280812900Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\ADMIN\.android\avd\Medium_Phone_API_35_3.avd" />
+=======
+        <DropdownSelection timestamp="2024-10-09T14:13:29.108162300Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\MY HP\.android\avd\Medium_Phone_API_35_2.avd" />
+>>>>>>> 9b2e43a4b3ba33f0587231be12b4f8900848b664
             </handle>
           </Target>
         </DropdownSelection>

@@ -6,6 +6,13 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="#E0FFB5CB">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="READIFY"
+        android:textSize="60sp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/arima_semibold"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,16 +24,17 @@
             android:layout_gravity="start"
             android:layout_marginLeft="20dp"
             android:src="@drawable/hello1" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="50dp"
             android:layout_weight="1.5"
-            android:text="LOG IN"
-            android:layout_marginTop="60dp"
-            android:textSize="50sp"
-            android:textColor="#E73984"
             android:fontFamily="@font/arima_semibold"
-            android:layout_marginLeft="20dp"/>
+            android:text="LOG IN"
+            android:textColor="#E73984"
+            android:textSize="35sp" />
     </LinearLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edit_username"
@@ -42,7 +50,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:layout_margin="16dp"
-            android:padding="15dp"
+            android:paddingLeft="15dp"
             android:textColor="#3F51B5"
             android:textSize="20sp"
             android:fontFamily="@font/arima_regular"
@@ -63,13 +71,12 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:layout_margin="16dp"
-            android:padding="15dp"
+            android:paddingLeft="15dp"
             android:textColor="#3F51B5"
             android:textSize="20sp"
             android:fontFamily="@font/arima_regular"
             android:background="@drawable/bg_textfield"/>
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <Button
         android:id="@+id/btn_signup"
@@ -83,18 +90,6 @@
         android:textColor="#3F51B5"
         android:background="@drawable/bg_button"
         />
-
-
-    <TextView
-        android:id="@+id/returnbt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/arima_regular"
-        android:text=""
-        android:textColor="#756161"
-        android:textSize="30sp" />
 
     <ImageButton
         android:layout_width="wrap_content"

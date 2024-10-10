@@ -12,12 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BANSACH"
         tools:targetApi="31">
+        <activity
+            android:name=".ChangeAddress"
+            android:exported="false"
+            android:theme="@style/Theme.BANSACH" />
+        <activity
+            android:name=".Order"
+            android:exported="false" />
         <activity android:name=".signup" />
         <activity android:name=".login_main" />
-        <activity android:name=".forgot_pass"/>
-        <activity android:name=".trangchu"/>
-        <activity android:name=".ViewBooks"/>
-        <activity android:name=".CartPage"/>
+        <activity android:name=".forgot_pass" /> <!-- <activity android:name=".trangchu" /> -->
+        <activity android:name=".ViewBooks" />
+        <activity android:name=".CartPage" /> <!-- <activity android:name=".forgot_pass"/> -->
+        <activity android:name=".Home" /> <!-- <activity android:name=".CartPage"/> -->
+        <!-- <activity android:name=".ViewBooks"/> -->
         <activity
             android:name=".MainActivity"
             android:exported="true">

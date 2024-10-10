@@ -4,5 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorButtonPressed">#FFD700</color> <!-- Vàng -->
     <color name="colorButtonDefault">#FF6200EE</color> <!-- Màu mặc định -->
+    <color name="yourPressedColor">#00000000</color>
 
 </resources>
