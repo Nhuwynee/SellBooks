@@ -1,52 +1,53 @@
 package com.example.bansach;
 
 import android.os.Bundle;
-import android.widget.ListView;
-
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bansach.Adapter.Listview_bookAdapter;
-import com.example.bansach.model.Contact_listbook;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.bansach.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView listViewBooks;
-    private Listview_bookAdapter adapter;
-    private List<Contact_listbook> contactListBooks;
+    private ImageView userImage;
+    private TextView userName, userRole;
+    private Button addBookButton, bookListButton, orderListButton, logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listview_book);
+        // Set the content view to the layout you created in XML
+        setContentView(R.layout.activity_account);
 
-        initializeViews();
-        loadBookData();
-        setupAdapter();
-    }
+        // Initialize the views from the layout
+        userImage = findViewById(R.id.user_image);
+        userName = findViewById(R.id.user_name);
+        userRole = findViewById(R.id.user_role);
+        addBookButton = findViewById(R.id.button_add_book);
+        bookListButton = findViewById(R.id.button_book_list);
+        orderListButton = findViewById(R.id.button_order_list);
+        logoutButton = findViewById(R.id.button_logout);
 
-    private void initializeViews() {
-        listViewBooks = findViewById(R.id.lvContact);
-    }
+        // Set user info dynamically if needed
+        userName.setText("Nguyễn Thị Hiếu");
+        userRole.setText("Admin");
 
-    private void loadBookData() {
-        contactListBooks = new ArrayList<>();
-        addBooksToList();
-    }
+        // Set up click listeners for the buttons
+        addBookButton.setOnClickListener(view -> {
+            // Add your action for adding a book
+        });
 
-    private void addBooksToList() {
-        contactListBooks.add(new Contact_listbook("Bong bóng anh đào", "Tê Kiến", "200.000 VND", "Hoạt động", R.drawable.bong_bong_anh_dao));
-        contactListBooks.add(new Contact_listbook("Hóng lục", "Kiểm Diệp Tử", "170.000 VND", "Hoạt động", R.drawable.hong_luc));
-        contactListBooks.add(new Contact_listbook("Này đừng có ăn cỏ!", "Lục Lục", "150.000 VND", "Hoạt động", R.drawable.nay_dung_co_an_co));
-        contactListBooks.add(new Contact_listbook("Nhật kinh tình yêu", "Tống Cầu Cẩn", "250.000 VND", "Hoạt động", R.drawable.nhat_kinh_tinh_yeu));
-        contactListBooks.add(new Contact_listbook("Nhà chờ làm loạn", "Minh Nguyệt", "150.000 VND", "Hoạt động", R.drawable.nay_cho_lam_loan));
-        contactListBooks.add(new Contact_listbook("Án mộng mười một chữ", "Tác giả", "200.000 VND", "Hoạt động", R.drawable.chinhphuchanhphuc));
-    }
+        bookListButton.setOnClickListener(view -> {
+            // Add your action for viewing the book list
+        });
 
-    private void setupAdapter() {
-        adapter = new Listview_bookAdapter(this, contactListBooks);
-        listViewBooks.setAdapter(adapter);
+        orderListButton.setOnClickListener(view -> {
+            // Add your action for viewing the order list
+        });
+
+        logoutButton.setOnClickListener(view -> {
+            // Add your action for logging out
+        });
     }
 }
