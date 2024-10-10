@@ -3,17 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AuthorFragment">
+    tools:context=".Fragment.AuthorFragment">
 
     <TextView
-        android:layout_width="375dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:fontFamily="@font/arima_bold"
         android:text="Tác giả của cuốn sách Hồng lục là một người có lối viết tinh tế, đầy cảm xúc, thường tập trung khai thác những khía cạnh đời thường trong tình yêu và cuộc sống. Với phong cách viết nhẹ nhàng, tác giả khéo léo đưa người đọc vào những câu chuyện gần gũi nhưng chứa đựng nhiều tầng ý nghĩa."
         android:textColor="#000000"
-        android:textSize="16dp"
-        android:paddingLeft="20dp"
-        />
+        android:layout_marginLeft="10dp"
+        android:textSize="16dp" />
 
 </FrameLayout>

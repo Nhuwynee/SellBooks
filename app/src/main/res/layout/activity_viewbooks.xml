@@ -166,34 +166,23 @@
             <FrameLayout
                 android:id="@+id/framelayout"
                 android:layout_width="match_parent"
-                android:layout_height="191dp"
-                android:layout_gravity="center"
+                android:layout_height="220dp"
                 android:layout_marginTop="5dp">
             </FrameLayout>
-
-            <TextView
-                android:id="@+id/docthem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="20dp"
-                android:text="Đọc thêm"
-                android:textColor="#E81970"
-                android:fontFamily="@font/arima_bold"
-                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <ImageButton
+                    android:id="@+id/btn_cart"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_gravity="left"
                     android:layout_marginLeft="50dp"
                     android:background="@drawable/circle_nhuw"
-                    android:src="@drawable/ic_bag" />
+                    android:src="@drawable/ic_bag"
+                     />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -206,7 +195,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:layout_marginRight="40dp"
+                        android:layout_marginRight="50dp"
                         android:fontFamily="@font/arima_bold"
                         android:text="Add to Cart"
                         android:textColor="#78103C"
@@ -215,7 +204,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_marginLeft="160dp"
+                        android:layout_marginLeft="100dp"
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
@@ -257,22 +246,5 @@
             </LinearLayout>
         </LinearLayout>
 
- <!-- chưa fixx dc -->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="#E81970"
-            app:itemBackground="@drawable/nav_item_background"
-            app:itemIconTint="@color/nav_item_color"
-            app:itemTextAppearanceActive="@style/TextAppearance.BottomNavigationView.BoldText"
-            app:itemTextAppearanceInactive="@style/TextAppearance.BottomNavigationView.BoldText"
-            app:itemTextColor="@color/nav_item_color"
-            app:labelVisibilityMode="labeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/menu_trangchu" />
     </LinearLayout>
 </LinearLayout>

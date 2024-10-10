@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class signup extends AppCompatActivity {
+public class SignUpPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {  // Cú pháp đúng của phương thức onCreate
@@ -26,7 +26,7 @@ public class signup extends AppCompatActivity {
             @Override
             public void onClick(View widget) {
                 // Chuyển đến forgot_pass Activity
-                Intent intent = new Intent(signup.this, login_main.class);
+                Intent intent = new Intent(SignUpPage.this, LoginMainPage.class);
                 startActivity(intent);
                 login.setBackgroundColor(Color.TRANSPARENT);
             }

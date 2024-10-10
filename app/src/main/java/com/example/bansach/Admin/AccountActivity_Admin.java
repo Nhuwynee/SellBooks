@@ -1,4 +1,4 @@
-package com.example.bansach;
+package com.example.bansach.Admin;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -6,8 +6,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Account_admin extends AppCompatActivity {
+import com.example.bansach.R;
 
+
+public class AccountActivity_Admin extends AppCompatActivity {
     private ImageView userImage;
     private TextView userName, userRole;
     private Button addBookButton, bookListButton, orderListButton, logoutButton;
@@ -47,5 +49,5 @@ public class Account_admin extends AppCompatActivity {
         logoutButton.setOnClickListener(view -> {
             // Add your action for logging out
         });
-    }
-}
+    }}
+

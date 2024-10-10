@@ -1,55 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#FFF">
+
+<!-- Tiêu đề ACCOUNT -->
+<LinearLayout
+    android:id="@+id/account_title"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFF">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
+    android:layout_marginTop="13dp">
 
-    <!-- Tiêu đề ACCOUNT -->
-    <LinearLayout
-        android:id="@+id/account_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="13dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ACCOUNT"
-            android:textSize="27sp"
-            android:textColor="#FF4081"
-            android:layout_marginTop="15dp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="47dp"
-            android:layout_height="57dp"
-            android:layout_marginStart="9dp"
-            android:src="@drawable/img_cart_admin" />
-    </LinearLayout>
-
-    <!-- Đường thẳng nằm ngang -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#FF4081"
-        android:layout_marginTop="80dp" />
-
-    <!-- Pink Rounded Container for User Info and Buttons -->
-    <LinearLayout
-        android:id="@+id/container"
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="530dp"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/account_title"
-        android:orientation="vertical"
-        android:padding="25dp"
-        android:elevation="4dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/rounded_background_admin">
+        android:layout_height="wrap_content"
+        android:text="ACCOUNT"
+        android:textSize="27sp"
+        android:fontFamily="@font/arima_semibold"
+        android:textColor="#FF4081"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="47dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="9dp"
+        android:src="@drawable/img_cart_admin" />
+</LinearLayout>
+
+<!-- Đường thẳng nằm ngang -->
+<View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:background="#FF4081"
+    android:layout_marginTop="80dp" />
+
+<!-- Pink Rounded Container for User Info and Buttons -->
+<LinearLayout
+    android:id="@+id/container"
+    android:layout_width="wrap_content"
+    android:layout_height="530dp"
+    android:layout_marginTop="50dp"
+    android:layout_below="@id/account_title"
+    android:orientation="vertical"
+    android:padding="25dp"
+    android:elevation="4dp"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/rounded_background_admin">
 
 
     <LinearLayout
@@ -80,15 +82,16 @@
                 android:layout_height="wrap_content"
                 android:text="Nguyễn Thị Hiếu"
                 android:textSize="23sp"
+                android:fontFamily="@font/arima_semibold"
                 android:textColor="#78103C"
                 android:textStyle="bold" />
-
             <TextView
                 android:id="@+id/user_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Admin"
                 android:textSize="20sp"
+                android:fontFamily="@font/arima_semibold"
                 android:textStyle="bold"
                 android:textColor="#FF1678"
                 android:paddingTop="10dp" />
@@ -118,7 +121,7 @@
             android:text="Thêm sách mới"
             android:textColor="#2A15AB"
             android:layout_marginTop="25dp"
-            android:background="@drawable/button_account_background"
+            android:background="@drawable/btn_account"
             android:layout_marginBottom="26dp" />
 
         <Button
@@ -126,8 +129,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Danh sách sách"
-            android:textColor="#2A15AB"
-            android:background="@drawable/rounded_button_purple"
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_account_purple"
             android:layout_marginBottom="26dp" />
 
         <Button
@@ -136,7 +139,7 @@
             android:layout_height="wrap_content"
             android:text="Danh sách đơn hàng"
             android:textColor="#2A15AB"
-            android:background="@drawable/button_account_background"
+            android:background="@drawable/btn_account"
             android:layout_marginBottom="26dp" />
 
         <Button
@@ -144,8 +147,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Đăng xuất"
-            android:textColor="#2A15AB"
-            android:background="@drawable/rounded_button_purple" />
+            android:textColor="#ffffff"
+            android:background="@drawable/btn_account_purple" />
     </LinearLayout>
 </LinearLayout>
 
@@ -164,4 +167,4 @@
     app:itemBackground="@drawable/nav_item_background"
     app:menu="@menu/menu" />
 
-    </RelativeLayout>
+</RelativeLayout>

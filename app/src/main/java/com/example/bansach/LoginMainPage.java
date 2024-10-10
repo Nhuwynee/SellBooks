@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class login_main extends AppCompatActivity {
+public class LoginMainPage extends AppCompatActivity {
 
 
     @Override
@@ -29,7 +29,7 @@ public class login_main extends AppCompatActivity {
             @Override
             public void onClick(View widget) {
                 // Chuyển đến forgot_pass Activity
-                Intent intent = new Intent(login_main.this, forgot_pass.class);
+                Intent intent = new Intent(LoginMainPage.this, FogotPassPage.class);
                 startActivity(intent);
                 // Xóa màu nền khi nhấn vào
                 forgot.setBackgroundColor(Color.TRANSPARENT);
@@ -54,7 +54,7 @@ public class login_main extends AppCompatActivity {
             @Override
             public void onClick(View widget) {
                 // Chuyển đến signup Activity
-                Intent intent = new Intent(login_main.this, signup.class);
+                Intent intent = new Intent(LoginMainPage.this, SignUpPage.class);
                 startActivity(intent);
                 signup.setBackgroundColor(Color.TRANSPARENT);
             }
@@ -75,7 +75,7 @@ public class login_main extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(login_main.this, Home.class);
+                Intent intent = new Intent(LoginMainPage.this, MenuActivity.class);
                 startActivity(intent);
             }
         });

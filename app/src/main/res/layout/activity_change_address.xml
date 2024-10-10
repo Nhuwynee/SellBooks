@@ -16,7 +16,7 @@
         android:layout_marginTop="-2dp"
         android:layout_marginLeft="-5dp"
         android:layout_marginRight="-5dp"
-        android:layout_weight="6"
+        android:layout_weight="1.5"
         android:layout_height="0dp"
         android:layout_width="match_parent"
         android:background="@drawable/border_shape"
@@ -29,14 +29,14 @@
             android:fontFamily="@font/arima_semibold"
             android:text="ĐỊA CHỈ"
             android:textColor="#E81970"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:textSize="36dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/ic_location">
         </ImageView>
     </LinearLayout>
@@ -46,19 +46,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="150dp"
             android:orientation="vertical"
             >
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.2"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:src="@drawable/ava_account" />
@@ -66,10 +65,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_weight="0.5"
-                android:layout_gravity="center"
+                android:layout_weight="0.2"
+                android:gravity="center"
                 android:fontFamily="@font/arima_semibold"
                 android:text="Thay đổi địa chỉ giao hàng"
                 android:textColor="#E73984"
@@ -77,105 +74,103 @@
         </LinearLayout>
     </LinearLayout>
     </LinearLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edit_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Họ tên"
-        android:textColorHint="#2A15AB"
-        app:hintEnabled="true"
-        app:hintTextAppearance="@style/HintTextAppearance">
-        <EditText
-            android:id="@+id/edittext_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:layout_margin="16dp"
-            android:paddingLeft="15dp"
-            android:textColor="#2A15AB"
-            android:textSize="20sp"
-            android:fontFamily="@font/arima_regular"
-            android:background="@drawable/bg_textfield"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edit_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Số điện thoại"
-        android:textColorHint="#2A15AB"
-        app:hintEnabled="true"
-        app:hintTextAppearance="@style/HintTextAppearance">
-        <EditText
-            android:id="@+id/edittext_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:paddingLeft="15dp"
-            android:textColor="#2A15AB"
-            android:textSize="20sp"
-            android:fontFamily="@font/arima_regular"
-            android:background="@drawable/bg_textfield"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edit_re_enter_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Địa chỉ"
-        android:textColorHint="#2A15AB"
-        app:hintEnabled="true"
-        app:hintTextAppearance="@style/HintTextAppearance">
-        <EditText
-            android:id="@+id/edittext_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:paddingLeft="15dp"
-            android:textColor="#2A15AB"
-            android:textSize="20sp"
-            android:fontFamily="@font/arima_regular"
-            android:background="@drawable/bg_textfield"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/btn_signup"
-        android:layout_width="164dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="-15dp"
-        android:background="@drawable/border_pink"
-        android:fontFamily="@font/arima_bold"
-        android:text="Thay đổi"
-        android:paddingTop="5dp"
-        android:textColor="#78103C"
-        android:textSize="20sp" />
-
-
-    <TextView
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/arima_regular"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#E81970"
-        app:itemBackground="@drawable/nav_item_background"
-        app:itemIconTint="@color/nav_item_color"
-        app:itemTextAppearanceActive="@style/TextAppearance.BottomNavigationView.BoldText"
-        app:itemTextAppearanceInactive="@style/TextAppearance.BottomNavigationView.BoldText"
-        app:itemTextColor="@color/nav_item_color"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu_trangchu" />
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="2">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edit_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Họ tên"
+            android:textColorHint="#2A15AB"
+            android:layout_marginTop="20dp"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/HintTextAppearance">
+            <EditText
+                android:id="@+id/edittext_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_margin="16dp"
+                android:paddingLeft="15dp"
+                android:textColor="#2A15AB"
+                android:textSize="20sp"
+                android:fontFamily="@font/arima_regular"
+                android:background="@drawable/bg_textfield"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edit_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Số điện thoại"
+            android:textColorHint="#2A15AB"
+            android:layout_gravity="center"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/HintTextAppearance">
+            <EditText
+                android:id="@+id/edittext_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:paddingLeft="15dp"
+                android:textColor="#2A15AB"
+                android:textSize="20sp"
+                android:fontFamily="@font/arima_regular"
+                android:background="@drawable/bg_textfield"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edit_re_enter_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Địa chỉ"
+            android:layout_gravity="center"
+            android:textColorHint="#2A15AB"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/HintTextAppearance">
+            <EditText
+                android:id="@+id/edittext_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:paddingLeft="15dp"
+                android:textColor="#2A15AB"
+                android:textSize="20sp"
+                android:fontFamily="@font/arima_regular"
+                android:background="@drawable/bg_textfield"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="164dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="-15dp"
+            android:background="@drawable/border_pink"
+            android:fontFamily="@font/arima_bold"
+            android:paddingTop="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:text="Thay đổi"
+            android:textColor="#78103C"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/arima_regular"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
+
 </LinearLayout>

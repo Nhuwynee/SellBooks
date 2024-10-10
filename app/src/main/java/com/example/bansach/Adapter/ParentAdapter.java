@@ -1,3 +1,4 @@
+// ParentAdapter.java
 package com.example.bansach.Adapter;
 
 import android.view.LayoutInflater;
@@ -10,15 +11,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.R;
+import com.example.bansach.model.Book;
 import com.example.bansach.model.Section;
 
 import java.util.List;
 
 public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentViewHolder> {
     private List<Section> sectionList;
+    private ParentAdapter.OnBookClickListener listener;
 
-    public ParentAdapter(List<Section> sectionList) {
+    public interface OnBookClickListener {
+        void onBookClick(Book book);
+    }
+
+    public ParentAdapter(List<Section> sectionList, OnBookClickListener listener) {
         this.sectionList = sectionList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -34,11 +42,13 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
         holder.sectionTitle.setText(section.getTitle());
 
         // Thiết lập RecyclerView con
-        BookAdapter childAdapter = new BookAdapter(Section.getItemList());
+        BookAdapter childAdapter = new BookAdapter(section.getItemList(), listener);
         LinearLayoutManager layoutManager = new LinearLayoutManager(holder.recyclerViewChild.getContext(), LinearLayoutManager.HORIZONTAL, false);
         holder.recyclerViewChild.setLayoutManager(layoutManager);
         holder.recyclerViewChild.setAdapter(childAdapter);
+
     }
+
 
     @Override
     public int getItemCount() {
