@@ -7,16 +7,14 @@ public class History {
     private Date orderDate;
     private int orderPrice;
     private String orderStatus;
-    private String avatarImage;
     private String statusIcon;
 
     // Constructor, getters và setters
-    public Invoice(String orderNumber, Date orderDate, int orderPrice, String orderStatus, String avatarImage, String statusIcon) {
+    public History(String orderNumber, Date orderDate, int orderPrice, String orderStatus, String statusIcon) {
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
         this.orderPrice = orderPrice;
         this.orderStatus = orderStatus;
-        this.avatarImage = avatarImage;
         this.statusIcon = statusIcon;
     }
 
@@ -36,15 +34,10 @@ public class History {
         return orderStatus;
     }
 
-    public String getAvatarImage() {
-        return avatarImage; // Getter cho avatar
-    }
-
     public String getStatusIcon() {
         return statusIcon; // Getter cho status icon
     }
 
-    // Setters (nếu cần)
     public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
     }
@@ -59,10 +52,6 @@ public class History {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
-    }
-
-    public void setAvatarImage(String avatarImage) {
-        this.avatarImage = avatarImage;
     }
 
     public void setStatusIcon(String statusIcon) {

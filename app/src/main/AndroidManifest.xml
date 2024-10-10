@@ -13,7 +13,7 @@
         android:theme="@style/Theme.BANSACH"
         tools:targetApi="31">
         <activity
-            android:name=".History"
+            android:name=".ListHistory"
             android:exported="false" />
         <activity
             android:name=".Account"
