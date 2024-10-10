@@ -4,12 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".CartPage">
 
     <LinearLayout
         android:layout_marginTop="-2dp"
-        android:layout_marginLeft="-5dp"
-        android:layout_marginRight="-5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/border_shape"
@@ -47,21 +46,5 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="#E81970"
-            app:itemIconTint="@color/nav_item_color"
-            app:itemTextColor="@color/nav_item_color"
-            app:itemTextAppearanceActive="@style/TextAppearance.BottomNavigationView.BoldText"
-            app:itemTextAppearanceInactive="@style/TextAppearance.BottomNavigationView.BoldText"
-            app:labelVisibilityMode="labeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:itemBackground="@drawable/nav_item_background"
-            app:menu="@menu/menu_trangchu" />
     </LinearLayout>
 </LinearLayout>

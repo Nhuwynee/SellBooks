@@ -34,11 +34,12 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
         holder.sectionTitle.setText(section.getTitle());
 
         // Thiết lập RecyclerView con
-        BookAdapter childAdapter = new BookAdapter(Section.getItemList());
+        BookAdapter childAdapter = new BookAdapter(section.getItemList());
         LinearLayoutManager layoutManager = new LinearLayoutManager(holder.recyclerViewChild.getContext(), LinearLayoutManager.HORIZONTAL, false);
         holder.recyclerViewChild.setLayoutManager(layoutManager);
         holder.recyclerViewChild.setAdapter(childAdapter);
     }
+
 
     @Override
     public int getItemCount() {

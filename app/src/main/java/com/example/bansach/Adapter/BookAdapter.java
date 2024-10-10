@@ -37,6 +37,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         holder.bookPrice.setText(String.valueOf(book.getPrice()));
     }
 
+
     @Override
     public int getItemCount() {
         return bookList.size();
