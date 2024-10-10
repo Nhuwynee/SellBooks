@@ -12,34 +12,51 @@ import com.example.bansach.model.Book;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ListView;
 
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Listview_bookAdapter adapter;
     private List<Book> bookList;
-    private CartAdapter cartAdapter;
-//
-//    FrameLayout frameLayout;
-//    TabLayout tabLayout;
-//
-//    private Button btnFrag;
 
-
+    FrameLayout frameLayout;
+    TabLayout tabLayout;
+    private Button btnFrag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.listview_book);
-
-        recyclerView = findViewById(R.id.recyclerView_addbook);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        bookList = new ArrayList<>();
-        bookList.add(new Book("Bong bóng anh đào", "Tê Kiến", 200000, "Hoạt động", R.drawable.bong_bong_anh_dao));
-        bookList.add(new Book("Hồng lục", "Kiểm Diệp Tử", 170000, "Hoạt động", R.drawable.hong_luc));
-        setContentView(R.layout.activity_order);
-        // book1();
-    }
+        setContentView(R.layout.login1);
+        Button signupButton = findViewById(R.id.signup_button);
+        Button loginButton = findViewById(R.id.login_button);
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sử dụng Intent để chuyển sang SignupActivity
+                Intent intent = new Intent(MainActivity.this, signup.class);
+                startActivity(intent);  // Bắt đầu SignupActivity
+            }
+        });
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sử dụng Intent để chuyển sang SignupActivity
+                Intent intent = new Intent(MainActivity.this, login_main.class);
+                startActivity(intent);  // Bắt đầu SignupActivity
+            }
+        });}}
 //        addImagesToFlipper();
 //
 //        frameLayout = (FrameLayout) findViewById(R.id.framelayout);
@@ -342,25 +359,7 @@ public class MainActivity extends AppCompatActivity {
     // =====================================
 
 
-    private void book1() {
-        recyclerView = findViewById(R.id.recyclerView);
 
-        // Khởi tạo dữ liệu sách
-        bookList = new ArrayList<>();
-        bookList.add(new Book("Hồng Lục", R.drawable.hong_luc, 225000, "Kim Diệp Tử"));
-        bookList.add(new Book("Nhật ký tình yêu", R.drawable.nhat_kinh_tinh_yeu, 175000, "Mark Twain"));
-        bookList.add(new Book("Bong bóng anh đào", R.drawable.bong_bong_anh_dao, 250000, "Tê Kiến"));
-        bookList.add(new Book("Này đừng có ăn cỏ", R.drawable.nay_dung_co_an_co, 174000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Này chớ làm loạn", R.drawable.nay_cho_lam_loan, 100000, "Phạm Nhật An"));
-        bookList.add(new Book("Tình yêu của thời hạ", R.drawable.tinh_yeu_cua_thoi_ha, 186000, "Lê Minh Đạt"));
-        bookList.add(new Book("Tóc của tôi", R.drawable.toc_cua_toi, 117000, "Lưu Thị Lan"));
-        bookList.add(new Book("Vợ nhặt", R.drawable.vhvn1, 99000, "Nguyễn Nhật Ánh"));
-
-
-        adapter = new Listview_bookAdapter(bookList);
-        recyclerView.setAdapter(adapter);
-    }
-}
 //    private void book1() {
 //        recyclerView = findViewById(R.id.recyclerView);
 //
