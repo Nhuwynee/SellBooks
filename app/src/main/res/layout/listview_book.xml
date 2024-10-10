@@ -35,14 +35,15 @@
             android:layout_centerVertical="true" />
     </RelativeLayout>
 
-    <!-- Scrollable content (book list) -->
-    <ListView
-        android:id="@+id/lvContact"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_addbook"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@id/iconContainer"
         android:layout_above="@id/bottomNavigationView"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:clipToPadding="false" />
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
