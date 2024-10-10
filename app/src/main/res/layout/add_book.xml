@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF2F7"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -59,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
+            android:fontFamily="@font/arima_semibold"
             android:padding="10dp"
             android:textColor="#000000"
             android:background="@drawable/edittext_background"/>
@@ -84,6 +84,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:padding="10dp"
+            android:fontFamily="@font/arima_semibold"
             android:textColor="#000000"
             android:background="@drawable/edittext_background"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -97,7 +98,7 @@
         android:text="Chọn thể loại"
         android:textColor="#281A7D"
         android:textSize="18sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/arima_semibold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
@@ -123,6 +124,7 @@
             android:background="@drawable/edittext_background"
             android:dropDownWidth="match_parent"
             android:dropDownHeight="wrap_content"
+            android:fontFamily="@font/arima_semibold"
             android:dropDownHorizontalOffset="8dp"
             android:dropDownVerticalOffset="8dp"
             android:inputType="text"
@@ -150,6 +152,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:padding="10dp"
+            android:fontFamily="@font/arima_semibold"
             android:textColor="#000000"
             android:background="@drawable/edittext_background"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -174,6 +177,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:padding="10dp"
+            android:fontFamily="@font/arima_semibold"
             android:textColor="#000000"
             android:background="@drawable/edittext_background"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -195,11 +199,12 @@
         <EditText
             android:id="@+id/editTextDescription"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:inputType="textMultiLine"
             android:gravity="top"
             android:padding="10dp"
             android:textColor="#000000"
+            android:fontFamily="@font/arima_semibold"
             android:background="@drawable/edittext_background"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -222,6 +227,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
+            android:fontFamily="@font/arima_semibold"
             android:padding="10dp"
             android:textColor="#000000"
             android:background="@drawable/edittext_background"/>
@@ -236,6 +242,7 @@
         android:textStyle="bold"
         android:textColor="#000000"
         android:textSize="13sp"
+        android:fontFamily="@font/arima_semibold"
         app:layout_constraintTop_toBottomOf="@+id/editTextPriceLayout"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="15dp"

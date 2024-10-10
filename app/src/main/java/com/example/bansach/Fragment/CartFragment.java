@@ -28,7 +28,7 @@ import java.util.List;
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.cart_main, container, false);
+            View view = inflater.inflate(R.layout.activity_cart, container, false);
             recyclerView = view.findViewById(R.id.recyclerView);
             book(); // Khởi tạo dữ liệu
             ImageButton cart = view.findViewById(R.id.btn_cart);
@@ -51,15 +51,14 @@ import java.util.List;
         private void book() {
             // Khởi tạo dữ liệu sách
             bookList = new ArrayList<>();
-            bookList.add(new Book("Book 1", R.drawable.hong_luc, 129000, "Nguyễn Nhật Ánh"));
-            bookList.add(new Book("Book 2", R.drawable.vhvn2, 150000, "Nguyễn Nhật Ánh"));
-            bookList.add(new Book("Book 3", R.drawable.vhvn3, 185000, "Nguyễn Nhật Ánh"));
-            bookList.add(new Book("Book 4", R.drawable.vhvn4, 74000, "Nguyễn Nhật Ánh"));
-            bookList.add(new Book("Book 5", R.drawable.vhvn5, 55000, "Nguyễn Nhật Ánh"));
-            bookList.add(new Book("Book 6", R.drawable.vhvn6, 186000, "Nguyễn Nhật Ánh"));
-            bookList.add(new Book("Book 7", R.drawable.vhvn7, 117000, "Nguyễn Nhật Ánh"));
-            bookList.add(new Book("Book 8", R.drawable.vhvn8, 99000, "Nguyễn Nhật Ánh"));
-            Log.d("CartPage", "Số lượng sách: " + bookList.size()); // Kiểm tra kích thước
+            bookList.add(new Book("Hồng Lục", R.drawable.hong_luc, 225000, "Kim Diệp Tử"));
+            bookList.add(new Book("Nhật ký tình yêu", R.drawable.nhat_kinh_tinh_yeu, 175000, "Mark Twain"));
+            bookList.add(new Book("Bong bóng anh đào", R.drawable.bong_bong_anh_dao, 250000, "Tê Kiến"));
+            bookList.add(new Book("Này đừng có ăn cỏ", R.drawable.nay_dung_co_an_co, 174000, "Nguyễn Nhật Ánh"));
+            bookList.add(new Book("Này chớ làm loạn", R.drawable.nay_cho_lam_loan, 100000, "Phạm Nhật An"));
+            bookList.add(new Book("Tình yêu của thời hạ", R.drawable.tinh_yeu_cua_thoi_ha, 186000, "Lê Minh Đạt"));
+            bookList.add(new Book("Tóc của tôi", R.drawable.toc_cua_toi, 117000, "Lưu Thị Lan"));
+            bookList.add(new Book("Vợ nhặt", R.drawable.vhvn1, 99000, "Nguyễn Nhật Ánh"));
 
             cartAdapter = new CartAdapter(bookList);
             LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.VERTICAL, false);

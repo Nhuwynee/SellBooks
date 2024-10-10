@@ -24,9 +24,8 @@ public class ViewBookFragment extends Fragment {
     TabLayout tabLayout;
     ViewFlipper viewFlipper;
 
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.viewbooks_main, container, false);
+        View view = inflater.inflate(R.layout.activity_viewbooks, container, false);
         viewFlipper = view.findViewById(R.id.viewflipper);
         ImageButton cart = view.findViewById(R.id.btn_cart);
         addImagesToFlipper();

@@ -8,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bansach.R;
 
-public class AccountActivity extends AppCompatActivity {
-
+public class AccountActivity_Admin extends AppCompatActivity {
     private ImageView userImage;
     private TextView userName, userRole;
     private Button addBookButton, bookListButton, orderListButton, logoutButton;
@@ -18,7 +17,7 @@ public class AccountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Set the content view to the layout you created in XML
-        setContentView(R.layout.activity_account);
+        setContentView(R.layout.activity_account_admin);
 
         // Initialize the views from the layout
         userImage = findViewById(R.id.user_image);
@@ -49,5 +48,5 @@ public class AccountActivity extends AppCompatActivity {
         logoutButton.setOnClickListener(view -> {
             // Add your action for logging out
         });
-    }
-}
+    }}
+

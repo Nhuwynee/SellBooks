@@ -83,7 +83,7 @@
                     android:text="0đ"
                     android:fontFamily="@font/arima_bold"
                     android:textSize="25dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="12dp"
                     android:textColor="#78103C"
                     />
 
@@ -91,8 +91,8 @@
 
             <ImageButton
                 android:id="@+id/btn_cart"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="left"
                 android:layout_marginRight="100dp"
                 android:background="@drawable/circle_nhuw"

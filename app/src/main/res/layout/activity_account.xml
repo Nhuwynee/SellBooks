@@ -1,167 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF">
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <!-- Tiêu đề ACCOUNT -->
     <LinearLayout
-        android:id="@+id/account_title"
+        android:layout_marginTop="-2dp"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginRight="-5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="13dp">
-
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:background="@drawable/border_shape"
+        >
         <TextView
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ACCOUNT"
-            android:textSize="27sp"
-            android:textColor="#FF4081"
-            android:layout_marginTop="15dp"
-            android:textStyle="bold" />
+            android:layout_marginLeft="110dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="ĐẶT HÀNG"
+            android:textColor="#E81970"
+            android:layout_marginTop="5dp"
+            android:textSize="36dp"
+            tools:layout_editor_absoluteX="162dp"
+            tools:layout_editor_absoluteY="0dp" />
 
         <ImageView
-            android:layout_width="47dp"
-            android:layout_height="57dp"
-            android:layout_marginStart="9dp"
-            android:src="@drawable/img_cart_admin" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_bag_pink">
+        </ImageView>
     </LinearLayout>
 
-    <!-- Đường thẳng nằm ngang -->
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#FF4081"
-        android:layout_marginTop="80dp" />
-
-    <!-- Pink Rounded Container for User Info and Buttons -->
-    <LinearLayout
-        android:id="@+id/container"
-        android:layout_width="wrap_content"
-        android:layout_height="530dp"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/account_title"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:padding="25dp"
-        android:elevation="4dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/rounded_background_admin">
+        android:background="@drawable/br_order"
+        android:layout_margin="20dp"
+        >
 
 
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="16dp"
-        android:layout_gravity="center_horizontal">
-
-        <!-- Hình ảnh bên trái -->
-        <ImageView
-            android:id="@+id/user_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/catgirl"
-            android:layout_marginEnd="16dp" />
-
-        <!-- TextView bên phải -->
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.12"
 
-            <TextView
-                android:id="@+id/user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nguyễn Thị Hiếu"
-                android:textSize="23sp"
-                android:textColor="#78103C"
-                android:textStyle="bold" />
+            >
+            <ImageView
+                android:id="@+id/customer_image"
+                android:layout_weight="0.3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ava_account" />
 
-            <TextView
-                android:id="@+id/user_role"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Admin"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#FF1678"
-                android:paddingTop="10dp" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/customer_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/customer_image"
+                    android:fontFamily="@font/arima_bold"
+                    android:text="Lưu Ngọc Yến Như"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#78103C"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/customer_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/customer_name"
+                    android:layout_toEndOf="@id/customer_image"
+                    android:fontFamily="@font/arima_semibold"
+                    android:text="Thành viên"
+                    android:textColor="#E81970"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+
         </LinearLayout>
-    </LinearLayout>
 
-    <!-- Đường kẻ nét đứt dưới chữ Admin -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/dashed_line" />
-
-    <!-- Buttons with pink background area -->
-    <LinearLayout
-        android:id="@+id/buttons_section"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="20dp">
-
-        <Button
-            android:id="@+id/button_add_book"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Thêm sách mới"
-            android:textColor="#2A15AB"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/button_account_background"
-            android:layout_marginBottom="26dp" />
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            >
+            <View
+                android:id="@+id/view"
+                android:layout_width="300dp"
+                android:layout_height="1dp"
+                android:layout_below="@id/invoice_title"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="-30dp"
+                android:background="#78103C" />
 
-        <Button
-            android:id="@+id/button_book_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Danh sách sách"
-            android:textColor="#2A15AB"
-            android:background="@drawable/rounded_button_purple"
-            android:layout_marginBottom="26dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.6"
+                android:orientation="vertical"
+                android:layout_marginTop="50dp"
+                >
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa chỉ giao hàng"
+                    android:fontFamily="@font/arima_semibold"
+                    android:textSize="25sp"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black" />
 
-        <Button
-            android:id="@+id/button_order_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Danh sách đơn hàng"
-            android:textColor="#2A15AB"
-            android:background="@drawable/button_account_background"
-            android:layout_marginBottom="26dp" />
+                <!-- Name -->
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lưu Ngọc Yến Như"
+                    android:textSize="20sp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/arima_semibold"
+                    android:textColor="#78103C"
+                    android:paddingTop="8dp" />
 
-        <Button
-            android:id="@+id/button_logout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Đăng xuất"
-            android:textColor="#2A15AB"
-            android:background="@drawable/rounded_button_purple" />
+                <!-- Phone number -->
+                <TextView
+                    android:id="@+id/tvPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0123456789"
+                    android:textSize="20sp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/arima_semibold"
+                    android:textColor="#78103C"
+                    android:paddingTop="4dp" />
+
+                <!-- Address -->
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="32 Cao Thắng, Q.Hải Châu, Đà Nẵng"
+                    android:textSize="20sp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/arima_semibold"
+                    android:textColor="#78103C"
+                    android:paddingTop="4dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical"
+                >
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:text="Thay đổi địa chỉ giao hàng"
+                    android:fontFamily="@font/arima_bold"
+                    android:textSize="18dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/btn_account"/>
+
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:text="Lịch sử đơn hàng"
+                    android:fontFamily="@font/arima_bold"
+                    android:textColor="#ffffff"
+                    android:textSize="18dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/btn_account_purple"/>
+
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:text="Giỏ hàng của tôi"
+                    android:fontFamily="@font/arima_bold"
+                    android:textSize="18dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/btn_account"/>
+
+                <Button
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:text="Đăng xuất"
+                    android:fontFamily="@font/arima_bold"
+                    android:textSize="18dp"
+                    android:textColor="#ffffff"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/btn_account_purple"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
 
-
-<com.google.android.material.bottomnavigation.BottomNavigationView
-    android:id="@+id/bottomNavigationView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:background="#E81970"
-    app:itemIconTint="@color/nav_item_color"
-    app:itemTextColor="@color/nav_item_color"
-    app:itemTextAppearanceActive="@style/TextAppearance.BottomNavigationView.BoldText"
-    app:itemTextAppearanceInactive="@style/TextAppearance.BottomNavigationView.BoldText"
-    app:labelVisibilityMode="labeled"
-    app:itemBackground="@drawable/nav_item_background"
-    app:menu="@menu/menu" />
-
-    </RelativeLayout>

@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
-    // ----------------- Như
+// ----------------- Như
 //        btnFrag = (Button) findViewById(R.id.btn_review);
 //        btnFrag.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        addImagesToFlipper();
 //        book();
-    //  }
+//  }
 //
 
 
@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 // HEAD
-    // ?
+// ?
 
 //    private void book() {
 //        recyclerView = findViewById(R.id.recyclerView);
@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView.setAdapter(bookAdapter);
 //    }
 
-    // ---------------------- Như
+// ---------------------- Như
 //    private void addFragment(Fragment fragment) {
 //        FragmentManager fmgr = getSupportFragmentManager();
 //        FragmentTransaction ft = fmgr.beginTransaction();
@@ -346,7 +346,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
-    // =====================================
+// =====================================
 
 
 
@@ -373,8 +373,3 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView.setAdapter(cartAdapter);
 //    }
 //}
-
-
-
-// d677e22dbbe1284639ba4f618d46ac9a273a5627
-// ba7ecc200d9943a06fa363036581c6b37029ef29
