@@ -1,4 +1,4 @@
-package com.example.bansach;
+package com.example.bansach.Fragment;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -12,12 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.Adapter.CartAdapter;
+import com.example.bansach.R;
 import com.example.bansach.model.Book;
 
 import java.util.ArrayList;
 import java.util.List;
 
-    public class CartPage extends Fragment {
+    public class CartFragment extends Fragment {
         private RecyclerView recyclerView;
         private CartAdapter cartAdapter;
         private List<Book> bookList;

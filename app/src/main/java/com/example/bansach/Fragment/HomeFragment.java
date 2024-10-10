@@ -1,37 +1,28 @@
-package com.example.bansach;
+package com.example.bansach.Fragment;
 
 import static com.example.bansach.R.*;
 
-import android.annotation.SuppressLint;
-import android.content.ClipData;
-import android.content.Intent;
-import android.media.RouteListingPreference;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 //import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.Adapter.ParentAdapter;
 import com.example.bansach.Adapter.TextAdapter;
+import com.example.bansach.R;
 import com.example.bansach.model.Book;
 import com.example.bansach.model.Section;
-import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +30,7 @@ import java.util.List;
 
 
 
-public class Home extends Fragment {
+public class HomeFragment extends Fragment {
     ViewFlipper viewFlipper;
     private RecyclerView recyclerViewParent, recyclerView1;
     private ParentAdapter parentAdapter;
@@ -57,6 +48,7 @@ public class Home extends Fragment {
         recyclerView1 = view.findViewById(R.id.recyclerView1);
         // Gọi các hàm để thiết lập dữ liệu
         addImagesToFlipper();
+        category();
         book();
         return view; // Trả về view đã được khởi tạo
     }
@@ -147,8 +139,20 @@ public class Home extends Fragment {
         sectionList.add(new Section("Văn học Việt Nam", bookList2));
         sectionList.add(new Section("Trinh thám", bookList3));
 
+        parentAdapter = new ParentAdapter(sectionList, new ParentAdapter.OnBookClickListener() {
+            @Override
+            public void onBookClick(Book book) {
+                // Tạo fragment mới để chuyển đến
+                ViewBookFragment viewBookFragment = new ViewBookFragment();
+
+                // Thực hiện chuyển fragment mà không cần truyền dữ liệu
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, viewBookFragment).commit();
+            }
+        });
+
+
         // Thiết lập adapter cho RecyclerView cha
-            parentAdapter = new ParentAdapter(sectionList);
             recyclerViewParent.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerViewParent.setAdapter(parentAdapter);
         }

@@ -1,7 +1,6 @@
 package com.example.bansach;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.Adapter.CartAdapter;
 import com.example.bansach.Adapter.Listview_bookAdapter;
 import com.example.bansach.model.Book;
 
