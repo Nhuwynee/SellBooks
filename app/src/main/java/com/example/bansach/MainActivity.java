@@ -29,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.listview_book);
+        setContentView(R.layout.add_book);
 
-        recyclerView = findViewById(R.id.recyclerView_addbook);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        bookList = new ArrayList<>();
-        bookList.add(new Book("Bong bóng anh đào", "Tê Kiến", 200000, "Hoạt động", R.drawable.bong_bong_anh_dao));
-        bookList.add(new Book("Hồng lục", "Kiểm Diệp Tử", 170000, "Hoạt động", R.drawable.hong_luc));
-        setContentView(R.layout.activity_order);
+//        recyclerView = findViewById(R.id.recyclerView_addbook);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        bookList = new ArrayList<>();
+//        bookList.add(new Book("Bong bóng anh đào", "Tê Kiến", 200000, "Hoạt động", R.drawable.bong_bong_anh_dao));
+//        bookList.add(new Book("Hồng lục", "Kiểm Diệp Tử", 170000, "Hoạt động", R.drawable.hong_luc));
+//        setContentView(R.layout.activity_order);
         // book1();
     }
 //        addImagesToFlipper();

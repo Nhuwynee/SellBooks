@@ -27,6 +27,10 @@ public class Book implements Parcelable {
         this.review = review;
         this.isActive = isActive;
     }
+    public Book(String category) {
+        this.category = category;
+
+    }
     public Book(String title, int imgURL, float price) {
         this.title = title;
         this.imgResource = imgURL;
