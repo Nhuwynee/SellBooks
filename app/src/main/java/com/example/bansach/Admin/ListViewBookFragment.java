@@ -1,4 +1,4 @@
-package com.example.bansach;
+package com.example.bansach.Admin;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,17 +8,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.Adapter.CartAdapter;
 import com.example.bansach.Adapter.Listview_bookAdapter;
+import com.example.bansach.R;
 import com.example.bansach.model.Book;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class listview_book extends Fragment {
+public class ListViewBookFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private Listview_bookAdapter adapter;
@@ -32,8 +32,6 @@ public class listview_book extends Fragment {
 
         // Khởi tạo các view
         recyclerView = view.findViewById(R.id.recyclerView_addbook);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         bookList = new ArrayList<>();
         bookList.add(new Book("Bong bóng anh đào", "Tê Kiến", 200000, "Hoạt động", R.drawable.bong_bong_anh_dao));
         bookList.add(new Book("Hồng lục", "Kiểm Diệp Tử", 170000, "Hoạt động", R.drawable.hong_luc));

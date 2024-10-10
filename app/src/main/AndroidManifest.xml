@@ -17,16 +17,16 @@
             android:exported="false"
             android:theme="@style/Theme.BANSACH" />
         <activity
-            android:name=".Order"
+            android:name=".Fragment.OrderFragment"
             android:exported="false" />
-        <activity android:name=".signup" />
-        <activity android:name=".login_main" />
-        <activity android:name=".forgot_pass"/>
+        <activity android:name=".SignUpPage" />
+        <activity android:name=".LoginMainPage" />
+        <activity android:name=".FogotPassPage"/>
         <activity android:name=".Fragment.HomeFragment"/>
         <activity android:name=".Fragment.ViewBookFragment"/>
         <activity android:name=".Fragment.CartFragment"/>
         <activity android:name="MenuActivity"/>
-        <activity android:name=".forgot_pass"
+        <activity android:name=".FogotPassPage"
             tools:ignore="DuplicateActivity" />
         <activity android:name=".Fragment.HomeFragment"
             tools:ignore="DuplicateActivity" />

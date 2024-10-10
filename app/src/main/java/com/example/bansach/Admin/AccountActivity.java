@@ -1,4 +1,4 @@
-package com.example.bansach;
+package com.example.bansach.Admin;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bansach.R;
 
-public class activity_account extends AppCompatActivity {
+public class AccountActivity extends AppCompatActivity {
 
     private ImageView userImage;
     private TextView userName, userRole;

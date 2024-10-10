@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +31,20 @@ import java.util.List;
             View view = inflater.inflate(R.layout.cart_main, container, false);
             recyclerView = view.findViewById(R.id.recyclerView);
             book(); // Khởi tạo dữ liệu
+            ImageButton cart = view.findViewById(R.id.btn_cart);
+
+            // Xử lý sự kiện nhấn nút
+            cart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Chuyển sang Fragment khác
+                    OrderFragment newFragment = new OrderFragment();
+                    getParentFragmentManager().beginTransaction()
+                            .replace(R.id.container, newFragment) // Đảm bảo ID container đúng
+                            .addToBackStack(null) // Nếu muốn thêm vào backstack
+                            .commit();
+                }
+            });
             return view; // Trả về view đã tạo
         }
 

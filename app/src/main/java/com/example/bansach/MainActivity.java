@@ -3,29 +3,19 @@ package com.example.bansach;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.Adapter.Listview_bookAdapter;
 import com.example.bansach.model.Book;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ListView;
 
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -45,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Sử dụng Intent để chuyển sang SignupActivity
-                Intent intent = new Intent(MainActivity.this, signup.class);
+                Intent intent = new Intent(MainActivity.this, SignUpPage.class);
                 startActivity(intent);  // Bắt đầu SignupActivity
             }
         });
@@ -53,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Sử dụng Intent để chuyển sang SignupActivity
-                Intent intent = new Intent(MainActivity.this, login_main.class);
+                Intent intent = new Intent(MainActivity.this, LoginMainPage.class);
                 startActivity(intent);  // Bắt đầu SignupActivity
             }
         });}}

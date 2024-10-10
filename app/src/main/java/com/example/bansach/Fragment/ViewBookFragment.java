@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
@@ -27,6 +28,7 @@ public class ViewBookFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.viewbooks_main, container, false);
         viewFlipper = view.findViewById(R.id.viewflipper);
+        ImageButton cart = view.findViewById(R.id.btn_cart);
         addImagesToFlipper();
 
         if (getArguments() != null) {
