@@ -1,40 +1,19 @@
 package com.example.bansach;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ListView;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.widget.Toolbar;
-
-import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 //import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.GravityCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bansach.Adapter.BookAdapter;
-import com.example.bansach.Adapter.ParentAdapter;
-import com.example.bansach.Adapter.TextAdapter;
+import com.example.bansach.Adapter.CartAdapter;
 import com.example.bansach.model.Book;
-import com.example.bansach.model.Section;
-import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -44,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private CartAdapter cartAdapter;
     private List<Book> bookList;
-
-
+    ViewFlipper viewFlipper;
     FrameLayout frameLayout;
     TabLayout tabLayout;
 
@@ -54,8 +32,73 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order);
-        // book1();
+        setContentView(R.layout.activity_account);
+
+       //  book1();
+
+        // VIEW BOOKS - NHUW
+//        addImagesToFlipper();
+//
+//        frameLayout = (FrameLayout) findViewById(R.id.framelayout);
+//        tabLayout = (TabLayout) findViewById(R.id.tablayout);
+//
+//        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new AboutFragment())
+//                .addToBackStack(null)
+//                .commit();
+//
+//
+//        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override
+//            public void onTabSelected(TabLayout.Tab tab) {
+//
+//                Fragment fragment = null;
+//                switch (tab.getPosition()) {
+//                    case 0:
+//                        fragment = new AboutFragment();
+//                        break;
+//                    case 1:
+//                        fragment = new ReviewFragment();
+//                        break;
+//                    case 2:
+//                        fragment = new AuthorFragment();
+//                        break;
+//
+//                }
+//
+//                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, fragment)
+//                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                        .commit();
+//            }
+//
+//            @Override
+//            public void onTabUnselected(TabLayout.Tab tab) {
+//
+//            }
+//
+//            @Override
+//            public void onTabReselected(TabLayout.Tab tab) {
+//
+//            }
+//        });
+    }
+
+    private void addImagesToFlipper() {
+        viewFlipper = findViewById(R.id.viewflipper);
+        try {
+            int[] images = {R.drawable.hong_luc, R.drawable.hong_luc_2};
+
+            for (int image : images) {
+                ImageView imageView = new ImageView(this);
+                imageView.setImageResource(image);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                viewFlipper.addView(imageView);
+            }
+            viewFlipper.setFlipInterval(2000);
+            viewFlipper.setAutoStart(true);
+            viewFlipper.startFlipping();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 //        addImagesToFlipper();
 //
@@ -226,7 +269,6 @@ public class MainActivity extends AppCompatActivity {
 //
 
 
-
 //    private void category() {
 //
 //        RecyclerView recyclerView1 = findViewById(R.id.recyclerView1);
@@ -382,6 +424,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(cartAdapter);
     }
 }
+
 //    private void book1() {
 //        recyclerView = findViewById(R.id.recyclerView);
 //

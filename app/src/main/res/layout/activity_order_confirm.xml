@@ -38,15 +38,107 @@
         </ImageView>
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="#EAF7FF"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginRight="11dp"
+        >
+
+        <TextView
+            android:id="@+id/date_order"
+            android:layout_width="196dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="155dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="Ngày giao dự kiến"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/date_detail"
+            android:layout_width="118dp"
+            android:layout_height="27dp"
+            android:layout_above="@+id/express"
+            android:layout_below="@+id/date_order"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="231dp"
+            android:layout_marginBottom="29dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="20/10/2024"
+            android:textColor="#2A1993"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="237dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/express"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="113dp"
+            android:layout_marginBottom="-4dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="Đơn vị vận chuyển"
+            android:textColor="#000000"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/express"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="253dp"
+            android:layout_marginBottom="-5dp"
+            android:paddingBottom="5dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="SPX Expresss"
+            android:textColor="#2A1993"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/ic_car"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/danggiao_text"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="262dp"
+            android:layout_marginEnd="49dp"
+            android:layout_marginBottom="1dp"
+            android:src="@drawable/ic_car" />
+
+        <TextView
+            android:id="@+id/danggiao_text"
+            android:layout_width="102dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="27dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/arima_semibold"
+            android:paddingBottom="5dp"
+            android:text="Đang giao"
+            android:textColor="#78103C"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="372dp"
         android:layout_height="0dp"
         android:layout_weight="9"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/br_order"
+        android:layout_marginTop="-20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/border_blue"
         android:padding="16dp">
 
         <!-- Customer Information -->
@@ -159,9 +251,9 @@
             android:layout_below="@id/customer_address"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="21dp"
-            android:layout_marginEnd="95dp"
+            android:layout_marginEnd="105dp"
             android:fontFamily="@font/arima_semibold"
-            android:text="Hóa đơn chi tiết"
+            android:text="Invoice details"
             android:textColor="#2A15AB"
             android:textSize="22sp" />
 
@@ -181,7 +273,7 @@
             android:layout_below="@id/invoice_title"
             android:layout_marginTop="11dp"
             android:fontFamily="@font/arima_semibold"
-            android:text="Sản phẩm"
+            android:text="Products"
             android:textColor="#78103C"
             android:textSize="18sp" />
 
@@ -194,7 +286,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="160dp"
             android:fontFamily="@font/arima_semibold"
-            android:text="Giá"
+            android:text="Price"
             android:textColor="#78103C"
             android:textSize="18sp" />
 
@@ -208,7 +300,7 @@
             android:layout_marginEnd="-135dp"
             android:layout_toStartOf="@id/price_label"
             android:fontFamily="@font/arima_semibold"
-            android:text="Số lượng"
+            android:text="Quantity"
             android:textColor="#78103C"
             android:textSize="18sp" />
 
@@ -221,7 +313,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="17dp"
             android:fontFamily="@font/arima_semibold"
-            android:text="Tổng"
+            android:text="Total"
             android:textColor="#78103C"
             android:textSize="18sp" />
 
@@ -276,25 +368,40 @@
             android:textSize="16sp" />
 
         <Button
-            android:id="@+id/buy_button"
+            android:id="@+id/huy_button"
             android:layout_width="103dp"
             android:layout_height="38dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="125dp"
+            android:layout_marginStart="30dp"
             android:background="@drawable/border_pink"
             android:fontFamily="@font/arima_bold"
             android:gravity="center"
             android:paddingTop="3dp"
-            android:text="MUA"
-            android:textColor="#78103C"
-            android:textSize="20dp" />
+            android:text="Hủy đơn"
+            android:textColor="#000000"
+            android:textSize="17dp" />
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="103dp"
+            android:layout_height="38dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="200dp"
+            android:background="@drawable/btn_border_blue"
+            android:fontFamily="@font/arima_bold"
+            android:gravity="center"
+            android:paddingTop="3dp"
+            android:text="Mua sắm"
+            android:textColor="#000000"
+            android:textSize="17dp" />
 
         <LinearLayout
-            android:layout_width="286dp"
-            android:layout_height="510dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="310dp"
+            android:layout_marginLeft="35dp"
             android:gravity="bottom"
             android:orientation="vertical"
             android:padding="16dp">
@@ -302,16 +409,16 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="-0dp"
+                android:layout_marginBottom="-20dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arima_semibold"
-                    android:text="Mã đơn"
+                    android:text="Order ID"
                     android:textColor="#78103C"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -322,7 +429,7 @@
                     android:paddingLeft="50dp"
                     android:text="2410002"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <!-- Row 2: Date -->
@@ -337,9 +444,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arima_semibold"
-                    android:text="Ngày"
+                    android:text="Date"
                     android:textColor="#78103C"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -347,10 +454,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/arima_semibold"
-                    android:paddingLeft="68dp"
+                    android:paddingLeft="80dp"
                     android:text="08/10/2024"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <!-- Row 3: Quantity -->
@@ -358,16 +465,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arima_semibold"
-                    android:text="Số lượng"
+                    android:text="Quantity"
                     android:textColor="#78103C"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -375,10 +481,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/arima_semibold"
-                    android:paddingLeft="45dp"
+                    android:paddingLeft="50dp"
                     android:text="2"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
 
             <!-- Row 4: Prices -->
@@ -386,16 +492,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="18dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arima_semibold"
-                    android:text="Tổng tiền"
+                    android:text="Prices"
                     android:textColor="#78103C"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -403,10 +508,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/arima_semibold"
-                    android:paddingLeft="40dp"
+                    android:paddingLeft="60dp"
                     android:text="425.000đ"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="16dp" />
             </LinearLayout>
         </LinearLayout>
 
