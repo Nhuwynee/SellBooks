@@ -21,9 +21,24 @@
         <activity android:name=".signup" />
         <activity android:name=".login_main" />
         <activity android:name=".forgot_pass" />
-        <activity android:name=".ViewBooks" />
         <activity android:name=".CartPage" />
-        <activity android:name=".Home" /> <!-- <activity android:name=".Order"/> -->
+        <!-- <activity android:name=".Order"/> -->
+        <activity android:name=".Fragment.HomeFragment"/>
+        <activity android:name=".Fragment.ViewBookFragment"/>
+        <activity android:name=".Fragment.CartFragment"/>
+        <activity android:name="MenuActivity"/>
+        <activity android:name=".forgot_pass"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".Fragment.HomeFragment"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".Fragment.ViewBookFragment"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".Fragment.CartFragment"
+            tools:ignore="DuplicateActivity" /> <!-- <activity android:name=".forgot_pass"/> -->
+        <activity android:name=".Fragment.HomeFragment"
+            tools:ignore="DuplicateActivity" /> <!-- <activity android:name=".CartPage"/> -->
+        <activity android:name=".Fragment.ViewBookFragment"
+            tools:ignore="DuplicateActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

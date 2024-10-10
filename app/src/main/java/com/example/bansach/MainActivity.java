@@ -1,19 +1,27 @@
 package com.example.bansach;
 
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 
-import android.widget.ViewFlipper;
-
-//import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bansach.Adapter.CartAdapter;
+import com.example.bansach.Adapter.Listview_bookAdapter;
 import com.example.bansach.model.Book;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ListView;
+
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -21,85 +29,34 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private CartAdapter cartAdapter;
+    private Listview_bookAdapter adapter;
     private List<Book> bookList;
-    ViewFlipper viewFlipper;
+
     FrameLayout frameLayout;
     TabLayout tabLayout;
-
     private Button btnFrag;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account);
-
-       //  book1();
-
-        // VIEW BOOKS - NHUW
-//        addImagesToFlipper();
-//
-//        frameLayout = (FrameLayout) findViewById(R.id.framelayout);
-//        tabLayout = (TabLayout) findViewById(R.id.tablayout);
-//
-//        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, new AboutFragment())
-//                .addToBackStack(null)
-//                .commit();
-//
-//
-//        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//
-//                Fragment fragment = null;
-//                switch (tab.getPosition()) {
-//                    case 0:
-//                        fragment = new AboutFragment();
-//                        break;
-//                    case 1:
-//                        fragment = new ReviewFragment();
-//                        break;
-//                    case 2:
-//                        fragment = new AuthorFragment();
-//                        break;
-//
-//                }
-//
-//                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout, fragment)
-//                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-//                        .commit();
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });
-    }
-
-    private void addImagesToFlipper() {
-        viewFlipper = findViewById(R.id.viewflipper);
-        try {
-            int[] images = {R.drawable.hong_luc, R.drawable.hong_luc_2};
-
-            for (int image : images) {
-                ImageView imageView = new ImageView(this);
-                imageView.setImageResource(image);
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                viewFlipper.addView(imageView);
+        setContentView(R.layout.login1);
+        Button signupButton = findViewById(R.id.signup_button);
+        Button loginButton = findViewById(R.id.login_button);
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sử dụng Intent để chuyển sang SignupActivity
+                Intent intent = new Intent(MainActivity.this, signup.class);
+                startActivity(intent);  // Bắt đầu SignupActivity
             }
-            viewFlipper.setFlipInterval(2000);
-            viewFlipper.setAutoStart(true);
-            viewFlipper.startFlipping();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+        });
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sử dụng Intent để chuyển sang SignupActivity
+                Intent intent = new Intent(MainActivity.this, login_main.class);
+                startActivity(intent);  // Bắt đầu SignupActivity
+            }
+        });}}
 //        addImagesToFlipper();
 //
 //        frameLayout = (FrameLayout) findViewById(R.id.framelayout);
@@ -250,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
-    // ----------------- Như
+// ----------------- Như
 //        btnFrag = (Button) findViewById(R.id.btn_review);
 //        btnFrag.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -265,8 +222,9 @@ public class MainActivity extends AppCompatActivity {
 
 //        addImagesToFlipper();
 //        book();
-    //  }
+//  }
 //
+
 
 
 //    private void category() {
@@ -297,7 +255,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 // HEAD
-    // ?
+// ?
 
 //    private void book() {
 //        recyclerView = findViewById(R.id.recyclerView);
@@ -371,7 +329,7 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView.setAdapter(bookAdapter);
 //    }
 
-    // ---------------------- Như
+// ---------------------- Như
 //    private void addFragment(Fragment fragment) {
 //        FragmentManager fmgr = getSupportFragmentManager();
 //        FragmentTransaction ft = fmgr.beginTransaction();
@@ -398,32 +356,9 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
-    // =====================================
+// =====================================
 
 
-    private void book1() {
-        recyclerView = findViewById(R.id.recyclerView);
-
-        // Khởi tạo dữ liệu sách
-        bookList = new ArrayList<>();
-        bookList.add(new Book("Hồng Lục", R.drawable.hong_luc, 225000, "Kim Diệp Tử"));
-        bookList.add(new Book("Nhật ký tình yêu", R.drawable.nhat_kinh_tinh_yeu, 175000, "Mark Twain"));
-        bookList.add(new Book("Bong bóng anh đào", R.drawable.bong_bong_anh_dao, 250000, "Tê Kiến"));
-        bookList.add(new Book("Này đừng có ăn cỏ", R.drawable.nay_dung_co_an_co, 174000, "Nguyễn Nhật Ánh"));
-        bookList.add(new Book("Này chớ làm loạn", R.drawable.nay_cho_lam_loan, 100000, "Phạm Nhật An"));
-        bookList.add(new Book("Tình yêu của thời hạ", R.drawable.tinh_yeu_cua_thoi_ha, 186000, "Lê Minh Đạt"));
-        bookList.add(new Book("Tóc của tôi", R.drawable.toc_cua_toi, 117000, "Lưu Thị Lan"));
-        bookList.add(new Book("Vợ nhặt", R.drawable.vhvn1, 99000, "Nguyễn Nhật Ánh"));
-
-        // Khởi tạo adapter
-        cartAdapter = new CartAdapter(bookList);
-
-        // Thiết lập LinearLayoutManager với hướng ngang
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(cartAdapter);
-    }
-}
 
 //    private void book1() {
 //        recyclerView = findViewById(R.id.recyclerView);
@@ -448,8 +383,3 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView.setAdapter(cartAdapter);
 //    }
 //}
-
-
-
-// d677e22dbbe1284639ba4f618d46ac9a273a5627
-// ba7ecc200d9943a06fa363036581c6b37029ef29

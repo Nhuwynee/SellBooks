@@ -14,18 +14,13 @@ import com.example.bansach.model.Book;
 
 import java.util.List;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
+public class Listview_bookAdapter extends RecyclerView.Adapter<Listview_bookAdapter.BookViewHolder> {
 
     private List<Book> bookList;
-    private ParentAdapter.OnBookClickListener listener;
 
-    public interface OnBookClickListener {
-        void onBookClick(Book book);
-    }
-
-    public BookAdapter(List<Book> bookList, ParentAdapter.OnBookClickListener listener) {
+    // Constructor
+    public Listview_bookAdapter(List<Book> bookList) {
         this.bookList = bookList;
-        this.listener = listener;
     }
 
     @NonNull
@@ -39,31 +34,27 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
         Book book = bookList.get(position);
         holder.bookTitle.setText(book.getTitle());
-        holder.bookImage.setImageResource(book.getImgResource());
+        holder.bookAuthor.setText(book.getAuthor());
         holder.bookPrice.setText(String.valueOf(book.getPrice()));
-
-        holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onBookClick(book);
-            }
-        });
+        holder.bookStatus.setText(book.getIsActive());
+        holder.imageBook.setImageResource(book.getImgResource());
     }
-
-
     @Override
     public int getItemCount() {
-        return bookList.size();
+        return (bookList != null && !bookList.isEmpty()) ? bookList.size() : 0;
     }
 
-    public static class BookViewHolder extends RecyclerView.ViewHolder {
-        public TextView bookTitle;
-        public ImageView bookImage;
-        public TextView bookPrice;
-        public BookViewHolder(View itemView) {
+    static class BookViewHolder extends RecyclerView.ViewHolder {
+        TextView bookTitle, bookAuthor, bookPrice, bookStatus;
+        ImageView imageBook;
+
+        public BookViewHolder(@NonNull View itemView) {
             super(itemView);
-            bookTitle = itemView.findViewById(R.id.bookTitle1);
-            bookImage = itemView.findViewById(R.id.bookImage1);
-            bookPrice = itemView.findViewById(R.id.bookTitle2);
+            bookTitle = itemView.findViewById(R.id.book_title);
+            bookAuthor = itemView.findViewById(R.id.book_author);
+            bookPrice = itemView.findViewById(R.id.book_price);
+            bookStatus = itemView.findViewById(R.id.book_status);
+            imageBook = itemView.findViewById(R.id.image_book);
         }
     }
 }

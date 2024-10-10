@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_add_book"
+        android:id="@+id/navigation_home"
         android:icon="@drawable/icon_home"
         android:title="Trang chủ" />
 
     <item
-        android:id="@+id/navigation_list_books"
+        android:id="@+id/navigation_search"
         android:icon="@drawable/icon_search"
         android:title="Tìm kiếm" />
 
     <item
-        android:id="@+id/navigation_edit"
+        android:id="@+id/navigation_cart"
         android:icon="@drawable/icon_cart"
         android:title="Giỏ hàng" />
 
     <item
-        android:id="@+id/navigation_orders"
+        android:id="@+id/navigation_account"
         android:icon="@drawable/icon_account"
         android:title="Tôi" />
 

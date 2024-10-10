@@ -1,9 +1,10 @@
 package com.example.bansach.model;
+
 import java.util.List;
 
 public class Section {
     private String title;
-    private static List<Book> itemList;
+    private List<Book> itemList;
 
     public Section(String title, List<Book> itemList) {
         this.title = title;
@@ -14,8 +15,7 @@ public class Section {
         return title;
     }
 
-    public static List<Book> getItemList() {
+    public List<Book> getItemList() {
         return itemList;
     }
 }
-

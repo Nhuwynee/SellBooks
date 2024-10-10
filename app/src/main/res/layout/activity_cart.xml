@@ -4,15 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.CartFragment"
     android:background="#E81970"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_marginTop="-2dp"
-        android:layout_marginLeft="-5dp"
-        android:layout_marginRight="-5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginRight="-5dp"
         android:background="@drawable/border_shape"
         >
         <TextView
@@ -47,7 +48,6 @@
             android:background="@color/white"
             android:layout_height="0dp"
             android:layout_weight="1"/>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -98,23 +98,6 @@
                 android:src="@drawable/ic_bag" />
 
         </LinearLayout>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="#E81970"
-            app:itemIconTint="@color/nav_item_color"
-            app:itemTextColor="@color/nav_item_color"
-            app:itemTextAppearanceActive="@style/TextAppearance.BottomNavigationView.BoldText"
-            app:itemTextAppearanceInactive="@style/TextAppearance.BottomNavigationView.BoldText"
-            app:labelVisibilityMode="labeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:itemBackground="@drawable/nav_item_background"
-            app:menu="@menu/menu_trangchu" />
 
     </LinearLayout>
 </LinearLayout>

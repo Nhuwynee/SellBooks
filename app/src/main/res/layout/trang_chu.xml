@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Fragment.HomeFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <LinearLayout
             android:orientation="vertical"
@@ -23,10 +29,12 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="-280dp"
                 >
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="130dp"
                     android:layout_height="50dp"
                     android:text="Đề xuất"
                     android:textSize="35sp"
@@ -55,13 +63,11 @@
                 android:layout_gravity="center" >
             </ViewFlipper>
 
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="300dp">
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
                     android:orientation="vertical">
                     <TextView
                         android:id="@+id/sectionTitle"
@@ -91,10 +97,8 @@
                 </LinearLayout>
 
                 </LinearLayout>
-            </androidx.core.widget.NestedScrollView>
-
-
         </LinearLayout>
 
+            </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
