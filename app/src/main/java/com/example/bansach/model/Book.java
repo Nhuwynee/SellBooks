@@ -9,13 +9,13 @@ public class Book implements Parcelable {
     private String author;
     private String category;
     private int imgResource;
-    private int price;
+    private float price;
     private int inStock;
     private String description;
     private String review;
-    private int isActive;
+    private String isActive;
 
-    public Book(String id, String title, String author, String category, int imgURL, int year, int price, int inStock, String description, String review,int isActive) {
+    public Book(String id, String title, String author, String category, int imgURL, int year, float price, int inStock, String description, String review,String isActive) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -27,17 +27,24 @@ public class Book implements Parcelable {
         this.review = review;
         this.isActive = isActive;
     }
-    public Book(String title, int imgURL, int price) {
+    public Book(String title, int imgURL, float price) {
         this.title = title;
         this.imgResource = imgURL;
         this.price = price;
     }
 
-    public Book(String title, int imgURL, int price, String author) {
+    public Book(String title, int imgURL, float price, String author) {
         this.title = title;
         this.imgResource = imgURL;
         this.price = price;
         this.author = author;
+    }
+    public Book(String title, String author, float price, String status, int imageResource) {
+        this.title = title;
+        this.author = author;
+        this.price = price;
+        this.isActive = status;
+        this.imgResource = imageResource;
     }
 
     public Book() {
@@ -50,11 +57,11 @@ public class Book implements Parcelable {
         author = in.readString();
         category = in.readString();
         imgResource = in.readInt();
-        price = in.readInt();
+        price = in.readFloat();
         inStock = in.readInt();
         description = in.readString();
         review=in.readString();
-        isActive = in.readInt();
+        isActive = in.readString();
     }
 
     public static final Creator<Book> CREATOR = new Creator<Book>() {
@@ -133,7 +140,7 @@ public class Book implements Parcelable {
         this.imgResource = imgURL;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
@@ -157,11 +164,11 @@ public class Book implements Parcelable {
         this.review = review;
     }
 
-    public int getIsActive() {
+    public String getIsActive() {
         return isActive;
     }
 
-    public void setIsActive(int isActive) {
+    public void setIsActive(String isActive) {
         this.isActive = isActive;
     }
 
@@ -177,9 +184,9 @@ public class Book implements Parcelable {
         parcel.writeString(author);
         parcel.writeString(category);
         parcel.writeInt(imgResource);
-        parcel.writeInt(price);
+        parcel.writeFloat(price);
         parcel.writeInt(inStock);
         parcel.writeString(description);
-        parcel.writeInt(isActive);
+        parcel.writeString(isActive);
     }
 }

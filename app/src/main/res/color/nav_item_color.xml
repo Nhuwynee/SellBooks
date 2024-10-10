@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Icon và chữ của item được chọn -->
     <item android:color="#EB2F80" android:state_checked="true" android:state_selected="true" />
-    <!-- Icon và chữ của các item khác -->
     <item android:color="@android:color/white" />
 </selector>

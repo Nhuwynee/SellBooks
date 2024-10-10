@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Đặt icon cho mục Add book -->
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/icon_home"
         android:title="Trang chủ" />
 
-    <!-- Đặt icon cho mục List books -->
     <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/icon_search"
         android:title="Tìm kiếm" />
 
-    <!-- Đặt icon cho mục Edit -->
     <item
         android:id="@+id/navigation_cart"
         android:icon="@drawable/icon_cart"
         android:title="Giỏ hàng" />
 
-    <!-- Đặt icon cho mục Orders -->
     <item
         android:id="@+id/navigation_account"
         android:icon="@drawable/icon_account"

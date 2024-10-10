@@ -35,89 +35,15 @@
             android:layout_centerVertical="true" />
     </RelativeLayout>
 
-    <!-- Scrollable content (book list) -->
-    <ScrollView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_addbook"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/bottomNavigationView"
+        android:layout_height="0dp"
         android:layout_below="@id/iconContainer"
-        android:fillViewport="true">
-
-        <!-- Book List Content -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <!-- Sample Book List Item -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="8dp"
-                android:background="@android:color/white"
-                android:layout_marginBottom="4dp"
-                android:elevation="2dp">
-
-                <!-- Book thumbnail -->
-                <ImageView
-                    android:id="@+id/book_image"
-                    android:layout_width="70dp"
-                    android:layout_height="90dp"
-                    android:layout_marginEnd="16dp"
-                    android:src="@drawable/bong_bong_anh_dao" />
-
-                <!-- Book details: Title, Author, Price, Status -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <!-- Book title -->
-                    <TextView
-                        android:id="@+id/book_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bong bóng anh đào"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:textColor="#78103C" />
-
-                    <!-- Book author -->
-                    <TextView
-                        android:id="@+id/book_author"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Tê Kiến"
-                        android:textSize="14sp"
-                        android:textColor="@color/black" />
-
-                    <!-- Book price -->
-                    <TextView
-                        android:id="@+id/book_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="170.000 VND"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/holo_red_dark" />
-
-                    <!-- Book status -->
-                    <TextView
-                        android:id="@+id/book_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hoạt động"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/holo_green_dark" />
-                </LinearLayout>
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-    </ScrollView>
+        android:layout_above="@id/bottomNavigationView"
+        android:layout_weight="1"
+        android:clipToPadding="false" />
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
