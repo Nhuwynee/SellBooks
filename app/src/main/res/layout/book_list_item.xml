@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <ScrollView
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="3dp">
 
             <!-- Sample Book List Item -->
             <LinearLayout
@@ -53,7 +53,8 @@
                         android:text="Bong bóng anh đào"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="#78103C" />
+                        android:textColor="#78103C"
+                        android:fontFamily="@font/arima_bold"/>
 
                     <!-- Book author -->
                     <TextView
@@ -62,28 +63,39 @@
                         android:layout_height="wrap_content"
                         android:text="Tê Kiến"
                         android:textSize="14sp"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/arima_bold"/>
 
-                    <!-- Book price -->
-                    <TextView
-                        android:id="@+id/book_price"
+                    <!-- Horizontal layout for Price and Status -->
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="170.000 VND"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/holo_red_dark" />
+                        android:orientation="horizontal"
+                        android:layout_marginTop="12dp"> <!-- Increase marginTop here -->
 
-                    <!-- Book status -->
-                    <TextView
-                        android:id="@+id/book_status"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hoạt động"
-                        android:textSize="14sp"
-                        android:textColor="@android:color/holo_green_dark" />
+                        <!-- Book price -->
+                        <TextView
+                            android:id="@+id/book_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="170.000 VND"
+                            android:textSize="14sp"
+                            android:textColor="@android:color/holo_red_dark"
+                            android:fontFamily="@font/arima_bold"/>
+
+                        <!-- Book status -->
+                        <TextView
+                            android:id="@+id/book_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:text="Hoạt động"
+                            android:textSize="14sp"
+                            android:textColor="@android:color/holo_green_dark"
+                            android:fontFamily="@font/arima_bold"/>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
