@@ -1,0 +1,93 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="15dp"
+    android:background="@drawable/border_top_invoice">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@drawable/border_shapeblue"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/avatarImage"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/hong_luc"
+            android:scaleType="centerCrop"
+            android:clipToOutline="true" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5"
+            android:layout_marginLeft="30dp"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/orderNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2411002"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:fontFamily="@font/arima_bold" />
+
+            <TextView
+                android:id="@+id/orderDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="08/10/2024"
+                android:textSize="15sp"
+                android:fontFamily="@font/arima_bold"
+                android:textColor="#555"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/orderPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="425.000đ"
+                android:fontFamily="@font/arima_bold"
+                android:textSize="15sp"
+                android:textColor="#E81970"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="20dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/statusIcon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/xemay"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/orderStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đang giao"
+                android:fontFamily="@font/arima_bold"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                android:layout_marginTop="4dp"
+                android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

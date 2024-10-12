@@ -3,7 +3,6 @@ package com.example.bansach.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,18 +13,12 @@ import com.example.bansach.model.Book;
 
 import java.util.List;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
+public class BookAdapterDelete extends RecyclerView.Adapter<BookAdapterDelete.BookViewHolder> {
 
     private List<Book> bookList;
-    private ParentAdapter.OnBookClickListener listener;
 
-    public interface OnBookClickListener {
-        void onBookClick(Book book);
-    }
-
-    public BookAdapter(List<Book> bookList, ParentAdapter.OnBookClickListener listener) {
+    public BookAdapterDelete(List<Book> bookList) {
         this.bookList = bookList;
-        this.listener = listener;
     }
 
     @NonNull
@@ -39,31 +32,36 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
         Book book = bookList.get(position);
         holder.bookTitle.setText(book.getTitle());
-        holder.bookImage.setImageResource(book.getImgResource());
+        holder.bookAuthor.setText(book.getAuthor());
         holder.bookPrice.setText(String.valueOf(book.getPrice()));
 
+        // Set up the click listener to delete the book
         holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onBookClick(book);
-            }
+            // Remove the book from the list
+            bookList.remove(position);
+            notifyItemRemoved(position);
         });
     }
-
 
     @Override
     public int getItemCount() {
         return bookList.size();
     }
 
-    public static class BookViewHolder extends RecyclerView.ViewHolder {
-        public TextView bookTitle;
-        public ImageView bookImage;
-        public TextView bookPrice;
-        public BookViewHolder(View itemView) {
+    public class BookViewHolder extends RecyclerView.ViewHolder {
+        TextView bookTitle, bookAuthor, bookPrice;
+
+        public BookViewHolder(@NonNull View itemView) {
             super(itemView);
-            bookTitle = itemView.findViewById(R.id.bookTitle1);
-            bookImage = itemView.findViewById(R.id.bookImage1);
-            bookPrice = itemView.findViewById(R.id.bookTitle2);
+            bookTitle = itemView.findViewById(R.id.book_title);
+            bookAuthor = itemView.findViewById(R.id.book_author);
+            bookPrice = itemView.findViewById(R.id.book_price);
         }
+    }
+
+    // Method to remove a book from the adapter
+    public void removeBook(int position) {
+        bookList.remove(position);
+        notifyItemRemoved(position);
     }
 }

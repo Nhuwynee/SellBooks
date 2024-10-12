@@ -120,6 +120,8 @@ android:background="#FFF">
             android:layout_height="wrap_content"
             android:text="Thêm sách mới"
             android:textColor="#2A15AB"
+            android:fontFamily="@font/arima_bold"
+            android:textSize="20dp"
             android:layout_marginTop="25dp"
             android:background="@drawable/btn_account"
             android:layout_marginBottom="26dp" />
@@ -130,6 +132,8 @@ android:background="#FFF">
             android:layout_height="wrap_content"
             android:text="Danh sách sách"
             android:textColor="#ffffff"
+            android:fontFamily="@font/arima_bold"
+            android:textSize="20dp"
             android:background="@drawable/btn_account_purple"
             android:layout_marginBottom="26dp" />
 
@@ -139,6 +143,8 @@ android:background="#FFF">
             android:layout_height="wrap_content"
             android:text="Danh sách đơn hàng"
             android:textColor="#2A15AB"
+            android:fontFamily="@font/arima_bold"
+            android:textSize="20dp"
             android:background="@drawable/btn_account"
             android:layout_marginBottom="26dp" />
 
@@ -148,6 +154,8 @@ android:background="#FFF">
             android:layout_height="wrap_content"
             android:text="Đăng xuất"
             android:textColor="#ffffff"
+            android:fontFamily="@font/arima_bold"
+            android:textSize="20dp"
             android:background="@drawable/btn_account_purple" />
     </LinearLayout>
 </LinearLayout>

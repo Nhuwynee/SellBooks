@@ -41,7 +41,7 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.InvoiceV
         holder.orderDate.setText(formattedDate);
 
         // Chuyển đổi giá tiền từ int sang String với định dạng
-        holder.orderPrice.setText(String.format(Locale.getDefault(), "%,dđ", invoice.getOrderPrice()));
+        holder.orderPrice.setText(String.format(Locale.getDefault(), "%,VNĐ", invoice.getOrderPrice()));
 
         holder.orderStatus.setText(invoice.getOrderStatus());
 

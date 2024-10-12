@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class List_invoice extends AppCompatActivity {
+public class ListInvoice extends AppCompatActivity {
 
     private RecyclerView recyclerViewInvoices;
     private InvoiceAdapter invoiceAdapter;

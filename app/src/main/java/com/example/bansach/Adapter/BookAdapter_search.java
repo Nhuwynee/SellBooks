@@ -14,29 +14,27 @@ import com.example.bansach.model.Book;
 
 import java.util.List;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
-
+public class BookAdapter_search extends RecyclerView.Adapter<BookAdapter.BookViewHolder>{
     private List<Book> bookList;
-    private ParentAdapter.OnBookClickListener listener;
+    private OnBookClickListener listener;
 
     public interface OnBookClickListener {
         void onBookClick(Book book);
     }
-
-    public BookAdapter(List<Book> bookList, ParentAdapter.OnBookClickListener listener) {
+    public BookAdapter_search(List<Book> bookList, OnBookClickListener listener) {
         this.bookList = bookList;
         this.listener = listener;
     }
 
     @NonNull
     @Override
-    public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BookAdapter.BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_book, parent, false);
-        return new BookViewHolder(view);
+        return new BookAdapter.BookViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BookAdapter.BookViewHolder holder, int position) {
         Book book = bookList.get(position);
         holder.bookTitle.setText(book.getTitle());
         holder.bookImage.setImageResource(book.getImgResource());
@@ -49,7 +47,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         });
     }
 
-
     @Override
     public int getItemCount() {
         return bookList.size();
@@ -59,11 +56,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         public TextView bookTitle;
         public ImageView bookImage;
         public TextView bookPrice;
+
         public BookViewHolder(View itemView) {
             super(itemView);
             bookTitle = itemView.findViewById(R.id.bookTitle1);
             bookImage = itemView.findViewById(R.id.bookImage1);
-            bookPrice = itemView.findViewById(R.id.bookTitle2);
+            bookPrice = itemView.findViewById(R.id.book_price);
         }
     }
 }
