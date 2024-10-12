@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="1dp">
+
+    <!-- Phần tìm kiếm -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="680dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Tìm kiếm"
+                android:textColor="#E6007E"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/arima_semibold"
+                android:textSize="30sp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/tvGreeting"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Xin chào, Nguyệt"
+                android:textColor="#E6007E"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/arima_semibold"
+                android:textSize="20sp"  />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/avatar"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:hint="Tìm kiếm"
+            android:fontFamily="@font/arima_regular"
+            android:textSize="23dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/bg_textfield_search"
+            />
+        <!-- Danh sách gợi ý -->
+        <TextView
+            android:id="@+id/tvSuggestions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gợi ý"
+            android:textColor="#E6007E"
+            android:paddingLeft="5dp"
+            android:fontFamily="@font/arima_semibold"
+            android:textSize="25sp"
+            android:layout_marginTop="5dp" />
+
+        <!-- RecyclerView để hiển thị sách -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewBooks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:scrollbars="horizontal" />
+    </LinearLayout>
+
+    <!-- Thanh điều hướng dưới -->
+
+
+</LinearLayout>

@@ -34,6 +34,9 @@ public class MenuActivity extends AppCompatActivity {
                 else if (id == R.id.navigation_home) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
                 }
+                else if (id == R.id.navigation_search) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new SearchPage()).commit();
+                }
                 return true;
             }
         });
