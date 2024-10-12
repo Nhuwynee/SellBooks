@@ -47,7 +47,7 @@
             android:text="Đoạn văn mẫu của sách sẽ hiển thị ở đây. Nội dung sẽ dài và có thể cuộn để xem tiếp..."
             android:textSize="16sp"
             android:textColor="#444"
-            android:fontFamily="@font/arima_regular" />
+            android:fontFamily="@font/arima_semibold" />
     </ScrollView>
 
     <Button

@@ -181,12 +181,29 @@
             <FrameLayout
                 android:id="@+id/framelayout"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="5dp">
             </FrameLayout>
 
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:background="@color/white"
+                android:text="Đọc thử"
+                android:layout_gravity="left"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/arima_bold"
+                android:textColor="#E81970"
+                android:gravity="center"
+                >
+
+            </Button>
+
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_marginBottom="-8dp"
                 android:layout_height="wrap_content">
 
                 <ImageButton
