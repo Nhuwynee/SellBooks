@@ -16,7 +16,7 @@
             android:name=".Fragment.ListHistoryFragment"
             android:exported="false" />
         <activity
-            android:name=".Account"
+            android:name=".Fragment.AccountFragment"
             android:exported="false" />
         <activity
             android:name=".Fragment.OrderFragment"
