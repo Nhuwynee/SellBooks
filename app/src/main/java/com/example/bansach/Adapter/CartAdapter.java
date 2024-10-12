@@ -36,6 +36,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.BookViewHolder
         holder.bookImage.setImageResource(book.getImgResource());
         holder.bookPrice.setText(String.valueOf(book.getPrice()));
         holder.bookAuthor.setText(String.valueOf(book.getAuthor()));
+        holder.bookPoint.setText(String.valueOf(book.getPoint()));
     }
 
     @Override
@@ -48,6 +49,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.BookViewHolder
         public ImageView bookImage;
         public TextView bookPrice;
         public TextView bookAuthor;
+        public TextView bookPoint;
 
         public BookViewHolder(View itemView) {
             super(itemView);
@@ -55,6 +57,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.BookViewHolder
             bookImage = itemView.findViewById(R.id.book_img);
             bookPrice = itemView.findViewById(R.id.book_price);
             bookAuthor = itemView.findViewById(R.id.book_author);
+            bookPoint = itemView.findViewById(R.id.textPoint);
         }
     }
 }
