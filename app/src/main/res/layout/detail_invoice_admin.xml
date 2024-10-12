@@ -1,0 +1,340 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- Phần Top Navigation (đã có) -->
+    <RelativeLayout
+        android:id="@+id/iconContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="#E81970"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Icon mèo ở trên cùng bên trái -->
+        <ImageView
+            android:id="@+id/iconImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/image_cat"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_centerVertical="true" />
+
+        <!-- Icon profile bên phải -->
+        <ImageView
+            android:id="@+id/profileIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_profile"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <!-- Phần giữa trong khung bo góc -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/iconContainer"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <!-- Phần Thông tin Đơn hàng -->
+            <LinearLayout
+                android:id="@+id/orderInfoContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Thông tin Đơn hàng -->
+                <TextView
+                    android:id="@+id/orderTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ĐƠN HÀNG"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
+                    android:textColor="#281A7D"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/arima_bold"/>
+
+                <!-- Đường kẻ ngang dưới ĐƠN HÀNG -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#33000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    />
+
+                <!-- Mã đơn hàng -->
+                <TextView
+                    android:id="@+id/orderCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mã đơn hàng: 16478937283"
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/arima_bold"/>
+
+                <!-- Ngày đặt -->
+                <TextView
+                    android:id="@+id/orderDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ngày đặt: 03/06/2022 08:09 PM"
+                    android:textSize="18sp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/arima_bold"/>
+
+                <!-- Trạng thái -->
+                <TextView
+                    android:id="@+id/orderStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trạng thái: In progress"
+                    android:textSize="18sp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/arima_bold"/>
+
+                <!-- Số lượng -->
+                <TextView
+                    android:id="@+id/orderQuantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Số lượng: 2"
+                    android:textSize="18sp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/arima_bold"/>
+
+                <!-- Giá trị -->
+                <TextView
+                    android:id="@+id/orderValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giá trị: 375.000đ"
+                    android:textSize="18sp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/arima_bold"/>
+
+                <!-- Đường kẻ ngang dưới Giá trị -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#33000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/arima_bold"/>
+            </LinearLayout>
+
+
+            <!-- Chi tiết đơn hàng -->
+            <LinearLayout
+                android:id="@+id/orderDetailContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+
+                <!-- Tiêu đề: Chi tiết đơn hàng -->
+                <TextView
+                    android:id="@+id/orderDetailTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chi tiết đơn hàng"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
+                    android:textColor="#281A7D"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/arima_bold"/>
+
+                <!-- Tiêu đề các cột: Sản phẩm, Giá, Số lượng, Tổng tiền -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/columnProductName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Sản phẩm"
+                        android:textStyle="bold"
+                        android:textColor="#78103C"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/arima_bold"/>
+
+                    <TextView
+                        android:id="@+id/columnPrice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Giá"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textColor="#78103C"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/arima_bold"/>
+
+                    <TextView
+                        android:id="@+id/columnQuantity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Số lượng"
+                        android:textStyle="bold"
+                        android:textColor="#78103C"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/arima_bold"/>
+
+                    <TextView
+                        android:id="@+id/columnTotal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tổng tiền"
+                        android:textStyle="bold"
+                        android:textColor="#78103C"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/arima_bold"/>
+                </LinearLayout>
+
+                <!-- Danh sách sản phẩm -->
+                <!-- Sản phẩm 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/productName1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bong bóng\nAnh đào"
+                        android:textColor="#E81970"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/arima_bold"/>
+
+                    <TextView
+                        android:id="@+id/productPrice1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="175.000đ"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/arima_bold"/>
+
+                    <TextView
+                        android:id="@+id/productQuantity1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/arima_bold"
+                        android:text="1"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/productTotal1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="175.000đ"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/arima_bold"/>
+                </LinearLayout>
+
+                <!-- Sản phẩm 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/productName2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Nhật ký\nTình yêu"
+                        android:textColor="#E81970"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/arima_bold"/>
+
+                    <TextView
+                        android:id="@+id/productPrice2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="250.000đ"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:fontFamily="@font/arima_bold"/>
+
+                    <TextView
+                        android:id="@+id/productQuantity2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="1"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:fontFamily="@font/arima_bold"/>
+
+                    <TextView
+                        android:id="@+id/productTotal2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="250.000đ"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/arima_bold"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Bottom Navigation (đã có) -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#E81970"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:itemTextAppearanceActive="@style/TextAppearance.BottomNavigationView.BoldText"
+        app:itemTextAppearanceInactive="@style/TextAppearance.BottomNavigationView.BoldText"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:itemBackground="@drawable/nav_item_background"
+        app:menu="@menu/menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
