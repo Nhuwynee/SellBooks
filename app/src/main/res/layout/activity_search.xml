@@ -35,9 +35,10 @@
                 android:textSize="20sp"  />
             <ImageView
                 android:layout_width="0dp"
-                android:layout_weight="0.5"
+                android:layout_weight="0.35"
                 android:src="@drawable/avatar"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_avatar"/>
         </LinearLayout>
 
         <EditText
