@@ -7,16 +7,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bansach.Adapter.BookAdapter_search;
 import com.example.bansach.Adapter.HistoryAdapter;
-import com.example.bansach.OrderConfirmFragment;
 import com.example.bansach.R;
-import com.example.bansach.model.Book;
 import com.example.bansach.model.History;
 
 import java.text.ParseException;

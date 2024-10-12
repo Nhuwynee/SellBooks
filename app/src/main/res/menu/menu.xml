@@ -16,14 +16,14 @@
 
     <!-- Đặt icon cho mục Edit -->
     <item
-        android:id="@+id/navigation_edit"
+        android:id="@+id/navigation_orders"
         android:icon="@drawable/ic_edit"
-        android:title="Chỉnh sửa" />
+        android:title="Đơn hàng" />
 
     <!-- Đặt icon cho mục Orders -->
     <item
-        android:id="@+id/navigation_orders"
+        android:id="@+id/navigation_account"
         android:icon="@drawable/ic_orders"
-        android:title="Hoá đơn" />
+        android:title="Tôi" />
 
 </menu>

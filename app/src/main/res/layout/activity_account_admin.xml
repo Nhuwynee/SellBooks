@@ -161,18 +161,6 @@ android:background="#FFF">
 </LinearLayout>
 
 
-<com.google.android.material.bottomnavigation.BottomNavigationView
-    android:id="@+id/bottomNavigationView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:background="#E81970"
-    app:itemIconTint="@color/nav_item_color"
-    app:itemTextColor="@color/nav_item_color"
-    app:itemTextAppearanceActive="@style/TextAppearance.BottomNavigationView.BoldText"
-    app:itemTextAppearanceInactive="@style/TextAppearance.BottomNavigationView.BoldText"
-    app:labelVisibilityMode="labeled"
-    app:itemBackground="@drawable/nav_item_background"
-    app:menu="@menu/menu" />
+
 
 </RelativeLayout>
