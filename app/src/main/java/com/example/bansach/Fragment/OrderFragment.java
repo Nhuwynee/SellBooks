@@ -31,7 +31,6 @@ public class OrderFragment extends Fragment {
                         .replace(R.id.container, newFragment) // Đảm bảo ID container đúng
                         .addToBackStack(null) // Nếu muốn thêm vào backstack
                         .commit();
-                Log.d("TAG", "đã có sự kiện ");
             }
         });
         return view;

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.BANSACH"
         tools:targetApi="31">
         <activity
-            android:name=".ListHistory"
+            android:name=".Fragment.ListHistoryFragment"
             android:exported="false" />
         <activity
             android:name=".Account"
@@ -27,7 +27,7 @@
         <activity android:name=".Fragment.HomeFragment" />
         <activity android:name=".Fragment.ViewBookFragment" />
         <activity android:name=".Fragment.CartFragment" />
-        <activity android:name=".ListHistory" android:exported="false"
+        <activity android:name=".Fragment.ListHistoryFragment" android:exported="false"
             tools:ignore="DuplicateActivity" />
         <activity android:name=".MenuActivity" />
         <activity

@@ -17,7 +17,8 @@
 
         <ImageView
             android:id="@+id/avatarImage"
-            android:layout_width="80dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="80dp"
             android:layout_marginLeft="10dp"
             android:src="@drawable/hong_luc"
@@ -27,7 +28,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2.5"
             android:layout_marginLeft="30dp"
             android:orientation="vertical"
             android:gravity="center_vertical">
@@ -63,7 +64,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginRight="20dp"

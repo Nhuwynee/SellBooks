@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bansach.Fragment.CartFragment;
 import com.example.bansach.Fragment.HomeFragment;
+import com.example.bansach.Fragment.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -35,7 +36,7 @@ public class MenuActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
                 }
                 else if (id == R.id.navigation_search) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new SearchPage()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new SearchFragment()).commit();
                 }
                 return true;
             }
