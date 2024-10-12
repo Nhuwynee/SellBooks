@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/iconContainer"
         android:layout_width="match_parent"
@@ -39,29 +42,14 @@
 
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewInvoice"
-        android:layout_width="0dp"
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="1"
         app:layout_constraintTop_toBottomOf="@id/iconContainer"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="8dp"/>
+</LinearLayout>
 
-    <!-- Bottom Navigation -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E81970"
-        app:itemIconTint="@color/nav_item_color"
-        app:itemTextColor="@color/nav_item_color"
-        app:itemTextAppearanceActive="@style/TextAppearance.BottomNavigationView.BoldText"
-        app:itemTextAppearanceInactive="@style/TextAppearance.BottomNavigationView.BoldText"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:itemBackground="@drawable/nav_item_background"
-        app:menu="@menu/menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

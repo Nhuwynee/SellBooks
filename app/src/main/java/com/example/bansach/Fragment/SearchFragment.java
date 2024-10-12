@@ -26,12 +26,8 @@ public class SearchFragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_search, container, false); // Thay 'fragment_home' bằng tên layout thực tế
-
-        // Khởi tạo các view
+        View view = inflater.inflate(R.layout.activity_search, container, false);
         recyclerView = view.findViewById(R.id.recyclerViewBooks);
-        // Gọi các hàm để thiết lập dữ liệu
 
     book();
         return view; // Trả về view đã được khởi tạo

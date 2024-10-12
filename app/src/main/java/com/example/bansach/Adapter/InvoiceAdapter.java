@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.model.Book;
 import com.example.bansach.model.Invoice; // Đảm bảo bạn có model Invoice trong package Model
 import com.example.bansach.R;
 
@@ -19,7 +20,15 @@ import java.util.Locale;
 public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.InvoiceViewHolder> {
 
     private List<Invoice> invoiceList;
+    private InvoiceAdapter.OnInvoiceClickListener listener;
 
+    public interface OnInvoiceClickListener {
+        void oninvoiceClick(Invoice invoice);
+    }
+    public InvoiceAdapter(List<Invoice> invoiceList, InvoiceAdapter.OnInvoiceClickListener listener) {
+        this.invoiceList = invoiceList;
+        this.listener = listener;
+    }
     public InvoiceAdapter(List<Invoice> invoiceList) {
         this.invoiceList = invoiceList;
     }
@@ -41,7 +50,7 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.InvoiceV
         holder.orderDate.setText(formattedDate);
 
         // Chuyển đổi giá tiền từ int sang String với định dạng
-        holder.orderPrice.setText(String.format(Locale.getDefault(), "%,VNĐ", invoice.getOrderPrice()));
+        holder.orderPrice.setText(String.format(Locale.getDefault(), "%,d VNĐ", (int) invoice.getOrderPrice()));
 
         holder.orderStatus.setText(invoice.getOrderStatus());
 
@@ -52,6 +61,12 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.InvoiceV
         // Cập nhật icon trạng thái
         int statusIconResId = holder.itemView.getContext().getResources().getIdentifier(invoice.getStatusIcon(), "drawable", holder.itemView.getContext().getPackageName());
         holder.statusIcon.setImageResource(statusIconResId);
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.oninvoiceClick(invoice);
+            }
+        });
     }
 
     @Override

@@ -1,14 +1,17 @@
 package com.example.bansach.Admin;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.bansach.Adapter.CartAdapter;
+
 import com.example.bansach.Adapter.ListViewBookAdapter;
 import com.example.bansach.R;
 import com.example.bansach.model.Book;
@@ -16,25 +19,19 @@ import com.example.bansach.model.Book;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListViewBookFragment extends AppCompatActivity {
 
+public class ListViewBookFragment extends Fragment {
     private RecyclerView recyclerView;
-    private ListViewBookAdapter bookAdapter;
-    private List<Book> bookList;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.listview_book);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.listview_book, container, false);
+        recyclerView = view.findViewById(R.id.recyclerView_addbook);
+        list();
+        return view;
+    }
 
-        // Khởi tạo RecyclerView
-        recyclerView = findViewById(R.id.recyclerView_addbook);
-
-        // Khởi tạo LayoutManager và thiết lập cho RecyclerView
-
-
-        // Khởi tạo danh sách Book mẫu
-        bookList = new ArrayList<>();
+    public void list(){
+        List<Book> bookList = new ArrayList<>();
         bookList.add(new Book("Bong bóng anh đào", "Tê Kiến", 200000f, "Hoạt động", R.drawable.bong_bong_anh_dao));
         bookList.add(new Book("Hồng lục", "Kiêm Diệp Tử", 170000f, "Hoạt động", R.drawable.hong_luc));
         bookList.add(new Book("Này đừng có ăn cỏ!", "Lục Lục", 150000f, "Hoạt động", R.drawable.nay_dung_co_an_co));
@@ -46,11 +43,22 @@ public class ListViewBookFragment extends AppCompatActivity {
         bookList.add(new Book("Thao túng tâm lý", "Shannon Thomas", 250000f, "Hoạt động", R.drawable.thaotungtamly));
         bookList.add(new Book("Vợ Nhặt", "Kim Lân", 90000f, "Hoạt động", R.drawable.vonhat));
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
+        ListViewBookAdapter listViewBookAdapter = new ListViewBookAdapter(bookList, new ListViewBookAdapter.OnBookClickListener() {
+            @Override
+            public void onBookClick(Book book) {
+                Log.d("ListViewBookFragment", "Clicked book: " + book.getTitle());
+                DetailInvoiceFragment viewBookFragment = new DetailInvoiceFragment();
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container_admin, viewBookFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
-        // Khởi tạo Adapter và gán adapter cho RecyclerView
-        bookAdapter = new ListViewBookAdapter(bookList);
-        recyclerView.setAdapter(bookAdapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(listViewBookAdapter);
+
     }
 }

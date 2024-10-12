@@ -80,16 +80,15 @@ public class LoginMainPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String username = textView.getText().toString();
-                Intent adminIntent = new Intent(LoginMainPage.this, ListViewBookFragment.class);
-                startActivity(adminIntent);
-//                // Kiểm tra tên tài khoản
-//                if (username == "admin") {
-//                    Intent adminIntent = new Intent(LoginMainPage.this, MenuActivityAdmin.class);
-//                    startActivity(adminIntent);
-//                } else if (username == "user") {
-//                    Intent intent = new Intent(LoginMainPage.this, MenuActivity.class);
-//                    startActivity(intent);
-//                }
+
+                // Kiểm tra tên tài khoản
+                if (username.equals("admin")) {
+                    Intent adminIntent = new Intent(LoginMainPage.this, MenuActivityAdmin.class);
+                    startActivity(adminIntent);
+                } else if (username.equals("user")) {
+                    Intent intent = new Intent(LoginMainPage.this, MenuActivity.class);
+                    startActivity(intent);
+                }
 
             }
         });
