@@ -27,9 +27,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
 public class HomeFragment extends Fragment {
     ViewFlipper viewFlipper;
     private RecyclerView recyclerViewParent, recyclerView1;
