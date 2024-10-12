@@ -47,7 +47,7 @@ public class ListViewBookFragment extends Fragment {
             @Override
             public void onBookClick(Book book) {
                 Log.d("ListViewBookFragment", "Clicked book: " + book.getTitle());
-                DetailInvoiceFragment viewBookFragment = new DetailInvoiceFragment();
+                Update_book_admin viewBookFragment = new Update_book_admin();
                 requireActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container_admin, viewBookFragment)
                         .addToBackStack(null)

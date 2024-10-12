@@ -25,11 +25,11 @@ public class Invoice {
     }
 
     public Date getOrderDate() {
-        return orderDate; // Getter cho orderDate
+        return orderDate;
     }
 
     public int getOrderPrice() {
-        return orderPrice; // Getter cho orderPrice
+        return orderPrice;
     }
 
     public String getOrderStatus() {
@@ -37,14 +37,14 @@ public class Invoice {
     }
 
     public String getAvatarImage() {
-        return avatarImage; // Getter cho avatar
+        return avatarImage;
     }
 
     public String getStatusIcon() {
-        return statusIcon; // Getter cho status icon
+        return statusIcon;
     }
 
-    // Setters (nếu cần)
+
     public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
     }

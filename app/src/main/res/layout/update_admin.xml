@@ -7,24 +7,52 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+    <!-- Thanh trên cùng -->
+    <LinearLayout
+        android:layout_marginTop="-2dp"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginRight="-5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_shape">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="110dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="CẬP NHẬT"
+            android:textColor="#E81970"
+            android:layout_marginTop="5dp"
+            android:textSize="36dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_book_admin" />
+    </LinearLayout>
+
 
     <!-- Trường nhập liệu Tên sách -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextBookNameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tên sách"
         android:textColorHint="#000000"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="5dp"
-        app:hintTextAppearance="@style/HintTextAppearancebook">
+        >
 
         <EditText
             android:id="@+id/editTextBookName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
+            android:text="Bong bóng anh đào"
             android:fontFamily="@font/arima_semibold"
             android:padding="10dp"
             android:textColor="#000000"
@@ -36,12 +64,10 @@
         android:id="@+id/editTextAuthorNameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tác giả"
         android:textColorHint="#000000"
-        android:layout_marginTop="5dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:hintTextAppearance="@style/HintTextAppearancebook">
+        >
 
         <EditText
             android:id="@+id/editTextAuthorName"
@@ -49,6 +75,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:padding="10dp"
+            android:text="Tê Kiến"
             android:fontFamily="@font/arima_semibold"
             android:textColor="#000000"
             android:background="@drawable/edittext_background"/>
@@ -59,7 +86,7 @@
         android:id="@+id/categoryLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="Chọn thể loại"
         android:textColor="#281A7D"
         android:textSize="18sp"
@@ -70,12 +97,10 @@
         android:id="@+id/editTextCategoryLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Thể loại"
         android:textColorHint="#000000"
-        android:layout_marginTop="2dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:hintTextAppearance="@style/HintTextAppearancebook">
+        >
 
         <AutoCompleteTextView
             android:id="@+id/autoCompleteCategory"
@@ -86,6 +111,7 @@
             android:dropDownHeight="wrap_content"
             android:fontFamily="@font/arima_semibold"
             android:inputType="text"
+            android:text="Tiểu thuyết"
             android:padding="10dp"
             android:textColor="#000000" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -95,12 +121,10 @@
         android:id="@+id/editTextYearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Năm sản xuất"
         android:textColorHint="#000000"
-        android:layout_marginTop="3dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:hintTextAppearance="@style/HintTextAppearancebook">
+        >
 
         <EditText
             android:id="@+id/editTextYear"
@@ -108,6 +132,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:padding="10dp"
+            android:text="2020"
             android:fontFamily="@font/arima_semibold"
             android:textColor="#000000"
             android:background="@drawable/edittext_background"/>
@@ -118,12 +143,10 @@
         android:id="@+id/editTextQuantityLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Số lượng"
         android:textColorHint="#000000"
-        android:layout_marginTop="3dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:hintTextAppearance="@style/HintTextAppearancebook">
+        >
 
         <EditText
             android:id="@+id/editTextQuantity"
@@ -131,6 +154,7 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:padding="10dp"
+            android:text="100"
             android:fontFamily="@font/arima_semibold"
             android:textColor="#000000"
             android:background="@drawable/edittext_background"/>
@@ -141,12 +165,10 @@
         android:id="@+id/editTextDescriptionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Mô tả"
         android:textColorHint="#000000"
-        android:layout_marginTop="3dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:hintTextAppearance="@style/HintTextAppearancebook">
+        >
 
         <EditText
             android:id="@+id/editTextDescription"
@@ -156,6 +178,7 @@
             android:gravity="top"
             android:padding="10dp"
             android:textColor="#000000"
+            android:text="Viết về một tình yêu đẹp nhưng mong manh của hai nhân vậ trẻ."
             android:fontFamily="@font/arima_semibold"
             android:background="@drawable/edittext_background"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -165,12 +188,10 @@
         android:id="@+id/editTextPriceLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Giá"
         android:textColorHint="#000000"
-        android:layout_marginTop="3dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:hintTextAppearance="@style/HintTextAppearancebook">
+        >
 
         <EditText
             android:id="@+id/editTextPrice"
@@ -179,6 +200,7 @@
             android:inputType="numberDecimal"
             android:fontFamily="@font/arima_semibold"
             android:padding="10dp"
+            android:text="200.000"
             android:textColor="#000000"
             android:background="@drawable/edittext_background"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -195,14 +217,15 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="16dp"
-            android:src="@drawable/image_add_book" />
+            android:src="@drawable/bong_bong_anh_dao" />
 
         <ImageView
             android:id="@+id/priceImage2"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/image_add_book_small"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="37dp"/>
 
         <!-- Vertical LinearLayout for TextView and Switch -->
         <LinearLayout
@@ -211,22 +234,23 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:layout_marginStart="16dp"
-            android:layout_gravity="end">
+            android:gravity="end">
 
             <TextView
                 android:id="@+id/switchLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="HIỂN THỊ SÁCH"
-                android:textStyle="bold"
+                android:layout_marginEnd="35dp"
                 android:textColor="#000000"
-                android:textSize="13sp"
+                android:textSize="17sp"
                 android:fontFamily="@font/arima_semibold" />
 
             <Switch
                 android:id="@+id/switchVisibility"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="60dp"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -235,10 +259,12 @@
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginBottom="25dp"
-        android:text="ADD"
+        android:layout_marginBottom="35dp"
+        android:text="UPDATE"
         android:textColor="#FFFFFF"
         android:background="@drawable/rounded_button_add"
         android:layout_gravity="center_horizontal" />
+
+
 
 </LinearLayout>
