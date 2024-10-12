@@ -16,5 +16,5 @@
         android:gravity="center"
         android:padding="12dp"
         android:background="@drawable/category_background"
-        android:elevation="5dp" />
+        android:elevation="3dp" />
 </LinearLayout>

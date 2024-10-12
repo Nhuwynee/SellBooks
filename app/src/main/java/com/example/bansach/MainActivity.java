@@ -1,14 +1,27 @@
 package com.example.bansach;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.bansach.Adapter.CategoryAdapter;
+import com.example.bansach.model.Book;
+
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerViewCategories;
+    private CategoryAdapter categoryAdapter;
+    private List<Book> categoryList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +47,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-
-
-
-
-

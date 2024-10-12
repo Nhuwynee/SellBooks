@@ -1,55 +1,50 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!-- Phần Top Navigation (đã có) -->
-    <RelativeLayout
-        android:id="@+id/iconContainer"
+    <!-- Thanh tiêu đề với TextView và ImageView -->
+    <LinearLayout
+        android:layout_marginTop="-2dp"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginRight="-5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:background="#E81970"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:background="@drawable/border_shape">
 
-        <!-- Icon mèo ở trên cùng bên trái -->
-        <ImageView
-            android:id="@+id/iconImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/image_cat"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="16dp"
-            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="110dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="HOÁ ĐƠN"
+            android:textColor="#E81970"
+            android:layout_marginTop="5dp"
+            android:textSize="36sp" />
 
-        <!-- Icon profile bên phải -->
         <ImageView
-            android:id="@+id/profileIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_profile"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="16dp"
-            android:layout_centerVertical="true" />
-    </RelativeLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_book_admin" />
+    </LinearLayout>
 
     <!-- Phần giữa trong khung bo góc -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="10dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
-        app:layout_constraintTop_toBottomOf="@id/iconContainer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
+        android:layout_gravity="center"
+       >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -81,8 +76,7 @@
                     android:layout_height="1dp"
                     android:background="#33000000"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    />
+                    android:layout_marginBottom="8dp" />
 
                 <!-- Mã đơn hàng -->
                 <TextView
@@ -140,10 +134,8 @@
                     android:layout_height="1dp"
                     android:background="#33000000"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/arima_bold"/>
+                    android:layout_marginBottom="8dp" />
             </LinearLayout>
-
 
             <!-- Chi tiết đơn hàng -->
             <LinearLayout
@@ -250,11 +242,11 @@
                         android:id="@+id/productQuantity1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_weight="1"
-                        android:fontFamily="@font/arima_bold"
                         android:text="1"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:fontFamily="@font/arima_bold" />
 
                     <TextView
                         android:id="@+id/productTotal1"
@@ -313,9 +305,6 @@
                         android:fontFamily="@font/arima_bold"/>
                 </LinearLayout>
             </LinearLayout>
-
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
