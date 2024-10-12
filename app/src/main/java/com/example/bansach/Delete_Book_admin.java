@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bansach.Adapter.Listview_bookAdapter;
+import com.example.bansach.Adapter.ListViewBookAdapter;
 import com.example.bansach.model.Book;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import java.util.List;
 
 public class Delete_Book_admin extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private Listview_bookAdapter bookAdapter;
+    private ListViewBookAdapter bookAdapter;
     private List<Book> bookList;
 
     @Override
@@ -47,7 +47,7 @@ public class Delete_Book_admin extends AppCompatActivity {
         bookList.add(new Book("Án mạng mười một chữ", "Hinh Sơn Khải", 200000f, "Hoạt động", R.drawable.hong_luc));
 
         // Khởi tạo và gán Adapter cho RecyclerView
-        bookAdapter = new Listview_bookAdapter(bookList);
+        bookAdapter = new ListViewBookAdapter(bookList);
         recyclerView.setAdapter(bookAdapter);
 
         // Thêm ItemTouchHelper để vuốt xóa item

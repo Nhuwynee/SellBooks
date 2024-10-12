@@ -177,6 +177,19 @@
                 android:orientation="vertical"
                 >
                 <Button
+                    android:id="@+id/btn_favourite"
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:text="Sách yêu thích"
+                    android:drawableLeft="@drawable/icon_heart"
+                    android:paddingLeft="30dp"
+                    android:fontFamily="@font/arima_bold"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"
+                    android:background="@drawable/btn_account_purple" />
+
+                <Button
                     android:id="@+id/change_address"
                     android:layout_width="300dp"
                     android:layout_height="45dp"
