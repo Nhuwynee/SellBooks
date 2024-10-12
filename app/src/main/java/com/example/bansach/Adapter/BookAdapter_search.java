@@ -1,5 +1,6 @@
 package com.example.bansach.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bansach.R;
 import com.example.bansach.model.Book;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookAdapter_search extends RecyclerView.Adapter<BookAdapter.BookViewHolder>{
     private List<Book> bookList;
     private OnBookClickListener listener;
+    private List<Book> filteredBookList;  // Danh sách đã lọc
+    private Context context;
+
+    public BookAdapter_search(List<Book> bookList, Context context) {
+        this.bookList = bookList;
+        this.filteredBookList = new ArrayList<>(bookList); // Khởi tạo với dữ liệu gốc
+        this.context = context;
+    }
 
     public interface OnBookClickListener {
         void onBookClick(Book book);
@@ -64,4 +74,21 @@ public class BookAdapter_search extends RecyclerView.Adapter<BookAdapter.BookVie
             bookPrice = itemView.findViewById(R.id.book_price);
         }
     }
+    public void filter(String query) {
+        query = query.toLowerCase();
+        filteredBookList.clear();
+
+        if (query.isEmpty()) {
+            filteredBookList.addAll(bookList);  // Nếu không nhập gì, hiển thị toàn bộ sách
+        } else {
+            for (Book book : bookList) {
+                if (book.getTitle().toLowerCase().contains(query) || book.getAuthor().toLowerCase().contains(query)) {
+                    filteredBookList.add(book);
+                }
+            }
+        }
+
+        notifyDataSetChanged();  // Cập nhật lại giao diện
+    }
+
 }

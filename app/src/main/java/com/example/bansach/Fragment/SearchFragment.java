@@ -1,9 +1,13 @@
 package com.example.bansach.Fragment;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,14 +26,19 @@ import java.util.List;
 public class SearchFragment extends Fragment {
     private RecyclerView recyclerView;
     private BookAdapter_search bookAdapter;
+    private EditText search;
     private BottomNavigationView bottomNavigationView;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_search, container, false);
         recyclerView = view.findViewById(R.id.recyclerViewBooks);
+         search = view.findViewById(R.id.etSearch);
 
-    book();
+
+        book();
+
+
         return view; // Trả về view đã được khởi tạo
     }
     private void book() {
@@ -63,6 +72,26 @@ public class SearchFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3); // 3 cột
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(bookAdapter);
+
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                bookAdapter.filter(charSequence.toString());
+                Log.d("MainActivity", "Text changed: " + charSequence.toString());
+            }
+
+                @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+
+
+        });
     }
 //
 }

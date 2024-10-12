@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
 
     private void addImagesToFlipper() {
         try {
-            int[] images = {drawable.promotion, drawable.readbookfree, drawable.favourite_book};
+            int[] images = {drawable.promotion, drawable.read_book_3, drawable.favourite3};
 
             for (int image : images) {
                 ImageView imageView = new ImageView(getContext());
