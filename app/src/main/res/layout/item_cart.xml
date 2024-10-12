@@ -76,8 +76,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="50dp"
                     android:layout_weight="4"
-                    android:text="2000 ★"
                     android:fontFamily="@font/arima_bold"
+                    android:text="2000 ★"
                     android:textColor="#F2BA0E"
                     android:textSize="18sp" />
             </LinearLayout>
