@@ -1,5 +1,6 @@
 package com.example.bansach.Adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +11,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.R;
 import com.example.bansach.model.Book;
+import com.example.bansach.model.History;
 
 import java.util.List;
 
 public class ListViewBookAdapter extends RecyclerView.Adapter<ListViewBookAdapter.BookViewHolder> {
 
-    private List<Book> bookList;
+    private final List<Book> bookList;
+    private OnBookClickListener listener;
 
-    // Constructor
+    public interface OnBookClickListener {
+        void onBookClick(Book book);
+    }
+    public ListViewBookAdapter(List<Book> bookList, OnBookClickListener listener) {
+        this.bookList = bookList;
+        this.listener = listener;
+    }
     public ListViewBookAdapter(List<Book> bookList) {
         this.bookList = bookList;
     }
@@ -35,13 +44,19 @@ public class ListViewBookAdapter extends RecyclerView.Adapter<ListViewBookAdapte
         holder.bookTitle.setText(book.getTitle());
         holder.bookAuthor.setText(book.getAuthor());
 
-        // Định dạng giá float thành chuỗi với 0 chữ số thập phân
         holder.bookPrice.setText(String.format("%.0f VND", book.getPrice()));
 
         holder.bookStatus.setText(book.getIsActive());
 
         // Thiết lập ảnh cho sách
         holder.bookImage.setImageResource(book.getImgResource());
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                Log.d("ListViewBookAdapter", "Book clicked: " + book.getTitle());
+                listener.onBookClick(book);
+            }
+        });
+
     }
 
     @Override

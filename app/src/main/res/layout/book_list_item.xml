@@ -3,15 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_above="@id/bottomNavigationView"
-        android:layout_below="@id/iconContainer"
-        android:fillViewport="true">
+    android:orientation="vertical">
 
         <!-- Book List Content -->
         <LinearLayout
@@ -97,5 +90,4 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
 </LinearLayout>

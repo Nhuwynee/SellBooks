@@ -27,9 +27,11 @@
         <activity android:name=".Fragment.HomeFragment" />
         <activity android:name=".Fragment.ViewBookFragment" />
         <activity android:name=".Fragment.CartFragment" />
-        <activity android:name=".Fragment.ListHistoryFragment" android:exported="false"
-            tools:ignore="DuplicateActivity" />
         <activity android:name=".MenuActivity" />
+        <activity android:name=".Admin.MenuActivityAdmin"/>
+        <activity android:name=".Admin.ListViewBookFragment"/>
+        <activity android:name=".Admin.AddBookFragment"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

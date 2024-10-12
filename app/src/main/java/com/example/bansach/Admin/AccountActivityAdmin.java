@@ -1,53 +1,76 @@
 package com.example.bansach.Admin;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import com.example.bansach.Fragment.CartFragment;
+import com.example.bansach.Fragment.ChangeAddressFragment;
+import com.example.bansach.Fragment.ListHistoryFragment;
+import com.example.bansach.MainActivity;
 import com.example.bansach.R;
 
 
-public class AccountActivityAdmin extends AppCompatActivity {
-    private ImageView userImage;
-    private TextView userName, userRole;
-    private Button addBookButton, bookListButton, orderListButton, logoutButton;
+    public class AccountActivityAdmin extends Fragment {
+        @Override
+        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            View view = inflater.inflate(R.layout.activity_account_admin, container, false);
+            Button add = view.findViewById(R.id.button_add_book);
+            Button listbook = view.findViewById(R.id.button_book_list);
+            Button listorder = view.findViewById(R.id.button_order_list);
+            Button logout = view.findViewById(R.id.button_logout);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // Set the content view to the layout you created in XML
-        setContentView(R.layout.activity_account_admin);
+            // Xử lý sự kiện nhấn nút
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AddBookFragment newFragment = new AddBookFragment();
+                    getParentFragmentManager().beginTransaction()
+                            .replace(R.id.container_admin, newFragment) // Đảm bảo ID container đúng
+                            .addToBackStack(null) // Nếu muốn thêm vào backstack
+                            .commit();
+                }
+            });
 
-        // Initialize the views from the layout
-        userImage = findViewById(R.id.user_image);
-        userName = findViewById(R.id.user_name);
-        userRole = findViewById(R.id.user_role);
-        addBookButton = findViewById(R.id.button_add_book);
-        bookListButton = findViewById(R.id.button_book_list);
-        orderListButton = findViewById(R.id.button_order_list);
-        logoutButton = findViewById(R.id.button_logout);
+            logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            });
 
-        // Set user info dynamically if needed
-        userName.setText("Nguyễn Thị Hiếu");
-        userRole.setText("Admin");
+            listbook.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ListViewBookFragment newFragment = new ListViewBookFragment();
+                    getParentFragmentManager().beginTransaction()
+                            .replace(R.id.container_admin, newFragment) // Đảm bảo ID container đúng
+                            .addToBackStack(null) // Nếu muốn thêm vào backstack
+                            .commit();
+                }
+            });
 
-        // Set up click listeners for the buttons
-        addBookButton.setOnClickListener(view -> {
-            // Add your action for adding a book
-        });
-
-        bookListButton.setOnClickListener(view -> {
-            // Add your action for viewing the book list
-        });
-
-        orderListButton.setOnClickListener(view -> {
-            // Add your action for viewing the order list
-        });
-
-        logoutButton.setOnClickListener(view -> {
-            // Add your action for logging out
-        });
-    }}
-
+            listorder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ListInvoiceFragment newFragment = new ListInvoiceFragment();
+                    getParentFragmentManager().beginTransaction()
+                            .replace(R.id.container_admin, newFragment) // Đảm bảo ID container đúng
+                            .addToBackStack(null) // Nếu muốn thêm vào backstack
+                            .commit();
+                }
+            });
+            return view;
+        }
+    }
