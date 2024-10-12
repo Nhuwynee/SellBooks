@@ -77,17 +77,32 @@
                         android:textSize="18sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView3"
+                <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="84dp"
-                    android:layout_gravity="end"
-                    android:layout_weight="2"
-                    android:paddingTop="15dp"
-                    android:text="225.000đ"
-                    android:fontFamily="@font/arima_semibold"
-                    android:textColor="#2A15AB"
-                    android:textSize="24sp" />
+                    android:layout_height="70dp"
+                    android:layout_weight="2.5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="225.000đ"
+                        android:fontFamily="@font/arima_semibold"
+                        android:textColor="#2A15AB"
+                        android:textSize="23sp" />
+
+                    <TextView
+                        android:id="@+id/textPoint"
+                        android:layout_width="157dp"
+                        android:layout_height="37dp"
+                        android:layout_marginStart="60dp"
+                        android:text="2000 ★"
+                        android:fontFamily="@font/arima_bold"
+                        android:textColor="#F2BA0E"
+                        android:textSize="18sp" />
+                </LinearLayout>
 
             </LinearLayout>
 

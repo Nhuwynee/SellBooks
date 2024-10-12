@@ -13,9 +13,11 @@ public class Book implements Parcelable {
     private int inStock;
     private String description;
     private String review;
+    private String detailAuthor;
+    private String point;
     private String isActive;
 
-    public Book(String id, String title, String author, String category, int imgURL, int year, float price, int inStock, String description, String review,String isActive) {
+    public Book(String id, String title, String author, String category, int imgURL, int year, float price, int inStock, String description, String review,String detailAuthor, String point, String isActive) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -25,6 +27,8 @@ public class Book implements Parcelable {
         this.inStock = inStock;
         this.description = description;
         this.review = review;
+        this.detailAuthor = detailAuthor;
+        this.point = point;
         this.isActive = isActive;
     }
     public Book(String category) {
@@ -37,11 +41,12 @@ public class Book implements Parcelable {
         this.price = price;
     }
 
-    public Book(String title, int imgURL, float price, String author) {
+    public Book(String title, int imgURL, float price, String author, String point) {
         this.title = title;
         this.imgResource = imgURL;
         this.price = price;
         this.author = author;
+        this.point = point;
     }
     public Book(String title, String author, float price, String status, int imageResource) {
         this.title = title;
@@ -66,6 +71,8 @@ public class Book implements Parcelable {
         description = in.readString();
         review=in.readString();
         isActive = in.readString();
+        detailAuthor = in.readString();
+        point = in.readString();
     }
 
     public static final Creator<Book> CREATOR = new Creator<Book>() {
@@ -92,6 +99,8 @@ public class Book implements Parcelable {
                 ", inStock=" + inStock +
                 ", description='" + description + '\'' +
                 ", review='" + review + '\'' +
+                ", detailAuthor='" + detailAuthor + '\'' +
+                ", point='" + point + '\'' +
                 ", isActive=" + isActive +
                 '}';
     }
@@ -168,6 +177,22 @@ public class Book implements Parcelable {
         this.review = review;
     }
 
+    public String getDetailAuthor() {
+        return detailAuthor;
+    }
+
+    public void setDetailAuthor(String detailAuthor) {
+        this.detailAuthor = detailAuthor;
+    }
+
+    public String getPoint() {
+        return point;
+    }
+
+    public void setPoint(String point) {
+        this.point = point;
+    }
+
     public String getIsActive() {
         return isActive;
     }
@@ -190,6 +215,9 @@ public class Book implements Parcelable {
         parcel.writeInt(imgResource);
         parcel.writeFloat(price);
         parcel.writeInt(inStock);
+        parcel.writeString(review);
+        parcel.writeString(detailAuthor);
+        parcel.writeString(point);
         parcel.writeString(description);
         parcel.writeString(isActive);
     }
