@@ -1,4 +1,4 @@
-package com.example.bansach;
+package com.example.bansach.Admin;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,32 +11,33 @@ import com.example.bansach.Fragment.AccountFragment;
 import com.example.bansach.Fragment.CartFragment;
 import com.example.bansach.Fragment.HomeFragment;
 import com.example.bansach.Fragment.SearchFragment;
+import com.example.bansach.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivityAdmin extends AppCompatActivity {
     private FrameLayout frameLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu); // Đảm bảo layout này chứa BottomNavigationView
-        frameLayout = findViewById(R.id.container);
+        setContentView(R.layout.activity_menu_admin); // Đảm bảo layout này chứa BottomNavigationView
+        frameLayout = findViewById(R.id.container_admin);
         if (savedInstanceState == null )
         {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+//            getSupportFragmentManager().beginTransaction().replace(R.id.container_admin, new ListViewBookFragment()).commit();
         }
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if (id == R.id.navigation_cart) {
+                if (id == R.id.navigation_add_book) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, new CartFragment()).commit();
                 }
-                else if (id == R.id.navigation_home) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+                else if (id == R.id.navigation_list_books) {
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new ListViewBookFragment()).commit();
                 }
-                else if (id == R.id.navigation_search) {
+                else if (id == R.id.navigation_orders) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, new SearchFragment()).commit();
                 }
                 else if ( id == R.id.navigation_account){

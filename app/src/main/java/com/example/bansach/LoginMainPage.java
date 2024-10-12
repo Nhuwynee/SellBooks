@@ -10,8 +10,12 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.bansach.Admin.ListViewBookFragment;
+import com.example.bansach.Admin.MenuActivityAdmin;
 
 public class LoginMainPage extends AppCompatActivity {
 
@@ -71,12 +75,22 @@ public class LoginMainPage extends AppCompatActivity {
         signup.setText(spannableString_signup);
         signup.setMovementMethod(LinkMovementMethod.getInstance());
 
-
+        TextView textView = findViewById(R.id.edittextlogin);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginMainPage.this, MenuActivity.class);
-                startActivity(intent);
+                String username = textView.getText().toString();
+                Intent adminIntent = new Intent(LoginMainPage.this, ListViewBookFragment.class);
+                startActivity(adminIntent);
+//                // Kiểm tra tên tài khoản
+//                if (username == "admin") {
+//                    Intent adminIntent = new Intent(LoginMainPage.this, MenuActivityAdmin.class);
+//                    startActivity(adminIntent);
+//                } else if (username == "user") {
+//                    Intent intent = new Intent(LoginMainPage.this, MenuActivity.class);
+//                    startActivity(intent);
+//                }
+
             }
         });
     }

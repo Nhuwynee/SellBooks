@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.model.Book;
 import com.example.bansach.model.History;
 import com.example.bansach.R;
 
@@ -23,7 +24,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     public HistoryAdapter(List<History> historyList) {
         this.historyList = historyList;
     }
+    private OnHistoryClickListener listener;
 
+    public interface OnHistoryClickListener {
+        void onHistoryClick(History history);
+    }
+    public HistoryAdapter(List<History> historyList, OnHistoryClickListener listener) {
+        this.historyList = historyList;
+        this.listener = listener;
+    }
     @NonNull
     @Override
     public HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,6 +60,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         // Cập nhật icon trạng thái
         int statusIconResId = holder.itemView.getContext().getResources().getIdentifier(history.getStatusIcon(), "drawable", holder.itemView.getContext().getPackageName());
         holder.statusIcon.setImageResource(statusIconResId);
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onHistoryClick(history);
+            }
+        });
     }
 
     @Override

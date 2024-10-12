@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentViewHolder> {
     private List<Section> sectionList;
-    private ParentAdapter.OnBookClickListener listener;
+    private OnBookClickListener listener;
 
     public interface OnBookClickListener {
         void onBookClick(Book book);
@@ -41,14 +41,12 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.ParentView
         Section section = sectionList.get(position);
         holder.sectionTitle.setText(section.getTitle());
 
-        // Thiết lập RecyclerView con
+        // Thiết lập RecyclerView con với BookAdapter và truyền listener
         BookAdapter childAdapter = new BookAdapter(section.getItemList(), listener);
         LinearLayoutManager layoutManager = new LinearLayoutManager(holder.recyclerViewChild.getContext(), LinearLayoutManager.HORIZONTAL, false);
         holder.recyclerViewChild.setLayoutManager(layoutManager);
         holder.recyclerViewChild.setAdapter(childAdapter);
-
     }
-
 
     @Override
     public int getItemCount() {

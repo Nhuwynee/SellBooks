@@ -1,13 +1,18 @@
-package com.example.bansach;
+package com.example.bansach.Fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.Adapter.HistoryAdapter;
-import com.example.bansach.model.History;
+import com.example.bansach.R;
 import com.example.bansach.model.History;
 
 import java.text.ParseException;
@@ -15,20 +20,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListHistory extends AppCompatActivity {
+public class ListHistoryFragment extends Fragment {
 
-    private RecyclerView recyclerViewHistory;
-    private HistoryAdapter historyAdapter;
-    private List<History> historyList;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        recyclerViewHistory = findViewById(R.id.recyclerViewHistory);
+        View view = inflater.inflate(R.layout.activity_history, container, false);
+        RecyclerView recyclerViewHistory = view.findViewById(R.id.recyclerViewHistory);
 
-        historyList = new ArrayList<>();
+        List<History> historyList = new ArrayList<>();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
@@ -42,22 +43,30 @@ public class ListHistory extends AppCompatActivity {
                 historyList.add(new History("2411007", dateFormat.parse("16/10/2024"), 600000, "Đã giao", "ngaymaingaymaivangaymainua", "dagiao"));
                 historyList.add(new History("2411008", dateFormat.parse("17/10/2024"), 600000, "Đã huỷ", "bong_bong_anh_dao", "dahuy"));
                 historyList.add(new History("2411009", dateFormat.parse("18/10/2024"), 600000, "Đang giao", "boconcagai", "xemay"));
-                historyList.add(new History("24110010", dateFormat.parse("19/10/2024"), 600000, "Đang giao", "bongtoigiuachungta", "xemay"));
-                historyList.add(new History("24110011", dateFormat.parse("20/10/2024"), 600000, "Đã giao", "chinhphuchanhphuc", "dagiao"));
-                historyList.add(new History("24110012", dateFormat.parse("21/10/2024"), 600000, "Đã giao", "tinh_yeu_cua_thoi_ha", "dagiao"));
-                historyList.add(new History("24110013", dateFormat.parse("22/10/2024"), 600000, "Đã huỷ", "toc_cua_toi", "dahuy"));
+                historyList.add(new History("2411010", dateFormat.parse("19/10/2024"), 600000, "Đang giao", "bongtoigiuachungta", "xemay"));
+                historyList.add(new History("2411011", dateFormat.parse("20/10/2024"), 600000, "Đã giao", "chinhphuchanhphuc", "dagiao"));
+                historyList.add(new History("2411012", dateFormat.parse("21/10/2024"), 600000, "Đã giao", "tinh_yeu_cua_thoi_ha", "dagiao"));
+                historyList.add(new History("2411013", dateFormat.parse("22/10/2024"), 600000, "Đã huỷ", "toc_cua_toi", "dahuy"));
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
-
-            historyAdapter = new HistoryAdapter(historyList);
-
-            LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+            HistoryAdapter historyAdapter = new HistoryAdapter(historyList, new HistoryAdapter.OnHistoryClickListener() {
+                @Override
+                public void onHistoryClick(History history) {
+                    // Chuyển đến ViewBookFragment khi click vào sách
+                    OrderConfirmFragment viewBookFragment = new OrderConfirmFragment();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.container, viewBookFragment)
+                            .commit();
+                }
+            });
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
             recyclerViewHistory.setLayoutManager(layoutManager);
 
             recyclerViewHistory.setAdapter(historyAdapter);
         } finally {
 
         }
+        return view;
     }
 }
