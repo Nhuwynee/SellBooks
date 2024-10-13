@@ -186,6 +186,7 @@
             </FrameLayout>
 
             <Button
+                android:id="@+id/doc_thu"
                 android:layout_width="100dp"
                 android:layout_height="25dp"
                 android:background="@color/white"

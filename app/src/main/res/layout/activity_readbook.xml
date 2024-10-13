@@ -6,16 +6,33 @@
     android:background="#FAFAFA"
     android:padding="16dp">
 
-    <!-- Tiêu đề sách -->
-    <TextView
-        android:id="@+id/tvBookTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hồng lục"
-        android:textSize="30sp"
-        android:textColor="#E81970"
-        android:fontFamily="@font/arima_bold"
-        android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        >
+        <TextView
+            android:id="@+id/tvDocThu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:text="Đọc thử:"
+            android:textSize="30sp"
+            android:textColor="#000000"
+            android:fontFamily="@font/arima_bold"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/tvBookTitle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:text="Hồng lục"
+            android:textSize="30sp"
+            android:textColor="#E81970"
+            android:fontFamily="@font/arima_bold"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tvAuthorTitle"
         android:layout_width="wrap_content"
@@ -38,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="16dp">
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/tvSampleContent"
@@ -46,8 +63,8 @@
             android:layout_height="wrap_content"
             android:text="Đoạn văn mẫu của sách sẽ hiển thị ở đây. Nội dung sẽ dài và có thể cuộn để xem tiếp..."
             android:textSize="16sp"
-            android:textColor="#444"
-            android:fontFamily="@font/arima_semibold" />
+            android:fontFamily="@font/arima_regular"
+            android:textColor="#444"/>
 
     </ScrollView>
 
