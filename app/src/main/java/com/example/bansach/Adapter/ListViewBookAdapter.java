@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -56,6 +57,11 @@ public class ListViewBookAdapter extends RecyclerView.Adapter<ListViewBookAdapte
                 listener.onBookClick(book);
             }
         });
+        holder.buttonDelete.setOnClickListener(v -> {
+            // Xóa sách khỏi danh sách
+            bookList.remove(position);
+            notifyItemRemoved(position);
+        });
 
     }
 
@@ -67,7 +73,7 @@ public class ListViewBookAdapter extends RecyclerView.Adapter<ListViewBookAdapte
     public static class BookViewHolder extends RecyclerView.ViewHolder {
         TextView bookTitle, bookAuthor, bookPrice, bookStatus;
         ImageView bookImage;
-
+    public Button buttonDelete;
         public BookViewHolder(View itemView) {
             super(itemView);
             bookTitle = itemView.findViewById(R.id.book_title);
@@ -75,10 +81,17 @@ public class ListViewBookAdapter extends RecyclerView.Adapter<ListViewBookAdapte
             bookPrice = itemView.findViewById(R.id.book_price);
             bookStatus = itemView.findViewById(R.id.book_status);
             bookImage = itemView.findViewById(R.id.image_book);
+            buttonDelete = itemView.findViewById(R.id.buttonDelete); // Thay đổi id theo layout của bạn
+
         }
     }
     public void removeItem(int position) {
         bookList.remove(position);
         notifyItemRemoved(position);
+    }
+    public void updateList(List<Book> newList) {
+        bookList.clear();
+        bookList.addAll(newList);
+        notifyDataSetChanged(); // Thông báo adapter cập nhật
     }
 }
