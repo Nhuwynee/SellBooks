@@ -36,9 +36,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
 public class HomeFragment extends Fragment {
     ViewFlipper viewFlipper;
     private RecyclerView recyclerViewParent, recyclerView1;
@@ -92,7 +89,7 @@ public class HomeFragment extends Fragment {
 
     private void addImagesToFlipper() {
         try {
-            int[] images = {drawable.promotion, drawable.read_book_3, drawable.favourite3};
+            int[] images = {drawable.promotion, drawable.read_book_3, drawable.yeuthich};
 
             for (int image : images) {
                 ImageView imageView = new ImageView(getContext());

@@ -110,6 +110,36 @@
             android:textColor="#A8919A"
             android:textSize="16sp" />
 
+
+        <TextView
+            android:id="@+id/point_"
+            android:layout_width="128dp"
+            android:layout_height="64dp"
+            android:layout_below="@+id/price_label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="128dp"
+            android:layout_marginEnd="228dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="Point: "
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/point_star"
+            android:layout_width="1000dp"
+            android:layout_height="47dp"
+            android:layout_above="@+id/buy_button"
+            android:layout_alignTop="@+id/view2"
+            android:layout_marginStart="-77dp"
+            android:layout_toEndOf="@+id/point_"
+            android:fontFamily="@font/arima_semibold"
+            android:text="4500 ★"
+            android:layout_marginTop="10dp"
+            android:textColor="#E81970"
+            android:textSize="18sp" />
+
+
+
         <ImageView
             android:id="@+id/customer_image"
             android:layout_width="80dp"
@@ -294,7 +324,7 @@
             android:layout_width="286dp"
             android:layout_height="510dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="30dp"
             android:gravity="bottom"
             android:orientation="vertical"
             android:padding="16dp">

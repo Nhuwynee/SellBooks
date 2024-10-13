@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FAFAFA"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"
+        >
+        <TextView
+            android:id="@+id/tvDocThu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:text="Đọc thử:"
+            android:textSize="30sp"
+            android:textColor="#000000"
+            android:fontFamily="@font/arima_bold"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/tvBookTitle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:text="Hồng lục"
+            android:textSize="30sp"
+            android:textColor="#E81970"
+            android:fontFamily="@font/arima_bold"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvAuthorTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kim Diệp Tử"
+        android:textSize="24sp"
+        android:textColor="#311B92"
+        android:fontFamily="@font/arima_bold"
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:id="@+id/imgBookCover"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:src="@drawable/hong_luc" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tvSampleContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đoạn văn mẫu của sách sẽ hiển thị ở đây. Nội dung sẽ dài và có thể cuộn để xem tiếp..."
+            android:textSize="16sp"
+            android:fontFamily="@font/arima_regular"
+            android:textColor="#444"/>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnBuyNow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mua sách"
+        android:backgroundTint="#E81970"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/arima_bold"
+        android:padding="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"/>
+
+</LinearLayout>

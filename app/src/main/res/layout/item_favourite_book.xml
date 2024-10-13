@@ -2,9 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:layout_marginBottom="8dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -26,12 +26,12 @@
             android:layout_marginEnd="10dp"
             android:paddingLeft="10dp"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.8"
                 android:orientation="horizontal">
-
                 <TextView
                     android:id="@+id/book_title"
                     android:layout_width="0dp"
@@ -40,16 +40,10 @@
                     android:fontFamily="@font/arima_bold"
                     android:text="Mắt biếc"
                     android:textColor="#78103C"
-                    android:textSize="20sp"
+                    android:textSize="21sp"
                     android:gravity="center_vertical"
-                    android:maxLines="1"
                     android:ellipsize="end" />
 
-                <CheckBox
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/black"
-                    />
             </LinearLayout>
 
             <LinearLayout
@@ -84,42 +78,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:layout_marginBottom="6dp"
                 android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btngiamsoluong"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:layout_height="20dp"
-                    android:gravity="center"
-                    android:text="-"
-                    android:textStyle="bold"
-                    android:background="@drawable/btn_tanggiam_black"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/book_sl"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.7"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:text="1"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/arima_semibold"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btntangsoluong"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="center"
-                    android:text="+"
-                    android:textStyle="bold"
-                    android:background="@drawable/btn_tanggiam_black"
-                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/book_price"
@@ -128,26 +88,37 @@
                     android:layout_height="wrap_content"
                     android:text="225.000đ"
                     android:textColor="#2A15AB"
-                    android:layout_marginStart="45dp"
                     android:fontFamily="@font/arima_bold"
                     android:textSize="20sp" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/btn_show"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:paddingTop="3dp"
+                    android:layout_weight="0.1"
+                    android:background="@drawable/line_under"
+                    android:text="Xem chi tiết"
+                    android:fontFamily="@font/arima_bold"
+                    android:textColor="#E81970"
+                    android:layout_marginLeft="100dp"
+                    android:src="@drawable/ic_bag"
+                    />
 
-                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
             </LinearLayout>
-
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+        </LinearLayout>
 
     </LinearLayout>
 
