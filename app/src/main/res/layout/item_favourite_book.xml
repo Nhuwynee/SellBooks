@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginBottom="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+        <ImageView
+            android:id="@+id/book_img"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="110dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/hong_luc">
+        </ImageView>
+        <LinearLayout
+            android:id="@+id/cart_detail"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="140dp"
+            android:layout_marginEnd="10dp"
+            android:paddingLeft="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/book_title"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/arima_bold"
+                    android:text="Mắt biếc"
+                    android:textColor="#78103C"
+                    android:textSize="21sp"
+                    android:gravity="center_vertical"
+                    android:ellipsize="end" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.6"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/book_author"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9"
+                    android:text="Nguyễn Nhật Ánh"
+                    android:fontFamily="@font/arima_semibold"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textPoint"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="50dp"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/arima_bold"
+                    android:text="2000 ★"
+                    android:textColor="#F2BA0E"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/book_price"
+                    android:layout_width="0dp"
+                    android:layout_weight="5"
+                    android:layout_height="wrap_content"
+                    android:text="225.000đ"
+                    android:textColor="#2A15AB"
+                    android:fontFamily="@font/arima_bold"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/btn_show"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:paddingTop="3dp"
+                    android:layout_weight="0.1"
+                    android:background="@drawable/line_under"
+                    android:text="Xem chi tiết"
+                    android:fontFamily="@font/arima_bold"
+                    android:textColor="#E81970"
+                    android:layout_marginLeft="100dp"
+                    android:src="@drawable/ic_bag"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

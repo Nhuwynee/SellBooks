@@ -26,6 +26,7 @@ public class AccountFragment extends Fragment {
         Button history = view.findViewById(R.id.btn_history);
         Button cart = view.findViewById(R.id.btn_cart);
         Button logout = view.findViewById(R.id.btn_logout);
+        Button favourite = view.findViewById(R.id.btn_favourite);
 
         // Xử lý sự kiện nhấn nút
         change.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +52,17 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ListHistoryFragment newFragment = new ListHistoryFragment();
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.container, newFragment) // Đảm bảo ID container đúng
+                        .addToBackStack(null) // Nếu muốn thêm vào backstack
+                        .commit();
+            }
+        });
+
+        favourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FavouriteBookFragment newFragment = new FavouriteBookFragment();
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.container, newFragment) // Đảm bảo ID container đúng
                         .addToBackStack(null) // Nếu muốn thêm vào backstack

@@ -91,6 +91,19 @@ public class ViewBookFragment extends Fragment {
             }
         });
 
+//        // Sự kiện nút yêu thích sách
+//        like.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Chuyển sang Fragment khác
+//                MessageFavouriteBookFragment newFragment = new MessageFavouriteBookFragment();
+//                getParentFragmentManager().beginTransaction()
+//                        .replace(R.id.container, newFragment)
+//                        .addToBackStack(null)
+//                        .commit();
+//            }
+//        });
+
         return view; // Trả về view
     }
 

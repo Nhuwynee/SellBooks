@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragment.CartFragment"
+    android:background="#E81970"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="-2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginRight="-5dp"
+        android:background="@drawable/border_shape"
+        >
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="110dp"
+            android:fontFamily="@font/arima_semibold"
+            android:text="YÊU THÍCH 💗"
+            android:textColor="#E81970"
+            android:layout_marginTop="5dp"
+            android:textSize="36dp"
+            tools:layout_editor_absoluteX="162dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_favourite"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        </LinearLayout>
+</LinearLayout>
