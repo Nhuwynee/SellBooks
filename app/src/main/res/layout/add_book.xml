@@ -1,287 +1,295 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
-    <!-- Thanh trên cùng -->
-    <LinearLayout
-        android:layout_marginTop="-2dp"
-        android:layout_marginLeft="-5dp"
-        android:layout_marginRight="-5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border_shape">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="110dp"
-            android:fontFamily="@font/arima_semibold"
-            android:text="THÊM SÁCH"
-            android:textColor="#E81970"
-            android:layout_marginTop="5dp"
-            android:textSize="36dp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_book_admin" />
-    </LinearLayout>
-
-
-    <!-- Trường nhập liệu Tên sách -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextBookNameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Tên sách"
-        android:textColorHint="#000000"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="5dp"
-        app:hintTextAppearance="@style/HintTextAppearancebook"
-        >
-
-        <EditText
-            android:id="@+id/editTextBookName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:fontFamily="@font/arima_semibold"
-            android:padding="10dp"
-            android:textColor="#000000"
-            android:background="@drawable/edittext_background"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Trường nhập liệu Tác giả -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextAuthorNameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#000000"
-        android:hint="Tác giả"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:hintTextAppearance="@style/HintTextAppearancebook"
-        >
-
-        <EditText
-            android:id="@+id/editTextAuthorName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:padding="10dp"
-            android:fontFamily="@font/arima_semibold"
-            android:textColor="#000000"
-            android:background="@drawable/edittext_background"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Spinner Chọn thể loại và TextView -->
-    <TextView
-        android:id="@+id/categoryLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Chọn thể loại"
-        android:textColor="#281A7D"
-        android:textSize="18sp"
-        android:fontFamily="@font/arima_semibold"
-        android:layout_marginStart="16dp" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextCategoryLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#000000"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Thể loại"
-        app:hintTextAppearance="@style/HintTextAppearancebook"
-        >
-
-
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext_background"
-            android:dropDownWidth="match_parent"
-            android:dropDownHeight="wrap_content"
-            android:fontFamily="@font/arima_semibold"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textColor="#000000" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Trường nhập liệu Năm sản xuất -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextYearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Năm sản xuất"
-        android:textColorHint="#000000"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:hintTextAppearance="@style/HintTextAppearancebook"
-        >
-
-        <EditText
-            android:id="@+id/editTextYear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:padding="10dp"
-            android:fontFamily="@font/arima_semibold"
-            android:textColor="#000000"
-            android:background="@drawable/edittext_background"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Trường nhập liệu Số lượng -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextQuantityLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#000000"
-        android:hint="Số lượng"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:hintTextAppearance="@style/HintTextAppearancebook"
-        >
-
-        <EditText
-            android:id="@+id/editTextQuantity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:padding="10dp"
-            android:fontFamily="@font/arima_semibold"
-            android:textColor="#000000"
-            android:background="@drawable/edittext_background"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Trường nhập liệu Mô tả -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextDescriptionLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#000000"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Mô tả"
-        app:hintTextAppearance="@style/HintTextAppearancebook"
-        >
-
-        <EditText
-            android:id="@+id/editTextDescription"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:inputType="textMultiLine"
-            android:gravity="top"
-            android:padding="10dp"
-            android:textColor="#000000"
-            android:fontFamily="@font/arima_semibold"
-            android:background="@drawable/edittext_background"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Trường nhập liệu Giá -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextPriceLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#000000"
-        android:hint="Giá"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:hintTextAppearance="@style/HintTextAppearancebook"
-        >
-
-        <EditText
-            android:id="@+id/editTextPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:fontFamily="@font/arima_semibold"
-            android:padding="10dp"
-            android:textColor="#000000"
-            android:background="@drawable/edittext_background"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Thêm hai hình ảnh dưới trường Giá -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/priceImage"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/bong_bong_anh_dao" />
-
-        <ImageView
-            android:id="@+id/priceImage2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/image_add_book_small"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="37dp"/>
-
-        <!-- Vertical LinearLayout for TextView and Switch -->
+        <!-- Thanh trên cùng -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginLeft="-5dp"
+            android:layout_marginRight="-5dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="16dp"
-            android:gravity="end">
+            android:background="@drawable/border_shape">
 
             <TextView
-                android:id="@+id/switchLabel"
+                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HIỂN THỊ SÁCH"
-                android:layout_marginEnd="35dp"
-                android:textColor="#000000"
-                android:textSize="17sp"
-                android:fontFamily="@font/arima_semibold" />
+                android:layout_marginLeft="110dp"
+                android:fontFamily="@font/arima_semibold"
+                android:text="THÊM SÁCH"
+                android:textColor="#E81970"
+                android:layout_marginTop="5dp"
+                android:textSize="36dp" />
 
-            <Switch
-                android:id="@+id/switchVisibility"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="60dp"/>
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_book_admin" />
         </LinearLayout>
+
+        <!-- Trường nhập liệu Tên sách -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextBookNameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tên sách"
+            android:textColorHint="#000000"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="5dp"
+            app:hintTextAppearance="@style/HintTextAppearancebook">
+
+            <EditText
+                android:id="@+id/editTextBookName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:fontFamily="@font/arima_semibold"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:background="@drawable/edittext_background"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Trường nhập liệu Tác giả -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextAuthorNameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#000000"
+            android:hint="Tác giả"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:hintTextAppearance="@style/HintTextAppearancebook">
+
+            <EditText
+                android:id="@+id/editTextAuthorName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:padding="10dp"
+                android:fontFamily="@font/arima_semibold"
+                android:textColor="#000000"
+                android:background="@drawable/edittext_background"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Spinner Chọn thể loại và TextView -->
+        <TextView
+            android:id="@+id/categoryLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Chọn thể loại"
+            android:textColor="#281A7D"
+            android:textSize="18sp"
+            android:fontFamily="@font/arima_semibold"
+            android:layout_marginStart="16dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextCategoryLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#000000"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Thể loại"
+            app:hintTextAppearance="@style/HintTextAppearancebook">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_background"
+                android:dropDownWidth="match_parent"
+                android:dropDownHeight="wrap_content"
+                android:fontFamily="@font/arima_semibold"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="#000000" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Trường nhập liệu Năm sản xuất -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextYearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Năm sản xuất"
+            android:textColorHint="#000000"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:hintTextAppearance="@style/HintTextAppearancebook">
+
+            <EditText
+                android:id="@+id/editTextYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:padding="10dp"
+                android:fontFamily="@font/arima_semibold"
+                android:textColor="#000000"
+                android:background="@drawable/edittext_background"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Trường nhập liệu Số lượng -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextQuantityLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#000000"
+            android:hint="Số lượng"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:hintTextAppearance="@style/HintTextAppearancebook">
+
+            <EditText
+                android:id="@+id/editTextQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:padding="10dp"
+                android:fontFamily="@font/arima_semibold"
+                android:textColor="#000000"
+                android:background="@drawable/edittext_background"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Trường nhập liệu Mô tả -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextDescriptionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#000000"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Mô tả"
+            app:hintTextAppearance="@style/HintTextAppearancebook">
+
+            <EditText
+                android:id="@+id/editTextDescription"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:inputType="textMultiLine"
+                android:gravity="top"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:fontFamily="@font/arima_semibold"
+                android:background="@drawable/edittext_background"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Trường nhập liệu Nội dung đọc thử -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextSampleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#000000"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Nội dung đọc thử"
+            app:hintTextAppearance="@style/HintTextAppearancebook">
+
+            <EditText
+                android:id="@+id/editTextSample"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:inputType="textMultiLine"
+                android:gravity="top"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:fontFamily="@font/arima_semibold"
+                android:background="@drawable/edittext_background"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Trường nhập liệu Giá -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTextPriceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#000000"
+            android:hint="Giá"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:hintTextAppearance="@style/HintTextAppearancebook">
+
+            <EditText
+                android:id="@+id/editTextPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:fontFamily="@font/arima_semibold"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:background="@drawable/edittext_background"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Thêm hai hình ảnh dưới trường Giá -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/priceImage"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/bong_bong_anh_dao" />
+
+            <ImageView
+                android:id="@+id/priceImage2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/image_add_book_small"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="37dp"/>
+
+            <!-- Vertical LinearLayout for TextView and Switch -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp"
+                android:gravity="end">
+
+                <TextView
+                    android:id="@+id/switchLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HIỂN THỊ SÁCH"
+                    android:layout_marginEnd="35dp"
+                    android:textColor="#000000"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/arima_semibold" />
+
+                <Switch
+                    android:id="@+id/switchVisibility"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="60dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Nút thao tác dưới cùng -->
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="35dp"
+            android:text="ADD"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/rounded_button_add"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
-
-    <!-- Nút thao tác dưới cùng -->
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginBottom="35dp"
-        android:text="ADD"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/rounded_button_add"
-        android:layout_gravity="center_horizontal" />
-
-    <!-- Thêm hai hình ảnh dưới trường Giá -->
-    <ImageView
-        android:id="@+id/priceImage1"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/image_add_book"
-        app:layout_constraintTop_toBottomOf="@id/editTextPriceLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="16dp" />
-
-</LinearLayout>
+</ScrollView>

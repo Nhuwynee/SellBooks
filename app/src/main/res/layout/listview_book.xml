@@ -12,30 +12,33 @@
         android:orientation="vertical">
     <!-- Header with User Icon -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-2dp"
-        android:layout_marginLeft="-5dp"
-        android:layout_marginRight="-5dp">
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+        <!-- Thanh trên cùng -->
+        <LinearLayout
+            android:layout_marginTop="-2dp"
+            android:layout_marginLeft="-5dp"
+            android:layout_marginRight="-5dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="110dp"
-            android:fontFamily="@font/arima_semibold"
-            android:text="DANH SÁCH"
-            android:textColor="#E81970"
-            android:layout_marginTop="5dp"
-            android:textSize="36dp" />
+            android:background="@drawable/border_shape">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/ic_book_admin" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="110dp"
+                android:fontFamily="@font/arima_semibold"
+                android:text="DANH SÁCH"
+                android:textColor="#E81970"
+                android:layout_marginTop="5dp"
+                android:textSize="36dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_book_admin" />
+        </LinearLayout>
     <!-- RecyclerView được định vị ngay bên dưới LinearLayout đầu tiên -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_addbook"
