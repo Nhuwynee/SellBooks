@@ -91,16 +91,16 @@
                     android:fontFamily="@font/arima_bold"
                     android:textSize="20sp" />
 
-                <Button
+                <TextView
                     android:id="@+id/btn_show"
                     android:layout_width="100dp"
                     android:layout_height="35dp"
                     android:paddingTop="3dp"
                     android:layout_weight="0.1"
-                    android:background="@drawable/line_under"
                     android:text="Xem chi tiết"
                     android:fontFamily="@font/arima_bold"
                     android:textColor="#E81970"
+                    android:textSize="18sp"
                     android:layout_marginLeft="100dp"
                     android:src="@drawable/ic_bag"
                     />

@@ -1,13 +1,20 @@
 package com.example.bansach.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +23,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.Adapter.FavouriteAdapter;
+import com.example.bansach.FogotPassPage;
+import com.example.bansach.LoginMainPage;
 import com.example.bansach.R;
 import com.example.bansach.model.Book;
 
@@ -34,18 +43,6 @@ public class FavouriteBookFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView_favourite);
         book(); // Khởi tạo dữ liệu
 
-//        // Xử lý sự kiện nhấn nút
-//        show.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Chuyển sang Fragment khác
-//                ViewBookFragment newFragment = new ViewBookFragment();
-//                getParentFragmentManager().beginTransaction()
-//                        .replace(R.id.container, newFragment)
-//                        .addToBackStack(null)
-//                        .commit();
-//            }
-//        });
         return view; // Trả về view đã tạo
     }
 
@@ -61,8 +58,17 @@ public class FavouriteBookFragment extends Fragment {
         bookList.add(new Book("Tóc của tôi", R.drawable.toc_cua_toi, 117000f, "Lưu Thị Lan", "2200 ★"));
         bookList.add(new Book("Vợ nhặt", R.drawable.vhvn1, 99000f, "Nguyễn Nhật Ánh", "1500 ★"));
 
-        favouriteAdapter = new FavouriteAdapter(bookList);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.VERTICAL, false);
+        favouriteAdapter = new FavouriteAdapter(bookList, new FavouriteAdapter.OnFavouriteClickListener() {
+            @Override
+            public void onFavouriteList(Book book) {
+                ViewBookFragment viewBookFragment = new ViewBookFragment();
+
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, viewBookFragment)
+                        .addToBackStack(null) // Thêm vào back stack nếu cần
+                        .commit();
+            }
+        });        LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(favouriteAdapter);
 

@@ -20,18 +20,20 @@
         <TextView
             android:id="@+id/bookTitle1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:gravity="center"
             android:text="Book Title"
             android:textSize="16sp"
             android:textColor="#000"
-            android:paddingTop="8dp" />
+            android:paddingTop="8dp"
+            android:fontFamily="@font/arima_bold"/>
         <TextView
             android:id="@+id/bookTitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="190.000 VND"
+            android:fontFamily="@font/arima_regular"
             android:textSize="16sp"
             android:textColor="#F01706"
             android:paddingTop="8dp" />

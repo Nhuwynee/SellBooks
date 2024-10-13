@@ -30,6 +30,7 @@ public class ViewBookFragment extends Fragment {
         viewFlipper = view.findViewById(R.id.viewflipper);
         ImageButton cart = view.findViewById(R.id.btn_cart);
         Button read = view.findViewById(R.id.doc_thu);
+        ImageButton like =view.findViewById(R.id.btn_favourite_book);
         addImagesToFlipper();
 
         if (getArguments() != null) {
@@ -91,18 +92,30 @@ public class ViewBookFragment extends Fragment {
             }
         });
 
-//        // Sự kiện nút yêu thích sách
-//        like.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Chuyển sang Fragment khác
-//                MessageFavouriteBookFragment newFragment = new MessageFavouriteBookFragment();
-//                getParentFragmentManager().beginTransaction()
-//                        .replace(R.id.container, newFragment)
-//                        .addToBackStack(null)
-//                        .commit();
-//            }
-//        });
+        // Sự kiện nút yêu thích sách
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển sang Fragment khác
+                MessageFavouriteBookFragment newFragment = new MessageFavouriteBookFragment();
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.container, newFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển sang Fragment khác
+                CartFragment newFragment = new CartFragment();
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.container, newFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         return view; // Trả về view
     }

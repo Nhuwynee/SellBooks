@@ -11,13 +11,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.R;
 import com.example.bansach.model.Book;
+import com.example.bansach.model.History;
 
 import java.util.List;
 
 public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.BookViewHolder> {
 
     private final List<Book> bookList; // Đã thêm final ở đây
+    private FavouriteAdapter.OnFavouriteClickListener listener;
 
+    public interface OnFavouriteClickListener {
+        void onFavouriteList(Book book);
+    }
+    public FavouriteAdapter(List<Book> bookList, FavouriteAdapter.OnFavouriteClickListener listener) {
+        this.bookList = bookList;
+        this.listener = listener;
+    }
     public FavouriteAdapter(List<Book> bookList) {
         this.bookList = bookList;
     }
@@ -36,6 +45,12 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Book
         holder.bookPrice.setText(String.valueOf(book.getPrice()));
         holder.bookAuthor.setText(String.valueOf(book.getAuthor()));
         holder.bookPoint.setText(String.valueOf(book.getPoint()));
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onFavouriteList(book);
+            }
+        });
+
     }
 
     @Override
