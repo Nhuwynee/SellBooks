@@ -4,14 +4,10 @@
     android:orientation="vertical"
     android:padding="1dp">
 
-    <!-- Phần tìm kiếm -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="680dp"
-        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:layout_marginBottom="20dp">
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -21,7 +17,8 @@
                 android:paddingLeft="5dp"
                 android:fontFamily="@font/arima_semibold"
                 android:textSize="30sp"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                />
 
             <TextView
                 android:id="@+id/tvGreeting"
@@ -41,17 +38,24 @@
                 android:background="@drawable/bg_avatar"/>
         </LinearLayout>
 
-        <EditText
+        <SearchView
             android:id="@+id/etSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:hint="Tìm kiếm"
             android:fontFamily="@font/arima_regular"
-            android:textSize="23dp"
-            android:paddingLeft="15dp"
+            android:layout_gravity="center"
             android:background="@drawable/bg_textfield_search"
+            android:searchIcon="@drawable/search"
             />
+        <TextView
+            android:id="@+id/tvNoResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Không tìm thấy sách nào."
+            android:visibility="gone"
+        android:layout_gravity="center"
+        android:textSize="16sp"
+        android:textColor="@android:color/holo_red_dark"/>
         <!-- Danh sách gợi ý -->
         <TextView
             android:id="@+id/tvSuggestions"
@@ -74,7 +78,4 @@
             android:scrollbars="horizontal" />
     </LinearLayout>
 
-    <!-- Thanh điều hướng dưới -->
 
-
-</LinearLayout>

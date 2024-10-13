@@ -2,12 +2,19 @@ package com.example.bansach.Fragment;
 
 import static com.example.bansach.R.*;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 //import androidx.activity.EdgeToEdge;
@@ -19,6 +26,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.Adapter.ParentAdapter;
 import com.example.bansach.Adapter.TextAdapter;
+import com.example.bansach.FogotPassPage;
+import com.example.bansach.LoginMainPage;
 import com.example.bansach.R;
 import com.example.bansach.model.Book;
 import com.example.bansach.model.Section;
@@ -50,6 +59,33 @@ public class HomeFragment extends Fragment {
         addImagesToFlipper();
         category();
         book();
+
+        TextView filter = view.findViewById(id.filter);
+        // Spannable cho Forgot Password
+        SpannableString spannableString_forgot = new SpannableString("Xem thêm");
+        ClickableSpan clickableSpan_forgot = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                // Chuyển đến forgot_pass Activity
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, new CategoryFragment()) // Thay thế 'container' bằng ID thực tế của Layout chứa Fragment
+                        .addToBackStack(null) // Thêm vào back stack nếu muốn quay lại
+                        .commit();
+                // Xóa màu nền khi nhấn vào
+                filter.setBackgroundColor(Color.TRANSPARENT);
+            }
+
+            @Override
+            public void updateDrawState(android.text.TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(true); // Gạch chân chữ
+                ds.setColor(filter.getCurrentTextColor()); // Giữ nguyên màu chữ hiện tại
+                ds.bgColor = Color.TRANSPARENT; // Màu nền trong suốt
+            }
+        };
+        spannableString_forgot.setSpan(clickableSpan_forgot, 0, spannableString_forgot.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        filter.setText(spannableString_forgot);
+        filter.setMovementMethod(LinkMovementMethod.getInstance()); // Cho phép TextView có thể nhấn
         return view; // Trả về view đã được khởi tạo
     }
 
@@ -64,7 +100,7 @@ public class HomeFragment extends Fragment {
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 viewFlipper.addView(imageView);
             }
-            viewFlipper.setFlipInterval(2000);
+            viewFlipper.setFlipInterval(5000);
             viewFlipper.setAutoStart(true); // Bắt đầu tự động
             viewFlipper.startFlipping(); // Bắt đầu lật ảnh
 

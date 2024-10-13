@@ -69,16 +69,33 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/sectionTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="25sp"
-                        android:textColor="#78103C"
-                        android:text="Thể loại"
-                        android:fontFamily="@font/arima_semibold"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/sectionTitle"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="25sp"
+                            android:textColor="#78103C"
+                            android:text="Thể loại"
+                            android:fontFamily="@font/arima_semibold"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"/>
+                        <TextView
+                            android:id="@+id/filter"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:textColor="#78103C"
+                            android:text="Xem thêm"
+                            android:fontFamily="@font/arima_regular"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"/>
+                    </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView1"
                         android:layout_width="match_parent"
