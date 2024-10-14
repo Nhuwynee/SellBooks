@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Book List Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="3dp">
+
+        <!-- Sample Book List Item -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:background="@android:color/white"
+            android:layout_marginBottom="4dp"
+            android:elevation="2dp">
+
+            <!-- Book thumbnail -->
+            <ImageView
+                android:id="@+id/image_book"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/bong_bong_anh_dao" />
+
+            <!-- Book details: Title, Author, Price, Status -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <!-- Book title -->
+                <TextView
+                    android:id="@+id/book_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bong bóng anh đào"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#78103C"
+                    android:fontFamily="@font/arima_bold"/>
+
+                <!-- Book author -->
+                <TextView
+                    android:id="@+id/book_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tê Kiến"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/arima_bold"/>
+
+                <!-- Horizontal layout for Price and Status -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12dp"> <!-- Increase marginTop here -->
+
+                    <!-- Book price -->
+                    <TextView
+                        android:id="@+id/book_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="170.000 VND"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:fontFamily="@font/arima_bold"/>
+
+                    <!-- Book status -->
+                    <TextView
+                        android:id="@+id/book_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Hoạt động"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/holo_green_dark"
+                        android:fontFamily="@font/arima_bold"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <!-- Audio Play Button -->
+            <ImageButton
+                android:id="@+id/audio_play_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_play_circle"
+                android:contentDescription="Play Audio"
+                android:layout_marginEnd="8dp"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="#EBE91E63"
+            android:layout_marginBottom="4dp"
+            android:drawableTop="@drawable/recycle_bin64"
+            android:paddingTop="20dp"
+            android:layout_alignParentEnd="true"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

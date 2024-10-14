@@ -37,7 +37,7 @@ public class UpdateBookAdminFragment extends Fragment {
         yearLayout =view.findViewById(R.id.editTextYearLayout);
         quantityLayout = view.findViewById(R.id.editTextQuantityLayout);
         descriptionLayout = view.findViewById(R.id.editTextDescriptionLayout);
-        additionalNotesLayout = view.findViewById(R.id.editTextAdditionalNotesLayout);
+//        additionalNotesLayout = view.findViewById(R.id.editTextAdditionalNotesLayout);
         priceLayout = view.findViewById(R.id.editTextPriceLayout);
 
         editTextBookName = view.findViewById(R.id.editTextBookName);
@@ -45,7 +45,7 @@ public class UpdateBookAdminFragment extends Fragment {
         editTextYear = view.findViewById(R.id.editTextYear);
         editTextQuantity = view.findViewById(R.id.editTextQuantity);
         editTextDescription = view.findViewById(R.id.editTextDescription);
-        editTextAdditionalNotes = view.findViewById(R.id.editTextAdditionalNotes);
+//        editTextAdditionalNotes = view.findViewById(R.id.editTextAdditionalNotes);
         editTextPrice = view.findViewById(R.id.editTextPrice);
 
         priceImage1 = view.findViewById(R.id.priceImage1);
