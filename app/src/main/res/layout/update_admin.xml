@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,7 +38,6 @@
             android:src="@drawable/ic_book_admin" />
     </LinearLayout>
 
-
     <!-- Trường nhập liệu Tên sách -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextBookNameLayout"
@@ -44,8 +46,7 @@
         android:textColorHint="#000000"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="5dp"
-        >
+        android:layout_marginTop="5dp">
 
         <EditText
             android:id="@+id/editTextBookName"
@@ -66,8 +67,7 @@
         android:layout_height="wrap_content"
         android:textColorHint="#000000"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        >
+        android:layout_marginEnd="16dp">
 
         <EditText
             android:id="@+id/editTextAuthorName"
@@ -99,8 +99,7 @@
         android:layout_height="wrap_content"
         android:textColorHint="#000000"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        >
+        android:layout_marginEnd="16dp">
 
         <AutoCompleteTextView
             android:id="@+id/autoCompleteCategory"
@@ -123,8 +122,7 @@
         android:layout_height="wrap_content"
         android:textColorHint="#000000"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        >
+        android:layout_marginEnd="16dp">
 
         <EditText
             android:id="@+id/editTextYear"
@@ -145,8 +143,7 @@
         android:layout_height="wrap_content"
         android:textColorHint="#000000"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        >
+        android:layout_marginEnd="16dp">
 
         <EditText
             android:id="@+id/editTextQuantity"
@@ -167,8 +164,7 @@
         android:layout_height="wrap_content"
         android:textColorHint="#000000"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        >
+        android:layout_marginEnd="16dp">
 
         <EditText
             android:id="@+id/editTextDescription"
@@ -178,7 +174,30 @@
             android:gravity="top"
             android:padding="10dp"
             android:textColor="#000000"
-            android:text="Viết về một tình yêu đẹp nhưng mong manh của hai nhân vậ trẻ."
+            android:text="Viết về một tình yêu đẹp nhưng mong manh của hai nhân vật trẻ."
+            android:fontFamily="@font/arima_semibold"
+            android:background="@drawable/edittext_background"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- New TextInputLayout for additional text box -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextAdditionalNotesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#000000"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        >
+
+        <EditText
+            android:id="@+id/editTextAdditionalNotes"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:text="Trong một buổi chiều tà, ánh nắng chiều nhuộm vàng cả bầu trời...."
             android:fontFamily="@font/arima_semibold"
             android:background="@drawable/edittext_background"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -190,8 +209,7 @@
         android:layout_height="wrap_content"
         android:textColorHint="#000000"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        >
+        android:layout_marginEnd="16dp">
 
         <EditText
             android:id="@+id/editTextPrice"
@@ -264,7 +282,5 @@
         android:textColor="#FFFFFF"
         android:background="@drawable/rounded_button_add"
         android:layout_gravity="center_horizontal" />
-
-
-
 </LinearLayout>
+</ScrollView>

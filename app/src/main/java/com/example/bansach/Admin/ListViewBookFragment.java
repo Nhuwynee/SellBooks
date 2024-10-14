@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bansach.Adapter.InvoiceAdapter;
 import com.example.bansach.Adapter.ListViewBookAdapter;
 import com.example.bansach.R;
+import com.example.bansach.Update_book_admin;
 import com.example.bansach.model.Book;
 import com.example.bansach.model.Invoice;
 
@@ -40,7 +41,7 @@ public class ListViewBookFragment extends Fragment {
             @Override
             public void onBookClick(Book book) {
                 // Xử lý khi người dùng click vào sách để xem thông tin
-                Update_book_admin viewBookFragment = new Update_book_admin();
+                UpdateBookAdminFragment viewBookFragment = new UpdateBookAdminFragment();
                 requireActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container_admin, viewBookFragment)
                         .commit();

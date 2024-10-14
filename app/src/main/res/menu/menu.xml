@@ -17,13 +17,13 @@
     <!-- Đặt icon cho mục Edit -->
     <item
         android:id="@+id/navigation_orders"
-        android:icon="@drawable/ic_edit"
+        android:icon="@drawable/ic_orders"
         android:title="Đơn hàng" />
 
     <!-- Đặt icon cho mục Orders -->
     <item
         android:id="@+id/navigation_account"
-        android:icon="@drawable/ic_orders"
+        android:icon="@drawable/ic_account_admin"
         android:title="Tôi" />
 
 </menu>

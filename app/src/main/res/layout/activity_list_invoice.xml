@@ -10,10 +10,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <!-- Thanh tiêu đề -->
+    <!-- Thanh trên cùng -->
     <LinearLayout
+        android:layout_marginTop="-2dp"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginRight="-5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_shape">
 
         <TextView
             android:id="@+id/textView4"
@@ -24,7 +28,7 @@
             android:text="HOÁ ĐƠN"
             android:textColor="#E81970"
             android:layout_marginTop="5dp"
-            android:textSize="36sp" />
+            android:textSize="36dp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -42,5 +46,4 @@
         android:layout_weight="1"
         />
 </LinearLayout>
-
 </LinearLayout>

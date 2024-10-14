@@ -44,7 +44,7 @@
                 <TextView
                     android:layout_width="170dp"
                     android:layout_height="50dp"
-                    android:text="Xin chào, Nguyệt"
+                    android:text="Xin chào, Anna"
                     android:layout_marginLeft="30dp"
                     android:textSize="20sp"
                     android:fontFamily="@font/arima_semibold"
