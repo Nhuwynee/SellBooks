@@ -187,6 +187,7 @@
                 android:background="@drawable/edittext_background"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- fix commit
         <!-- Trường nhập liệu Nội dung đọc thử -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTextSampleLayout"
