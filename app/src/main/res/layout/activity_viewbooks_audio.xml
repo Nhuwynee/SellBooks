@@ -28,7 +28,7 @@
                 >
 
                 <ViewFlipper
-                    android:id="@+id/viewflipper"
+                    android:id="@+id/viewflipper1"
                     android:layout_width="218dp"
                     android:layout_height="242dp"
                     android:layout_gravity="center"
@@ -180,7 +180,7 @@
                 </LinearLayout>
 
                 <FrameLayout
-                    android:id="@+id/framelayout"
+                    android:id="@+id/framelayout_audio"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginTop="5dp">
@@ -191,7 +191,7 @@
                     android:layout_width="100dp"
                     android:layout_height="25dp"
                     android:background="@color/white"
-                    android:text="Đọc thử"
+                    android:text="Nghe thử"
                     android:layout_gravity="left"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="15dp"
