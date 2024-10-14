@@ -227,4 +227,9 @@ public class Book implements Parcelable {
         parcel.writeString(description);
         parcel.writeString(isActive);
     }
+
+    public String isActive() {
+        return this.isActive;
+    }
+
 }
