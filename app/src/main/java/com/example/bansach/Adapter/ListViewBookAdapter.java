@@ -20,14 +20,20 @@ public class ListViewBookAdapter extends RecyclerView.Adapter<ListViewBookAdapte
 
     private final List<Book> bookList;
     private OnBookClickListener listener;
-
+    private OnBookDeleteListener deleteListener;
     public interface OnBookClickListener {
         void onBookClick(Book book);
     }
-    public ListViewBookAdapter(List<Book> bookList, OnBookClickListener listener) {
+    public interface OnBookDeleteListener {
+        void onBookDelete(Book book, int position);  // Dùng cho việc xóa sách
+    }
+
+    public ListViewBookAdapter(List<Book> bookList, OnBookClickListener listener, OnBookDeleteListener deleteListener) {
         this.bookList = bookList;
         this.listener = listener;
+        this.deleteListener = deleteListener;
     }
+
     public ListViewBookAdapter(List<Book> bookList) {
         this.bookList = bookList;
     }
@@ -53,15 +59,13 @@ public class ListViewBookAdapter extends RecyclerView.Adapter<ListViewBookAdapte
         holder.bookImage.setImageResource(book.getImgResource());
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
-                Log.d("ListViewBookAdapter", "Book clicked: " + book.getTitle());
                 listener.onBookClick(book);
             }
         });
         holder.buttonDelete.setOnClickListener(v -> {
-            // Xóa sách khỏi danh sách
-            bookList.remove(position);
-            notifyItemRemoved(position);
-        });
+            if (deleteListener != null) {
+                deleteListener.onBookDelete(book, position);  // Gọi đến phương thức delete
+            }        });
 
     }
 
@@ -88,10 +92,5 @@ public class ListViewBookAdapter extends RecyclerView.Adapter<ListViewBookAdapte
     public void removeItem(int position) {
         bookList.remove(position);
         notifyItemRemoved(position);
-    }
-    public void updateList(List<Book> newList) {
-        bookList.clear();
-        bookList.addAll(newList);
-        notifyDataSetChanged(); // Thông báo adapter cập nhật
     }
 }
