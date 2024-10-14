@@ -7,11 +7,12 @@
     <!-- Phần tìm kiếm -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="680dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:layout_marginBottom="20dp">
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -40,29 +41,25 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_avatar"/>
         </LinearLayout>
-
-        <EditText
-            android:id="@+id/etSearch"
+        <Spinner
+            android:id="@+id/spinner1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:hint="Thể loại"
-            android:fontFamily="@font/arima_regular"
-            android:textSize="23dp"
-            android:paddingLeft="15dp"
-            android:background="@drawable/bg_textfield_search"
+            android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/text_category1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_category"
+            android:text=""
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:fontFamily="@font/arima_bold"
+            android:textSize="20sp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:layout_margin="20dp"
             />
-        <!-- Danh sách gợi ý -->
-        <TextView
-            android:id="@+id/tvSuggestions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gợi ý"
-            android:textColor="#E6007E"
-            android:paddingLeft="5dp"
-            android:fontFamily="@font/arima_semibold"
-            android:textSize="25sp"
-            android:layout_marginTop="5dp" />
 
         <!-- RecyclerView để hiển thị sách -->
         <androidx.recyclerview.widget.RecyclerView

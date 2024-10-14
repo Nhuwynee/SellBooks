@@ -2,11 +2,31 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
+<<<<<<< HEAD
       <SelectionState runConfigName="MainActivity">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
+=======
+      <SelectionState runConfigName="app">
+        <option name="selectionMode" value="DROPDOWN" />
+<<<<<<< HEAD
+        <DropdownSelection timestamp="2024-10-13T13:33:15.770471500Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\MY HP\.android\avd\Medium_Phone_API_35.avd" />
+=======
+        <DropdownSelection timestamp="2024-10-12T15:01:07.835983300Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\ASUS\.android\avd\Medium_Phone_API_35_1.avd" />
+>>>>>>> 1e2c50f0d0f2c4577fbdb8f0a08fd7dca7e393ca
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
+>>>>>>> e8332240443d8b059049417628ef4259b073375a
       </SelectionState>
     </selectionStates>
   </component>

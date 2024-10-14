@@ -74,21 +74,12 @@ public class BookAdapter_search extends RecyclerView.Adapter<BookAdapter.BookVie
             bookPrice = itemView.findViewById(R.id.book_price);
         }
     }
-    public void filter(String query) {
-        query = query.toLowerCase();
-        filteredBookList.clear();
-
-        if (query.isEmpty()) {
-            filteredBookList.addAll(bookList);  // Nếu không nhập gì, hiển thị toàn bộ sách
-        } else {
-            for (Book book : bookList) {
-                if (book.getTitle().toLowerCase().contains(query) || book.getAuthor().toLowerCase().contains(query)) {
-                    filteredBookList.add(book);
-                }
-            }
-        }
-
-        notifyDataSetChanged();  // Cập nhật lại giao diện
+    public void updateBooks(List<Book> newBooks) {
+        this.bookList.clear(); // Xóa danh sách sách hiện tại
+        this.bookList.addAll(newBooks); // Thêm sách mới vào danh sách
     }
+
+
+
 
 }

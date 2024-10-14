@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -28,6 +29,8 @@ public class ViewBookFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_viewbooks, container, false);
         viewFlipper = view.findViewById(R.id.viewflipper);
         ImageButton cart = view.findViewById(R.id.btn_cart);
+        Button read = view.findViewById(R.id.doc_thu);
+        ImageButton like =view.findViewById(R.id.btn_favourite_book);
         addImagesToFlipper();
 
         if (getArguments() != null) {
@@ -73,6 +76,44 @@ public class ViewBookFragment extends Fragment {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 // Có thể để trống hoặc thực hiện một số hành động khi tab đã được chọn lại
+            }
+        });
+
+        // Sự kiện nút Đọc thử sách
+        read.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển sang Fragment khác
+                ReadBookFragment newFragment = new ReadBookFragment();
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.container, newFragment) // Đảm bảo ID container đúng
+                        .addToBackStack(null) // Nếu muốn thêm vào backstack
+                        .commit();
+            }
+        });
+
+        // Sự kiện nút yêu thích sách
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển sang Fragment khác
+                MessageFavouriteBookFragment newFragment = new MessageFavouriteBookFragment();
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.container, newFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển sang Fragment khác
+                CartFragment newFragment = new CartFragment();
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.container, newFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
