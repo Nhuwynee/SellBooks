@@ -49,8 +49,8 @@ public class AddBookFragment extends Fragment {
         editTextQuantity = view.findViewById(R.id.editTextQuantity);
         editTextDescriptionLayout = view.findViewById(R.id.editTextDescriptionLayout);
         editTextDescription = view.findViewById(R.id.editTextDescription);
-        editTextSampleLayout = view.findViewById(R.id.editTextSampleLayout);
-        editTextSample = view.findViewById(R.id.editTextSample);
+//        editTextSampleLayout = view.findViewById(R.id.editTextSampleLayout);
+//        editTextSample = view.findViewById(R.id.editTextSample);
         editTextPriceLayout = view.findViewById(R.id.editTextPriceLayout);
         editTextPrice = view.findViewById(R.id.editTextPrice);
         switchVisibility = view.findViewById(R.id.switchVisibility);
