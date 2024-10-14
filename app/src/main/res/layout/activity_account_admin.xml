@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="110dp"
             android:fontFamily="@font/arima_semibold"
-            android:text="ĐẶT HÀNG"
+            android:text="TÀI KHOẢN"
             android:textColor="#E81970"
             android:layout_marginTop="5dp"
             android:textSize="36sp"
@@ -52,9 +52,10 @@
 
         <!-- Customer Info Section -->
         <LinearLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.12">
+            android:layout_weight="0.2">
 
             <ImageView
                 android:id="@+id/customer_image"
@@ -156,3 +157,4 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+

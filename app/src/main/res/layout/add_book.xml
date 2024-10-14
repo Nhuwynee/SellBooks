@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -187,8 +188,6 @@
                 android:background="@drawable/edittext_background"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- fix commit
-        <!-- Trường nhập liệu Nội dung đọc thử -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTextSampleLayout"
             android:layout_width="match_parent"
@@ -273,7 +272,6 @@
                     android:textColor="#000000"
                     android:textSize="17sp"
                     android:fontFamily="@font/arima_semibold" />
-
                 <Switch
                     android:id="@+id/switchVisibility"
                     android:layout_width="wrap_content"
