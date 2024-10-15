@@ -29,13 +29,13 @@ public class ListAudioBookFragment extends Fragment {
 
         // Khởi tạo RecyclerView
         recyclerView = view.findViewById(R.id.recyclerView_audio);
-list();
+        list();
         return view;
     }
 
     // Phương thức thêm sách vào danh sách
     private void list() {
-        bookList.add(new Book("Bong bóng anh đào", "Tê Kiến", 200000f, "Hoạt động", R.drawable.bong_bong_anh_dao));
+        bookList.add(new Book("Bơ đi mà sống", "Mèo Xù", 200000f, "Hoạt động", R.drawable.bo_di_ma_song));
         bookList.add(new Book("Hồng lục", "Kiêm Diệp Tử", 170000f, "Hoạt động", R.drawable.hong_luc));
         bookList.add(new Book("Này đừng có ăn cỏ!", "Lục Lục", 150000f, "Hoạt động", R.drawable.nay_dung_co_an_co));
         bookList.add(new Book("Nhật kính tình yêu", "Tống Cửu Cẩn", 250000f, "Hoạt động", R.drawable.nhat_kinh_tinh_yeu));

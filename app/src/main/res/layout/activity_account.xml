@@ -185,6 +185,8 @@
                     android:fontFamily="@font/arima_bold"
                     android:textSize="18dp"
                     android:layout_margin="10dp"
+                    android:paddingLeft="30dp"
+                    android:drawableLeft="@drawable/ic_headphone"
                     android:background="@drawable/btn_account"/>
                 <Button
                     android:id="@+id/btn_favourite"
