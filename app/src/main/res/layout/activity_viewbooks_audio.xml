@@ -90,7 +90,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
-                            android:text="225.000đ"
+                            android:text="75.000đ"
                             android:fontFamily="@font/arima_semibold"
                             android:textColor="#2A15AB"
                             android:textSize="23sp" />
@@ -185,23 +185,6 @@
                     android:layout_height="200dp"
                     android:layout_marginTop="5dp">
                 </FrameLayout>
-
-                <Button
-                    android:id="@+id/doc_thu"
-                    android:layout_width="100dp"
-                    android:layout_height="25dp"
-                    android:background="@color/white"
-                    android:text="Nghe thử"
-                    android:layout_gravity="left"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="15dp"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/arima_bold"
-                    android:textColor="#E81970"
-                    android:gravity="center"
-                    >
-
-                </Button>
 
                 <LinearLayout
                     android:layout_width="match_parent"

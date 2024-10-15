@@ -3,40 +3,42 @@ package com.example.bansach.Fragment;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.bansach.R;
 
-public class AudioFragment extends AppCompatActivity {
+public class AudioFragment extends Fragment {
 
-    private Button btnPlayPause, btnPrevious, btnNext;
+    private ImageButton btnPlayPause, btnPrevious, btnNext;
     private SeekBar seekBar;
-    private TextView tvTime, audiobookTitle;
+    private TextView tvTime;
     private MediaPlayer mediaPlayer;
     private Handler handler = new Handler();
     private boolean isPlaying = false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_audiobook);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_audiobook, container, false);
 
-        btnPlayPause = findViewById(R.id.btn_play_pause);
-        btnPrevious = findViewById(R.id.btn_previous);
-        btnNext = findViewById(R.id.btn_next);
-        seekBar = findViewById(R.id.seekBar);
-        tvTime = findViewById(R.id.tv_time);
-        audiobookTitle = findViewById(R.id.audiobook_title);
+        btnPlayPause = view.findViewById(R.id.btn_play_pause);
+        btnPrevious = view.findViewById(R.id.btn_previous);
+        btnNext = view.findViewById(R.id.btn_next);
+        seekBar = view.findViewById(R.id.seekBar);
+        tvTime = view.findViewById(R.id.tv_time);
 
-        // Set audiobook title
-        audiobookTitle.setText("Tên Sách Nói");
 
         // Tạo MediaPlayer từ file âm thanh
-        mediaPlayer = MediaPlayer.create(this, R.raw.nguoinamcham); // Đặt tên file sách nói trong thư mục raw
+        mediaPlayer = MediaPlayer.create(getContext(), R.raw.nguoinamcham); // Đặt tên file sách nói trong thư mục raw
 
         // Cập nhật SeekBar khi âm thanh phát
         seekBar.setMax(mediaPlayer.getDuration());
@@ -64,50 +66,64 @@ public class AudioFragment extends AppCompatActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
+                handler.removeCallbacks(updateSeekBar); // Dừng cập nhật khi người dùng đang kéo
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                handler.postDelayed(updateSeekBar, 1000); // Tiếp tục cập nhật sau khi dừng kéo
             }
         });
 
         // Xử lý nút Previous và Next
         btnPrevious.setOnClickListener(v -> rewindAudio());
         btnNext.setOnClickListener(v -> fastForwardAudio());
+
+        // Nghe sự kiện khi âm thanh phát xong
+        mediaPlayer.setOnCompletionListener(mp -> {
+            isPlaying = false;
+            seekBar.setProgress(0); // Đặt lại SeekBar về 0 khi phát xong
+        });
+
+        return view;
     }
 
     // Phát sách nói
     private void playAudio() {
         mediaPlayer.start();
-        btnPlayPause.setText("Pause");
         isPlaying = true;
     }
 
     // Tạm dừng sách nói
     private void pauseAudio() {
         mediaPlayer.pause();
-        btnPlayPause.setText("Play");
         isPlaying = false;
     }
 
     // Tua nhanh
     private void fastForwardAudio() {
         int newPosition = mediaPlayer.getCurrentPosition() + 5000; // Tua nhanh 5 giây
-        mediaPlayer.seekTo(newPosition);
+        if (newPosition < mediaPlayer.getDuration()) {
+            mediaPlayer.seekTo(newPosition);
+        }
     }
 
     // Tua lùi
     private void rewindAudio() {
         int newPosition = mediaPlayer.getCurrentPosition() - 5000; // Tua lùi 5 giây
-        mediaPlayer.seekTo(newPosition);
+        if (newPosition >= 0) {
+            mediaPlayer.seekTo(newPosition);
+        }
     }
 
     // Cập nhật SeekBar
     private Runnable updateSeekBar = new Runnable() {
         @Override
         public void run() {
-            seekBar.setProgress(mediaPlayer.getCurrentPosition());
-            tvTime.setText(formatTime(mediaPlayer.getCurrentPosition()));
+            if (isPlaying) { // Chỉ cập nhật nếu đang phát
+                seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                tvTime.setText(formatTime(mediaPlayer.getCurrentPosition()));
+            }
             handler.postDelayed(this, 1000);
         }
     };
@@ -120,7 +136,7 @@ public class AudioFragment extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         if (mediaPlayer != null) {
             mediaPlayer.release();

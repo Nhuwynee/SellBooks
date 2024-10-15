@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bansach.Fragment.AccountFragment;
 import com.example.bansach.Fragment.CartFragment;
 import com.example.bansach.Fragment.HomeFragment;
+import com.example.bansach.Fragment.ListAudioBookFragment;
 import com.example.bansach.Fragment.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -32,6 +33,9 @@ public class MenuActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 if (id == R.id.navigation_cart) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, new CartFragment()).commit();
+                }
+                if (id == R.id.navigation_audio) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, new ListAudioBookFragment()).commit();
                 }
                 else if (id == R.id.navigation_home) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();

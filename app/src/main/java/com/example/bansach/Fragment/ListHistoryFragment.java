@@ -87,9 +87,7 @@ public class ListHistoryFragment extends Fragment {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Button category = view.findViewById(R.id.btn_status1);
                 String selectedItem = parent.getItemAtPosition(position).toString();
-                category.setText(selectedItem);
                 filterHistoryByGenre(selectedItem);
             }
 
@@ -110,7 +108,7 @@ public class ListHistoryFragment extends Fragment {
         } else {
             for (History b : historyList) {
                 String category = b.getOrderStatus();
-                if (category.equalsIgnoreCase(genre)) {
+                if (category.trim().equalsIgnoreCase(genre.trim())) {
                     filteredBookList.add(b);
                 }
             }

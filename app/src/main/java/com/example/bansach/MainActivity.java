@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Sử dụng Intent để chuyển sang SignupActivity
-                Intent intent = new Intent(MainActivity.this, AudioFragment.class);
+                Intent intent = new Intent(MainActivity.this, LoginMainPage.class);
                 startActivity(intent);  // Bắt đầu SignupActivity
             }
         });

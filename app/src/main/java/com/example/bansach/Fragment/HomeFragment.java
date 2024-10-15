@@ -89,7 +89,7 @@ public class HomeFragment extends Fragment {
 
     private void addImagesToFlipper() {
         try {
-            int[] images = {drawable.promotion, drawable.read_book_3, drawable.yeuthich};
+            int[] images = {drawable.promotion, drawable.read_book_3, drawable.yeuthich, drawable.audiobook};
 
             for (int image : images) {
                 ImageView imageView = new ImageView(getContext());

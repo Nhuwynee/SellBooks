@@ -10,6 +10,10 @@
         android:id="@+id/navigation_search"
         android:icon="@drawable/icon_search"
         android:title="Tìm kiếm" />
+    <item
+        android:id="@+id/navigation_audio"
+        android:icon="@drawable/ic_audio"
+        android:title="Sách nói" />
 
     <item
         android:id="@+id/navigation_cart"

@@ -1,6 +1,5 @@
 package com.example.bansach.Adapter;
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.BookViewHold
 
     private final List<Book> bookList;
     private final OnBookClickListener listener;
-    private final OnBookDeleteListener deleteListener;
 
     public interface OnBookClickListener {
         void onBookClick(Book book);
@@ -31,10 +29,9 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.BookViewHold
         void onBookDelete(Book book, int position);
     }
 
-    public AudioAdapter(List<Book> bookList, OnBookClickListener listener, OnBookDeleteListener deleteListener) {
+    public AudioAdapter(List<Book> bookList, OnBookClickListener listener) {
         this.bookList = bookList;
         this.listener = listener;
-        this.deleteListener = deleteListener;
     }
 
     @NonNull
@@ -71,12 +68,6 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.BookViewHold
             }
         });
 
-        // Set delete button listener
-        holder.buttonDeleteAudio.setOnClickListener(v -> {
-            if (deleteListener != null) {
-                deleteListener.onBookDelete(book, position);
-            }
-        });
     }
 
     @Override

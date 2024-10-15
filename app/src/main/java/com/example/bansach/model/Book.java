@@ -40,6 +40,11 @@ public class Book implements Parcelable {
         this.imgResource = imgURL;
         this.price = price;
     }
+    public Book(String title,String author, int imgURL) {
+        this.title = title;
+        this.author = author;
+        this.imgResource = imgURL;
+    }
     public Book(String title, int imgURL, float price, String category) {
         this.title = title;
         this.imgResource = imgURL;

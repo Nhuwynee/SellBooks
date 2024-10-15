@@ -8,14 +8,46 @@
 
     <!-- Tên sách nói -->
     <TextView
-        android:id="@+id/audiobook_title"
+        android:id="@+id/tv_total_audio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tên sách"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_gravity="start"
+        android:fontFamily="@font/arima_bold"
+        android:gravity="start"
+        android:text="Sách nói"
+        android:textColor="#E81970"
+        android:layout_marginBottom="40dp"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/book_cover"
+        android:layout_width="360dp"
+        android:layout_height="218dp"
+        android:layout_marginBottom="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bo_di_ma_song3" />
+
+    <TextView
+        android:id="@+id/audiobook_title"
+        android:layout_width="257dp"
+        android:layout_height="42dp"
         android:layout_gravity="center"
-        android:paddingBottom="16dp"/>
+        android:gravity="center"
+        android:fontFamily="@font/arima_bold"
+        android:text="Bơ Đi Mà Sống"
+        android:textColor="#78103C"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/book_title_author"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:fontFamily="@font/arima_bold"
+        android:text="Mèo Xù"
+        android:textColor="#000000"
+        android:textSize="25sp" />
 
     <!-- Seekbar để hiển thị tiến độ phát -->
     <SeekBar
@@ -31,25 +63,32 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_previous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="trước"
-            android:layout_marginEnd="16dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Rewind"
+            android:src="@drawable/ic_rewind" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_play_pause"
-            android:layout_width="wrap_content"
+            android:layout_width="86dp"
             android:layout_height="wrap_content"
-            android:text="Play"/>
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentEnd="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Play/Pause"
+            android:src="@drawable/ic_pause" />
 
-        <Button
+        <!-- Nút Tua tới -->
+        <ImageButton
             android:id="@+id/btn_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="sau"
-            android:layout_marginStart="16dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Forward"
+            android:src="@drawable/ic_forward" />
     </LinearLayout>
 
     <!-- Thời gian đã phát -->
@@ -58,6 +97,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="00:00"
+        android:textSize="30dp"
+        android:fontFamily="@font/arima_bold"
         android:layout_gravity="center"
         android:paddingTop="16dp"/>
 

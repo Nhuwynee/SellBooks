@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.Adapter.InvoiceAdapter;
 import com.example.bansach.R;
+import com.example.bansach.model.History;
 import com.example.bansach.model.Invoice;
 
 import java.text.ParseException;
@@ -21,10 +25,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListInvoiceFragment extends Fragment {
-
+    List<Invoice> filteredBookList = new ArrayList<>();
     private RecyclerView recyclerViewInvoices;
     private InvoiceAdapter invoiceAdapter;
-    private List<Invoice> invoiceList;
+    List<Invoice> invoiceList = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -32,6 +36,29 @@ public class ListInvoiceFragment extends Fragment {
 
         recyclerViewInvoices = view.findViewById(R.id.recycler);
         list();
+        Spinner spinner = view.findViewById(R.id.spinner3);
+        // Danh sách các tùy chọn cho Spinner
+        String[] options = {"All", "Đã giao", "Đang giao", "Đã huỷ"};
+
+        // Tạo ArrayAdapter để liên kết dữ liệu với Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.item_list_filter, options);
+        adapter.setDropDownViewResource(R.layout.item_filter);
+
+        // Gắn Adapter vào Spinner
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                filterHistoryByGenre(selectedItem);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Không làm gì nếu không có mục nào được chọn
+            }
+        });
         return view;
     }
     public void list(){
@@ -53,10 +80,12 @@ public class ListInvoiceFragment extends Fragment {
                 invoiceList.add(new Invoice("2411011", dateFormat.parse("20/10/2024"), 600000, "Đã giao", "ava_admin_4", "dagiao"));
                 invoiceList.add(new Invoice("2411012", dateFormat.parse("21/10/2024"), 600000, "Đã giao", "ava_admin_5", "dagiao"));
                 invoiceList.add(new Invoice("2411013", dateFormat.parse("22/10/2024"), 600000, "Đã huỷ", "ava_admin_6", "dahuy"));
+                filteredBookList.addAll(invoiceList);
+
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
-            InvoiceAdapter invoiceAdapter = new InvoiceAdapter(invoiceList, new InvoiceAdapter.OnInvoiceClickListener() {
+             invoiceAdapter = new InvoiceAdapter(filteredBookList, new InvoiceAdapter.OnInvoiceClickListener() {
                 @Override
                 public void oninvoiceClick(Invoice invoice) {
                     DetailInvoiceFragment viewBookFragment = new DetailInvoiceFragment();
@@ -74,6 +103,22 @@ public class ListInvoiceFragment extends Fragment {
         } finally {
 
         }
+    }
+    private void filterHistoryByGenre(String genre) {
+        filteredBookList.clear(); // Xóa danh sách đã lọc
 
+        if (genre.equalsIgnoreCase("All")) {
+            filteredBookList.addAll(invoiceList); // Hiển thị tất cả sách
+        } else {
+            for (Invoice b : invoiceList) {
+                String category = b.getOrderStatus();
+                if (category.trim().equalsIgnoreCase(genre.trim())) {
+                    filteredBookList.add(b);
+                }
+            }
+        }
+
+        ; // Cập nhật dữ liệu trong adapter
+        invoiceAdapter.notifyDataSetChanged();
     }
 }

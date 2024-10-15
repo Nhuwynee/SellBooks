@@ -29,7 +29,6 @@ public class ViewBookAudioFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_viewbooks_audio, container, false);
         viewFlipper = view.findViewById(R.id.viewflipper1);
         ImageButton cart = view.findViewById(R.id.btn_cart);
-        Button read = view.findViewById(R.id.doc_thu);
         ImageButton like =view.findViewById(R.id.btn_favourite_book);
         addImagesToFlipper();
 
@@ -41,7 +40,7 @@ public class ViewBookAudioFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tablayout);
 
         // Khởi tạo fragment mặc định
-        getParentFragmentManager().beginTransaction().replace(R.id.framelayout, new AboutFragment())
+        getParentFragmentManager().beginTransaction().replace(R.id.framelayout_audio, new AboutAudioFragment())
                 .addToBackStack(null)
                 .commit();
 
@@ -62,7 +61,7 @@ public class ViewBookAudioFragment extends Fragment {
                 }
 
                 if (fragment != null) {
-                    getParentFragmentManager().beginTransaction().replace(R.id.framelayout, fragment)
+                    getParentFragmentManager().beginTransaction().replace(R.id.framelayout_audio, fragment)
                             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                             .commit();
                 }
@@ -79,18 +78,6 @@ public class ViewBookAudioFragment extends Fragment {
             }
         });
 
-        // Sự kiện nút Nghe thử sách
-        read.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Chuyển sang Fragment khác
-                ReadBookFragment newFragment = new ReadBookFragment();
-                getParentFragmentManager().beginTransaction()
-                        .replace(R.id.container, newFragment) // Đảm bảo ID container đúng
-                        .addToBackStack(null) // Nếu muốn thêm vào backstack
-                        .commit();
-            }
-        });
 
         // Sự kiện nút yêu thích sách
         like.setOnClickListener(new View.OnClickListener() {

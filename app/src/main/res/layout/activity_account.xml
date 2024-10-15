@@ -110,15 +110,15 @@
                 android:layout_width="300dp"
                 android:layout_height="1dp"
                 android:layout_below="@id/invoice_title"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginBottom="-30dp"
+                android:layout_marginBottom="-40dp"
                 android:background="#78103C" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.6"
+                android:layout_weight="0.48"
                 android:orientation="vertical"
                 android:layout_marginTop="50dp"
                 >
@@ -177,6 +177,16 @@
                 android:orientation="vertical"
                 >
                 <Button
+                    android:id="@+id/audioBook"
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:text="Sách nói đã mua"
+                    android:fontFamily="@font/arima_bold"
+                    android:textSize="18dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/btn_account"/>
+                <Button
                     android:id="@+id/btn_favourite"
                     android:layout_width="300dp"
                     android:layout_height="45dp"
@@ -197,7 +207,7 @@
                     android:text="Thay đổi địa chỉ giao hàng"
                     android:fontFamily="@font/arima_bold"
                     android:textSize="18dp"
-                    android:layout_margin="20dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/btn_account"/>
 
                 <Button
@@ -209,7 +219,6 @@
                     android:fontFamily="@font/arima_bold"
                     android:textColor="#ffffff"
                     android:textSize="18dp"
-                    android:layout_marginBottom="20dp"
                     android:background="@drawable/btn_account_purple"/>
 
                 <Button
@@ -220,7 +229,7 @@
                     android:text="Giỏ hàng của tôi"
                     android:fontFamily="@font/arima_bold"
                     android:textSize="18dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/btn_account"/>
 
                 <Button
