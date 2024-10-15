@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.bansach.Adapter.CategoryAdapter;
+import com.example.bansach.Fragment.AudioFragment;
 import com.example.bansach.model.Book;
 
 import java.util.List;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Sử dụng Intent để chuyển sang SignupActivity
-                Intent intent = new Intent(MainActivity.this, LoginMainPage.class);
+                Intent intent = new Intent(MainActivity.this, AudioFragment.class);
                 startActivity(intent);  // Bắt đầu SignupActivity
             }
         });
