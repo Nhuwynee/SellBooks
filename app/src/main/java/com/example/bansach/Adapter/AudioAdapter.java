@@ -1,5 +1,6 @@
 package com.example.bansach.Adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +20,23 @@ import java.util.List;
 public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.BookViewHolder> {
 
     private final List<Book> bookList;
-    private final OnBookClickListener listener;
+    private  OnBookClickListener listener;
+    private OnBookDeleteListener deleteListener;
+
 
     public interface OnBookClickListener {
         void onBookClick(Book book);
     }
-
     public interface OnBookDeleteListener {
-        void onBookDelete(Book book, int position);
+        void onBookDelete(Book book, int position);  // Dùng cho việc xóa sách
     }
 
+
+    public AudioAdapter(List<Book> bookList, OnBookClickListener listener, OnBookDeleteListener deleteListener) {
+        this.bookList = bookList;
+        this.listener = listener;
+        this.deleteListener = deleteListener;
+    }
     public AudioAdapter(List<Book> bookList, OnBookClickListener listener) {
         this.bookList = bookList;
         this.listener = listener;
@@ -67,6 +75,10 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.BookViewHold
                 listener.onBookClick(book);
             }
         });
+        holder.buttonDeleteAudio.setOnClickListener(v -> {
+            if (deleteListener != null) {
+                deleteListener.onBookDelete(book, position);  // Gọi đến phương thức delete
+            }        });
 
     }
 
@@ -77,20 +89,20 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.BookViewHold
 
     public static class BookViewHolder extends RecyclerView.ViewHolder {
         TextView bookTitle, bookAuthor, bookPrice, bookStatus;
-        ImageView bookImage;
+        public ImageView bookImage;
         public Button buttonDeleteAudio;
         ImageButton audioPlayButton;
 
 
         public BookViewHolder(View itemView) {
             super(itemView);
-            bookTitle = itemView.findViewById(R.id.book_title);
-            bookAuthor = itemView.findViewById(R.id.book_author);
-            bookPrice = itemView.findViewById(R.id.book_price);
-            bookStatus = itemView.findViewById(R.id.book_status);
-            bookImage = itemView.findViewById(R.id.image_book);
-            audioPlayButton = itemView.findViewById(R.id.audio_play_button);
-            buttonDeleteAudio = itemView.findViewById(R.id.buttonDelete_audio);
+            bookTitle = itemView.findViewById(R.id.book_title1);
+            bookAuthor = itemView.findViewById(R.id.book_author1);
+            bookPrice = itemView.findViewById(R.id.book_price1);
+            bookStatus = itemView.findViewById(R.id.book_status1);
+            bookImage = itemView.findViewById(R.id.image_book1);
+            audioPlayButton = itemView.findViewById(R.id.audio_play_button1);
+            buttonDeleteAudio = itemView.findViewById(R.id.buttonDelete_audio1);
         }
     }
 

@@ -30,6 +30,7 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".Admin.MenuActivityAdmin"/>
         <activity android:name=".Admin.ListViewBookFragment"/>
+        <activity android:name=".Admin.ListAudioBookAdminFragment"/>
         <activity android:name=".Admin.AddBookFragment"/>
     <activity android:name=".Fragment.CategoryFragment"/>
         <activity android:name=".Fragment.AudioFragment"/>

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bansach.Fragment.AccountFragment;
+import com.example.bansach.Fragment.ListAudioBookFragment;
 import com.example.bansach.Fragment.SearchFragment;
 import com.example.bansach.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -31,6 +32,9 @@ public class MenuActivityAdmin extends AppCompatActivity {
                 int id = item.getItemId();
                 if (id == R.id.navigation_add_book) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container_admin, new AddBookFragment()).commit();
+                }
+                else if (id == R.id.navigation_audio) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container_admin, new ListAudioBookAdminFragment()).commit();
                 }
                 else if (id == R.id.navigation_list_books) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.container_admin, new ListViewBookFragment()).commit();

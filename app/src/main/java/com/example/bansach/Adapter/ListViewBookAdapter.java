@@ -21,6 +21,7 @@ public class ListViewBookAdapter extends RecyclerView.Adapter<ListViewBookAdapte
     private final List<Book> bookList;
     private OnBookClickListener listener;
     private OnBookDeleteListener deleteListener;
+
     public interface OnBookClickListener {
         void onBookClick(Book book);
     }

@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bansach.Adapter.HistoryAdapter;
 import com.example.bansach.R;
 import com.example.bansach.model.History;
+import com.example.bansach.model.Invoice;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -75,7 +76,7 @@ public class ListHistoryFragment extends Fragment {
 
         Spinner spinner = view.findViewById(R.id.spinner2);
         // Danh sách các tùy chọn cho Spinner
-        String[] options = {"All", "Đã giao", "Đang giao", "Đã hủy"};
+        String[] options = {"All", "Đã giao", "Đang giao", "Đã huỷ"};
 
         // Tạo ArrayAdapter để liên kết dữ liệu với Spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.item_list_filter, options);
@@ -114,6 +115,7 @@ public class ListHistoryFragment extends Fragment {
             }
         }
 
-        historyAdapter.notifyDataSetChanged(); // Cập nhật dữ liệu trong adapter
+        ; // Cập nhật dữ liệu trong adapter
+        historyAdapter.notifyDataSetChanged();
     }
 }
