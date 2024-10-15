@@ -188,28 +188,6 @@
                 android:background="@drawable/edittext_background"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editTextSampleLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="#000000"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:hint="Nội dung đọc thử"
-            app:hintTextAppearance="@style/HintTextAppearancebook">
-
-            <EditText
-                android:id="@+id/editTextSample"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:inputType="textMultiLine"
-                android:gravity="top"
-                android:padding="10dp"
-                android:textColor="#000000"
-                android:fontFamily="@font/arima_semibold"
-                android:background="@drawable/edittext_background"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
         <!-- Trường nhập liệu Giá -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/editTextPriceLayout"
@@ -232,6 +210,116 @@
                 android:background="@drawable/edittext_background"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Phần upload file -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background">
+
+                <ImageView
+                    android:id="@+id/uploadIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_cloud_upload"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="center_vertical" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nội dung đọc thử"
+                        android:textColor="#2196F3"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/arima_bold"
+                        android:layout_gravity="center" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chọn một tệp tin hoặc kéo và thả vào đây"
+                        android:textColor="#8A8A8A"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/arima_bold"
+                        android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Phần upload file audio -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="16dp"
+            app:cardElevation="2dp"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:background="@drawable/edittext_background">
+
+                <ImageView
+                    android:id="@+id/icon_upload_audio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_audio"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="File Audio"
+                        android:textColor="#2196F3"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/arima_bold"
+                        android:layout_gravity="center" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tải lên file audio"
+                        android:textColor="#8A8A8A"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/arima_bold"
+                        android:layout_gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
         <!-- Thêm hai hình ảnh dưới trường Giá -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -241,15 +329,15 @@
 
             <ImageView
                 android:id="@+id/priceImage"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:src="@drawable/bong_bong_anh_dao" />
+                android:src="@drawable/image_add_book" />
 
             <ImageView
                 android:id="@+id/priceImage2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/image_add_book_small"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="37dp"/>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="#ffffff"
+                android:gravity="center_horizontal"
+                >
+
+                <ViewFlipper
+                    android:id="@+id/viewflipper1"
+                    android:layout_width="218dp"
+                    android:layout_height="242dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="-10dp"
+                    android:layout_marginBottom="20dp"></ViewFlipper>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="-15dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+                    <!-- Author Image -->
+                    <ImageView
+                        android:id="@+id/author_Image"
+                        android:layout_width="0dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:contentDescription="Author Image"
+                        android:src="@drawable/tg_bo_di_ma_song" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_weight="3"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="Bơ đi mà sống"
+                            android:fontFamily="@font/arima_semibold"
+                            android:textColor="#E81970"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="157dp"
+                            android:layout_height="37dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="-7dp"
+                            android:text="By Mèo Xù"
+                            android:fontFamily="@font/arima_bold"
+                            android:textColor="#78103C"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="70dp"
+                        android:layout_weight="2.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="225.000đ"
+                            android:fontFamily="@font/arima_semibold"
+                            android:textColor="#2A15AB"
+                            android:textSize="23sp" />
+
+                        <TextView
+                            android:id="@+id/textPoint"
+                            android:layout_width="157dp"
+                            android:layout_height="37dp"
+                            android:layout_marginStart="60dp"
+                            android:text="2000 ★"
+                            android:fontFamily="@font/arima_bold"
+                            android:textColor="#F2BA0E"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="10dp">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tablayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/arima_bold"
+                        android:textColor="#78103C"
+
+                        >
+
+                        <com.google.android.material.tabs.TabItem
+                            android:id="@+id/tab1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/arima_bold"
+                            android:textColor="#78103C"
+                            android:text="About"
+                            />
+                        <com.google.android.material.tabs.TabItem
+                            android:id="@+id/tab2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Review"
+                            android:fontFamily="@font/arima_bold"
+                            android:textColor="#78103C"
+                            />
+                        <com.google.android.material.tabs.TabItem
+                            android:id="@+id/tab3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Author"
+                            android:fontFamily="@font/arima_bold"
+                            android:textColor="#78103C"
+                            />
+
+                    </com.google.android.material.tabs.TabLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    >
+                    <TextView
+                        android:id="@+id/book_rating"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:gravity="left"
+                        android:text="★★★★★"
+                        android:textColor="#F4D31C"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/book_sl"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/arima_bold"
+                        android:gravity="left"
+                        android:layout_marginTop="-10dp"
+                        android:text="| 2,500 books"
+                        android:textColor="#AC97A0"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/framelayout_audio"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="5dp">
+                </FrameLayout>
+
+                <Button
+                    android:id="@+id/doc_thu"
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:background="@color/white"
+                    android:text="Nghe thử"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/arima_bold"
+                    android:textColor="#E81970"
+                    android:gravity="center"
+                    >
+
+                </Button>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="-8dp"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btn_favourite_book"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="left"
+                        android:background="@drawable/btn_favourite"
+                        android:src="@drawable/icon_heart"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/btn_cart"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/circle_nhuw"
+                        android:src="@drawable/ic_bag"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginRight="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/addCartText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_marginRight="20dp"
+                            android:fontFamily="@font/arima_bold"
+                            android:text="Add to Cart"
+                            android:textColor="#78103C"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginLeft="80dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/btngiamsoluong"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:background="@drawable/btn_tanggiam"
+                                android:fontFamily="@font/arima_bold"
+                                android:gravity="center"
+                                android:text="-"
+                                android:textColor="#78103C"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/book_soluong"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="30dp"
+                                android:fontFamily="@font/arima_bold"
+                                android:text="1"
+                                android:textColor="#78103C"
+                                android:textSize="25sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/btntangsoluong"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:background="@drawable/btn_tanggiam"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:text="+"
+                                android:textColor="#78103C"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
