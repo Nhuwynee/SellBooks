@@ -1,0 +1,104 @@
+/* Đặt kiểu chung cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Định dạng cho form-container */
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 800px; /* Tăng chiều rộng tối đa */
+    margin: 0 auto;
+}
+
+/* Định dạng cho các nhóm trường */
+.field-group {
+    margin-bottom: 15px;
+}
+h2 {
+    text-align: center; /* Căn giữa tiêu đề */
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+    color: #333; /* Màu chữ */
+    font-size: 28px; /* Kích thước chữ */
+}
+/* Định dạng cho tiêu đề các trường */
+.field-group p {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Định dạng cho các input và textarea */
+.field-group input[type="text"],
+.field-group input[type="number"],
+.field-group textarea,
+.field-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Định dạng cho textarea */
+.field-group textarea {
+    height: 100px;
+}
+
+/* Định dạng cho nút submit */
+button#submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px; /* Thêm một chút khoảng cách phía trên nút */
+}
+
+/* Hiệu ứng hover cho nút submit */
+button#submit:hover {
+    background-color: #45a049;
+}
+
+/* Định dạng cho ảnh bìa */
+.field-group img {
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+/* Định dạng cho âm thanh */
+.field-group audio {
+    margin-top: 10px;
+}
+
+/* Định dạng cho cột */
+.form-row {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các cột xuống hàng */
+    margin: -10px; /* Bỏ margin âm để tạo khoảng cách giữa các cột */
+}
+
+/* Định dạng cho từng cột */
+.form-column {
+    flex: 1; /* Chiếm không gian đều nhau */
+    min-width: 300px; /* Chiều rộng tối thiểu của mỗi cột */
+    padding: 10px; /* Thêm khoảng cách cho các cột */
+}
+
+/* Định dạng cho các thông báo */
+.toast-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none; /* Ẩn theo mặc định */
+}
