@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Màu nền của trang */
+}
+
+.form-container {
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    height: 100vh; /* Đặt chiều cao toàn bộ trang */
+}
+
+.product-form {
+    background-color: #fff; /* Màu nền cho biểu mẫu */
+    padding: 2rem; /* Đệm cho biểu mẫu */
+    border-radius: 8px; /* Bo góc cho biểu mẫu */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Đổ bóng cho biểu mẫu */
+    width: 400px; /* Đặt chiều rộng cho biểu mẫu */
+}
+
+.product-form p {
+    margin: 0.5rem 0; /* Khoảng cách cho các nhãn */
+    font-weight: bold; /* Đậm cho nhãn */
+}
+
+.product-form input[type="text"],
+.product-form input[type="password"] {
+    width: 100%; /* Đặt chiều rộng đầy đủ */
+    padding: 0.5rem; /* Đệm cho các trường nhập */
+    border: 1px solid #ccc; /* Đường viền cho các trường nhập */
+    border-radius: 4px; /* Bo góc cho các trường nhập */
+    margin-bottom: 1rem; /* Khoảng cách dưới trường nhập */
+    transition: border-color 0.3s; /* Hiệu ứng chuyển tiếp cho đường viền */
+}
+
+
+.product-form input[type="text"]:focus,
+.product-form input[type="password"]:focus {
+    border-color: #007bff; /* Màu đường viền khi focus */
+    outline: none; /* Xóa đường viền mặc định */
+}
+
+.product-form button {
+    width: 100%; /* Đặt chiều rộng đầy đủ cho nút */
+    padding: 0.75rem; /* Đệm cho nút */
+    border: none; /* Xóa đường viền */
+    border-radius: 4px; /* Bo góc cho nút */
+    background-color: #007bff; /* Màu nền cho nút */
+    color: white; /* Màu chữ cho nút */
+    font-size: 1rem; /* Kích thước chữ cho nút */
+    cursor: pointer; /* Con trỏ chuột khi di chuột vào nút */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển tiếp */
+}
+
+.product-form button:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.product-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 80%;
+    max-width: 800px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-form button {
+    grid-column: span 2;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.product-form button:hover {
+    background-color: #45a049;
+}
