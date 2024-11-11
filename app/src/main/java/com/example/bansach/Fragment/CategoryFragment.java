@@ -73,7 +73,7 @@ public class CategoryFragment extends Fragment {
         // Khởi tạo danh sách sách (Dữ liệu cứng)
         bookList1.add(new Book("Hồng Lục", R.drawable.hong_luc, 129000, "Ngôn tình"));
         bookList1.add(new Book("Bong bóng anh đào", R.drawable.bong_bong_anh_dao, 130000, "Ngôn tình"));
-        bookList1.add(new Book("Văn học Việt Nam", R.drawable.vhvn1, 131000, "Văn học Việt Nam"));
+        bookList1.add(new Book("Vợ nhặt", R.drawable.vhvn1, 131000, "Văn học Việt Nam"));
         bookList1.add(new Book("Một quả táo", R.drawable.mot_qua_tao, 129000, "Trinh thám"));
         bookList1.add(new Book("Phía sau nghi can X", R.drawable.tt4, 130000, "Trinh thám"));
         bookList1.add(new Book("Truyện Kiều", R.drawable.vhvn5, 131000, "Văn học Việt Nam"));

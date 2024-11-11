@@ -32,7 +32,7 @@
             android:layout_marginTop="50dp"
             android:layout_weight="1.5"
             android:fontFamily="@font/arima_semibold"
-            android:text="LOG IN"
+            android:text="ĐĂNG NHẬP"
             android:textColor="#E73984"
             android:textSize="35sp" />
     </LinearLayout>
@@ -61,7 +61,7 @@
         android:id="@+id/edit_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Re-enter Password"
+        android:hint="Nhập lại mật khẩu"
         android:textColorHint="#3F51B5"
         app:hintEnabled="true"
         app:hintTextAppearance="@style/HintTextAppearance">

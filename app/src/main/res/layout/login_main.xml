@@ -39,7 +39,7 @@
                 android:layout_marginTop="50dp"
                 android:layout_weight="1.5"
                 android:fontFamily="@font/arima_semibold"
-                android:text="LOG IN"
+                android:text="Đăng nhập"
                 android:textColor="#E73984"
                 android:textSize="35sp" />
         </LinearLayout>
@@ -49,7 +49,7 @@
         android:id="@+id/edit_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Username"
+        android:hint="Tên tài khoản"
         android:textColorHint="#3F51B5"
         app:hintEnabled="true"
         app:hintTextAppearance="@style/HintTextAppearance">
@@ -70,7 +70,7 @@
         android:id="@+id/edit_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Mật khẩu"
         android:textColorHint="#3F51B5"
         app:hintEnabled="true"
         app:hintTextAppearance="@style/HintTextAppearance">
@@ -92,7 +92,7 @@
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Log in"
+        android:text="Đăng nhập"
         android:layout_marginTop="20dp"
         android:textAllCaps="false"
         android:textSize="30sp"

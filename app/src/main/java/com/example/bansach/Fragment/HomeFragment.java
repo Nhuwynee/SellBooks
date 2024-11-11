@@ -147,25 +147,25 @@ public class HomeFragment extends Fragment {
 
             // Section 2 - Văn học Việt Nam
             List<Book> bookList2 = new ArrayList<>();
-            bookList2.add(new Book("Văn học VN 1", R.drawable.vhvn1, 129000));
-            bookList2.add(new Book("Văn học VN 2", R.drawable.vhvn2, 130000));
-            bookList2.add(new Book("Văn học VN 3", R.drawable.vhvn3, 131000));
-            bookList2.add(new Book("Văn học VN 4", R.drawable.vhvn4, 129000));
-            bookList2.add(new Book("Văn học VN 5", R.drawable.vhvn5, 130000));
-            bookList2.add(new Book("Văn học VN 6", R.drawable.vhvn6, 131000));
-            bookList2.add(new Book("Văn học VN 7", R.drawable.vhvn7, 129000));
-            bookList2.add(new Book("Văn học VN 8", R.drawable.vhvn8, 130000));
+            bookList2.add(new Book("Vợ nhặt", R.drawable.vhvn1, 129000));
+            bookList2.add(new Book("Đôi mắt", R.drawable.vhvn2, 130000));
+            bookList2.add(new Book("Chí Phèo", R.drawable.vhvn3, 131000));
+            bookList2.add(new Book("Làng nghề", R.drawable.vhvn4, 129000));
+            bookList2.add(new Book("Truyện Kiều", R.drawable.vhvn5, 130000));
+            bookList2.add(new Book("Tắt đèn", R.drawable.vhvn6, 131000));
+            bookList2.add(new Book("Truyện kiều", R.drawable.vhvn7, 129000));
+            bookList2.add(new Book("Sống mòn", R.drawable.vhvn8, 130000));
             // Thêm các sách khác tương tự...
 
             // Section 3 - Trinh thám
             List<Book> bookList3 = new ArrayList<>();
-            bookList3.add(new Book("Trinh thám 1", R.drawable.tt1, 129000));
-            bookList3.add(new Book("Trinh thám 2", R.drawable.tt2, 130000));
-            bookList3.add(new Book("Trinh thám 3", R.drawable.tt3, 129000));
-            bookList3.add(new Book("Trinh thám 4", R.drawable.tt4, 130000));
-            bookList3.add(new Book("Trinh thám 5", R.drawable.tt5, 131000));
-            bookList3.add(new Book("Trinh thám 6", R.drawable.tt6, 129000));
-            bookList3.add(new Book("Trinh thám 7", R.drawable.tt7, 130000));
+            bookList3.add(new Book("Ghi chép pháp y", R.drawable.tt1, 129000));
+            bookList3.add(new Book("Thao túng tâm lý", R.drawable.tt2, 130000));
+            bookList3.add(new Book("Sổ tay nhà thôi miên", R.drawable.tt3, 129000));
+            bookList3.add(new Book("Phía sau nghi can X", R.drawable.tt4, 130000));
+            bookList3.add(new Book("Vụ án mạng nhà khách núi Hakuba", R.drawable.tt5, 131000));
+            bookList3.add(new Book("Án mạng 11 chữ", R.drawable.tt6, 129000));
+            bookList3.add(new Book("Thợ săn ở Auschwitz", R.drawable.tt7, 130000));
 
 
         sectionList.add(new Section("Tiểu thuyết", bookList1));

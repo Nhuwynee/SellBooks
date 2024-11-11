@@ -32,7 +32,7 @@
         android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/arima_bold"
         android:padding="5dp"
-        android:text="LOG IN"
+        android:text="ĐĂNG NHẬP"
         android:textColor="#3F51B5"
         android:textSize="30sp" />
 
@@ -48,7 +48,7 @@
         android:fontFamily="@font/arima_bold"
         android:padding="5dp"
         android:layout_marginTop="15dp"
-        android:text="SIGN UP"
+        android:text="ĐĂNG KÝ"
         android:textColor="#3F51B5"
         android:textSize="30sp"/>
 
