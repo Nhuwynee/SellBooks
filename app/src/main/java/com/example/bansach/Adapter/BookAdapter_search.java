@@ -10,28 +10,35 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.bansach.R;
-import com.example.bansach.model.Book;
+import com.example.bansach.model.Book1;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookAdapter_search extends RecyclerView.Adapter<BookAdapter.BookViewHolder>{
-    private List<Book> bookList;
+    private List<Book1> bookList;
     private OnBookClickListener listener;
-    private List<Book> filteredBookList;  // Danh sách đã lọc
+    private List<Book1> filteredBookList;  // Danh sách đã lọc
     private Context context;
 
-    public BookAdapter_search(List<Book> bookList, Context context) {
+    public BookAdapter_search(List<Book1> bookList, Context context) {
         this.bookList = bookList;
         this.filteredBookList = new ArrayList<>(bookList); // Khởi tạo với dữ liệu gốc
         this.context = context;
     }
 
-    public interface OnBookClickListener {
-        void onBookClick(Book book);
+    public BookAdapter_search(Context context, List<Book1> bookList) {
+        this.context = context;
+        this.bookList = new ArrayList<>(bookList);
     }
-    public BookAdapter_search(List<Book> bookList, OnBookClickListener listener) {
+
+
+    public interface OnBookClickListener {
+        void onBookClick(Book1 book);
+    }
+    public BookAdapter_search(List<Book1> bookList, OnBookClickListener listener) {
         this.bookList = bookList;
         this.listener = listener;
     }
@@ -45,10 +52,18 @@ public class BookAdapter_search extends RecyclerView.Adapter<BookAdapter.BookVie
 
     @Override
     public void onBindViewHolder(@NonNull BookAdapter.BookViewHolder holder, int position) {
-        Book book = bookList.get(position);
+        Book1 book = bookList.get(position);
         holder.bookTitle.setText(book.getTitle());
-        holder.bookImage.setImageResource(book.getImgResource());
         holder.bookPrice.setText(String.valueOf(book.getPrice()));
+
+        String imageName = book.getImgResource();
+        if (imageName.endsWith(".jpg")) {
+            imageName = imageName.substring(0, imageName.length() - 4);
+        } else if (imageName.endsWith(".png")) {
+            imageName = imageName.substring(0, imageName.length() - 4);
+        }
+        int resId = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+        Glide.with(context).load(resId).into(holder.bookImage);
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
@@ -74,11 +89,11 @@ public class BookAdapter_search extends RecyclerView.Adapter<BookAdapter.BookVie
             bookPrice = itemView.findViewById(R.id.book_price);
         }
     }
-    public void updateBooks(List<Book> newBooks) {
-        this.bookList.clear(); // Xóa danh sách sách hiện tại
-        this.bookList.addAll(newBooks); // Thêm sách mới vào danh sách
+    public void updateBooks(List<Book1> newBooks) {
+        bookList.clear();
+        bookList.addAll(newBooks);
+        notifyDataSetChanged();
     }
-
 
 
 

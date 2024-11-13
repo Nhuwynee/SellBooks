@@ -2,13 +2,10 @@ package com.example.bansach.Fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -18,20 +15,25 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.API.APIService;
+import com.example.bansach.API.RetrofitClient;
 import com.example.bansach.Adapter.BookAdapter_search;
 import com.example.bansach.R;
-import com.example.bansach.model.Book;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.bansach.model.Book1;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SearchFragment extends Fragment {
     private RecyclerView recyclerView;
     private BookAdapter_search bookAdapter;
     private SearchView search;
     private TextView tvNoResults;
-    List<Book> bookList1 = new ArrayList<>();
+    private List<Book1> bookList1 = new ArrayList<>();
 
     @SuppressLint("MissingInflatedId")
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,100 +43,91 @@ public class SearchFragment extends Fragment {
         tvNoResults = view.findViewById(R.id.tvNoResults);
 
         // Khởi tạo danh sách sách
-        book();
+        loadBooks();
 
         // Đặt listener cho SearchView
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                Log.d("SearchFragment", "onQueryTextSubmit: " + s); // Kiểm tra giá trị của s
+                Log.d("SearchFragment", "Query submitted: " + s);
                 searchInBookList(s);
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                Log.d("SearchFragment", "onQueryTextChange: " + s); // Kiểm tra giá trị của s
+                Log.d("SearchFragment", "Query changed: " + s);
                 searchInBookList(s);
                 return true;
             }
         });
 
-        return view; // Trả về view đã được khởi tạo
+        return view;
     }
-
-    private void book() {
-        // Khởi tạo danh sách sách (Dữ liệu cứng)
-        bookList1.add(new Book("Hồng Lục", R.drawable.hong_luc, 129000));
-        bookList1.add(new Book("Bong bóng anh đào", R.drawable.bong_bong_anh_dao, 130000));
-        bookList1.add(new Book("Văn học Việt Nam", R.drawable.vhvn1, 131000));
-        bookList1.add(new Book("Một quả táo", R.drawable.mot_qua_tao, 129000));
-        bookList1.add(new Book("Phía sau nghi can X", R.drawable.tt4, 130000));
-        bookList1.add(new Book("Truyện Kiều", R.drawable.vhvn5, 131000));
-        bookList1.add(new Book("Nhất kính tinh yêu", R.drawable.nhat_kinh_tinh_yeu, 130000));
-        bookList1.add(new Book("Này đừng có ăn cỏ", R.drawable.nay_dung_co_an_co, 131000));
-
-        // Thiết lập adapter cho RecyclerView
-        bookAdapter = new BookAdapter_search(bookList1, new BookAdapter_search.OnBookClickListener() {
-            @Override
-            public void onBookClick(Book book) {
-                // Chuyển đến ViewBookFragment khi click vào sách
-                ViewBookFragment viewBookFragment = new ViewBookFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, viewBookFragment)
-                        .commit();
-            }
-        });
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3); // 3 cột
-        recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.setAdapter(bookAdapter);
-    }
-
-    private void searchInBookList(String search) {
-        List<Book> resultBooks = new ArrayList<>(); // Tạo danh sách kết quả
-        if (search == null || search.isEmpty()) { // Kiểm tra nếu search là null hoặc rỗng
-            return; // Không làm gì nếu không có từ khóa tìm kiếm
+    private void searchInBookList(String query) {
+        Log.d("SearchFragment", "Searching for: " + query);
+        List<Book1> resultBooks = new ArrayList<>();
+        if (query == null || query.isEmpty()) {
+            setUpRecyclerView(bookList1);
+            return;
         }
 
-        // Duyệt qua danh sách dữ liệu cứng bookList
-        for (Book b : bookList1) { // Duyệt qua bookList1
+        for (Book1 b : bookList1) {
             String title = b.getTitle();
             String author = b.getAuthor();
 
-            // Kiểm tra xem title và author có null không trước khi gọi toLowerCase()
-            if ((title != null && title.toLowerCase().contains(search.toLowerCase())) ||
-                    (author != null && author.toLowerCase().contains(search.toLowerCase()))) {
-                resultBooks.add(b); // Thêm vào danh sách kết quả
+            if ((title != null && title.toLowerCase().contains(query.toLowerCase())) ||
+                    (author != null && author.toLowerCase().contains(query.toLowerCase()))) {
+                resultBooks.add(b);
             }
         }
 
-        // Cập nhật bookAdapter với danh sách tìm kiếm mới
-        bookAdapter = new BookAdapter_search(resultBooks, new BookAdapter_search.OnBookClickListener() {
+        setUpRecyclerView(resultBooks);
+        Log.d("SearchFragment", "Found results: " + resultBooks.size());
+
+        if (resultBooks.isEmpty()) {
+            tvNoResults.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+        } else {
+            tvNoResults.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
+    }
+    private void loadBooks() {
+        APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
+        Call<List<Book1>> call = apiService.getBooks();
+        call.enqueue(new Callback<List<Book1>>() {
             @Override
-            public void onBookClick(Book book) {
-                // Chuyển đến ViewBookFragment khi click vào sách
-                ViewBookFragment viewBookFragment = new ViewBookFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, viewBookFragment)
-                        .commit();
+            public void onResponse(Call<List<Book1>> call, Response<List<Book1>> response) {
+                if (response.isSuccessful()) {
+                    bookList1 = response.body();
+                    if (bookList1 != null && !bookList1.isEmpty()) {
+                        setUpRecyclerView(bookList1);
+                    } else {
+                        Log.e("SearchFragment", "No books found");
+                    }
+                } else {
+                    Log.e("SearchFragment", "API error");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Book1>> call, Throwable t) {
+                Log.e("API_ERROR", "Error: " + t.getMessage());
             }
         });
+    }
 
-        // Thiết lập RecyclerView
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3); // 3 cột
-        recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.setAdapter(bookAdapter);
 
-        // Kiểm tra danh sách kết quả và hiển thị thông báo nếu cần
-        if (resultBooks.isEmpty()) {
-            tvNoResults.setVisibility(View.VISIBLE); // Hiện thông báo
-            recyclerView.setVisibility(View.GONE); // Ẩn RecyclerView
+    private void setUpRecyclerView(List<Book1> books) {
+        if (bookAdapter == null) {
+            bookAdapter = new BookAdapter_search(getContext(), books);
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3)); // Bố cục 3 cột
+            recyclerView.setAdapter(bookAdapter);
         } else {
-            tvNoResults.setVisibility(View.GONE); // Ẩn thông báo
-            recyclerView.setVisibility(View.VISIBLE); // Hiện RecyclerView
+            bookAdapter.updateBooks(books); // Cập nhật danh sách nếu adapter đã tồn tại
         }
     }
 
-}
 
+}
