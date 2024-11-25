@@ -15,53 +15,53 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-            <View
-                android:id="@+id/background_view"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/bg_trangchu"/>
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="-280dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 >
-                <TextView
-                    android:layout_width="130dp"
+                <View
+                    android:id="@+id/background_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginBottom="0dp"
+                    android:background="@drawable/bg_trangchu"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:text="Đề xuất"
-                    android:textSize="35sp"
-                    android:fontFamily="@font/arima_semibold"
-                    android:textColor="#E81970">
-                </TextView>
-                <TextView
-                    android:layout_width="170dp"
-                    android:layout_height="50dp"
-                    android:text="Xin chào, Anna"
-                    android:layout_marginLeft="30dp"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/arima_semibold"
-                    android:textColor="#E81970">
-                </TextView>
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/avatar"/>
-            </LinearLayout>
-            <ViewFlipper
-                android:id="@+id/viewflipper"
-                android:layout_width="365dp"
-                android:layout_height="365dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center" >
-            </ViewFlipper>
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="-280dp"
+                    >
+                    <TextView
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        android:text="Đề xuất"
+                        android:textSize="35sp"
+                        android:fontFamily="@font/arima_semibold"
+                        android:textColor="#E81970">
+                    </TextView>
+                    <TextView
+                        android:layout_width="170dp"
+                        android:layout_height="50dp"
+                        android:text="Xin chào, Anna"
+                        android:layout_marginLeft="30dp"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/arima_semibold"
+                        android:textColor="#E81970">
+                    </TextView>
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/avatar"/>
+                </LinearLayout>
+                <ViewFlipper
+                    android:id="@+id/viewflipper"
+                    android:layout_width="365dp"
+                    android:layout_height="365dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center" >
+                </ViewFlipper>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -97,25 +97,162 @@
                             android:paddingBottom="5dp"/>
                     </LinearLayout>
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView1"
+                        android:id="@+id/recyclerViewMain"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="10dp"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView2"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- TextView cho tiêu đề thể loại -->
+                            <TextView
+                                android:id="@+id/categoryTitle1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="#78103C"
+                                android:fontFamily="@font/arima_semibold"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="5dp"
+                                android:text="Tiểu thuyết" />
+
+                            <!-- RecyclerView cho thể loại -->
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- TextView cho tiêu đề thể loại -->
+                            <TextView
+                                android:id="@+id/categoryTitle2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="#78103C"
+                                android:fontFamily="@font/arima_semibold"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="5dp"
+                                android:text="Văn học" />
+
+                            <!-- RecyclerView cho thể loại -->
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- TextView cho tiêu đề thể loại -->
+                            <TextView
+                                android:id="@+id/categoryTitle3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="#78103C"
+                                android:fontFamily="@font/arima_semibold"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="5dp"
+                                android:text="Tâm lý học" />
+
+                            <!-- RecyclerView cho thể loại -->
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- TextView cho tiêu đề thể loại -->
+                            <TextView
+                                android:id="@+id/categoryTitle4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="#78103C"
+                                android:fontFamily="@font/arima_semibold"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="5dp"
+                                android:text="Self-help" />
+
+                            <!-- RecyclerView cho thể loại -->
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- TextView cho tiêu đề thể loại -->
+                            <TextView
+                                android:id="@+id/categoryTitle5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="#78103C"
+                                android:fontFamily="@font/arima_semibold"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="5dp"
+                                android:text="Kỹ năng sống" />
+
+                            <!-- RecyclerView cho thể loại -->
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- TextView cho tiêu đề thể loại -->
+                            <TextView
+                                android:id="@+id/categoryTitle6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="#78103C"
+                                android:fontFamily="@font/arima_semibold"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="5dp"
+                                android:text="Trinh thám" />
+
+                            <!-- RecyclerView cho thể loại -->
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </LinearLayout>
 
                 </LinearLayout>
-        </LinearLayout>
+            </LinearLayout>
 
-            </androidx.core.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

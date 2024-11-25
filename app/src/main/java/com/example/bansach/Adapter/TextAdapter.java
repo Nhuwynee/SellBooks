@@ -3,6 +3,7 @@ package com.example.bansach.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,9 +14,19 @@ import java.util.List;
 
 public class TextAdapter extends RecyclerView.Adapter<TextAdapter.TextViewHolder> {
     private List<String> textList;
+    private List<String> categories;
+    private OnItemClickListener onItemClickListener;
 
     public TextAdapter(List<String> textList) {
         this.textList = textList;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(String category);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
     }
 
     @Override

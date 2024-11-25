@@ -1,8 +1,4 @@
 package com.example.bansach.Fragment;
-
-import static com.example.bansach.R.*;
-
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -13,51 +9,76 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-//import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.API.APIService;
+import com.example.bansach.API.RetrofitClient;
+import com.example.bansach.Adapter.BookAdapter_search;
 import com.example.bansach.Adapter.ParentAdapter;
 import com.example.bansach.Adapter.TextAdapter;
-import com.example.bansach.FogotPassPage;
-import com.example.bansach.LoginMainPage;
 import com.example.bansach.R;
-import com.example.bansach.model.Book;
+import com.example.bansach.model.Book1;
 import com.example.bansach.model.Section;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class HomeFragment extends Fragment {
-    ViewFlipper viewFlipper;
-    private RecyclerView recyclerViewParent, recyclerView1;
     private ParentAdapter parentAdapter;
     private List<Section> sectionList;
     private BottomNavigationView bottomNavigationView;
-
+    private ViewFlipper viewFlipper;
+    private RecyclerView recyclerViewMain, recyclerView1, recyclerView2, recyclerView3, recyclerView4, recyclerView5, recyclerView6;
+    private APIService apiService;
+    private TextView textView1, textView2,textView3,textView4,textView5,textView6;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(layout.trang_chu, container, false); // Thay 'fragment_home' bằng tên layout thực tế
+        View view = inflater.inflate(R.layout.trang_chu, container, false);
 
         // Khởi tạo các view
         viewFlipper = view.findViewById(R.id.viewflipper);
-        recyclerViewParent = view.findViewById(R.id.recyclerView2);
+        recyclerViewMain = view.findViewById(R.id.recyclerViewMain);
         recyclerView1 = view.findViewById(R.id.recyclerView1);
+        recyclerView2 = view.findViewById(R.id.recyclerView2);
+        recyclerView3 = view.findViewById(R.id.recyclerView3);
+        recyclerView4 = view.findViewById(R.id.recyclerView4);
+        recyclerView5 = view.findViewById(R.id.recyclerView5);
+        recyclerView6 = view.findViewById(R.id.recyclerView6);
+        textView1 = view.findViewById(R.id.categoryTitle1);
+        textView2 = view.findViewById(R.id.categoryTitle2);
+        textView3 = view.findViewById(R.id.categoryTitle3);
+        textView4 = view.findViewById(R.id.categoryTitle4);
+        textView5 = view.findViewById(R.id.categoryTitle5);
+        textView6 = view.findViewById(R.id.categoryTitle6);
+
+        // Khởi tạo APIService
+        apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
+
         // Gọi các hàm để thiết lập dữ liệu
         addImagesToFlipper();
+        loadBooksByCategory("Tiểu thuyết", recyclerView1, textView1); // Ví dụ thể loại "fiction"
+        loadBooksByCategory("Văn học", recyclerView2, textView2); // Ví dụ thể loại "non-fiction"
+        loadBooksByCategory("Tâm lý học", recyclerView3, textView3);
+        loadBooksByCategory("Self-help", recyclerView4, textView4);
+        loadBooksByCategory("Kỹ năng sống", recyclerView5, textView5);
+        loadBooksByCategory("Trinh thám", recyclerView6, textView6);// Giới thiệu thể loại chính
         category();
-        book();
 
-        TextView filter = view.findViewById(id.filter);
+        TextView filter = view.findViewById(R.id.filter);
         // Spannable cho Forgot Password
         SpannableString spannableString_forgot = new SpannableString("Xem thêm");
         ClickableSpan clickableSpan_forgot = new ClickableSpan() {
@@ -83,14 +104,13 @@ public class HomeFragment extends Fragment {
         spannableString_forgot.setSpan(clickableSpan_forgot, 0, spannableString_forgot.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         filter.setText(spannableString_forgot);
         filter.setMovementMethod(LinkMovementMethod.getInstance()); // Cho phép TextView có thể nhấn
-        return view; // Trả về view đã được khởi tạo
-    }
 
+        return view;
+    }
 
     private void addImagesToFlipper() {
         try {
-            int[] images = {drawable.promotion, drawable.read_book_3, drawable.yeuthich, drawable.audiobook};
-
+            int[] images = {R.drawable.promotion, R.drawable.read_book_3, R.drawable.yeuthich, R.drawable.audiobook};
             for (int image : images) {
                 ImageView imageView = new ImageView(getContext());
                 imageView.setImageResource(image);
@@ -98,97 +118,87 @@ public class HomeFragment extends Fragment {
                 viewFlipper.addView(imageView);
             }
             viewFlipper.setFlipInterval(5000);
-            viewFlipper.setAutoStart(true); // Bắt đầu tự động
-            viewFlipper.startFlipping(); // Bắt đầu lật ảnh
-
+            viewFlipper.setAutoStart(true);
+            viewFlipper.startFlipping();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-        private void category() {
 
-       ;
-
+    private void category() {
         // Tạo danh sách sách cho mỗi RecyclerView
         List<String> bookList1 = new ArrayList<>();
 
         // Thêm dữ liệu vào các danh sách sách
         bookList1.add("Tiểu thuyết");
-        bookList1.add("Văn học Việt Nam");
+        bookList1.add("Văn học");
+        bookList1.add("Tâm lý học");
+        bookList1.add("Self-help");
+        bookList1.add("Kỹ năng sống");
         bookList1.add("Trinh thám");
-        bookList1.add("Ngôn tình");
 
         TextAdapter textAdapter = new TextAdapter(bookList1);
 
         // Thiết lập LinearLayoutManager cho từng RecyclerView
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-
-
-        recyclerView1.setLayoutManager(layoutManager1);
-        recyclerView1.setAdapter(textAdapter);
-
-
+        recyclerViewMain.setLayoutManager(layoutManager1);
+        recyclerViewMain.setAdapter(textAdapter);
     }
-    private void book() {
 
-        sectionList = new ArrayList<>();
+    private void loadBooksByCategory(String category, RecyclerView recyclerView, TextView categoryTitle) {
+        // Cập nhật tên thể loại cho TextView
+        categoryTitle.setText(category);
 
-            // Section 1 - Tiểu thuyết
-            List<Book> bookList1 = new ArrayList<>();
-            bookList1.add(new Book("Hồng Lục", R.drawable.hong_luc, 129000));
-            bookList1.add(new Book("Bong bóng anh đào", R.drawable.bong_bong_anh_dao, 130000));
-            bookList1.add(new Book("Này! Chớ làm loạn", R.drawable.nay_cho_lam_loan, 131000));
-            bookList1.add(new Book("Một quả táo", R.drawable.mot_qua_tao, 129000));
-            bookList1.add(new Book("Tóc của tôi", R.drawable.toc_cua_toi, 130000));
-            bookList1.add(new Book("Tình yêu của Thời Hạ", R.drawable.tinh_yeu_cua_thoi_ha, 131000));
-            bookList1.add(new Book("Nhất kính tinh yêu", R.drawable.nhat_kinh_tinh_yeu, 130000));
-            bookList1.add(new Book("Này đừng có ăn cỏ", R.drawable.nay_dung_co_an_co, 131000));
-            // Thêm các sách khác tương tự...
-
-            // Section 2 - Văn học Việt Nam
-            List<Book> bookList2 = new ArrayList<>();
-            bookList2.add(new Book("Vợ nhặt", R.drawable.vhvn1, 129000));
-            bookList2.add(new Book("Đôi mắt", R.drawable.vhvn2, 130000));
-            bookList2.add(new Book("Chí Phèo", R.drawable.vhvn3, 131000));
-            bookList2.add(new Book("Làng nghề", R.drawable.vhvn4, 129000));
-            bookList2.add(new Book("Truyện Kiều", R.drawable.vhvn5, 130000));
-            bookList2.add(new Book("Tắt đèn", R.drawable.vhvn6, 131000));
-            bookList2.add(new Book("Truyện kiều", R.drawable.vhvn7, 129000));
-            bookList2.add(new Book("Sống mòn", R.drawable.vhvn8, 130000));
-            // Thêm các sách khác tương tự...
-
-            // Section 3 - Trinh thám
-            List<Book> bookList3 = new ArrayList<>();
-            bookList3.add(new Book("Ghi chép pháp y", R.drawable.tt1, 129000));
-            bookList3.add(new Book("Thao túng tâm lý", R.drawable.tt2, 130000));
-            bookList3.add(new Book("Sổ tay nhà thôi miên", R.drawable.tt3, 129000));
-            bookList3.add(new Book("Phía sau nghi can X", R.drawable.tt4, 130000));
-            bookList3.add(new Book("Vụ án mạng nhà khách núi Hakuba", R.drawable.tt5, 131000));
-            bookList3.add(new Book("Án mạng 11 chữ", R.drawable.tt6, 129000));
-            bookList3.add(new Book("Thợ săn ở Auschwitz", R.drawable.tt7, 130000));
-
-
-        sectionList.add(new Section("Tiểu thuyết", bookList1));
-        sectionList.add(new Section("Văn học Việt Nam", bookList2));
-        sectionList.add(new Section("Trinh thám", bookList3));
-
-        parentAdapter = new ParentAdapter(sectionList, new ParentAdapter.OnBookClickListener() {
+        // Tiến hành lấy sách từ API
+        Call<List<Book1>> call = apiService.getBooksByCategory(category);
+        call.enqueue(new Callback<List<Book1>>() {
             @Override
-            public void onBookClick(Book book) {
-                // Tạo fragment mới để chuyển đến
-                ViewBookFragment viewBookFragment = new ViewBookFragment();
+            public void onResponse(Call<List<Book1>> call, Response<List<Book1>> response) {
+                if (response.isSuccessful()) {
+                    List<Book1> books = response.body();
+                    if (books != null && !books.isEmpty()) {
+                        setUpRecyclerView(books, recyclerView);
+                    } else {
+                        showNoBooksMessage(recyclerView);
+                    }
+                } else {
+                    showNoBooksMessage(recyclerView);
+                }
+            }
 
-                // Thực hiện chuyển fragment mà không cần truyền dữ liệu
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, viewBookFragment).commit();
+            @Override
+            public void onFailure(Call<List<Book1>> call, Throwable t) {
+                showNoBooksMessage(recyclerView);
             }
         });
-
-
-        // Thiết lập adapter cho RecyclerView cha
-            recyclerViewParent.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerViewParent.setAdapter(parentAdapter);
-        }
     }
 
+
+    private void setUpRecyclerView(List<Book1> books, RecyclerView recyclerView) {
+        BookAdapter_search bookAdapter = new BookAdapter_search(books, getContext(), new BookAdapter_search.OnBookClickListener() {
+            @Override
+            public void onBookClick(Book1 book) {
+                openBookDetailFragment(book);
+            }
+        });
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        recyclerView.setAdapter(bookAdapter);
+    }
+
+    private void showNoBooksMessage(RecyclerView recyclerView) {
+        recyclerView.setVisibility(View.GONE);
+        Toast.makeText(getContext(), "Không có sách nào trong thể loại này.", Toast.LENGTH_SHORT).show();
+    }
+
+    private void openBookDetailFragment(Book1 book) {
+        Bundle bundle = new Bundle();
+        bundle.putString("bookId", book.getId());
+        ViewBookFragment viewBookFragment = new ViewBookFragment();
+        viewBookFragment.setArguments(bundle);
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, viewBookFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+}
 
