@@ -1,76 +1,94 @@
 package com.example.bansach.Fragment;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.API.APIService;
+import com.example.bansach.API.RetrofitClient;
 import com.example.bansach.Adapter.FavouriteAdapter;
-import com.example.bansach.FogotPassPage;
-import com.example.bansach.LoginMainPage;
 import com.example.bansach.R;
-import com.example.bansach.model.Book;
+import com.example.bansach.model.Book1;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FavouriteBookFragment extends Fragment {
     private RecyclerView recyclerView;
     private FavouriteAdapter favouriteAdapter;
-    private List<Book> bookList;
+    private List<Book1> bookList;
+
+
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_favourite_book, container, false);
         recyclerView = view.findViewById(R.id.recyclerView_favourite);
-        book(); // Khởi tạo dữ liệu
+        loadBooks();
 
-        return view; // Trả về view đã tạo
+        return view;
+    }
+    private void loadBooks() {
+        APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
+
+        // Gọi API với userId mặc định
+        Call<List<Book1>> call = apiService.getFavouriteBooks(7);
+        call.enqueue(new Callback<List<Book1>>() {
+            @Override
+            public void onResponse(Call<List<Book1>> call, Response<List<Book1>> response) {
+                if (response.isSuccessful()) {
+                    bookList = response.body();
+                    Log.d("API_RESPONSE", "Dữ liệu trả về: " + bookList.toString());
+                    setUpRecyclerView(bookList);
+                } else {
+                    Log.e("FavouriteBookFragment", "API error");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Book1>> call, Throwable t) {
+                Log.e("API_ERROR", "Error: " + t.getMessage());
+            }
+        });
     }
 
-    private void book() {
-        // Khởi tạo dữ liệu sách
-        bookList = new ArrayList<>();
-        bookList.add(new Book("Hồng Lục", R.drawable.hong_luc, 225000f, "Kim Diệp Tử", "2000 ★"));
-        bookList.add(new Book("Nhật ký tình yêu", R.drawable.nhat_kinh_tinh_yeu, 175000f, "Mark Twain", "2500 ★"));
-        bookList.add(new Book("Bong bóng anh đào", R.drawable.bong_bong_anh_dao, 250000f, "Tê Kiến", "1000 ★"));
-        bookList.add(new Book("Này đừng có ăn cỏ", R.drawable.nay_dung_co_an_co, 174000f, "Nguyễn Nhật Ánh","2000 ★"));
-        bookList.add(new Book("Này chớ làm loạn", R.drawable.nay_cho_lam_loan, 100000f, "Phạm Nhật An", "4000 ★"));
-        bookList.add(new Book("Tình yêu của thời hạ", R.drawable.tinh_yeu_cua_thoi_ha, 186000f, "Lê Minh Đạt", "3500 ★"));
-        bookList.add(new Book("Tóc của tôi", R.drawable.toc_cua_toi, 117000f, "Lưu Thị Lan", "2200 ★"));
-        bookList.add(new Book("Vợ nhặt", R.drawable.vhvn1, 99000f, "Nguyễn Nhật Ánh", "1500 ★"));
+    private void setUpRecyclerView(List<Book1> books) {
+        if (favouriteAdapter == null) {
+            favouriteAdapter = new FavouriteAdapter(books, new FavouriteAdapter.OnFavouriteClickListener() {
+                @Override
+                public void onFavouriteList(Book1 book) {
+                    openFavouriteBookFragment(book);
+                }
+            });
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+            recyclerView.setAdapter(favouriteAdapter);
+        }
+    }
 
-        favouriteAdapter = new FavouriteAdapter(bookList, new FavouriteAdapter.OnFavouriteClickListener() {
-            @Override
-            public void onFavouriteList(Book book) {
-                ViewBookFragment viewBookFragment = new ViewBookFragment();
+    private void openFavouriteBookFragment(Book1 book) {
+        String bookId = book.getId();
+        Bundle bundle = new Bundle();
+        bundle.putString("bookId", bookId);
+        ViewBookFragment viewBookFragment = new ViewBookFragment();
+        viewBookFragment.setArguments(bundle);
 
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, viewBookFragment)
-                        .addToBackStack(null) // Thêm vào back stack nếu cần
-                        .commit();
-            }
-        });        LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(favouriteAdapter);
-
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, viewBookFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

@@ -11,11 +11,12 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
-
+// Fetch books
 public interface APIService {
-    @GET("bookapi.php")  // Fetch books
+    @GET("bookapi.php")
     Call<List<Book1>> getBooks();
 
     @GET("bookapi.php")
@@ -33,6 +34,8 @@ public interface APIService {
     @GET("categories")  // Endpoint to fetch categories
     Call<List<String>> getCategories();
 
+    @GET("favouritebookapi.php")
+    Call<List<Book1>> getFavouriteBooks(@Query("idUser") int idUser);
 }
 
 

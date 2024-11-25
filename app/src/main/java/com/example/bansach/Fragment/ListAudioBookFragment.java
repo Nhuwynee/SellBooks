@@ -52,7 +52,6 @@ public class ListAudioBookFragment extends Fragment {
                     List<Book1> allBooks = response.body();
 
                     List<Book1> validBooks = new ArrayList<>();
-
                     for (Book1 book : allBooks) {
                         if (book.getIsActive() != null) {
                             if (book.getIsActive().equals("1")) {
