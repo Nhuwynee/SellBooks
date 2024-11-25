@@ -10,12 +10,8 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.bansach.Admin.ListViewBookFragment;
-import com.example.bansach.Admin.MenuActivityAdmin;
 
 public class LoginMainPage extends AppCompatActivity {
 
@@ -82,10 +78,11 @@ public class LoginMainPage extends AppCompatActivity {
                 String username = textView.getText().toString();
 
                 // Kiểm tra tên tài khoản
-                if (username.equals("admin")) {
-                    Intent adminIntent = new Intent(LoginMainPage.this, MenuActivityAdmin.class);
-                    startActivity(adminIntent);
-                } else if (username.equals("user")) {
+//                if (username.equals("admin")) {
+//                    Intent adminIntent = new Intent(LoginMainPage.this, MenuActivityAdmin.class);
+//                    startActivity(adminIntent);
+//                } else
+               if (username.equals("user")) {
                     Intent intent = new Intent(LoginMainPage.this, MenuActivity.class);
                     startActivity(intent);
                 }

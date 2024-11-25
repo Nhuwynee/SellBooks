@@ -1,6 +1,5 @@
 package com.example.bansach.Adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,32 +11,38 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.bansach.R;
 import com.example.bansach.model.Book;
+import com.example.bansach.model.Book1;
 
 import java.util.List;
 
 public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.BookViewHolder> {
 
-    private final List<Book> bookList;
-    private  OnBookClickListener listener;
-    private OnBookDeleteListener deleteListener;
+    private final List<Book1> bookList;
+    private OnBookClickListener listener;
+    private OnBookClickListener deleteListener;
 
 
     public interface OnBookClickListener {
-        void onBookClick(Book book);
+//        void onBookClick(Book book);
+
+        void onBookClick(Book1 book);
+
+//        void onBookDelete(Book1 book, int position);
     }
     public interface OnBookDeleteListener {
         void onBookDelete(Book book, int position);  // Dùng cho việc xóa sách
     }
 
 
-    public AudioAdapter(List<Book> bookList, OnBookClickListener listener, OnBookDeleteListener deleteListener) {
-        this.bookList = bookList;
-        this.listener = listener;
-        this.deleteListener = deleteListener;
-    }
-    public AudioAdapter(List<Book> bookList, OnBookClickListener listener) {
+//    public AudioAdapter(List<Book1> bookList, OnBookClickListener listener, OnBookClickListener deleteListener) {
+//        this.bookList = bookList;
+//        this.listener = listener;
+//        this.deleteListener = deleteListener;
+//    }
+    public AudioAdapter(List<Book1> bookList, OnBookClickListener listener) {
         this.bookList = bookList;
         this.listener = listener;
     }
@@ -49,37 +54,50 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.BookViewHold
         return new BookViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
-        Book book = bookList.get(position);
+        Book1 book = bookList.get(position);
 
+        // Set các thông tin sách
         holder.bookTitle.setText(book.getTitle());
         holder.bookAuthor.setText(book.getAuthor());
         holder.bookPrice.setText(String.format("%.0f VND", book.getPrice()));
         holder.bookStatus.setText(book.getIsActive());
 
-        holder.bookImage.setImageResource(book.getImgResource());
+        // Lấy tên tài nguyên ảnh và xử lý phần mở rộng nếu có
+        String imageName = book.getImgResource();
+        if (imageName != null && (imageName.endsWith(".jpg") || imageName.endsWith(".png"))) {
+            imageName = imageName.substring(0, imageName.lastIndexOf('.'));  // Loại bỏ phần mở rộng
+        }
 
-        // Set the play button click listener
+        // Lấy ID tài nguyên từ tên
+        int resId = holder.itemView.getContext().getResources().getIdentifier(imageName, "drawable", holder.itemView.getContext().getPackageName());
+
+        // Kiểm tra xem ID tài nguyên có hợp lệ không
+        if (resId != 0) {
+            // Sử dụng Glide để tải ảnh
+            Glide.with(holder.itemView.getContext())
+                    .load(resId)
+                   // Hình ảnh khi tải không thành công
+                    .into(holder.bookImage);
+        }
+
+        // Set listener cho nút play
         holder.audioPlayButton.setOnClickListener(v -> {
             if (book.getIsActive().equals("Hoạt động")) {
-                // Logic to play audio goes here
+                // Logic để phát audio
             } else {
-                // Optionally inform the user that the book is not active
+                // Thông báo cho người dùng nếu sách không hoạt động
             }
         });
 
-        // Set item click listener
+        // Set listener cho item click
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onBookClick(book);
             }
         });
-        holder.buttonDeleteAudio.setOnClickListener(v -> {
-            if (deleteListener != null) {
-                deleteListener.onBookDelete(book, position);  // Gọi đến phương thức delete
-            }        });
-
     }
 
     @Override

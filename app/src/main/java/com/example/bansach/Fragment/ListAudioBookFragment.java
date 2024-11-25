@@ -17,9 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bansach.API.APIService;
 import com.example.bansach.API.RetrofitClient;
 import com.example.bansach.Adapter.AudioAdapter;
-import com.example.bansach.Adapter.BookAdapter_search;
 import com.example.bansach.R;
-import com.example.bansach.model.Book;
 import com.example.bansach.model.Book1;
 
 import java.util.ArrayList;
@@ -32,7 +30,7 @@ import retrofit2.Response;
 public class ListAudioBookFragment extends Fragment {
     private RecyclerView recyclerView;
     private AudioAdapter audioAdapter;
-    private List<Book> bookList = new ArrayList<>();
+    private List<Book1> bookList = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,37 +38,80 @@ public class ListAudioBookFragment extends Fragment {
 
         // Khởi tạo RecyclerView
         recyclerView = view.findViewById(R.id.recyclerView_audio);
-        list();
+        loadBooks();
         return view;
     }
 
-    // Phương thức thêm sách vào danh sách
-    private void list() {
-        bookList.add(new Book("Bơ đi mà sống", "Mèo Xù", 200000f, "Hoạt động", R.drawable.bo_di_ma_song));
-        bookList.add(new Book("Hồng lục", "Kiêm Diệp Tử", 170000f, "Hoạt động", R.drawable.hong_luc));
-        bookList.add(new Book("Này đừng có ăn cỏ!", "Lục Lục", 150000f, "Hoạt động", R.drawable.nay_dung_co_an_co));
-        bookList.add(new Book("Nhật kính tình yêu", "Tống Cửu Cẩn", 250000f, "Hoạt động", R.drawable.nhat_kinh_tinh_yeu));
-        bookList.add(new Book("Này chớ làm loạn", "Minh Nguyệt", 150000f, "Hoạt động", R.drawable.nay_cho_lam_loan));
-        bookList.add(new Book("Án mạng mười một chữ", "Higashino Keigo", 200000f, "Hoạt động", R.drawable.tt6));
-        bookList.add(new Book("Chí Phèo", "Nam Cao", 120000f, "Hoạt động", R.drawable.chipheo));
-        bookList.add(new Book("Tắt đèn", "Ngô Tất Tố", 130000f, "Hoạt động", R.drawable.tatden));
-        bookList.add(new Book("Thao túng tâm lý", "Shannon Thomas", 250000f, "Hoạt động", R.drawable.thaotungtamly));
-        bookList.add(new Book("Vợ Nhặt", "Kim Lân", 90000f, "Hoạt động", R.drawable.vonhat));
-        audioAdapter = new AudioAdapter(bookList, new AudioAdapter.OnBookClickListener() {
+    private void loadBooks() {
+        APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
+        Call<List<Book1>> call = apiService.getBooks();
+        call.enqueue(new Callback<List<Book1>>() {
             @Override
-            public void onBookClick(Book book) {
-                // Chuyển đến ViewBookFragment khi click vào sách
-                ViewBookAudioFragment viewBookFragment = new ViewBookAudioFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, viewBookFragment)
-                        .commit();
+            public void onResponse(Call<List<Book1>> call, Response<List<Book1>> response) {
+                if (response.isSuccessful()) {
+                    List<Book1> allBooks = response.body();
+
+                    List<Book1> validBooks = new ArrayList<>();
+
+                    for (Book1 book : allBooks) {
+                        if (book.getIsActive() != null) {
+                            if (book.getIsActive().equals("1")) {
+                                book.setIsActive("Hoạt động");
+                            } else if (book.getIsActive().equals("0")) {
+                                book.setIsActive("Không hoạt động");
+                            }
+                        }
+                        if (book.getURLaudioBook() != null && !book.getURLaudioBook().isEmpty()) {
+                            validBooks.add(book);
+                        }
+                    }
+
+
+                    bookList = validBooks;
+
+                    setUpRecyclerView(bookList);
+                } else {
+                    Log.e("SearchFragment", "API error");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Book1>> call, Throwable t) {
+                Log.e("API_ERROR", "Error: " + t.getMessage());
             }
         });
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(audioAdapter);
     }
 
+
+
+    private void setUpRecyclerView(List<Book1> books) {
+        if (audioAdapter == null) {
+            audioAdapter = new AudioAdapter(books, new AudioAdapter.OnBookClickListener() {
+                @Override
+                public void onBookClick(Book1 book) {
+                    openAudioBookDetailFragment(book);
+                }
+            });
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+            recyclerView.setAdapter(audioAdapter);
+        }
+    }
+    private void openAudioBookDetailFragment(Book1 book) {
+
+        String bookId = book.getId();
+        Bundle bundle = new Bundle();
+        bundle.putString("bookId", bookId);
+        ViewBookFragment viewBookFragment = new ViewBookFragment();
+        viewBookFragment.setArguments(bundle);
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, viewBookFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+
+
+
+    }
 
 }

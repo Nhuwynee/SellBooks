@@ -39,16 +39,16 @@ public class ListBuyedAudioFragment extends Fragment {
     private void list() {
         bookList.add(new Book("Bơ đi mà sống", "Mèo Xù",  R.drawable.bong_bong_anh_dao));
 
-        audioAdapter = new AudioAdapter(bookList, new AudioAdapter.OnBookClickListener() {
-            @Override
-            public void onBookClick(Book book) {
-                // Chuyển đến ViewBookFragment khi click vào sách
-                AudioFragment viewBookFragment = new AudioFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, viewBookFragment)
-                        .commit();
-            }
-        });
+//        audioAdapter = new AudioAdapter(bookList, new AudioAdapter.OnBookClickListener() {
+//            @Override
+//            public void onBookClick(Book book) {
+//                // Chuyển đến ViewBookFragment khi click vào sách
+//                AudioFragment viewBookFragment = new AudioFragment();
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.container, viewBookFragment)
+//                        .commit();
+//            }
+//        });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
