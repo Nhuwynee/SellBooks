@@ -26,11 +26,7 @@ public class MessageFavouriteBookFragment extends Fragment {
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ViewBookFragment newFragment = new ViewBookFragment();
-                getParentFragmentManager().beginTransaction()
-                        .replace(R.id.container, newFragment)
-                        .addToBackStack(null)
-                        .commit();
+                getParentFragmentManager().popBackStack();
             }
         });
         return view;

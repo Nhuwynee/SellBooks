@@ -1,5 +1,6 @@
 package com.example.bansach.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +10,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.bansach.R;
-import com.example.bansach.model.Book;
+import com.example.bansach.model.Book1;
+import com.example.bansach.model.Cart;
 
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.BookViewHolder> {
+    private Context context;
 
-    private final List<Book> bookList; // Đã thêm final ở đây
+    private final List<Cart> bookList; // Đã thêm final ở đây
 
-    public CartAdapter(List<Book> bookList) {
+    public CartAdapter(List<Cart> bookList, Context context) {
         this.bookList = bookList;
+        this.context = context;
     }
 
     @NonNull
@@ -31,9 +36,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.BookViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
-        Book book = bookList.get(position);
+        Cart book = bookList.get(position);
         holder.bookTitle.setText(book.getTitle());
-        holder.bookImage.setImageResource(book.getImgResource());
+        String imageName = book.getImgResource();
+        if (imageName.endsWith(".jpg")) {
+            imageName = imageName.substring(0, imageName.length() - 4);
+        } else if (imageName.endsWith(".png")) {
+            imageName = imageName.substring(0, imageName.length() - 4);
+        }
+        int resId = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+        Glide.with(context).load(resId).into(holder.bookImage);
+
         holder.bookPrice.setText(String.valueOf(book.getPrice()));
         holder.bookAuthor.setText(String.valueOf(book.getAuthor()));
         holder.bookPoint.setText(String.valueOf(book.getPoint()));
@@ -59,5 +72,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.BookViewHolder
             bookAuthor = itemView.findViewById(R.id.book_author);
             bookPoint = itemView.findViewById(R.id.textPoint);
         }
+    }
+    public void updateBooks(List<Cart> newBooks) {
+        bookList.clear();
+        bookList.addAll(newBooks);
+        notifyDataSetChanged();
     }
 }

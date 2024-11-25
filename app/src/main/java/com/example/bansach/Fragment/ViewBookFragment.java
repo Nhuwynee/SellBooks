@@ -1,5 +1,8 @@
 package com.example.bansach.Fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,7 +26,10 @@ import com.example.bansach.API.RetrofitClient;
 import com.example.bansach.R;
 import com.example.bansach.model.Book;
 import com.example.bansach.model.Book1;
+import com.example.bansach.model.Cart;
+import com.example.bansach.model.Cart1;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -134,11 +140,8 @@ public class ViewBookFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Chuyển sang Fragment khác
-                CartFragment newFragment = new CartFragment();
-                getParentFragmentManager().beginTransaction()
-                        .replace(R.id.container, newFragment)
-                        .addToBackStack(null)
-                        .commit();
+
+                addToCart(Integer.parseInt(bookId));
             }
         });
 
@@ -186,6 +189,53 @@ public class ViewBookFragment extends Fragment {
                 Log.e("ViewBookFragment", "Lỗi API: " + t.getMessage());
             }
         });
+    }
+    private void addToCart(int bookId) {
+        // Lấy userId từ SharedPreferences
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("userId", -1); // Lấy userId từ SharedPreferences
+
+        if (userId != -1) {
+            // Tạo đối tượng Book hoặc Cart tùy vào cách bạn gửi dữ liệu
+            // Tạo đối tượng Cart với các thông tin cần thiết
+            Cart1 cartItem = new Cart1(userId, bookId, 1); // chỉ gửi idUser, idBook và number
+
+// Chuyển đối tượng Cart thành JSON
+            Gson gson = new Gson();
+            String json = gson.toJson(cartItem);
+
+// In ra JSON trước khi gửi
+            Log.d("AddToCart", "Sending JSON: " + json);
+
+
+            // Gọi API để thêm cuốn sách vào giỏ hàng
+            APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
+            Call<Void> call = apiService.addToCart(cartItem);
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.isSuccessful()) {
+                        Log.d("ViewBookFragment", "Sách đã được thêm vào giỏ hàng");
+                        // Cập nhật UI hoặc hiển thị thông báo
+                        // Bạn có thể chuyển sang giỏ hàng sau khi thêm thành công:
+                        CartFragment newFragment = new CartFragment();
+                        getParentFragmentManager().beginTransaction()
+                                .replace(R.id.container, newFragment)
+                                .addToBackStack(null)
+                                .commit();
+                    } else {
+                        Log.e("ViewBookFragment", "Không thể thêm sách vào giỏ hàng");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Log.e("ViewBookFragment", "Lỗi API: " + t.getMessage());
+                }
+            });
+        } else {
+            Log.e("ViewBookFragment", "userId không hợp lệ");
+        }
     }
 
 

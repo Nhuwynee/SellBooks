@@ -145,9 +145,6 @@ public class SearchFragment extends Fragment {
             transaction.addToBackStack(null);
             transaction.commit();
 
-
-
-
     }
 }
 

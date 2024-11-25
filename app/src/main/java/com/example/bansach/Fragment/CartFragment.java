@@ -1,5 +1,8 @@
 package com.example.bansach.Fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,29 +13,38 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bansach.API.APIService;
+import com.example.bansach.API.RetrofitClient;
+import com.example.bansach.Adapter.BookAdapter_search;
 import com.example.bansach.Adapter.CartAdapter;
 import com.example.bansach.R;
 import com.example.bansach.model.Book;
+import com.example.bansach.model.Book1;
+import com.example.bansach.model.Cart;
 
 import java.util.ArrayList;
 import java.util.List;
 
-    public class CartFragment extends Fragment {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class CartFragment extends Fragment {
         private RecyclerView recyclerView;
         private CartAdapter cartAdapter;
-        private List<Book> bookList;
+        private List<Cart> bookList;
 
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.activity_cart, container, false);
             recyclerView = view.findViewById(R.id.recyclerView_cart);
-            book(); // Khởi tạo dữ liệu
             ImageButton cart = view.findViewById(R.id.btn_cart);
-
+        loadBooks();
             // Xử lý sự kiện nhấn nút
             cart.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -47,23 +59,42 @@ import java.util.List;
             });
             return view; // Trả về view đã tạo
         }
+    private void loadBooks() {
+        APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("userId", -1);
+        Log.d("UserId", "User ID: " + userId);
+        Call<List<Cart>> call = apiService.getBooksbyIdUser(userId);
+        call.enqueue(new Callback<List<Cart>>() {
+            @Override
+            public void onResponse(Call<List<Cart>> call, Response<List<Cart>> response) {
+                if (response.isSuccessful()) {
+                    bookList = response.body();
+                    setUpRecyclerView(bookList);
+                } else {
+                    Log.e("SearchFragment", "API error");
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Cart>> call, Throwable t) {
+                Log.e("API_ERROR", "Error: " + t.getMessage());
+            }
+        });
+    }
 
-        private void book() {
-            // Khởi tạo dữ liệu sách
-            bookList = new ArrayList<>();
-            bookList.add(new Book("Hồng Lục", R.drawable.hong_luc, 225000f, "Kim Diệp Tử", "2000 ★"));
-            bookList.add(new Book("Nhật ký tình yêu", R.drawable.nhat_kinh_tinh_yeu, 175000f, "Mark Twain", "2500 ★"));
-            bookList.add(new Book("Bong bóng anh đào", R.drawable.bong_bong_anh_dao, 250000f, "Tê Kiến", "1000 ★"));
-            bookList.add(new Book("Này đừng có ăn cỏ", R.drawable.nay_dung_co_an_co, 174000f, "Nguyễn Nhật Ánh","2000 ★"));
-            bookList.add(new Book("Này chớ làm loạn", R.drawable.nay_cho_lam_loan, 100000f, "Phạm Nhật An", "4000 ★"));
-            bookList.add(new Book("Tình yêu của thời hạ", R.drawable.tinh_yeu_cua_thoi_ha, 186000f, "Lê Minh Đạt", "3500 ★"));
-            bookList.add(new Book("Tóc của tôi", R.drawable.toc_cua_toi, 117000f, "Lưu Thị Lan", "2200 ★"));
-            bookList.add(new Book("Vợ nhặt", R.drawable.vhvn1, 99000f, "Nguyễn Nhật Ánh", "1500 ★"));
 
-            cartAdapter = new CartAdapter(bookList);
+
+    private void setUpRecyclerView(List<Cart> books) {
+
+
+        if (cartAdapter == null) {
+            cartAdapter = new CartAdapter(books, getContext());
             LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.VERTICAL, false);
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(cartAdapter);
-
+        } else {
+            cartAdapter.updateBooks(books);
         }
+    }
+
     }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.example.bansach.API.APIService;
@@ -72,12 +73,7 @@ public class ReadBookFragment extends Fragment {
         }
 
         // Xử lý sự kiện khi người dùng nhấn nút "Mua sách"
-        btnBuyNow.setOnClickListener(v -> {
-            getParentFragmentManager().beginTransaction()
-                    .replace(R.id.container, new ViewBookFragment())
-                    .addToBackStack(null)
-                    .commit();
-        });
+
 
         return view;
     }
@@ -91,6 +87,9 @@ public class ReadBookFragment extends Fragment {
             public void onResponse(@NonNull Call<Book1> call, @NonNull Response<Book1> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Book1 book = response.body();
+                    btnBuyNow.setOnClickListener(v -> {
+                        openBookDetailFragment(book);
+                    });
                     // Hiển thị dữ liệu từ API lên giao diện
                     tvBookTitle.setText(book.getTitle());
                     author.setText(book.getAuthor());
@@ -136,7 +135,20 @@ public class ReadBookFragment extends Fragment {
             }
         });
     }
+    private void openBookDetailFragment(Book1 book) {
 
+        String bookId = book.getId();
+        Bundle bundle = new Bundle();
+        bundle.putString("bookId", bookId);
+        ViewBookFragment viewBookFragment = new ViewBookFragment();
+        viewBookFragment.setArguments(bundle);
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, viewBookFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+    }
     private String readDocxFromRaw(int resourceId) {
         StringBuilder content = new StringBuilder();
         try {
