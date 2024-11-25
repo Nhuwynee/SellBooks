@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.bansach"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -47,4 +47,5 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.gsonConverter)
     implementation(libs.glide)
+    implementation(libs.poiooxml)
 }

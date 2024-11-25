@@ -23,10 +23,11 @@ public class BookAdapter_search extends RecyclerView.Adapter<BookAdapter.BookVie
     private List<Book1> filteredBookList;  // Danh sách đã lọc
     private Context context;
 
-    public BookAdapter_search(List<Book1> bookList, Context context) {
+    public BookAdapter_search(List<Book1> bookList, Context context,OnBookClickListener listener) {
         this.bookList = bookList;
         this.filteredBookList = new ArrayList<>(bookList); // Khởi tạo với dữ liệu gốc
         this.context = context;
+        this.listener = listener;
     }
 
     public BookAdapter_search(Context context, List<Book1> bookList) {

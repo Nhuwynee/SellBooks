@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,6 +63,7 @@ public class SearchFragment extends Fragment {
             }
         });
 
+
         return view;
     }
     private void searchInBookList(String query) {
@@ -101,16 +103,11 @@ public class SearchFragment extends Fragment {
             public void onResponse(Call<List<Book1>> call, Response<List<Book1>> response) {
                 if (response.isSuccessful()) {
                     bookList1 = response.body();
-                    if (bookList1 != null && !bookList1.isEmpty()) {
                         setUpRecyclerView(bookList1);
-                    } else {
-                        Log.e("SearchFragment", "No books found");
-                    }
                 } else {
                     Log.e("SearchFragment", "API error");
                 }
             }
-
             @Override
             public void onFailure(Call<List<Book1>> call, Throwable t) {
                 Log.e("API_ERROR", "Error: " + t.getMessage());
@@ -120,14 +117,38 @@ public class SearchFragment extends Fragment {
 
 
     private void setUpRecyclerView(List<Book1> books) {
+
+
         if (bookAdapter == null) {
-            bookAdapter = new BookAdapter_search(getContext(), books);
+            bookAdapter = new BookAdapter_search(books,getContext(), new BookAdapter_search.OnBookClickListener() {
+                @Override
+                public void onBookClick(Book1 book) {
+                            openBookDetailFragment(book);
+                    }
+            });
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3)); // Bố cục 3 cột
             recyclerView.setAdapter(bookAdapter);
         } else {
-            bookAdapter.updateBooks(books); // Cập nhật danh sách nếu adapter đã tồn tại
+            bookAdapter.updateBooks(books);
         }
     }
+    private void openBookDetailFragment(Book1 book) {
+
+            String bookId = book.getId();
+            Bundle bundle = new Bundle();
+            bundle.putString("bookId", bookId);
+            ViewBookFragment viewBookFragment = new ViewBookFragment();
+            viewBookFragment.setArguments(bundle);
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, viewBookFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
 
+
+
+    }
 }
+
+

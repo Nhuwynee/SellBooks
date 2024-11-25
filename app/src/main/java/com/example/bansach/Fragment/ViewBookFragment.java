@@ -1,6 +1,7 @@
 package com.example.bansach.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
@@ -15,33 +17,56 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
+import com.example.bansach.API.APIService;
+import com.example.bansach.API.RetrofitClient;
 import com.example.bansach.R;
 import com.example.bansach.model.Book;
+import com.example.bansach.model.Book1;
 import com.google.android.material.tabs.TabLayout;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ViewBookFragment extends Fragment {
 
     FrameLayout frameLayout;
     TabLayout tabLayout;
-    ViewFlipper viewFlipper;
+    String bookId;
+    TextView title, author, price, point, sl;
+    ImageView img;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_viewbooks, container, false);
-        viewFlipper = view.findViewById(R.id.viewflipper);
         ImageButton cart = view.findViewById(R.id.btn_cart);
         Button read = view.findViewById(R.id.doc_thu);
         ImageButton like =view.findViewById(R.id.btn_favourite_book);
-        addImagesToFlipper();
+        title = view.findViewById(R.id.title);
+        author = view.findViewById(R.id.author);
+        price = view.findViewById(R.id.price);
+        point = view.findViewById(R.id.point);
+        img = view.findViewById(R.id.img);
+        sl = view.findViewById(R.id.book_sl);
 
         if (getArguments() != null) {
-            Book book = (Book) getArguments().getSerializable("book");
+            bookId = getArguments().getString("bookId");
+            Log.d("ViewBookFragment", "Received bookId: " + bookId);
+            if (bookId != null) {
+                loadBookDetails(bookId);
+            } else {
+                Log.e("ViewBookFragment", "bookId là null");
+            }
+        } else {
+            Log.e("ViewBookFragment", "getArguments() là null");
         }
-
         frameLayout = view.findViewById(R.id.framelayout);
         tabLayout = view.findViewById(R.id.tablayout);
 
         // Khởi tạo fragment mặc định
-        getParentFragmentManager().beginTransaction().replace(R.id.framelayout, new AboutFragment())
+        Fragment fragment =  AboutFragment.newInstance( bookId);
+        getParentFragmentManager().beginTransaction().replace(R.id.framelayout,fragment)
                 .addToBackStack(null)
                 .commit();
 
@@ -51,13 +76,13 @@ public class ViewBookFragment extends Fragment {
                 Fragment fragment = null;
                 switch (tab.getPosition()) {
                     case 0:
-                        fragment = new AboutFragment();
+                        fragment =  AboutFragment.newInstance( bookId);
                         break;
                     case 1:
-                        fragment = new ReviewFragment();
+                        fragment = ReviewFragment.newInstance(bookId);
                         break;
                     case 2:
-                        fragment = new AuthorFragment();
+                        fragment = AuthorFragment.newInstance(bookId);
                         break;
                 }
 
@@ -84,7 +109,7 @@ public class ViewBookFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Chuyển sang Fragment khác
-                ReadBookFragment newFragment = new ReadBookFragment();
+                ReadBookFragment newFragment = ReadBookFragment.newInstance(bookId);
                 getParentFragmentManager().beginTransaction()
                         .replace(R.id.container, newFragment) // Đảm bảo ID container đúng
                         .addToBackStack(null) // Nếu muốn thêm vào backstack
@@ -119,22 +144,49 @@ public class ViewBookFragment extends Fragment {
 
         return view; // Trả về view
     }
+    private void loadBookDetails(String bookId) {
+        APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
+        Call<Book1> call = apiService.getBookDetails(bookId);  // Truyền bookId vào đây
 
-    private void addImagesToFlipper() {
-        try {
-            int[] images = {R.drawable.hong_luc, R.drawable.hong_luc_2}; // Thay đổi tên hình ảnh theo thực tế
+        call.enqueue(new Callback<Book1>() {
+            @Override
+            public void onResponse(Call<Book1> call, Response<Book1> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Book1 bookDetails = response.body();
+                    title.setText(bookDetails.getTitle());
+                    author.setText(bookDetails.getAuthor());
+                    price.setText(String.valueOf(bookDetails.getPrice()));
+                    point.setText(bookDetails.getPoint() + " ★" );
+                    sl.setText("| "+ String.valueOf(bookDetails.getInStock()) +" books");
+                    String imageName = bookDetails.getImgResource();
 
-            for (int image : images) {
-                ImageView imageView = new ImageView(getContext());
-                imageView.setImageResource(image);
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                viewFlipper.addView(imageView);
+                    if (imageName.endsWith(".jpg") || imageName.endsWith(".png")) {
+                        imageName = imageName.substring(0, imageName.lastIndexOf('.'));
+                    }
+
+                    if (getContext() != null) {
+                        int resId = getContext().getResources().getIdentifier(imageName, "drawable", getContext().getPackageName());
+
+                        if (resId != 0) {
+                            Glide.with(getContext()).load(resId).into(img);
+                        } else {
+                            Log.e("ViewBookFragment", "Không tìm thấy resource ảnh cho: " + imageName);
+                            img.setVisibility(View.GONE);
+                        }
+                    } else {
+                        Log.e("ViewBookFragment", "Context là null");
+                    }
+                } else {
+                    Log.e("ViewBookFragment", "Không thể tải chi tiết sách, response body là null hoặc không thành công");
+                }
             }
-            viewFlipper.setFlipInterval(2000);
-            viewFlipper.setAutoStart(true);
-            viewFlipper.startFlipping();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+            @Override
+            public void onFailure(Call<Book1> call, Throwable t) {
+                Log.e("ViewBookFragment", "Lỗi API: " + t.getMessage());
+            }
+        });
     }
+
+
 }

@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     private static Retrofit retrofit;
-    private static final String BASE_URL = "http://192.168.153.1:8080/READIFY/"; // Địa chỉ API của bạn
+    private static final String BASE_URL = "http://192.168.5.62:8080/READIFY/"; // Địa chỉ API của bạn
 
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {

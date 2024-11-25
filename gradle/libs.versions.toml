@@ -12,6 +12,7 @@ navigationUi = "2.8.0"
 glide = "4.15.1"
 retrofitVersion = "2.9.0"
 gsonConverterVersion = "2.9.0"
+poiOoxml = "5.2.3"
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -26,6 +27,7 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 gsonConverter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "gsonConverterVersion" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glideCompiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+poiooxml = { group = "org.apache.poi", name = "poi-ooxml", version.ref = "poiOoxml" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 
