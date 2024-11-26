@@ -17,7 +17,9 @@ import retrofit2.http.Path;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 // Fetch books
+
 public interface APIService {
+
     @GET("bookapi.php")
     Call<List<Book1>> getBooks();
 
@@ -54,6 +56,8 @@ public interface APIService {
 
     @GET("getuserapi.php")
     Call<User> getUserById(@Query("idUser") int idUser);
+
+
 
     // thay đổi thông tin cá nhân
     @POST("updateuserapi.php")

@@ -8,7 +8,7 @@ public class User {
     private String address;
     private String avatarImage;
     private int level;
-
+    private  int point;
     // Constructor không tham số (cần thiết cho Retrofit)
     public User() {
     }
@@ -75,6 +75,14 @@ public class User {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
     }
 
     // Override phương thức toString để dễ dàng debug
