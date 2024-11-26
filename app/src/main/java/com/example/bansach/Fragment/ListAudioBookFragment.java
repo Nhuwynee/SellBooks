@@ -64,10 +64,7 @@ public class ListAudioBookFragment extends Fragment {
                             validBooks.add(book);
                         }
                     }
-
-
                     bookList = validBooks;
-
                     setUpRecyclerView(bookList);
                 } else {
                     Log.e("SearchFragment", "API error");
@@ -107,10 +104,5 @@ public class ListAudioBookFragment extends Fragment {
         transaction.replace(R.id.container, viewBookFragment);
         transaction.addToBackStack(null);
         transaction.commit();
-
-
-
-
     }
-
 }

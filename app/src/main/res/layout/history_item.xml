@@ -21,7 +21,7 @@
             android:layout_weight="1"
             android:layout_height="80dp"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/hong_luc"
+            android:src="@drawable/history"
             android:scaleType="centerCrop"
             android:clipToOutline="true" />
 
@@ -34,7 +34,7 @@
             android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/orderNumber"
+                android:id="@+id/tvIdOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2411002"
@@ -43,7 +43,7 @@
                 android:fontFamily="@font/arima_bold" />
 
             <TextView
-                android:id="@+id/orderDate"
+                android:id="@+id/tvOrderTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="08/10/2024"
@@ -53,7 +53,7 @@
                 android:layout_marginTop="4dp" />
 
             <TextView
-                android:id="@+id/orderPrice"
+                android:id="@+id/tvOrderCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="425.000đ"
@@ -79,7 +79,7 @@
                 android:layout_gravity="center" />
 
             <TextView
-                android:id="@+id/orderStatus"
+                android:id="@+id/tvOrderStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Đang giao"

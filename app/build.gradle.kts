@@ -48,5 +48,7 @@ dependencies {
     implementation(libs.gsonConverter)
     implementation(libs.glide)
     implementation(libs.poiooxml)
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 
 }

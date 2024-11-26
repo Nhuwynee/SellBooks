@@ -5,6 +5,7 @@ import com.example.bansach.model.Cart;
 import com.example.bansach.model.Cart1;
 import com.example.bansach.model.LoginRequest;
 import com.example.bansach.model.LoginResponse;
+import com.example.bansach.model.Order;
 
 import java.util.List;
 
@@ -30,12 +31,19 @@ public interface APIService {
 
     @GET("bookapi.php")
     Call<List<Book1>> getBooksByCategory(@Query("category") String category);
-
+// Lưu Ngọc Yến Như
     @GET("categories")  // Endpoint to fetch categories
     Call<List<String>> getCategories();
 
     @GET("favouritebookapi.php")
     Call<List<Book1>> getFavouriteBooks(@Query("idUser") int idUser);
+
+    @GET("orderapi.php")
+    Call<List<Order>> getOrderHistory();
+
+    @GET("orderapi.php") // Thay bằng endpoint API của bạn
+    Call<List<Order>> getOrderHistoryByUser(@Query("idUser") int idUser);
+
 }
 
 
