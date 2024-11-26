@@ -13,6 +13,13 @@ public class User {
     public User() {
     }
 
+    public User(String name, String phone, String address, String password) {
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.password = password;
+    }
+
     // Getter và Setter
     public int getIdUser() {
         return idUser;

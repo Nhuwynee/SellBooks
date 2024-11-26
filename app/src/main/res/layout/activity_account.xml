@@ -22,9 +22,9 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="110dp"
+            android:layout_marginLeft="50dp"
             android:fontFamily="@font/arima_semibold"
-            android:text="ĐẶT HÀNG"
+            android:text="TRANG CÁ NHÂN"
             android:textColor="#E81970"
             android:layout_marginTop="5dp"
             android:textSize="36dp"
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/ic_bag_pink">
+            android:src="@drawable/ic_account_pink_admin">
         </ImageView>
     </LinearLayout>
 
@@ -126,7 +126,7 @@
                     android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Địa chỉ giao hàng"
+                    android:text="Thông tin cá nhân"
                     android:fontFamily="@font/arima_semibold"
                     android:textSize="25sp"
                     android:layout_gravity="center"
@@ -206,7 +206,7 @@
                     android:layout_width="300dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
-                    android:text="Thay đổi địa chỉ giao hàng"
+                    android:text="Thay đổi thông tin cá nhân"
                     android:fontFamily="@font/arima_bold"
                     android:textSize="18dp"
                     android:layout_margin="10dp"

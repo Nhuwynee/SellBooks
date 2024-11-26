@@ -1,57 +1,81 @@
 package com.example.bansach;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.widget.TextView;
+import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bansach.API.APIService;
+import com.example.bansach.API.RetrofitClient;
+import com.example.bansach.model.User;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class SignUpPage extends AppCompatActivity {
 
+    private EditText editTextUsername, editTextPassword, editTextRePassword, editTextPhone, editTextAddress;
+    private Button btnSignUp;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {  // Cú pháp đúng của phương thức onCreate
-        super.onCreate(savedInstanceState);  // Gọi phương thức onCreate của lớp cha
-        setContentView(R.layout.signup);  // Đặt layout cho activity
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.signup);
 
-        TextView login = findViewById(R.id.login);
-        SpannableString spannableString = new SpannableString("Have an account? Login");
+        editTextUsername = findViewById(R.id.edittext_username);
+        editTextPassword = findViewById(R.id.edittext_password);
+        editTextRePassword = findViewById(R.id.edittext_re_enter_password);
+        editTextPhone = findViewById(R.id.edittext_phone);
+        editTextAddress = findViewById(R.id.edittext_address);
+        btnSignUp = findViewById(R.id.btn_signup);
 
-        ClickableSpan clickableSpan= new ClickableSpan() {
-            @Override
-            public void onClick(View widget) {
-                // Chuyển đến forgot_pass Activity
-                Intent intent = new Intent(SignUpPage.this, LoginMainPage.class);
-                startActivity(intent);
-                login.setBackgroundColor(Color.TRANSPARENT);
+        btnSignUp.setOnClickListener(v -> {
+            String username = editTextUsername.getText().toString();
+            String password = editTextPassword.getText().toString();
+            String rePassword = editTextRePassword.getText().toString();
+            String phone = editTextPhone.getText().toString();
+            String address = editTextAddress.getText().toString();
+
+            if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(address)) {
+                Toast.makeText(SignUpPage.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                return;
             }
 
-            @Override
-            public void updateDrawState(android.text.TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setUnderlineText(true); // Gạch chân chữ
-                ds.setColor(login.getCurrentTextColor()); // Giữ nguyên màu chữ hiện tại
-                ds.bgColor = Color.TRANSPARENT; //màu nền trong suốt
+            if (!password.equals(rePassword)) {
+                Toast.makeText(SignUpPage.this, "Mật khẩu không khớp", Toast.LENGTH_SHORT).show();
+                return;
             }
-        };
 
-        spannableString.setSpan(clickableSpan, 1, 22, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        login.setText(spannableString);
-        login.setMovementMethod(LinkMovementMethod.getInstance()); // Cho phép TextView có thể nhấn
-        login.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                // Hành động khi nhấn giữ
-                login.setBackgroundColor(getResources().getColor(R.color.yourPressedColor));
+            // Tạo đối tượng User từ thông tin nhập vào
+            User newUser = new User(username, phone, address, password);
 
-                // Trả về true để chỉ định rằng sự kiện đã được xử lý
-                return true;
-            }
+            // Tạo API Service để gọi API
+            APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
+            Call<Void> call = apiService.registerUser(newUser);
+
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(SignUpPage.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignUpPage.this, LoginMainPage.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(SignUpPage.this, "Đăng ký thất bại: " + response.message(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Toast.makeText(SignUpPage.this, "Lỗi kết nối!", Toast.LENGTH_SHORT).show();
+                }
+            });
         });
     }
 }

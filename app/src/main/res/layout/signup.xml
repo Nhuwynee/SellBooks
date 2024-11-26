@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="-50dp"
         android:gravity="center"
         >
 
@@ -17,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="READIFY"
-            android:textSize="60sp"
+            android:textSize="40sp"
             android:textColor="#FFFFFF"
             android:fontFamily="@font/arima_semibold"/>
         <LinearLayout
@@ -26,7 +27,7 @@
             >
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="150dp"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:layout_gravity="start"
                 android:layout_marginLeft="20dp"
@@ -36,7 +37,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:layout_weight="1.5"
                 android:fontFamily="@font/arima_semibold"
                 android:text="Đăng ký"
@@ -51,6 +52,7 @@
         android:layout_height="wrap_content"
         android:hint="Tên tài khoản"
         android:textColorHint="#3F51B5"
+        android:layout_marginBottom="-30dp"
         app:hintEnabled="true"
         app:hintTextAppearance="@style/HintTextAppearance">
         <EditText
@@ -64,14 +66,62 @@
             android:textSize="20sp"
             android:fontFamily="@font/arima_regular"
             android:background="@drawable/bg_textfield"/>
+
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Số điện thoại"
+        android:textColorHint="#3F51B5"
+        android:layout_marginBottom="-30dp"
+        app:hintEnabled="true"
+        app:hintTextAppearance="@style/HintTextAppearance">
+        <EditText
+            android:id="@+id/edittext_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_margin="16dp"
+            android:paddingLeft="15dp"
+            android:textColor="#3F51B5"
+            android:textSize="20sp"
+            android:fontFamily="@font/arima_regular"
+            android:background="@drawable/bg_textfield"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Địa chỉ"
+        android:textColorHint="#3F51B5"
+        android:layout_marginBottom="-30dp"
+        app:hintEnabled="true"
+        app:hintTextAppearance="@style/HintTextAppearance">
+        <EditText
+            android:id="@+id/edittext_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_margin="16dp"
+            android:paddingLeft="15dp"
+            android:textColor="#3F51B5"
+            android:textSize="20sp"
+            android:fontFamily="@font/arima_regular"
+            android:background="@drawable/bg_textfield"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edit_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Mật khẩu"
         android:textColorHint="#3F51B5"
+        android:layout_marginBottom="-30dp"
         app:hintEnabled="true"
         app:hintTextAppearance="@style/HintTextAppearance">
         <EditText
@@ -85,6 +135,8 @@
             android:textSize="20sp"
             android:fontFamily="@font/arima_regular"
             android:background="@drawable/bg_textfield"/>
+
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -107,13 +159,13 @@
             android:fontFamily="@font/arima_regular"
             android:background="@drawable/bg_textfield"/>
     </com.google.android.material.textfield.TextInputLayout>
-
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Đăng ký"
         android:textAllCaps="false"
+        android:layout_marginBottom="10dp"
         android:textSize="30sp"
         android:fontFamily="@font/arima_semibold"
         android:textColor="#3F51B5"
@@ -142,7 +194,7 @@
         android:paddingLeft="20dp"
         android:paddingBottom="8dp"
         android:textSize="20sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="-30dp"
         android:fontFamily="@font/arima_semibold"
         android:textColor="#3F51B5"
          />

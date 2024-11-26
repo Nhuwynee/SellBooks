@@ -23,10 +23,13 @@ public interface APIService {
 
     @GET("bookapi.php")
     Call<Book1> getBookDetails(@Query("id") String bookId);
-    @POST("userapi.php") // Thay "login" bằng endpoint của bạn
+
+    @POST("userapi.php")
     Call<List<LoginResponse>> login(@Body LoginRequest loginRequest);
-    @GET("cartapi.php") // Thay 'books' bằng đường dẫn API thực tế của bạn
+
+    @GET("cartapi.php")
     Call<List<Cart>> getBooksbyIdUser(@Query("id") int idUser);
+
     @POST("add_to_cart.php")
     Call<Void> addToCart(@Body Cart1 cart);
 
@@ -42,17 +45,24 @@ public interface APIService {
     @GET("orderapi.php")
     Call<List<Order>> getOrderHistory();
 
-    @GET("orderapi.php") // Thay bằng endpoint API của bạn
+    // Lịch sử đơn hàng
+    @GET("orderapi.php")
     Call<List<Order>> getOrderHistoryByUser(@Query("idUser") int idUser);
 
-    @GET("buyedaudio.php")
+    @GET("buyedaudioapi.php")
     Call<List<Book1>> getBuyedAudio(@Query("idUser") int idUser);
 
-    @GET("getuser.php")
+    @GET("getuserapi.php")
     Call<User> getUserById(@Query("idUser") int idUser);
 
-    @POST("updateuser.php")
+    // thay đổi thông tin cá nhân
+    @POST("updateuserapi.php")
     Call<Void> updateUser(@Body User user);
+
+    // đăng ký
+    @POST("insertuserapi.php") // đăng ký
+    Call<Void> registerUser(@Body User user);
+
 }
 
 

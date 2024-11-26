@@ -25,9 +25,9 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="135dp"
+            android:layout_marginLeft="100dp"
             android:fontFamily="@font/arima_semibold"
-            android:text="ĐỊA CHỈ"
+            android:text="THÔNG TIN"
             android:textColor="#E81970"
             android:layout_marginTop="5dp"
             android:textSize="36dp"/>
@@ -68,7 +68,7 @@
                 android:layout_weight="0.2"
                 android:gravity="center"
                 android:fontFamily="@font/arima_semibold"
-                android:text="Thay đổi địa chỉ giao hàng"
+                android:text="Thay đổi thông tin"
                 android:textColor="#E73984"
                 android:textSize="25sp" />
         </LinearLayout>
