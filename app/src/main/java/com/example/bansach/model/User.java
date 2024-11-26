@@ -9,7 +9,7 @@ public class User {
     private String avatarImage;
     private int level;
     private  int point;
-    // Constructor không tham số (cần thiết cho Retrofit)
+
     public User() {
     }
 

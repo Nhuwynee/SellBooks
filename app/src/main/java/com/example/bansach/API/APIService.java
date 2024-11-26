@@ -12,6 +12,9 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.POST;
@@ -59,13 +62,14 @@ public interface APIService {
 
 
 
-    // thay đổi thông tin cá nhân
-    @POST("updateuserapi.php")
-    Call<Void> updateUser(@Body User user);
-
     // đăng ký
     @POST("insertuserapi.php") // đăng ký
     Call<Void> registerUser(@Body User user);
+    @POST("updateuserapi.php")
+    Call<Void> updateUser(@Body User user);
+
+    @DELETE("deletecartapi.php")
+    Call<Void> deleteBookFromCart(@Query("idBook") int bookId, @Query("idUser") int userId);
 
 }
 

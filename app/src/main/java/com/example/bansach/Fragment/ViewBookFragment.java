@@ -40,10 +40,10 @@ public class ViewBookFragment extends Fragment {
     FrameLayout frameLayout;
     TabLayout tabLayout;
     String bookId;
-    TextView title, author, price, point, sl;
+    TextView title, author, price, point, sl, slcart;
     ImageView img;
-
-
+    Button btnIncrease, btnDecrease;
+ int numbersl =1;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_viewbooks, container, false);
         ImageButton cart = view.findViewById(R.id.btn_cart);
@@ -55,6 +55,18 @@ public class ViewBookFragment extends Fragment {
         point = view.findViewById(R.id.point);
         img = view.findViewById(R.id.img);
         sl = view.findViewById(R.id.book_sl);
+        btnIncrease = view.findViewById(R.id.btngiamsoluong);
+        btnDecrease = view.findViewById(R.id.btntangsoluong);
+        slcart = view.findViewById(R.id.book_soluong);
+        btnDecrease.setOnClickListener(v -> {
+            int quantity = numbersl++ ;
+            slcart.setText(String.valueOf(quantity));
+        });
+
+        btnIncrease.setOnClickListener(v -> {
+            int quantity = numbersl--;
+            slcart.setText(String.valueOf(quantity));
+        });
 
         if (getArguments() != null) {
             bookId = getArguments().getString("bookId");
@@ -141,12 +153,14 @@ public class ViewBookFragment extends Fragment {
             public void onClick(View v) {
                 // Chuyển sang Fragment khác
 
-                addToCart(Integer.parseInt(bookId));
+                addToCart(Integer.parseInt(bookId), numbersl);
             }
         });
 
         return view; // Trả về view
     }
+
+
     private void loadBookDetails(String bookId) {
         APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
         Call<Book1> call = apiService.getBookDetails(bookId);  // Truyền bookId vào đây
@@ -190,7 +204,7 @@ public class ViewBookFragment extends Fragment {
             }
         });
     }
-    private void addToCart(int bookId) {
+    private void addToCart(int bookId, int sl) {
         // Lấy userId từ SharedPreferences
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
         int userId = sharedPreferences.getInt("userId", -1); // Lấy userId từ SharedPreferences
@@ -198,7 +212,7 @@ public class ViewBookFragment extends Fragment {
         if (userId != -1) {
             // Tạo đối tượng Book hoặc Cart tùy vào cách bạn gửi dữ liệu
             // Tạo đối tượng Cart với các thông tin cần thiết
-            Cart1 cartItem = new Cart1(userId, bookId, 1); // chỉ gửi idUser, idBook và number
+            Cart1 cartItem = new Cart1(userId, bookId, sl); // chỉ gửi idUser, idBook và number
 
 // Chuyển đối tượng Cart thành JSON
             Gson gson = new Gson();

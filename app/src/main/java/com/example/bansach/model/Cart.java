@@ -20,8 +20,9 @@ public class Cart {
     private String isActive;
     private int idUser;
     private int number;
+    private int point;
 
-    public Cart(int id, String title, String author, String category, String imgURL, float price, int inStock, String description, String review,String detailAuthor, String point, String URLaudioBook, String sampleRead, String isActive, int idUser, int number) {
+    public Cart(int id, String title, String author, String category, String imgURL, float price, int inStock, String description, String review,String detailAuthor, String pointOfBook, String URLaudioBook, String sampleRead, String isActive, int idUser, int number, int point) {
         this.idBook = id;
         this.title = title;
         this.author = author;
@@ -32,12 +33,13 @@ public class Cart {
         this.description = description;
         this.review = review;
         this.detailAuthor = detailAuthor;
-        this.pointOfBook = point;
+        this.pointOfBook = pointOfBook;
         this.URLaudioBook = URLaudioBook;
         this.sampleRead = sampleRead;
         this.isActive = isActive;
         this.idUser = idUser;
         this.number = number;
+        this.point = point;
     }
 public Cart(  int idUser, int idBook, int number) {
     this.idUser = idUser;
@@ -185,6 +187,15 @@ public Cart(  int idUser, int idBook, int number) {
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
+
+    public int getPointSum() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
     public int getNumber() {
         return number;
     }

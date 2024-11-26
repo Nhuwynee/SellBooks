@@ -5,9 +5,12 @@
         <!-- HIẾU -->
         <!-- <domain includeSubdomains="true">192.168.138.1</domain> -->
        <!--<domain includeSubdomains="true">192.168.5.62</domain> -->
+=======
+<!--        <domain includeSubdomains="true">192.168.138.1</domain>-->
+        <domain includeSubdomains="true">192.168.5.62</domain>
 
         <!-- NHƯ -->
-         <domain includeSubdomains="true">192.168.206.1</domain>
+<!--         <domain includeSubdomains="true">192.168.206.1</domain>-->
 
 
     </domain-config>

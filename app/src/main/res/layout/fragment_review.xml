@@ -10,10 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/arima_bold"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="Mình vừa đọc xong và thực sự rất ấn tượng! Câu chuyện đã cuốn mình vào một thế giới đầy cảm xúc, nơi tình yêu, mất mát và hy vọng đan xen một cách tinh tế. Mình thích cách tác giả khắc họa nhân vật, khiến họ vừa chân thật vừa đáng nhớ. Đọc từng trang sách, mình cảm thấy như đang sống cùng các nhân vật, cảm nhận nỗi buồn"
+        android:text="Tác giả của cuốn sách Hồng lục là một người có lối viết tinh tế, đầy cảm xúc, thường tập trung khai thác những khía cạnh đời thường trong tình yêu và cuộc sống. Với phong cách viết nhẹ nhàng, tác giả khéo léo đưa người đọc vào những câu chuyện gần gũi nhưng chứa đựng nhiều tầng ý nghĩa."
         android:textColor="#000000"
+        android:layout_marginLeft="10dp"
         android:textSize="16dp" />
 
 </FrameLayout>

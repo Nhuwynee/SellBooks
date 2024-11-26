@@ -72,14 +72,24 @@
                     android:layout_weight="1.2"
                     android:orientation="horizontal"
                     >
-
+                    <TextView
+                        android:id="@+id/point"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Sử dụng"
+                        android:fontFamily="@font/arima_bold"
+                        android:textSize="20dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="#E81970"
+                        />
                     <Switch
                         android:id="@+id/switch1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
                         android:layout_marginRight="50dp"
-                        android:text="Sử dụng (2500★)"
+                        android:text=""
                         android:fontFamily="@font/arima_bold"
                         android:textSize="20dp"
                         android:layout_marginTop="5dp"
@@ -114,6 +124,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/summoney"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -122,16 +133,7 @@
                         android:textSize="20dp"
                         android:textColor="#78103C"
                         />
-                    <CheckBox
-                        android:layout_width="20dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:text="All"
-                        android:fontFamily="@font/arima_bold"
-                        android:textSize="19sp"
-                        android:layout_marginRight="20dp"
-                        android:textColor="#78103C"
-                        />
+
                 </LinearLayout>
 
 
