@@ -108,9 +108,6 @@ public class ListAudioBookFragment extends Fragment {
         transaction.addToBackStack(null);
         transaction.commit();
 
-
-
-
     }
 
 }

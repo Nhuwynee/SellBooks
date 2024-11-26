@@ -6,6 +6,7 @@ import com.example.bansach.model.Cart1;
 import com.example.bansach.model.LoginRequest;
 import com.example.bansach.model.LoginResponse;
 import com.example.bansach.model.Order;
+import com.example.bansach.model.User;
 
 import java.util.List;
 
@@ -44,6 +45,14 @@ public interface APIService {
     @GET("orderapi.php") // Thay bằng endpoint API của bạn
     Call<List<Order>> getOrderHistoryByUser(@Query("idUser") int idUser);
 
+    @GET("buyedaudio.php")
+    Call<List<Book1>> getBuyedAudio(@Query("idUser") int idUser);
+
+    @GET("getuser.php")
+    Call<User> getUserById(@Query("idUser") int idUser);
+
+    @POST("updateuser.php")
+    Call<Void> updateUser(@Body User user);
 }
 
 
