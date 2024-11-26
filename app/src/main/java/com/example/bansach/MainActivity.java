@@ -1,49 +1,27 @@
 package com.example.bansach;
 
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 
-import com.example.bansach.Adapter.CategoryAdapter;
-import com.example.bansach.Fragment.AudioFragment;
-import com.example.bansach.model.Book;
-
-import java.util.List;
-
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerViewCategories;
-    private CategoryAdapter categoryAdapter;
-    private List<Book> categoryList;
+    private ImageView catImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login1);
-        Button signupButton = findViewById(R.id.signup_button);
-        Button loginButton = findViewById(R.id.login_button);
-        signupButton.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.layout_information);
+
+        catImage = findViewById(R.id.cat_image);
+        catImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Sử dụng Intent để chuyển sang SignupActivity
-                Intent intent = new Intent(MainActivity.this, SignUpPage.class);
-                startActivity(intent);  // Bắt đầu SignupActivity
-            }
-        });
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Sử dụng Intent để chuyển sang SignupActivity
-                Intent intent = new Intent(MainActivity.this, LoginMainPage.class);
-                startActivity(intent);  // Bắt đầu SignupActivity
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
             }
         });
     }

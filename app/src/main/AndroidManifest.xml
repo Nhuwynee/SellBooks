@@ -34,9 +34,8 @@
         <activity android:name=".Fragment.ViewBookFragment" />
         <activity android:name=".Fragment.CartFragment" />
         <activity android:name=".MenuActivity" />
-        <activity android:name=".Admin.MenuActivityAdmin"/>
+        <activity android:name=".Login" />
         <activity android:name=".Admin.ListViewBookFragment"/>
-        <activity android:name=".Admin.ListAudioBookAdminFragment"/>
         <activity android:name=".Admin.AddBookFragment"/>
     <activity android:name=".Fragment.CategoryFragment"/>
         <activity android:name=".Fragment.AudioFragment"/>
