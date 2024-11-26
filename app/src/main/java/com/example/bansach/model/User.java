@@ -11,8 +11,6 @@ public class User {
     private  int point;
 
     public User() {
-
-        
     }
 
     public User(String name, String phone, String address, String password) {
