@@ -101,7 +101,7 @@ public class ListBuyedAudioFragment extends Fragment {
         String bookId = book.getId();
         Bundle bundle = new Bundle();
         bundle.putString("bookId", bookId);
-        ViewBookFragment viewBookFragment = new ViewBookFragment();
+        AudioFragment viewBookFragment = new AudioFragment();
         viewBookFragment.setArguments(bundle);
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

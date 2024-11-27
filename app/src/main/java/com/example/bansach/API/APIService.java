@@ -6,6 +6,7 @@ import com.example.bansach.model.Cart1;
 import com.example.bansach.model.LoginRequest;
 import com.example.bansach.model.LoginResponse;
 import com.example.bansach.model.Order;
+import com.example.bansach.model.Order_User;
 import com.example.bansach.model.User;
 
 import java.util.List;
@@ -13,7 +14,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 // Fetch books
@@ -44,8 +44,11 @@ public interface APIService {
     @GET("favouritebookapi.php")
     Call<List<Book1>> getFavouriteBooks(@Query("idUser") int idUser);
 
-    @GET("orderapi.php")
-    Call<List<Order>> getOrderHistory();
+//    @GET("order_confirmapi.php")
+//    Call<Order> getOrder(@Query("idOrder") int idOrder);  // Sửa thành idOrder
+
+    @GET("order_confirmapi.php")
+    Call<Order_User> getOrder(@Query("IdOrder") int idOrder);
 
     // Lịch sử đơn hàng
     @GET("orderapi.php")

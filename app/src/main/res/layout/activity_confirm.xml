@@ -80,7 +80,7 @@
             android:src="@drawable/ava_account" />
 
         <TextView
-            android:id="@+id/customer_name"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/customer_image"
@@ -90,10 +90,10 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/customer_phone"
+            android:id="@+id/phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/customer_name"
+            android:layout_below="@id/name"
             android:layout_toEndOf="@id/customer_image"
             android:fontFamily="@font/arima_semibold"
             android:text="0123456789"
@@ -101,10 +101,10 @@
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/customer_address"
+            android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/customer_phone"
+            android:layout_below="@id/phone"
             android:layout_toEndOf="@id/customer_image"
             android:fontFamily="@font/arima_semibold"
             android:text="32 Cao Thắng,  Đà Nẵng"
@@ -115,7 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="120dp"
             android:textColor="#2A15AB"
             android:text="Đặt hàng thành công !"
@@ -128,7 +128,7 @@
             android:layout_marginTop="200dp"
             android:src="@drawable/tick"/>
         <Button
-            android:id="@+id/buy_button"
+            android:id="@+id/ok_button"
             android:layout_width="103dp"
             android:layout_height="38dp"
             android:layout_alignParentStart="true"
@@ -146,12 +146,11 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="400dp"
-            android:layout_marginLeft="30dp"
             android:orientation="vertical"
             android:padding="16dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="400dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="-20dp"
                 android:orientation="horizontal">
@@ -160,18 +159,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arima_semibold"
-                    android:text="Order ID"
+                    android:text="Mã đơn hàng"
                     android:textColor="#78103C"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/id_dh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/arima_semibold"
-                    android:paddingLeft="50dp"
                     android:text="2410002"
+                    android:paddingLeft="15dp"
                     android:textColor="#000000"
                     android:textSize="20dp" />
             </LinearLayout>
@@ -187,17 +187,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arima_semibold"
-                    android:text="Date"
+                    android:text="Ngày đặt hàng"
                     android:textColor="#78103C"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/arima_semibold"
-                    android:paddingLeft="80dp"
                     android:text="08/10/2024"
                     android:textColor="#000000"
                     android:textSize="20dp" />

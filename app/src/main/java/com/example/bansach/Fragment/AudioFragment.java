@@ -38,7 +38,7 @@ public class AudioFragment extends Fragment {
 
 
         // Tạo MediaPlayer từ file âm thanh
-        mediaPlayer = MediaPlayer.create(getContext(), R.raw.nguoinamcham); // Đặt tên file sách nói trong thư mục raw
+        mediaPlayer = MediaPlayer.create(getContext(), R.raw.ditimlesongmp3); // Đặt tên file sách nói trong thư mục raw
 
         // Cập nhật SeekBar khi âm thanh phát
         seekBar.setMax(mediaPlayer.getDuration());

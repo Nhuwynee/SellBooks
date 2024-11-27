@@ -25,7 +25,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Xin chào, Nguyệt"
+                android:text="Xin chào, Như"
                 android:textColor="#E6007E"
                 android:paddingLeft="5dp"
                 android:fontFamily="@font/arima_semibold"
