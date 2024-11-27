@@ -45,11 +45,6 @@
                     android:maxLines="1"
                     android:ellipsize="end" />
 
-                <CheckBox
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/black"
-                    />
             </LinearLayout>
 
             <LinearLayout
