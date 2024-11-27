@@ -6,6 +6,9 @@ import com.example.bansach.model.Cart1;
 import com.example.bansach.model.LoginRequest;
 import com.example.bansach.model.LoginResponse;
 import com.example.bansach.model.Order;
+import com.example.bansach.model.OrderDetail;
+import com.example.bansach.model.OrderRequest;
+import com.example.bansach.model.OrderResponse;
 import com.example.bansach.model.User;
 
 import java.util.List;
@@ -60,8 +63,6 @@ public interface APIService {
     @GET("getuserapi.php")
     Call<User> getUserById(@Query("idUser") int idUser);
 
-
-
     // đăng ký
     @POST("insertuserapi.php") // đăng ký
     Call<Void> registerUser(@Body User user);
@@ -71,6 +72,10 @@ public interface APIService {
     @DELETE("deletecartapi.php")
     Call<Void> deleteBookFromCart(@Query("idBook") int bookId, @Query("idUser") int userId);
 
+    @POST("insertOrderapi.php")
+    Call<Void> createOrder(@Body OrderRequest orderRequest);
+    @GET("orderdetailapi.php")
+    Call<List<OrderDetail>> getOrderbyId(@Query("idOrder") int idUser);
 }
 
 

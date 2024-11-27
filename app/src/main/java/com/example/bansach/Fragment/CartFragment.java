@@ -10,6 +10,7 @@
     import android.view.ViewGroup;
     import android.widget.ImageButton;
     import android.widget.TextView;
+    import android.widget.Toast;
 
     import androidx.annotation.NonNull;
     import androidx.annotation.Nullable;
@@ -22,10 +23,15 @@
     import com.example.bansach.API.RetrofitClient;
     import com.example.bansach.Adapter.BookAdapter_search;
     import com.example.bansach.Adapter.CartAdapter;
+    import com.example.bansach.MainActivity;
     import com.example.bansach.R;
     import com.example.bansach.model.Book;
     import com.example.bansach.model.Book1;
     import com.example.bansach.model.Cart;
+    import com.example.bansach.model.Cart1;
+    import com.example.bansach.model.OrderRequest;
+    import com.example.bansach.model.OrderResponse;
+    import com.google.gson.Gson;
 
     import java.util.ArrayList;
     import java.util.List;
@@ -122,7 +128,7 @@
 
                 // Cập nhật điểm và tổng tiền
                 point.setText(String.format("%d ★", totalPoints));
-                sum.setText(String.format("%.2f", sum1));
+                sum.setText(String.format("%,.0f đ", sum1));
             } else {
                 point.setText("0 ★");
                 sum.setText("0.00");

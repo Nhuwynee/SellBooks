@@ -77,7 +77,6 @@
             android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/date"
             android:layout_width="237dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/express"
@@ -148,59 +147,9 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@id/invoice_title"
-            android:layout_marginTop="163dp"
+            android:layout_marginTop="160dp"
             android:background="#D9D9D9"
             android:paddingBottom="10dp" />
-
-        <TextView
-            android:id="@+id/price_"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/price_label"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="66dp"
-            android:layout_marginEnd="158dp"
-            android:fontFamily="@font/arima_semibold"
-            android:text="250.000đ"
-            android:textColor="#A8919A"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/product_"
-            android:layout_width="103dp"
-            android:layout_height="47dp"
-            android:layout_below="@+id/product_name"
-            android:layout_marginTop="68dp"
-            android:fontFamily="@font/arima_semibold"
-            android:text="Bong bóng anh đào"
-            android:textColor="#E81970"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/quantity_"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/quantity_label"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="65dp"
-            android:layout_marginEnd="115dp"
-            android:fontFamily="@font/arima_semibold"
-            android:text="1"
-            android:textColor="#A8919A"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/total_"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/quantity_total"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="63dp"
-            android:layout_marginEnd="1dp"
-            android:fontFamily="@font/arima_semibold"
-            android:text="250.000đ"
-            android:textColor="#A8919A"
-            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/customer_image"
@@ -273,20 +222,20 @@
             android:layout_below="@id/invoice_title"
             android:layout_marginTop="11dp"
             android:fontFamily="@font/arima_semibold"
-            android:text="Products"
+            android:text="Sản phẩm"
             android:textColor="#78103C"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/price_label"
-            android:layout_width="59dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/invoice_title"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="160dp"
             android:fontFamily="@font/arima_semibold"
-            android:text="Price"
+            android:text="Giá"
             android:textColor="#78103C"
             android:textSize="18sp" />
 
@@ -300,102 +249,28 @@
             android:layout_marginEnd="-135dp"
             android:layout_toStartOf="@id/price_label"
             android:fontFamily="@font/arima_semibold"
-            android:text="Quantity"
+            android:text="Số lượng"
             android:textColor="#78103C"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/quantity_total"
-            android:layout_width="41dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/view"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="17dp"
             android:fontFamily="@font/arima_semibold"
-            android:text="Total"
+            android:text="Tổng"
             android:textColor="#78103C"
             android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/product_1"
-            android:layout_width="94dp"
-            android:layout_height="45dp"
-            android:layout_below="@+id/product_name"
-            android:layout_marginTop="17dp"
-            android:fontFamily="@font/arima_semibold"
-            android:text="Nhật ký tình yêu"
-            android:textColor="#E81970"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/price_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/price_label"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="161dp"
-            android:fontFamily="@font/arima_semibold"
-            android:text="175.000đ"
-            android:textColor="#A8919A"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/quantity_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/quantity_label"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="115dp"
-            android:fontFamily="@font/arima_semibold"
-            android:text="1"
-            android:textColor="#A8919A"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/total_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/quantity_total"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="-2dp"
-            android:fontFamily="@font/arima_semibold"
-            android:text="175.000đ"
-            android:textColor="#A8919A"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/huy_button"
-            android:layout_width="103dp"
-            android:layout_height="38dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="30dp"
-            android:background="@drawable/border_pink"
-            android:fontFamily="@font/arima_bold"
-            android:gravity="center"
-            android:paddingTop="3dp"
-            android:text="Hủy đơn"
-            android:textColor="#000000"
-            android:textSize="17dp" />
-
-        <Button
-            android:id="@+id/back_button"
-            android:layout_width="103dp"
-            android:layout_height="38dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="200dp"
-            android:background="@drawable/btn_border_blue"
-            android:fontFamily="@font/arima_bold"
-            android:gravity="center"
-            android:paddingTop="3dp"
-            android:text="Mua sắm"
-            android:textColor="#000000"
-            android:textSize="17dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="190dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -404,60 +279,37 @@
             android:layout_marginLeft="35dp"
             android:gravity="bottom"
             android:orientation="vertical"
-            android:padding="16dp">
+            >
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="-20dp"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/arima_semibold"
-                    android:text="Order ID"
-                    android:textColor="#78103C"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/arima_semibold"
-                    android:paddingLeft="50dp"
-                    android:text="2410002"
-                    android:textColor="#000000"
-                    android:textSize="16dp" />
-            </LinearLayout>
 
             <!-- Row 2: Date -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arima_semibold"
-                    android:text="Date"
+                    android:text="Ngày"
                     android:textColor="#78103C"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/arima_semibold"
-                    android:paddingLeft="80dp"
-                    android:text="08/10/2024"
+                    android:paddingLeft="68dp"
+                    android:text=""
                     android:textColor="#000000"
-                    android:textSize="16dp" />
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <!-- Row 3: Quantity -->
@@ -465,26 +317,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arima_semibold"
-                    android:text="Quantity"
+                    android:text="Số lượng"
                     android:textColor="#78103C"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/arima_semibold"
-                    android:paddingLeft="50dp"
-                    android:text="2"
+                    android:paddingLeft="45dp"
+                    android:text=""
                     android:textColor="#000000"
-                    android:textSize="16dp" />
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <!-- Row 4: Prices -->
@@ -492,26 +346,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arima_semibold"
-                    android:text="Prices"
+                    android:text="Tổng tiền"
                     android:textColor="#78103C"
-                    android:textSize="16dp"
+                    android:textSize="18dp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/arima_semibold"
-                    android:paddingLeft="60dp"
-                    android:text="425.000đ"
+                    android:paddingLeft="40dp"
+                    android:text=""
                     android:textColor="#000000"
-                    android:textSize="16dp" />
+                    android:textSize="18dp" />
+            </LinearLayout>
+            <!-- Row 4: Prices -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/arima_semibold"
+                    android:text="Thành tiền"
+                    android:textColor="#78103C"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/subTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:fontFamily="@font/arima_semibold"
+                    android:paddingLeft="40dp"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="18dp" />
             </LinearLayout>
         </LinearLayout>
 

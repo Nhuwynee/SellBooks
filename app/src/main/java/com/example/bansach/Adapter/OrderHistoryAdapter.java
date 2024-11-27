@@ -1,5 +1,6 @@
 package com.example.bansach.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +11,32 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bansach.R;
+import com.example.bansach.model.Book1;
+import com.example.bansach.model.History;
 import com.example.bansach.model.Order;
+import com.example.bansach.model.OrderDetail;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.OrderViewHolder> {
+public abstract class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.OrderViewHolder> {
     private final List<Order> orders;
+    private OrderHistoryAdapter.OnHistoryClickListener listener;
+    private Context context;
 
-    public OrderHistoryAdapter(List<Order> orders) {
-        this.orders = orders;
+
+
+    public abstract void onBookClick(Order book);
+
+    public interface OnHistoryClickListener {
+        void onHistoryClick(Order history);
+    }
+    private final List<Order> allOrders = new ArrayList<>();
+    public OrderHistoryAdapter(List<Order> orders,Context context, OrderHistoryAdapter.OnHistoryClickListener listener) {
+        this.orders = new ArrayList<>(orders); // Danh sách hiện tại
+        this.allOrders.addAll(orders);
+        this.context = context;
+        this.listener = listener;
     }
 
     @NonNull
@@ -36,7 +54,11 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         holder.orderTime.setText("Thời gian: " + order.getOrderTime());
         holder.orderCost.setText(String.format("%.2f", order.getOrderCost()) + " VND");
         holder.orderStatus.setText(order.getOrderStatus());
-
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onHistoryClick(order);
+            }
+        });
         switch (order.getOrderStatus()) {
             case "Đã huỷ":
                 holder.statusIcon.setImageResource(R.drawable.dahuy);
@@ -75,6 +97,8 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             orderCost = itemView.findViewById(R.id.tvOrderCost);
             orderStatus = itemView.findViewById(R.id.tvOrderStatus);
             statusIcon = itemView.findViewById(R.id.statusIcon);
+
         }
     }
+
 }

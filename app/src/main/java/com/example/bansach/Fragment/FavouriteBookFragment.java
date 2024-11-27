@@ -1,5 +1,8 @@
 package com.example.bansach.Fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,9 +47,10 @@ public class FavouriteBookFragment extends Fragment {
     }
     private void loadBooks() {
         APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
-
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("userId", -1);
         // Gọi API với userId mặc định
-        Call<List<Book1>> call = apiService.getFavouriteBooks(7);
+        Call<List<Book1>> call = apiService.getFavouriteBooks(userId);
         call.enqueue(new Callback<List<Book1>>() {
             @Override
             public void onResponse(Call<List<Book1>> call, Response<List<Book1>> response) {

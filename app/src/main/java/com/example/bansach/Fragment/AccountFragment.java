@@ -1,6 +1,9 @@
 package com.example.bansach.Fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -47,10 +50,11 @@ public class AccountFragment extends Fragment {
         Button favourite = view.findViewById(R.id.btn_favourite);
         Button audiobook = view.findViewById(R.id.audioBook);
 
-        int idUser = 3;
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("userId", -1);
 
         // Lấy dữ liệu từ API
-        loadUserData(idUser);
+        loadUserData(userId);
 
         // Xử lý sự kiện nhấn nút
         change.setOnClickListener(new View.OnClickListener() {

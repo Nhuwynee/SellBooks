@@ -14,15 +14,19 @@ public class Cart {
     private String description;
     private String review;
     private String detailAuthor;
-    private String pointOfBook;
+    private int pointOfBook;
     private String URLaudioBook;
     private String sampleRead;
     private String isActive;
     private int idUser;
     private int number;
     private int point;
+    private String name;
+    private String phone;
+    private String address;
+    private String avatarImage;
 
-    public Cart(int id, String title, String author, String category, String imgURL, float price, int inStock, String description, String review,String detailAuthor, String pointOfBook, String URLaudioBook, String sampleRead, String isActive, int idUser, int number, int point) {
+    public Cart(int id, String title, String author, String category, String imgURL, float price, int inStock, String description, String review,String detailAuthor, int pointOfBook, String URLaudioBook, String sampleRead, String isActive, int idUser, int number, int point) {
         this.idBook = id;
         this.title = title;
         this.author = author;
@@ -145,11 +149,11 @@ public Cart(  int idUser, int idBook, int number) {
         this.detailAuthor = detailAuthor;
     }
 
-    public String getPoint() {
+    public int getPoint() {
         return pointOfBook;
     }
 
-    public void setPoint(String point) {
+    public void setPointOfBook(int point) {
         this.pointOfBook = point;
     }
     public String getURLaudioBook() {
@@ -202,5 +206,34 @@ public Cart(  int idUser, int idBook, int number) {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public String getAvatarImage() {
+        return avatarImage;
+    }
+
+    public void setAvatarImage(String avatarImage) {
+        this.avatarImage = avatarImage;
     }
 }

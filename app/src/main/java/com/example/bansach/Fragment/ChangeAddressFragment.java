@@ -1,5 +1,8 @@
 package com.example.bansach.Fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,8 +29,7 @@ public class ChangeAddressFragment extends Fragment
 {
     private EditText editTextName, editTextPhone, editTextAddress;
     private Button buttonUpdate;
-    private int userId = 3;
-
+    private int userId;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,7 +39,8 @@ public class ChangeAddressFragment extends Fragment
         editTextPhone = view.findViewById(R.id.edittext_phone);
         editTextAddress = view.findViewById(R.id.edittext_address);
         buttonUpdate = view.findViewById(R.id.change);
-
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        userId = sharedPreferences.getInt("userId", -1);
         loadUserInfo();
 
         buttonUpdate.setOnClickListener(v -> updateUser());
@@ -47,6 +50,7 @@ public class ChangeAddressFragment extends Fragment
 
     private void loadUserInfo() {
         APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
+    Log.d("userId","idUser = "+ userId);
         Call<User> call = apiService.getUserById(userId);
         call.enqueue(new Callback<User>() {
             @Override

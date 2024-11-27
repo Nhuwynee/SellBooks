@@ -1,90 +1,69 @@
 package com.example.bansach.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bansach.model.Book;
-import com.example.bansach.model.History;
 import com.example.bansach.R;
+import com.example.bansach.model.OrderDetail;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
+    private Context context;
+    private List<OrderDetail> productList;
 
-    private List<History> historyList;
+    public HistoryAdapter(Context context, List<OrderDetail> productList) {
+        this.context = context;
+        this.productList = productList;
+    }
 
-    public HistoryAdapter(List<History> historyList) {
-        this.historyList = historyList;
-    }
-    private OnHistoryClickListener listener;
-
-    public interface OnHistoryClickListener {
-        void onHistoryClick(History history);
-    }
-    public HistoryAdapter(List<History> historyList, OnHistoryClickListener listener) {
-        this.historyList = historyList;
-        this.listener = listener;
-    }
     @NonNull
     @Override
     public HistoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.history_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_order_ng, parent, false);
         return new HistoryViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
-        History history = historyList.get(position);
-        holder.orderNumber.setText(history.getOrderNumber());
+        OrderDetail product = productList.get(position);
 
-        // Định dạng ngày tháng
-        String formattedDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(history.getOrderDate());
-        holder.orderDate.setText(formattedDate);
+        if (product != null) {
+            // Lấy giá và số lượng từ đối tượng OrderDetail
+            float price = product.getPrice();
+            int quantity = product.getNumber();
 
-        // Chuyển đổi giá tiền từ int sang String với định dạng
-        holder.orderPrice.setText(String.format(Locale.getDefault(), "%,dđ", history.getOrderPrice()));
+            // Tính tổng giá
+            float total = price * quantity;
 
-        holder.orderStatus.setText(history.getOrderStatus());
-
-        int avatarResId = holder.itemView.getContext().getResources().getIdentifier(history.getAvatarImage(), "drawable", holder.itemView.getContext().getPackageName());
-        holder.avatarImage.setImageResource(avatarResId);
-
-        // Cập nhật icon trạng thái
-        int statusIconResId = holder.itemView.getContext().getResources().getIdentifier(history.getStatusIcon(), "drawable", holder.itemView.getContext().getPackageName());
-        holder.statusIcon.setImageResource(statusIconResId);
-
-        holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onHistoryClick(history);
-            }
-        });
+            // Cập nhật các TextView
+            holder.productName.setText(product.getTitle());
+            holder.productPrice.setText(String.format("%,.0f đ", price)); // Hiển thị giá
+            holder.productQuantity.setText(String.valueOf(quantity)); // Hiển thị số lượng
+            holder.productTotal.setText(String.format("%,.0f đ", total)); // Hiển thị tổng giá
+        }
     }
 
     @Override
     public int getItemCount() {
-        return historyList.size();
+        return productList.size();
     }
 
     public static class HistoryViewHolder extends RecyclerView.ViewHolder {
-        TextView orderNumber, orderDate, orderPrice, orderStatus;
-        ImageView avatarImage, statusIcon;
+        TextView productName, productPrice, productQuantity, productTotal;
 
-        public HistoryViewHolder(View itemView) {
+        public HistoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            orderNumber = itemView.findViewById(R.id.orderNumber);
-            orderDate = itemView.findViewById(R.id.orderDate);
-            orderPrice = itemView.findViewById(R.id.orderPrice);
-            orderStatus = itemView.findViewById(R.id.orderStatus);
-            avatarImage = itemView.findViewById(R.id.avatarImage);
-            statusIcon = itemView.findViewById(R.id.statusIcon);
+            productName = itemView.findViewById(R.id.product_1);
+            productPrice = itemView.findViewById(R.id.price_1);
+            productQuantity = itemView.findViewById(R.id.quantity_1);
+            productTotal = itemView.findViewById(R.id.total_1);
         }
     }
 }

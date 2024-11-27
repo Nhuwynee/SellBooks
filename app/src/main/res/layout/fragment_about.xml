@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/about"
         android:layout_width="match_parent"
-        android:layout_height="188dp"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/arima_bold"
         android:paddingLeft="10dp"
         android:text=""
