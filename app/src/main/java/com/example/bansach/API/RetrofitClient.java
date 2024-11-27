@@ -13,10 +13,11 @@ public class RetrofitClient {
 
 
     // NHƯ:
-//     private static final String BASE_URL = "http://192.168.206.1:8080/READIFY/";
+//   private static final String BASE_URL = "http://192.168.206.1:8080/READIFY/";
 
     // NGUYỆT:
      private static final String BASE_URL = "http://192.168.4.109:8080/READIFY/";
+    // private static final String BASE_URL = "http://192.168.5.62:8080/READIFY/";
 // Lưu Ngọc Yến Như
 
     public static Retrofit getRetrofitInstance() {

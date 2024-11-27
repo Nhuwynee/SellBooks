@@ -33,7 +33,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/arima_semibold"
                 android:paddingLeft="5dp"
-                android:text="Xin chào, Nguyệt"
+                android:text="Xin chào, Như"
                 android:textColor="#E6007E"
                 android:textSize="20sp" />
 

@@ -16,19 +16,19 @@
         android:gravity="start"
         android:text="Sách nói"
         android:textColor="#E81970"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:textSize="25sp" />
 
     <ImageView
-        android:id="@+id/book_cover"
+        android:id="@+id/book_img"
         android:layout_width="360dp"
-        android:layout_height="218dp"
+        android:layout_height="350dp"
         android:layout_marginBottom="20dp"
         android:scaleType="centerCrop"
         android:src="@drawable/bo_di_ma_song3" />
 
     <TextView
-        android:id="@+id/audiobook_title"
+        android:id="@+id/book_name"
         android:layout_width="257dp"
         android:layout_height="42dp"
         android:layout_gravity="center"
@@ -39,7 +39,7 @@
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/book_title_author"
+        android:id="@+id/book_author"
         android:layout_width="143dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

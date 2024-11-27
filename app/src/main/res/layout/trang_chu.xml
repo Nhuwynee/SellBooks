@@ -42,10 +42,10 @@
                         android:textColor="#E81970">
                     </TextView>
                     <TextView
-                        android:layout_width="170dp"
+                        android:layout_width="160dp"
                         android:layout_height="50dp"
-                        android:text="Xin chào, Anna"
-                        android:layout_marginLeft="30dp"
+                        android:text="Xin chào, Như"
+                        android:layout_marginLeft="35dp"
                         android:textSize="20sp"
                         android:fontFamily="@font/arima_semibold"
                         android:textColor="#E81970">

@@ -81,8 +81,6 @@ public class ListAudioBookFragment extends Fragment {
         });
     }
 
-
-
     private void setUpRecyclerView(List<Book1> books) {
         if (audioAdapter == null) {
             audioAdapter = new AudioAdapter(books, new AudioAdapter.OnBookClickListener() {
