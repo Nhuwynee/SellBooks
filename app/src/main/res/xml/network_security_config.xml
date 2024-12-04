@@ -3,10 +3,13 @@
     <domain-config cleartextTrafficPermitted="true">
 
         <!-- HIẾU -->
-        <!-- <domain includeSubdomains="true">192.168.138.1</domain> -->
+<!--         <domain includeSubdomains="true">192.168.138.1</domain>-->
        <!--<domain includeSubdomains="true">192.168.5.62</domain> -->
 <!--        <domain includeSubdomains="true">192.168.138.1</domain>-->
         <domain includeSubdomains="true">192.168.4.112</domain>
+=======
+<!--        <domain includeSubdomains="true">192.168.4.109</domain>-->
+>>>>>>> 75db61b7d836a3a5b5a66e4c05cf9b5b1f35aa72
 <!--        <domain includeSubdomains="true">192.168.5.62</domain></domain>-->
 
 

@@ -8,7 +8,7 @@ public class RetrofitClient {
     private static Retrofit retrofit;
 
     // HIẾU
-     // private static final String BASE_URL = "http://192.168.138.1:8080/SellBooks/";
+//      private static final String BASE_URL = "http://192.168.138.1:8080/SellBooks/";
 //     private static final String BASE_URL = "http://192.168.138.1:8080/SellBooks/";
 
 
@@ -17,6 +17,8 @@ public class RetrofitClient {
 
     // NGUYỆT:
      private static final String BASE_URL = "http://192.168.4.112:8080/READIFY/";
+//    // NGUYỆT:
+//     private static final String BASE_URL = "http://192.168.4.109:8080/READIFY/";
     // private static final String BASE_URL = "http://192.168.5.62:8080/READIFY/";
 // Lưu Ngọc Yến Như
 

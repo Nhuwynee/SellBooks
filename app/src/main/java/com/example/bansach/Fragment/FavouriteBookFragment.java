@@ -98,6 +98,8 @@ public class FavouriteBookFragment extends Fragment {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     Log.d("FavouriteBookFragment", "Sách đã xóa khỏi danh sách yêu thích");
+
+                    // Xóa item khỏi danh sách và cập nhật giao diện
                     favouriteAdapter.removeItem(position);
                 } else {
                     Log.e("FavouriteBookFragment", "Lỗi khi xóa sách khỏi danh sách yêu thích: " + response.message());
@@ -112,6 +114,7 @@ public class FavouriteBookFragment extends Fragment {
             }
         });
     }
+
     private void setupSwipeToShowDeleteButton() {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
@@ -122,15 +125,13 @@ public class FavouriteBookFragment extends Fragment {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
-                if (viewHolder instanceof FavouriteAdapter.BookViewHolder) {
-                    FavouriteAdapter.BookViewHolder bookViewHolder = (FavouriteAdapter.BookViewHolder) viewHolder;
-                    bookViewHolder.buttonDelete.setVisibility(View.VISIBLE);
-                    favouriteAdapter.notifyItemChanged(position);
-                }
+                favouriteAdapter.onItemSwiped(position);
+                favouriteAdapter.notifyItemChanged(position);
             }
         });
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
+
 }
 
 
