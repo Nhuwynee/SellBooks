@@ -57,7 +57,7 @@ public class FogotPassPage extends AppCompatActivity {
     public void sendOtpToServer(String phoneNumber) {
         // Khởi tạo Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.5.237:8080/READIFY/")  // Thay "your-server-url" bằng URL thực tế của bạn
+                .baseUrl("http://192.168.4.112:8080/READIFY/")  // Thay "your-server-url" bằng URL thực tế của bạn
                 .addConverterFactory(GsonConverterFactory.create()) // Sử dụng Gson để chuyển đổi JSON
                 .build();
 

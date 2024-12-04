@@ -52,7 +52,7 @@ public class ResetPass extends AppCompatActivity {
 
     public void verifyOtp(String phoneNumber, String otpCode) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.5.237:8080/READIFY/")
+                .baseUrl("http://192.168.4.112:8080/READIFY/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
