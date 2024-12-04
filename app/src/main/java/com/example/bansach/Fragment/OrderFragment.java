@@ -188,7 +188,7 @@ public class OrderFragment extends Fragment {
                         point += book.getPoint();
                     }
                     float total = sum - ( bookList.get(0).getPointSum() ); // Kiểm tra null
-                    OrderRequest order = new OrderRequest(userId, total, details,point);
+                    OrderRequest order = new OrderRequest(userId, point, details, point);
                     Gson gson = new Gson();
                     String jsonOrder = gson.toJson(order);
                     Log.d("OrderRequest", "Dữ liệu JSON gửi đi: " + jsonOrder);

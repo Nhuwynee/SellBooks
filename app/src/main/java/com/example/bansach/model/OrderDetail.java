@@ -4,7 +4,7 @@ public class OrderDetail {
     private int IdOrder;
     private int IdUser;
     private String orderTime;
-    private String orderCost;
+    private int pointOfOrder;
     private String orderStatus;
     private int idOrder;
     private int idBook;
@@ -31,7 +31,7 @@ public class OrderDetail {
     private int isActive;
 
     // Constructor to initialize the properties
-    public OrderDetail(int IdOrder, int IdUser, String orderTime, String orderCost, String orderStatus,
+    public OrderDetail(int IdOrder, int IdUser, String orderTime, int pointOfOrder, String orderStatus,
                        int idOrder, int idBook, int number, String password, String name, String phone,
                        String address, String avatarImage, int level, int point, String title, String author,
                        String category, String imgResource, float price, int inStock, String description,
@@ -40,7 +40,7 @@ public class OrderDetail {
         this.IdOrder = IdOrder;
         this.IdUser = IdUser;
         this.orderTime = orderTime;
-        this.orderCost = orderCost;
+        this.pointOfOrder = pointOfOrder;
         this.orderStatus = orderStatus;
         this.idOrder = idOrder;
         this.idBook = idBook;
@@ -92,12 +92,12 @@ public class OrderDetail {
         this.orderTime = orderTime;
     }
 
-    public String getOrderCost() {
-        return orderCost;
+    public int getPointOfOrder() {
+        return pointOfOrder;
     }
 
-    public void setOrderCost(String orderCost) {
-        this.orderCost = orderCost;
+    public void setPointOfOrder(int pointOfOrder) {
+        this.pointOfOrder = pointOfOrder;
     }
 
     public String getOrderStatus() {

@@ -4,13 +4,13 @@ import java.util.List;
 
 public class OrderRequest {
     private int IdUser;
-    private double orderCost;
+    private double pointOfOrder;
     private List<Orderitem> orderDetails;
     private  int point;
 
-    public OrderRequest(int IdUser, double orderCost, List<Orderitem> orderDetails, int point) {
+    public OrderRequest(int IdUser, double pointOfOrder, List<Orderitem> orderDetails, int point) {
         this.IdUser = IdUser;
-        this.orderCost = orderCost;
+        this.pointOfOrder = pointOfOrder;
         this.orderDetails = orderDetails;
         this.point = point;
     }

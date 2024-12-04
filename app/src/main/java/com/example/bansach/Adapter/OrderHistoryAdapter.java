@@ -52,7 +52,6 @@ public abstract class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHist
 
         holder.idOrder.setText("Mã đơn: " + order.getIdOrder());
         holder.orderTime.setText("Thời gian: " + order.getOrderTime());
-        holder.orderCost.setText(String.format("%.2f", order.getOrderCost()) + " VND");
         holder.orderStatus.setText(order.getOrderStatus());
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {

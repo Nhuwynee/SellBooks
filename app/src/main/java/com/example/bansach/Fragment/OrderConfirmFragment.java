@@ -30,6 +30,7 @@ import com.example.bansach.model.Cart;
 import com.example.bansach.model.Order;
 import com.example.bansach.model.OrderDetail;
 import com.example.bansach.model.OrderRequest;
+import com.example.bansach.model.User;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
@@ -52,6 +53,7 @@ public class OrderConfirmFragment extends Fragment {
     private HistoryAdapter buyedBookAdapter;
     private List<OrderDetail> cartList = new ArrayList<>();
     private int idOrder;
+    List<User> users = new ArrayList<>();
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_order_confirm, container, false);
@@ -107,9 +109,13 @@ public class OrderConfirmFragment extends Fragment {
                 Log.e("API_ERROR", "Lỗi khi gọi API: " + t.getMessage());
             }
         });
+
+
     }
 
     private void loadpage(int idOrder) {
+
+
         APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
         Call<List<OrderDetail>> call = apiService.getOrderbyId(idOrder);
         Log.d("idOrder","idOrder= " + idOrder);
@@ -134,7 +140,7 @@ public class OrderConfirmFragment extends Fragment {
                     address.setText(bookList.get(0).getAddress());
                     date.setText(bookList.get(0).getOrderTime());
                     total.setText(String.format("%,.0f đ", sum));
-                    subTotal.setText(String.format("%,.0f đ", sum - bookList.get(0).getPoint()));
+                    subTotal.setText(String.format("%,.0f đ", sum - bookList.get(0).getPointOfOrder()));
                     number.setText(String.valueOf(sl));
 
                     try {

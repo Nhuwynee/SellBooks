@@ -40,8 +40,8 @@ public class FogotPassPage extends AppCompatActivity {
                     // Gọi API gửi OTP
                     savePhoneNumberToSharedPreferences(phoneNumber);
                     sendOtpToServer(phoneNumber);
-                    Intent intent = new Intent(FogotPassPage.this, ResetPass.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(FogotPassPage.this, ResetPass.class);
+//                    startActivity(intent);
                 } else {
                     Toast.makeText(FogotPassPage.this, "Vui lòng nhập số điện thoại.", Toast.LENGTH_SHORT).show();
                 }
@@ -57,7 +57,7 @@ public class FogotPassPage extends AppCompatActivity {
     public void sendOtpToServer(String phoneNumber) {
         // Khởi tạo Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.4.109:8080/READIFY/")  // Thay "your-server-url" bằng URL thực tế của bạn
+                .baseUrl("http://192.168.5.237:8080/READIFY/")  // Thay "your-server-url" bằng URL thực tế của bạn
                 .addConverterFactory(GsonConverterFactory.create()) // Sử dụng Gson để chuyển đổi JSON
                 .build();
 
@@ -86,6 +86,7 @@ public class FogotPassPage extends AppCompatActivity {
             public void onFailure(Call<String> call, Throwable t) {
                 // Xử lý khi có lỗi kết nối hoặc yêu cầu không thành công
                 Log.e("SendOtp", "Error: " + t.getMessage());
+
                 Toast.makeText(FogotPassPage.this, "Lỗi kết nối: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

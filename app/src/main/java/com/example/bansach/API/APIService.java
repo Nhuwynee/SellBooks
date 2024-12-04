@@ -33,6 +33,8 @@ public interface APIService {
 
     @GET("bookapi.php")
     Call<Book1> getBookDetails(@Query("id") String bookId);
+    @POST("userapi.php")
+    Call<List<User>> getUser(@Query("id") int IdUser);
 
     @POST("userapi.php")
     Call<List<LoginResponse>> login(@Body LoginRequest loginRequest);
