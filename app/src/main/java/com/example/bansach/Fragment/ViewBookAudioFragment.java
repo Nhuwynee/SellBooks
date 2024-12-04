@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -109,7 +108,7 @@ public class ViewBookAudioFragment extends Fragment {
 
     private void addImagesToFlipper() {
         try {
-            int[] images = {R.drawable.bo_di_ma_song, R.drawable.bo_di_ma_song3}; // Thay đổi tên hình ảnh theo thực tế
+            int[] images = {R.drawable.hongluc, R.drawable.hongluc}; // Thay đổi tên hình ảnh theo thực tế
 
             for (int image : images) {
                 ImageView imageView = new ImageView(getContext());

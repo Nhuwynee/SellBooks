@@ -66,23 +66,17 @@
                 android:layout_margin="10dp">
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/boconcagai">
-                </ImageView>
+                    android:layout_height="match_parent"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/bongdembatxichmon">
-                </ImageView>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/chinhphuchanhphuc2">
-                </ImageView>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/mbabanghinh" >
+                     >
                 </ImageView>
             </ViewFlipper>
             <androidx.recyclerview.widget.RecyclerView

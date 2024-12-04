@@ -94,7 +94,6 @@ public abstract class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHist
             super(itemView);
             idOrder = itemView.findViewById(R.id.tvIdOrder);
             orderTime = itemView.findViewById(R.id.tvOrderTime);
-            orderCost = itemView.findViewById(R.id.tvOrderCost);
             orderStatus = itemView.findViewById(R.id.tvOrderStatus);
             statusIcon = itemView.findViewById(R.id.statusIcon);
 

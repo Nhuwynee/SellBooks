@@ -1,6 +1,7 @@
 package com.example.bansach.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,13 +59,34 @@ public class BookAdapter_search extends RecyclerView.Adapter<BookAdapter.BookVie
         holder.bookPrice.setText(String.valueOf(book.getPrice()));
 
         String imageName = book.getImgResource();
-        if (imageName.endsWith(".jpg")) {
-            imageName = imageName.substring(0, imageName.length() - 4);
-        } else if (imageName.endsWith(".png")) {
-            imageName = imageName.substring(0, imageName.length() - 4);
+        Log.d("ImageLoader", "Original Image Name: " + imageName); // Log tên gốc của ảnh
+
+        if (imageName != null) {
+            if (imageName.endsWith(".jpg")) {
+                imageName = imageName.substring(0, imageName.length() - 4);
+            } else if (imageName.endsWith(".png")) {
+                imageName = imageName.substring(0, imageName.length() - 4);
+            }
+
+            Log.d("ImageLoader", "Processed Image Name: " + imageName); // Log tên ảnh sau khi xử lý
+
+            int resId = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+            Log.d("ImageLoader", "Resource ID: " + resId); // Log ID của tài nguyên ảnh
+
+            if (resId != 0) {
+                Glide.with(context)
+                        .load(resId)
+                        .error(R.drawable.hello) // Ảnh dự phòng nếu không tìm thấy
+                        .into(holder.bookImage);
+            } else {
+                Log.e("ImageLoader", "Resource not found for: " + imageName);
+                holder.bookImage.setImageResource(R.drawable.hello); // Ảnh dự phòng nếu không tìm thấy
+            }
+        } else {
+            Log.e("ImageLoader", "Image name is null");
+            holder.bookImage.setImageResource(R.drawable.hello); // Nếu `imgResource` null
         }
-        int resId = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
-        Glide.with(context).load(resId).into(holder.bookImage);
+
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {

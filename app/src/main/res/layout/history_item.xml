@@ -52,15 +52,7 @@
                 android:textColor="#555"
                 android:layout_marginTop="4dp" />
 
-            <TextView
-                android:id="@+id/tvOrderCost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="425.000đ"
-                android:fontFamily="@font/arima_bold"
-                android:textSize="15sp"
-                android:textColor="#E81970"
-                android:layout_marginTop="4dp" />
+
         </LinearLayout>
 
         <LinearLayout

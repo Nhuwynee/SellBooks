@@ -37,10 +37,30 @@
             android:textSize="35sp" />
     </LinearLayout>
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/otp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="OTP"
+        android:textColorHint="#3F51B5"
+        app:hintEnabled="true"
+        app:hintTextAppearance="@style/HintTextAppearance">
+        <EditText
+            android:id="@+id/otp1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_margin="16dp"
+            android:paddingLeft="15dp"
+            android:textColor="#3F51B5"
+            android:textSize="20sp"
+            android:fontFamily="@font/arima_regular"
+            android:background="@drawable/bg_textfield"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/sdt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Số điện thoại"
+        android:hint="Mật khẩu mới"
         android:textColorHint="#3F51B5"
         app:hintEnabled="true"
         app:hintTextAppearance="@style/HintTextAppearance">
@@ -57,13 +77,12 @@
             android:background="@drawable/bg_textfield"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="send"
+        android:text="Đăng nhập"
         android:textAllCaps="false"
         android:textSize="30sp"
         android:fontFamily="@font/arima_semibold"

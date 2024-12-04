@@ -39,12 +39,7 @@ public class Delete_Book_admin extends AppCompatActivity {
 
         // Khởi tạo danh sách Book mẫu
         bookList = new ArrayList<>();
-        bookList.add(new Book("Bong bóng anh đào", "Tê Kiến", 200000f, "Hoạt động", R.drawable.bong_bong_anh_dao));
-        bookList.add(new Book("Hồng lục", "Kiếm Diệp Tử", 170000f, "Hoạt động", R.drawable.hong_luc));
-        bookList.add(new Book("Này đừng có ăn có!", "Lục Lục", 150000f, "Hoạt động", R.drawable.bong_bong_anh_dao));
-        bookList.add(new Book("Nhật ký tình yêu", "Tống Cửu Càn", 250000f, "Hoạt động", R.drawable.hong_luc));
-        bookList.add(new Book("Này chớ làm loạn", "Minh Nguyệt", 150000f, "Hoạt động", R.drawable.bong_bong_anh_dao));
-        bookList.add(new Book("Án mạng mười một chữ", "Hinh Sơn Khải", 200000f, "Hoạt động", R.drawable.hong_luc));
+
 
         // Khởi tạo và gán Adapter cho RecyclerView
         bookAdapter = new ListViewBookAdapter(bookList);

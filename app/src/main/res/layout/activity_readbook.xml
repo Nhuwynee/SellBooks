@@ -49,7 +49,7 @@
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:scaleType="fitCenter"
-        android:src="@drawable/hong_luc" />
+         />
 
     <ScrollView
         android:layout_width="match_parent"

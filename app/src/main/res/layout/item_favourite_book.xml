@@ -10,14 +10,15 @@
         android:layout_height="120dp"
         android:orientation="horizontal"
         android:padding="5dp">
+
         <ImageView
             android:id="@+id/book_img"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="110dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/hong_luc">
-        </ImageView>
+            />
+
         <LinearLayout
             android:id="@+id/cart_detail"
             android:layout_width="0dp"
@@ -43,7 +44,6 @@
                     android:textSize="21sp"
                     android:gravity="center_vertical"
                     android:ellipsize="end" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -102,10 +102,9 @@
                     android:textColor="#E81970"
                     android:textSize="18sp"
                     android:layout_marginLeft="100dp"
-                    android:src="@drawable/ic_bag"
-                    />
-
+                    android:src="@drawable/ic_bag" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,12 +112,20 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
             </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true">
+
         </LinearLayout>
 
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="#EBE91E63"
+            android:layout_marginBottom="4dp"
+            android:drawableTop="@drawable/recycle_bin64"
+            android:paddingTop="20dp"
+            android:visibility="gone" />
+
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

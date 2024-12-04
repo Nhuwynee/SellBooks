@@ -1,7 +1,7 @@
+
 package com.example.bansach.Fragment;
 
-import static android.content.Context.MODE_PRIVATE;
-
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,8 +20,10 @@ import com.example.bansach.API.APIService;
 import com.example.bansach.API.RetrofitClient;
 import com.example.bansach.Adapter.FavouriteAdapter;
 import com.example.bansach.R;
-import com.example.bansach.model.Book1;
+import com.example.bansach.model.Cart;
+import com.example.bansach.model.FavouriteBook;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -31,68 +33,107 @@ import retrofit2.Response;
 public class FavouriteBookFragment extends Fragment {
     private RecyclerView recyclerView;
     private FavouriteAdapter favouriteAdapter;
-    private List<Book1> bookList;
-
-
-
-
+    private List<Cart> bookList;
+    private APIService apiService;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_favourite_book, container, false);
         recyclerView = view.findViewById(R.id.recyclerView_favourite);
-        loadBooks();
+        bookList = new ArrayList<>();
+        apiService = RetrofitClient.getRetrofitInstance().create(APIService.class); // Khởi tạo API service
 
+        favouriteAdapter = new FavouriteAdapter(bookList, getContext(),
+                new FavouriteAdapter.OnBookClickListener() {
+                    @Override
+                    public void onBookClick(Cart book) {
+                        Log.d("FavouriteBookFragment", "Sách được chọn: " + book.getTitle());
+                    }
+                },
+                new FavouriteAdapter.OnBookDeleteListener() {
+                    @Override
+                    public void onBookDelete(Cart book, int position) {
+                        deleteBookFromFavourite(book, position);
+                    }
+                }
+        );
+        recyclerView.setAdapter(favouriteAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        loadBooks();
+        setupSwipeToShowDeleteButton();
         return view;
     }
+
     private void loadBooks() {
-        APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
         int userId = sharedPreferences.getInt("userId", -1);
-        // Gọi API với userId mặc định
-        Call<List<Book1>> call = apiService.getFavouriteBooks(userId);
-        call.enqueue(new Callback<List<Book1>>() {
+
+        Call<List<Cart>> call = apiService.getFavouriteBooks(userId);
+        call.enqueue(new Callback<List<Cart>>() {
             @Override
-            public void onResponse(Call<List<Book1>> call, Response<List<Book1>> response) {
-                if (response.isSuccessful()) {
+            public void onResponse(Call<List<Cart>> call, Response<List<Cart>> response) {
+                if (response.isSuccessful() && response.body() != null) {
                     bookList = response.body();
-                    Log.d("API_RESPONSE", "Dữ liệu trả về: " + bookList.toString());
-                    setUpRecyclerView(bookList);
+                    favouriteAdapter.updateBooks(bookList);
                 } else {
-                    Log.e("FavouriteBookFragment", "API error");
+                    Log.e("FavouriteBookFragment", "API error: " + response.message());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Book1>> call, Throwable t) {
+            public void onFailure(Call<List<Cart>> call, Throwable t) {
                 Log.e("API_ERROR", "Error: " + t.getMessage());
             }
         });
     }
 
-    private void setUpRecyclerView(List<Book1> books) {
-        if (favouriteAdapter == null) {
-            favouriteAdapter = new FavouriteAdapter(books, new FavouriteAdapter.OnFavouriteClickListener() {
-                @Override
-                public void onFavouriteList(Book1 book) {
-                    openFavouriteBookFragment(book);
+    private void deleteBookFromFavourite(Cart book, int position) {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("userId", -1);
+
+        Call<Void> call = apiService.deleteFavouriteBook(userId, book.getId());
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Log.d("FavouriteBookFragment", "Sách đã xóa khỏi danh sách yêu thích");
+                    favouriteAdapter.removeItem(position);
+                } else {
+                    Log.e("FavouriteBookFragment", "Lỗi khi xóa sách khỏi danh sách yêu thích: " + response.message());
+                    favouriteAdapter.notifyItemChanged(position);
                 }
-            });
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-            recyclerView.setAdapter(favouriteAdapter);
-        }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("FavouriteBookFragment", "API xóa sách thất bại: " + t.getMessage());
+                favouriteAdapter.notifyItemChanged(position);
+            }
+        });
     }
+    private void setupSwipeToShowDeleteButton() {
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
 
-    private void openFavouriteBookFragment(Book1 book) {
-        String bookId = book.getId();
-        Bundle bundle = new Bundle();
-        bundle.putString("bookId", bookId);
-        ViewBookFragment viewBookFragment = new ViewBookFragment();
-        viewBookFragment.setArguments(bundle);
-
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, viewBookFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+                if (viewHolder instanceof FavouriteAdapter.BookViewHolder) {
+                    FavouriteAdapter.BookViewHolder bookViewHolder = (FavouriteAdapter.BookViewHolder) viewHolder;
+                    bookViewHolder.buttonDelete.setVisibility(View.VISIBLE);
+                    favouriteAdapter.notifyItemChanged(position);
+                }
+            }
+        });
+        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 }
+
+
+
+
+

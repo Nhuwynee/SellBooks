@@ -16,7 +16,7 @@
             android:layout_weight="1"
             android:layout_height="110dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/hong_luc">
+           >
         </ImageView>
         <LinearLayout
             android:id="@+id/cart_detail"

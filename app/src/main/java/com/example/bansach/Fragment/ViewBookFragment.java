@@ -28,6 +28,7 @@ import com.example.bansach.model.Book;
 import com.example.bansach.model.Book1;
 import com.example.bansach.model.Cart;
 import com.example.bansach.model.Cart1;
+import com.example.bansach.model.FavouriteBook;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 
@@ -40,33 +41,20 @@ public class ViewBookFragment extends Fragment {
     FrameLayout frameLayout;
     TabLayout tabLayout;
     String bookId;
-    TextView title, author, price, point, sl, slcart;
+    TextView title, author, price, point, sl;
     ImageView img;
-    Button btnIncrease, btnDecrease;
- int numbersl =1;
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_viewbooks, container, false);
         ImageButton cart = view.findViewById(R.id.btn_cart);
         Button read = view.findViewById(R.id.doc_thu);
-        ImageButton like =view.findViewById(R.id.btn_favourite_book);
+        ImageButton like = view.findViewById(R.id.btn_favourite_book);
         title = view.findViewById(R.id.title);
         author = view.findViewById(R.id.author);
         price = view.findViewById(R.id.price);
         point = view.findViewById(R.id.point);
         img = view.findViewById(R.id.img);
         sl = view.findViewById(R.id.book_sl);
-        btnIncrease = view.findViewById(R.id.btngiamsoluong);
-        btnDecrease = view.findViewById(R.id.btntangsoluong);
-        slcart = view.findViewById(R.id.book_soluong);
-        btnDecrease.setOnClickListener(v -> {
-            int quantity = numbersl++ ;
-            slcart.setText(String.valueOf(quantity));
-        });
-
-        btnIncrease.setOnClickListener(v -> {
-            int quantity = numbersl--;
-            slcart.setText(String.valueOf(quantity));
-        });
 
         if (getArguments() != null) {
             bookId = getArguments().getString("bookId");
@@ -82,9 +70,8 @@ public class ViewBookFragment extends Fragment {
         frameLayout = view.findViewById(R.id.framelayout);
         tabLayout = view.findViewById(R.id.tablayout);
 
-        // Khởi tạo fragment mặc định
-        Fragment fragment =  AboutFragment.newInstance( bookId);
-        getParentFragmentManager().beginTransaction().replace(R.id.framelayout,fragment)
+        Fragment fragment = AboutFragment.newInstance(bookId);
+        getParentFragmentManager().beginTransaction().replace(R.id.framelayout, fragment)
                 .addToBackStack(null)
                 .commit();
 
@@ -94,7 +81,7 @@ public class ViewBookFragment extends Fragment {
                 Fragment fragment = null;
                 switch (tab.getPosition()) {
                     case 0:
-                        fragment =  AboutFragment.newInstance( bookId);
+                        fragment = AboutFragment.newInstance(bookId);
                         break;
                     case 1:
                         fragment = ReviewFragment.newInstance(bookId);
@@ -112,58 +99,31 @@ public class ViewBookFragment extends Fragment {
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                // Có thể để trống hoặc thực hiện một số hành động khi tab không được chọn nữa
-            }
+            public void onTabUnselected(TabLayout.Tab tab) {}
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                // Có thể để trống hoặc thực hiện một số hành động khi tab đã được chọn lại
-            }
+            public void onTabReselected(TabLayout.Tab tab) {}
         });
 
-        // Sự kiện nút Đọc thử sách
-        read.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Chuyển sang Fragment khác
-                ReadBookFragment newFragment = ReadBookFragment.newInstance(bookId);
-                getParentFragmentManager().beginTransaction()
-                        .replace(R.id.container, newFragment) // Đảm bảo ID container đúng
-                        .addToBackStack(null) // Nếu muốn thêm vào backstack
-                        .commit();
-            }
+        read.setOnClickListener(v -> {
+            ReadBookFragment newFragment = ReadBookFragment.newInstance(bookId);
+            getParentFragmentManager().beginTransaction()
+                    .replace(R.id.container, newFragment)
+                    .addToBackStack(null)
+                    .commit();
         });
 
-        // Sự kiện nút yêu thích sách
-        like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Chuyển sang Fragment khác
-                MessageFavouriteBookFragment newFragment = new MessageFavouriteBookFragment();
-                getParentFragmentManager().beginTransaction()
-                        .replace(R.id.container, newFragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
+        like.setOnClickListener(v -> {
+
+            addToFavourite(Integer.parseInt(bookId), v);
         });
+        cart.setOnClickListener(v -> addToCart(Integer.parseInt(bookId)));
 
-        cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Chuyển sang Fragment khác
-
-                addToCart(Integer.parseInt(bookId), numbersl);
-            }
-        });
-
-        return view; // Trả về view
+        return view;
     }
-
-
     private void loadBookDetails(String bookId) {
         APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
-        Call<Book1> call = apiService.getBookDetails(bookId);  // Truyền bookId vào đây
+        Call<Book1> call = apiService.getBookDetails(bookId);
 
         call.enqueue(new Callback<Book1>() {
             @Override
@@ -173,10 +133,10 @@ public class ViewBookFragment extends Fragment {
                     title.setText(bookDetails.getTitle());
                     author.setText(bookDetails.getAuthor());
                     price.setText(String.valueOf(bookDetails.getPrice()));
-                    point.setText(bookDetails.getPoint() + " ★" );
-                    sl.setText("| "+ String.valueOf(bookDetails.getInStock()) +" books");
-                    String imageName = bookDetails.getImgResource();
+                    point.setText(bookDetails.getPoint() + " ★");
+                    sl.setText("| " + String.valueOf(bookDetails.getInStock()) + " books");
 
+                    String imageName = bookDetails.getImgResource();
                     if (imageName.endsWith(".jpg") || imageName.endsWith(".png")) {
                         imageName = imageName.substring(0, imageName.lastIndexOf('.'));
                     }
@@ -204,25 +164,64 @@ public class ViewBookFragment extends Fragment {
             }
         });
     }
-    private void addToCart(int bookId, int sl) {
-        // Lấy userId từ SharedPreferences
+
+    private void addToFavourite(int bookId, View v) {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
         int userId = sharedPreferences.getInt("userId", -1); // Lấy userId từ SharedPreferences
 
         if (userId != -1) {
-            // Tạo đối tượng Book hoặc Cart tùy vào cách bạn gửi dữ liệu
-            // Tạo đối tượng Cart với các thông tin cần thiết
-            Cart1 cartItem = new Cart1(userId, bookId, sl); // chỉ gửi idUser, idBook và number
+            FavouriteBook favouriteBook = new FavouriteBook(userId, bookId); // Tạo đối tượng yêu thích
 
-// Chuyển đối tượng Cart thành JSON
+            Gson gson = new Gson();
+            String json = gson.toJson(favouriteBook);
+
+            Log.d("AddToFavourite", "Sending JSON: " + json);
+
+            APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
+            Call<Void> call = apiService.addBookToFavourite(favouriteBook );
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.isSuccessful()) {
+                        Log.d("ViewBookFragment", "Sách đã được thêm vào danh sách yêu thích");
+
+                        MessageFavouriteBookFragment newFragment = new MessageFavouriteBookFragment();
+
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("userId", userId);
+                        bundle.putInt("bookId", bookId);
+                        newFragment.setArguments(bundle);
+
+                        getParentFragmentManager().beginTransaction()
+                                .replace(R.id.container, newFragment)
+                                .addToBackStack(null)
+                                .commit();
+                    } else {
+                        Log.e("ViewBookFragment", "Không thể thêm sách vào danh sách yêu thích");
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Log.e("ViewBookFragment", "Lỗi API: " + t.getMessage());
+                }
+            });
+        } else {
+            Log.e("ViewBookFragment", "userId không hợp lệ");
+        }
+    }
+    // Phương thức thêm sách vào giỏ hàng
+    private void addToCart(int bookId) {
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        int userId = sharedPreferences.getInt("userId", -1);
+
+        if (userId != -1) {
+            Cart1 cartItem = new Cart1(userId, bookId, 1);
             Gson gson = new Gson();
             String json = gson.toJson(cartItem);
 
-// In ra JSON trước khi gửi
             Log.d("AddToCart", "Sending JSON: " + json);
 
-
-            // Gọi API để thêm cuốn sách vào giỏ hàng
             APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
             Call<Void> call = apiService.addToCart(cartItem);
             call.enqueue(new Callback<Void>() {
@@ -230,8 +229,6 @@ public class ViewBookFragment extends Fragment {
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if (response.isSuccessful()) {
                         Log.d("ViewBookFragment", "Sách đã được thêm vào giỏ hàng");
-                        // Cập nhật UI hoặc hiển thị thông báo
-                        // Bạn có thể chuyển sang giỏ hàng sau khi thêm thành công:
                         CartFragment newFragment = new CartFragment();
                         getParentFragmentManager().beginTransaction()
                                 .replace(R.id.container, newFragment)
@@ -251,6 +248,5 @@ public class ViewBookFragment extends Fragment {
             Log.e("ViewBookFragment", "userId không hợp lệ");
         }
     }
-
-
 }
+
