@@ -16,13 +16,17 @@ import com.bumptech.glide.Glide;
 import com.example.bansach.R;
 import com.example.bansach.model.Cart;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.BookViewHolder> {
 
     private Context context;
     private OnBookClickListener listener;
     private OnBookDeleteListener deleteListener;
     private final List<Cart> bookList;
+    private final Set<Integer> swipedPositions = new HashSet<>();
 
     public interface OnBookClickListener {
         void onBookClick(Cart book);
@@ -49,6 +53,13 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Book
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
         Cart book = bookList.get(position);
 
+
+        if (swipedPositions.contains(position)) {
+            holder.buttonDelete.setVisibility(View.VISIBLE);
+        } else {
+            holder.buttonDelete.setVisibility(View.GONE);
+        }
+
         holder.bookTitle.setText(book.getTitle());
 
         String imageName = book.getImgResource();
@@ -74,12 +85,18 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Book
                 listener.onBookClick(book);
             }
         });
+
         holder.buttonDelete.setOnClickListener(v -> {
             if (deleteListener != null) {
-                deleteListener.onBookDelete(book, position);  // Gọi đến phương thức delete
-            }        });
+                deleteListener.onBookDelete(book, position);
 
+                swipedPositions.remove(position);
+                notifyItemChanged(position);
+            }
+        });
     }
+
+
     @Override
     public int getItemCount() {
         return bookList.size();
@@ -110,8 +127,27 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Book
 
     public void removeItem(int position) {
         bookList.remove(position);
+        swipedPositions.remove(position);
+
+
+        Set<Integer> updatedSwipedPositions = new HashSet<>();
+        for (int pos : swipedPositions) {
+            if (pos > position) {
+                updatedSwipedPositions.add(pos - 1);
+            } else {
+                updatedSwipedPositions.add(pos);
+            }
+        }
+        swipedPositions.clear();
+        swipedPositions.addAll(updatedSwipedPositions);
+
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, bookList.size());
+    }
+
+    public void onItemSwiped(int position) {
+        swipedPositions.add(position);
+        notifyItemChanged(position);
     }
 }
 
