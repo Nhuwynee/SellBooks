@@ -6,14 +6,17 @@ import com.example.bansach.model.Cart1;
 import com.example.bansach.model.FavouriteBook;
 import com.example.bansach.model.LoginRequest;
 import com.example.bansach.model.LoginResponse;
+import com.example.bansach.model.NewPassRequest;
 import com.example.bansach.model.Order;
 import com.example.bansach.model.OrderDetail;
 import com.example.bansach.model.OrderRequest;
 import com.example.bansach.model.OrderResponse;
 import com.example.bansach.model.Order_User;
 import com.example.bansach.model.OtpRequest;
+import com.example.bansach.model.OtpResponse;
 import com.example.bansach.model.User;
 
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -52,7 +55,7 @@ public interface APIService {
     Call<List<String>> getCategories();
 
     @GET("favouritebookapi.php")
-    Call<List<Cart>> getFavouriteBooks(@Query("idUser") int idUser);
+    Call<List<Book1>> getFavouriteBooks(@Query("idUser") int idUser);
 
 //    @GET("order_confirmapi.php")
 //    Call<Order> getOrder(@Query("idOrder") int idOrder);  // Sửa thành idOrder
@@ -88,11 +91,15 @@ public interface APIService {
     Call<Void> addBookToFavourite(@Body FavouriteBook favouriteBook);
 
     @GET("deletefavouritebookapi.php")
-    Call<Void> deleteFavouriteBook(@Query("idUser") int userId, @Query("idBook") int bookId);
-    @POST("OTP.php")  // Đảm bảo đường dẫn này chính xác
-    Call<String> sendOtp(@Body OtpRequest request);
+    Call<Void> deleteFavouriteBook(@Query("idUser") int userId, @Query("idBook") String bookId);
+    @GET("OTP.php")
+    Call<Void> sendOtp();
+
     @POST("verifyOtp.php")  // URL API xác nhận OTP
     Call<String> verifyOtp(@Body OtpRequest otpRequest);
+    @POST("update_password_api.php")
+    Call<Void> updatePassword(@Body NewPassRequest newpass);
+
 }
 
 

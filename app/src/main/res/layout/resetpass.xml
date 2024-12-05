@@ -65,7 +65,7 @@
         app:hintEnabled="true"
         app:hintTextAppearance="@style/HintTextAppearance">
         <EditText
-            android:id="@+id/sdt1"
+            android:id="@+id/newpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"

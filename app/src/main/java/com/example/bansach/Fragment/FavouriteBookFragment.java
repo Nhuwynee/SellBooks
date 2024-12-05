@@ -20,7 +20,7 @@ import com.example.bansach.API.APIService;
 import com.example.bansach.API.RetrofitClient;
 import com.example.bansach.Adapter.FavouriteAdapter;
 import com.example.bansach.R;
-import com.example.bansach.model.Cart;
+import com.example.bansach.model.Book1;
 import com.example.bansach.model.FavouriteBook;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ import retrofit2.Response;
 public class FavouriteBookFragment extends Fragment {
     private RecyclerView recyclerView;
     private FavouriteAdapter favouriteAdapter;
-    private List<Cart> bookList;
+    private List<Book1> bookList;
     private APIService apiService;
     @Nullable
     @Override
@@ -46,13 +46,13 @@ public class FavouriteBookFragment extends Fragment {
         favouriteAdapter = new FavouriteAdapter(bookList, getContext(),
                 new FavouriteAdapter.OnBookClickListener() {
                     @Override
-                    public void onBookClick(Cart book) {
+                    public void onBookClick(Book1 book) {
                         Log.d("FavouriteBookFragment", "Sách được chọn: " + book.getTitle());
                     }
                 },
                 new FavouriteAdapter.OnBookDeleteListener() {
                     @Override
-                    public void onBookDelete(Cart book, int position) {
+                    public void onBookDelete(Book1 book, int position) {
                         deleteBookFromFavourite(book, position);
                     }
                 }
@@ -69,10 +69,10 @@ public class FavouriteBookFragment extends Fragment {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
         int userId = sharedPreferences.getInt("userId", -1);
 
-        Call<List<Cart>> call = apiService.getFavouriteBooks(userId);
-        call.enqueue(new Callback<List<Cart>>() {
+        Call<List<Book1>> call = apiService.getFavouriteBooks(userId);
+        call.enqueue(new Callback<List<Book1>>() {
             @Override
-            public void onResponse(Call<List<Cart>> call, Response<List<Cart>> response) {
+            public void onResponse(Call<List<Book1>> call, Response<List<Book1>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     bookList = response.body();
                     favouriteAdapter.updateBooks(bookList);
@@ -82,13 +82,13 @@ public class FavouriteBookFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Cart>> call, Throwable t) {
+            public void onFailure(Call<List<Book1>> call, Throwable t) {
                 Log.e("API_ERROR", "Error: " + t.getMessage());
             }
         });
     }
 
-    private void deleteBookFromFavourite(Cart book, int position) {
+    private void deleteBookFromFavourite(Book1 book, int position) {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
         int userId = sharedPreferences.getInt("userId", -1);
 

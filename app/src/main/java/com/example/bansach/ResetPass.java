@@ -1,5 +1,6 @@
 package com.example.bansach;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,10 +12,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bansach.API.APIService;
+import com.example.bansach.API.RetrofitClient;
+import com.example.bansach.model.NewPassRequest;
 import com.example.bansach.model.OtpRequest;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,60 +30,64 @@ public class ResetPass extends AppCompatActivity {
         setContentView(R.layout.resetpass);
 
         SharedPreferences sharedPreferences = getSharedPreferences("PREFERENCES_FILE", MODE_PRIVATE);
-        String phoneNumberEditText = sharedPreferences.getString("PHONE_NUMBER_KEY", "");
+        String phoneNumberEditText = sharedPreferences.getString("PHONE_NUMBER_KEY", null);
 
         Button verifyOtpButton = findViewById(R.id.btn_signup);
-        final EditText otpEditText = findViewById(R.id.otp1);
+        EditText otpEditText = findViewById(R.id.otp1);
+        EditText newPasswordEditText = findViewById(R.id.newpass);
 
         verifyOtpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String phoneNumber = phoneNumberEditText;
                 String otpCode = otpEditText.getText().toString();
-
-                if (phoneNumber != null && !phoneNumber.isEmpty() && !otpCode.isEmpty()) {
-                    verifyOtp(phoneNumber, otpCode);
-                } else {
-                    Toast.makeText(ResetPass.this, "Vui lòng nhập số điện thoại và mã OTP.", Toast.LENGTH_SHORT).show();
+                String newPassword = newPasswordEditText.getText().toString();
+                String otp = "147852";
+                if (phoneNumber == null || phoneNumber.isEmpty()) {
+                    Toast.makeText(ResetPass.this, "Không tìm thấy số điện thoại.", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                if (otpCode.isEmpty() || newPassword.isEmpty()) {
+                    Toast.makeText(ResetPass.this, "Vui lòng nhập đầy đủ thông tin.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (otpCode.equals(otp)) {
+                    verifyOtpAndUpdatePassword(phoneNumber, newPassword);
+
+                }
+                else {
+                    Log.d("Resetpass", "Otp ko đúng");
+
+                }
+
             }
         });
     }
 
-    public void verifyOtp(String phoneNumber, String otpCode) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.4.112:8080/READIFY/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+    public void verifyOtpAndUpdatePassword(String phoneNumber,  String newPassword) {
+        NewPassRequest request = new NewPassRequest(phoneNumber,newPassword);
+        APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
+        Call<Void> call = apiService.updatePassword(request);
+        call.enqueue(new Callback<Void>() {
 
-        APIService apiService = retrofit.create(APIService.class);
-
-        OtpRequest otpRequest = new OtpRequest(phoneNumber, otpCode);
-
-        Call<String> call = apiService.verifyOtp(otpRequest);
-        call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    try {
-                        JSONObject jsonObject = new JSONObject(response.body());
-                        String result = jsonObject.getString("result"); // Tuỳ thuộc vào server trả về
-                        Log.d("VerifyOtp", "OTP verification result: " + result);
-                        Toast.makeText(ResetPass.this, result, Toast.LENGTH_SHORT).show();
-                    } catch (JSONException e) {
-                        Log.e("VerifyOtp", "JSON Parsing Error: " + e.getMessage());
-                    }
+                    Log.d("Resetpass", "Quantity updated successfully");
+                    Intent intent = new Intent(ResetPass.this, LoginMainPage.class);
+                    startActivity(intent);
                 } else {
-                    Log.e("VerifyOtp", "Failed to verify OTP: " + response.message());
-                    Toast.makeText(ResetPass.this, "Xác thực OTP thất bại", Toast.LENGTH_SHORT).show();
+                    Log.e("Resetpass", "Error updating quantity: " + response.code());
                 }
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.e("VerifyOtp", "Error: " + t.getMessage());
-                Toast.makeText(ResetPass.this, "Lỗi kết nối: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("Resetpass", "Error: " + t.getMessage());
             }
         });
     }
+
+
 }

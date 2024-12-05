@@ -83,26 +83,13 @@
 
                 <TextView
                     android:id="@+id/book_price"
-                    android:layout_width="0dp"
-                    android:layout_weight="5"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="225.000đ"
                     android:textColor="#2A15AB"
                     android:fontFamily="@font/arima_bold"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/btn_show"
-                    android:layout_width="100dp"
-                    android:layout_height="35dp"
-                    android:paddingTop="3dp"
-                    android:layout_weight="0.1"
-                    android:text="Xem chi tiết"
-                    android:fontFamily="@font/arima_bold"
-                    android:textColor="#E81970"
-                    android:textSize="18sp"
-                    android:layout_marginLeft="100dp"
-                    android:src="@drawable/ic_bag" />
             </LinearLayout>
 
             <LinearLayout

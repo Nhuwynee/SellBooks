@@ -11,7 +11,10 @@ public class OtpRequest {
     public OtpRequest(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
+    @Override
+    public String toString() {
+        return "OtpRequest{phoneNumber='" + phoneNumber + "'}";
+    }
     public String getPhoneNumber() {
         return phoneNumber;
     }

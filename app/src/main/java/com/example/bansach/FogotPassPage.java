@@ -21,7 +21,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bansach.API.APIService;
+import com.example.bansach.API.RetrofitClient;
 import com.example.bansach.model.OtpRequest;
+import com.example.bansach.model.OtpResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class FogotPassPage extends AppCompatActivity {
 
@@ -40,8 +45,8 @@ public class FogotPassPage extends AppCompatActivity {
                     // Gọi API gửi OTP
                     savePhoneNumberToSharedPreferences(phoneNumber);
                     sendOtpToServer(phoneNumber);
-//                    Intent intent = new Intent(FogotPassPage.this, ResetPass.class);
-//                    startActivity(intent);
+                    Intent intent = new Intent(FogotPassPage.this, ResetPass.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(FogotPassPage.this, "Vui lòng nhập số điện thoại.", Toast.LENGTH_SHORT).show();
                 }
@@ -55,40 +60,33 @@ public class FogotPassPage extends AppCompatActivity {
         editor.apply();  // Áp dụng thay đổi
     }
     public void sendOtpToServer(String phoneNumber) {
-        // Khởi tạo Retrofit
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.4.112:8080/READIFY/")  // Thay "your-server-url" bằng URL thực tế của bạn
-                .addConverterFactory(GsonConverterFactory.create()) // Sử dụng Gson để chuyển đổi JSON
-                .build();
 
-        APIService apiService = retrofit.create(APIService.class);
+
+        APIService apiService = RetrofitClient.getRetrofitInstance().create(APIService.class);
 
         // Tạo request gửi đi
-        OtpRequest otpRequest = new OtpRequest(phoneNumber);
-
-        // Gửi yêu cầu POST
-        Call<String> call = apiService.sendOtp(otpRequest);
-        call.enqueue(new Callback<String>() {
+        Call<Void> call = apiService.sendOtp();
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    // Xử lý nếu phản hồi thành công
-                    Log.d("SendOtp", "OTP sent successfully: " + response.body());
-                    Toast.makeText(FogotPassPage.this, "Mã OTP đã được gửi!", Toast.LENGTH_SHORT).show();
+                    // Xử lý thành công
+                    Log.d("API Response", "OTP sent successfully");
+                    Toast.makeText(getApplicationContext(), "OTP sent successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Xử lý nếu có lỗi từ server
-                    Log.e("SendOtp", "Failed to send OTP: " + response.message());
-                    Toast.makeText(FogotPassPage.this, "Gửi OTP thất bại: " + response.message(), Toast.LENGTH_SHORT).show();
+                    // Xử lý lỗi
+                    Log.e("API Error", "Error: " + response.code());
+                    Toast.makeText(getApplicationContext(), "Failed to send OTP", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                // Xử lý khi có lỗi kết nối hoặc yêu cầu không thành công
-                Log.e("SendOtp", "Error: " + t.getMessage());
-
-                Toast.makeText(FogotPassPage.this, "Lỗi kết nối: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<Void> call, Throwable t) {
+                // Xử lý khi có lỗi kết nối
+                Log.e("API Failure", "Error: " + t.getMessage());
+                Toast.makeText(getApplicationContext(), "Network error", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }

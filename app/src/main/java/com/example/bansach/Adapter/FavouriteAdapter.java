@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.bansach.R;
-import com.example.bansach.model.Cart;
+import com.example.bansach.model.Book1;
 
 import java.util.HashSet;
 import java.util.List;
@@ -25,22 +25,22 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Book
     private Context context;
     private OnBookClickListener listener;
     private OnBookDeleteListener deleteListener;
-    private final List<Cart> bookList;
+    private final List<Book1> bookList;
     private final Set<Integer> swipedPositions = new HashSet<>();
 
     public interface OnBookClickListener {
-        void onBookClick(Cart book);
+        void onBookClick(Book1 book);
     }
     public interface OnBookDeleteListener {
-        void onBookDelete(Cart book, int position);
+        void onBookDelete(Book1 book, int position);
 
     }
-    public FavouriteAdapter(List<Cart> bookList, Context context, OnBookClickListener favouriteBookFragment, OnBookDeleteListener deleteListener) {
+    public FavouriteAdapter(List<Book1> bookList, Context context, OnBookClickListener favouriteBookFragment, OnBookDeleteListener deleteListener) {
         this.bookList = bookList;
         this.context = context;
         this.deleteListener = deleteListener;
     }
-    public FavouriteAdapter(List<Cart> bookList) {
+    public FavouriteAdapter(List<Book1> bookList) {
         this.bookList = bookList;
     }
     @NonNull
@@ -51,7 +51,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Book
     }
     @Override
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
-        Cart book = bookList.get(position);
+        Book1 book = bookList.get(position);
 
 
         if (swipedPositions.contains(position)) {
@@ -119,7 +119,7 @@ public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteAdapter.Book
             buttonDelete = itemView.findViewById(R.id.buttonDelete);
         }
     }
-    public void updateBooks(List<Cart> newBooks) {
+    public void updateBooks(List<Book1> newBooks) {
         bookList.clear();
         bookList.addAll(newBooks);
         notifyDataSetChanged();
