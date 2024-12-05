@@ -14,9 +14,9 @@
 <body>
 <?php
     include "connect.php";
-
+  
     // Khi nhấn nút thêm sách
-    if (isset($_POST['btn'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn'])) {
         $title = $_POST['title'];
         $author = $_POST['author'];
         $category = $_POST['category'];
@@ -100,6 +100,10 @@
                 <div class="field-group">
                     <p>Điểm</p>
                     <input type="number" name="point" required> 
+                </div>
+                <div class="field-group">
+                    <p>Về tác giả</p>
+                    <textarea name="detailAuthor" required></textarea>
                 </div>
             </div>
         </div>

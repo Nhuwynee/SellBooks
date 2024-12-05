@@ -125,6 +125,10 @@
                     <p>Điểm</p>
                     <input type="number" name="point" value="<?php echo $row['pointOfBook'];?>"> 
                 </div>
+                <div class="field-group">
+                    <p>Về tác giả</p>
+                    <textarea name="description"><?php echo $row['detailAuthor'];?></textarea>
+                </div>
             </div>
         </div>
         <!-- Các trường còn lại -->

@@ -11,14 +11,55 @@
     <link href="./assets/font/font-awesome-pro-v6-6.2.0/css/all.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="./assets/css/admin-responsive.css">
     <title>Quản lý cửa hàng</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+}
+    .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px; /* Chiều rộng sidebar */
+    background-color: #fff;
+    color: #fff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Đảm bảo sidebar luôn nằm trên */
+}
+.section{
+    margin-left: 260px; /* Đẩy nội dung sang phải, ngang với chiều rộng sidebar */
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+}
+    </style>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
         <aside class="sidebar open">
             <div class="top-sidebar">
-            <a href="#" class="channel-logo"><img src="./assets/img/login.png" alt="Channel Logo" style="width: 200px; height: auto;"></a>
+            <a href="#" class="channel-logo"><img src="./assets/img/login.png" alt="Channel Logo" style="width: 150px; height: auto;"></a>
 
             </div>
             <div class="middle-sidebar">
@@ -29,7 +70,7 @@
                             <div class="hidden-sidebar">Trang tổng quan</div>
                         </a>
                     </li>
-                    <li class="sidebar-list-item tab-content">
+                    <li class="sidebar-list-item tab-content ">
                         <a href="products.php" class="sidebar-link">
                             <div class="sidebar-icon"><i class="fa-light fa-pot-food"></i></div>
                             <div class="hidden-sidebar">Sản phẩm</div>
@@ -81,11 +122,23 @@
          <div class="section">
                 <div class="admin-control">
                     <div class="admin-control-left">
-                        <select name="tinh-trang-user" id="tinh-trang-user" >
-                            <option value="2">Tất cả</option>
-                            <option value="1">Hoạt động</option>
-                            <option value="0">Bị khóa</option>
+                    <form method="GET" action="" id="filterForm">
+                        <select name="tinh-trang-user" id="tinh-trang-user" onchange="document.getElementById('filterForm').submit()">
+                            <option value="2" <?= isset($_GET['tinh-trang-user']) && $_GET['tinh-trang-user'] == "2" ? "selected" : "" ?>>Tất cả</option>
+                            <option value="1" <?= isset($_GET['tinh-trang-user']) && $_GET['tinh-trang-user'] == "1" ? "selected" : "" ?>>Admin</option>
+                            <option value="0" <?= isset($_GET['tinh-trang-user']) && $_GET['tinh-trang-user'] == "0" ? "selected" : "" ?>>Khách hàng</option>
                         </select>
+                    </form>
+                     <?php
+                        if (isset($_GET['tinh-trang-user'])) {
+                            $tinhTrang = $_GET['tinh-trang-user'];
+                        }
+                        else {
+                            $tinhTrang = null;
+                        }
+                        ?>
+
+
                     </div>
                     <div class="admin-control-center">
                         <form action="users.php" method="GET" class="form-search">
@@ -120,16 +173,37 @@
                                 <td>Số điện thoại</td>
                                 <td>Địa chỉ</td>
                                 <td>Level</td>
+                                <td>Point</td>
                                 <td></td>
                             </tr>
                         </thead>
                         <tbody>
                         <?php
                             include "connect.php";
-                            if ($noidung == null) {
-                            $sql = "SELECT * FROM users";}
+                            if ($noidung == null && $tinhTrang == null) {
+                                $sql = "SELECT * FROM users";}
+                            else if ($noidung != null && $tinhTrang == null) {
+                                $sql = "SELECT * FROM users where name like '%$noidung%'"; 
+                            }
+                            else if ($noidung == null && $tinhTrang != null){
+                                if ($tinhTrang == "2") {
+                                    $sql = "SELECT * FROM users"; 
+                                } else if ($tinhTrang == "1") {
+                                    $sql = "SELECT * FROM users WHERE level = 1"; 
+                                } else if ($tinhTrang == "0") {
+                                    $sql = "SELECT * FROM users WHERE level = 2"; 
+                                } 
+                            }
                             else {
-                                $sql = "SELECT * FROM users where name like '%$noidung%'";
+                                if ($tinhTrang == "2") {
+                                    $sql = "SELECT * FROM users where name like '%$noidung%'";  
+                                } elseif ($tinhTrang == "1") {
+                                    $sql = "SELECT * FROM users WHERE level = 1 and name like '%$noidung%'"; 
+                                } elseif ($tinhTrang == "0") {
+                                    $sql = "SELECT * FROM users WHERE level = 2 and name like '%$noidung%'"; 
+                                } else {
+                                    $sql = "SELECT * FROM users where name like '%$noidung%'"; 
+                                }
                             }
                             $result =mysqli_query($conn,$sql);
                             while($row = mysqli_fetch_array($result)){
@@ -142,6 +216,7 @@
                                 <td><?php echo $row['phone'] ?></td>
                                 <td><?php echo $row['address'] ?></td>
                                 <td><?php echo $row['level']?></td>
+                                <td><?php echo $row['point']?></td>
                                 <td class="control control-table">
                                <a href="editUser.php?this_id=<?php echo $row['IdUser']?>"> <button class="btn-edit" id="edit-account" ><i class="fa-light fa-pen-to-square"></i></button></a>
                                <a href="deleteUser.php?this_id=<?php echo $row['IdUser']?>"> <button class="btn-delete" id="delete-account"><i class="fa-regular fa-trash"></i></button></a>

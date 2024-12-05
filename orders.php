@@ -29,9 +29,9 @@
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 90%;
-    max-width: 1000px;
+    max-width: 1200px;
 }
-        .sidebar {
+    .sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -70,7 +70,7 @@
                             <div class="hidden-sidebar">Trang tổng quan</div>
                         </a>
                     </li>
-                    <li class="sidebar-list-item tab-content active">
+                    <li class="sidebar-list-item tab-content">
                         <a href="products.php" class="sidebar-link">
                             <div class="sidebar-icon"><i class="fa-light fa-pot-food"></i></div>
                             <div class="hidden-sidebar">Sản phẩm</div>
@@ -82,7 +82,7 @@
                             <div class="hidden-sidebar">Khách hàng</div>
                         </a>
                     </li>
-                    <li class="sidebar-list-item tab-content">
+                    <li class="sidebar-list-item tab-content active">
                         <a href="orders.php" class="sidebar-link">
                             <div class="sidebar-icon"><i class="fa-light fa-basket-shopping"></i></div>
                             <div class="hidden-sidebar">Đơn hàng</div>
@@ -122,28 +122,25 @@
 <div class="section-product-all">
                 <div class="admin-control">
                     <div class="admin-control-left">
-                    <form method="GET" action="" id="filterForm">
-                        <select name="the-loai" id="the-loai" onchange="document.getElementById('filterForm').submit()">
-                            <option value="tat-ca" <?= isset($_GET['the-loai']) && $_GET['the-loai'] == 'tat-ca' ? 'selected' : '' ?>>Tất cả</option>
-                            <option value="tieu-thuyet" <?= isset($_GET['the-loai']) && $_GET['the-loai'] == 'tieu-thuyet' ? 'selected' : '' ?>>Tiểu thuyết</option>
-                            <option value="self-help" <?= isset($_GET['the-loai']) && $_GET['the-loai'] == 'self-help' ? 'selected' : '' ?>>Self-help</option>
-                            <option value="van-hoc" <?= isset($_GET['the-loai']) && $_GET['the-loai'] == 'van-hoc' ? 'selected' : '' ?>>Văn học</option>
-                            <option value="trinh-tham" <?= isset($_GET['the-loai']) && $_GET['the-loai'] == 'trinh-tham' ? 'selected' : '' ?>>Trinh thám</option>
-                            <option value="tam-ly-hoc" <?= isset($_GET['the-loai']) && $_GET['the-loai'] == 'tam-ly-hoc' ? 'selected' : '' ?>>Tâm lý học</option>
-                            <option value="ky-nang-song" <?= isset($_GET['the-loai']) && $_GET['the-loai'] == 'ky-nang-song' ? 'selected' : '' ?>>Kỹ năng sống</option>
+                    <form method="GET" action="">
+                        <select name="trang-thai" id="trang-thai" onchange="this.form.submit()">
+                            <option value="tat-ca" <?= isset($_GET['trang-thai']) && $_GET['trang-thai'] == 'tat-ca' ? 'selected' : '' ?>>Tất cả</option>
+                            <option value="da-giao" <?= isset($_GET['trang-thai']) && $_GET['trang-thai'] == 'da-giao' ? 'selected' : '' ?>>Đã giao</option>
+                            <option value="dang-giao" <?= isset($_GET['trang-thai']) && $_GET['trang-thai'] == 'dang-giao' ? 'selected' : '' ?>>Đang giao</option>
+                            <option value="da-huy" <?= isset($_GET['trang-thai']) && $_GET['trang-thai'] == 'da-huy' ? 'selected' : '' ?>>Đã hủy</option>
                         </select>
                     </form>
                     </div>
                     <?php
-                    if (isset($_GET['the-loai'])) {
-                        $theLoai = $_GET['the-loai'];}
+                    if (isset($_GET['trang-thai'])) {
+                        $trangthai = $_GET['trang-thai'];}
                         else {
-                            $theLoai = null;
+                            $trangthai = null;
                         }
                     ?>
                     <div class="admin-control-center">
-                        <form action="products.php" method="GET" class="form-search">
-                            <input id="form-search-user" type="text" class="form-search-input" placeholder="Tìm kiếm sách giáo khoa..." name="noidung">
+                        <form action="orders.php" method="GET" class="form-search">
+                            <input id="form-search-user" type="text" class="form-search-input" placeholder="Tìm kiếm mã đơn hàng" name="noidung">
                             <button type="submit" class="search-btn" name="btn">
                                 <i class="fa-light fa-magnifying-glass"></i>
                             </button>
@@ -157,88 +154,74 @@
                             $noidung = null;
                         }
                         ?>
-                    <div class="admin-control-right">
-                    <a href="addProducts.php" class="btn-control-large" id="btn-add-user">
-                            <i class="fa-light fa-plus"></i>
-                            <span>Thêm sách</span>
-                        </a>                
-                    </div>
+                  
                 </div>
                 <div class="table">
                     <table width="100%">
                         <thead>
                             <tr>
-                                <td>Id</td>
-                                <td>Tên sách</td>
-                                <td>Tác giả</td>
-                                <td>Thể loại</td>
-                                <td>Hình ảnh</td>
-                                <td>Giá</td>
-                                <td>Trong kho</td>
-                                <td>Điểm</td>
-                                <td>Sách nói</td>
-                                <td>Hoạt động</td>
+                                <td>Mã đơn hàng</td>
+                                <td>Avatar</td>
+                                <td>Tên người đặt</td>
+                                <td>Thời gian</td>
+                                <td>Điểm thưởng</td>
+                                <td>Trạng thái</td>
                                 <td></td>
                             </tr>
                         </thead>
                         <tbody>
                         <?php
                             include "connect.php";
-                            if ($noidung == null && $theLoai == null) {
-                            $sql = "SELECT * FROM book";}
-                            else if ($theLoai != NULL){
-                                switch ($theLoai) {
+                            if ($noidung == null && $trangthai == null) {
+                            $sql = "SELECT orders.IdOrder, users.avatarImage as avatarImage, users.name AS names, orders.orderTime, orders.pointOfOrder, orders.orderStatus
+                                    FROM orders
+                                    INNER JOIN users ON orders.idUser = users.idUser order by IdOrder";}
+                            else if ($trangthai != NULL){
+                                switch ($trangthai) {
                                     case 'tat-ca':
-                                        $sql = "SELECT * FROM book";
+                                        $sql = "SELECT orders.IdOrder, users.avatarImage as avatarImage, users.name AS names, orders.orderTime, orders.pointOfOrder, orders.orderStatus
+                                                FROM orders
+                                                INNER JOIN users ON orders.idUser = users.idUser order by IdOrder;";
                                         break;
-                                    case 'tieu-thuyet':
-                                        $sql = "SELECT * FROM book WHERE category = 'Tiểu thuyết'";
+                                    case 'da-giao':
+                                        $sql = "SELECT orders.IdOrder,users.avatarImage as avatarImage, users.name AS names, orders.orderTime, orders.pointOfOrder, orders.orderStatus
+                                                FROM orders
+                                                INNER JOIN users ON orders.idUser = users.idUser WHERE orderStatus = 'Đã giao' order by IdOrder";
                                         break;
-                                    case 'self-help':
-                                        $sql = "SELECT * FROM book WHERE category = 'Self-help'";
+                                    case 'dang-giao':
+                                        $sql = "SELECT orders.IdOrder,users.avatarImage as avatarImage, users.name AS names, orders.orderTime, orders.pointOfOrder, orders.orderStatus
+                                                FROM orders
+                                                INNER JOIN users ON orders.idUser = users.idUser WHERE orderStatus = 'Đang giao' order by IdOrder";
                                         break;
-                                    case 'van-hoc':
-                                        $sql = "SELECT * FROM book WHERE category = 'Văn học'";
+                                    case 'da-huy':
+                                        $sql = "SELECT orders.IdOrder,users.avatarImage as avatarImage, users.name AS names, orders.orderTime, orders.pointOfOrder, orders.orderStatus
+                                                FROM orders
+                                                INNER JOIN users ON orders.idUser = users.idUser WHERE orderStatus = 'Đã hủy' order by IdOrder";
                                         break;
-                                    case 'trinh-tham':
-                                        $sql = "SELECT * FROM book WHERE category = 'Trinh thám'";
-                                        break;
-                                    case 'tam-ly-hoc':
-                                        $sql = "SELECT * FROM book WHERE category = 'Tâm lý học'";
-                                        break;
-                                    case 'ky-nang-song':
-                                         $sql = "SELECT * FROM book WHERE category = 'Kỹ năng sống'";
-                                         break;
                                     default:
-                                        $sql = "SELECT * FROM book"; 
+                                        $sql = "SELECT orders.IdOrder,users.avatarImage as avatarImage, users.name AS names, orders.orderTime, orders.pointOfOrder, orders.orderStatus
+                                                FROM orders
+                                                INNER JOIN users ON orders.idUser = users.idUser order by IdOrder;"; 
                                         break;
                                 }
                             }
                             else if ($noidung != null) {
-                                $sql = "SELECT * FROM book where title like '%$noidung%'";
+                                $sql = "SELECT orders.IdOrder,users.avatarImage as avatarImage, users.name AS names, orders.orderTime, orders.pointOfOrder, orders.orderStatus
+                                    FROM orders
+                                    INNER JOIN users ON orders.idUser = users.idUser where orders.IdOrder = $noidung";
                             }
                             $result =mysqli_query($conn,$sql);
                             while($row = mysqli_fetch_array($result)){
                             ?>
-                            <tr>
-                                <td><?php echo $row['idBook'] ?></td>
-                                <td><?php echo $row['title'] ?></td>
-                                <td><?php echo $row['author'] ?></td>
-                                <td><?php echo $row['category'] ?></td>
-                                <td><img width= "50" height = "50" src="img/books/<?php echo $row['imgResource'] ?>" alt=""></td>
-                                <td><?php echo $row['price']?></td>
-                                <td><?php echo $row['inStock'] ?></td>
-                                <td><?php echo $row['pointOfBook'] ?></td>
-                                <?php
-                                $nameFile = basename($row['URLaudioBook']);?>
-                                <td><?php echo $nameFile?></td>          
-                              <td><?php echo $row['isActive']?></td>
-
-                                <td class="control control-table">
-                               <a href="editProducts.php?this_id=<?php echo $row['idBook']?>"> <button class="btn-edit" id="edit-account" ><i class="fa-light fa-pen-to-square"></i></button></a>
-                                </td>
+                           <tr onclick="window.location='order_details.php?idOrder=<?php echo $row['IdOrder']; ?>';">
+                                <td><?php echo $row['IdOrder'] ?></td>
+                                <td><img width="50" height="50" src="img/<?php echo $row['avatarImage'] ?>" alt=""></td>
+                                <td><?php echo $row['names'] ?></td>
+                                <td><?php echo $row['orderTime'] ?></td>
+                                <td><?php echo $row['pointOfOrder'] ?></td>
+                                <td><?php echo $row['orderStatus'] ?></td>                               
                             </tr>
-                        <?php  } ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
