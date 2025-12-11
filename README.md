@@ -1,8 +1,5 @@
 # SellBooks 📚 — README
 
-> Group 8: Sell audio-books & reading (student project).
-> Authors: Lưu Ngọc Yến Như, Phạm Thị Thu Nguyệt, Nguyễn Thị Hiếu.
-
 ---
 
 ## Table of Contents
